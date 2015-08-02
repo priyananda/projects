@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject ProjectType="Visual C++" Version="7.10" Name="PxPhysics" ProjectGUID="{591452D9-AAB8-492A-A567-15781C506038}" Keyword="Win32Proj">
+  <Platforms>
+    <Platform Name="Win32" />
+  </Platforms>
+  <Configurations>
+    <Configuration Name="Debug|Win32" OutputDirectory="../lib" IntermediateDirectory="Debug" ConfigurationType="4" CharacterSet="2">
+      <Tool Name="VCCLCompilerTool" Optimization="0" AdditionalIncludeDirectories="include;..\dep;..\Common\include" PreprocessorDefinitions="WIN32;_DEBUG;_LIB" MinimalRebuild="TRUE" BasicRuntimeChecks="3" RuntimeLibrary="5" UsePrecompiledHeader="0" WarningLevel="3" Detect64BitPortabilityProblems="TRUE" DebugInformationFormat="4" />
+      <Tool Name="VCCustomBuildTool" />
+      <Tool Name="VCLibrarianTool" OutputFile="$(OutDir)/PxPhysics.lib" />
+      <Tool Name="VCMIDLTool" />
+      <Tool Name="VCPostBuildEventTool" />
+      <Tool Name="VCPreBuildEventTool" />
+      <Tool Name="VCPreLinkEventTool" />
+      <Tool Name="VCResourceCompilerTool" />
+      <Tool Name="VCWebServiceProxyGeneratorTool" />
+      <Tool Name="VCXMLDataGeneratorTool" />
+      <Tool Name="VCManagedWrapperGeneratorTool" />
+      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
+    </Configuration>
+    <Configuration Name="Release|Win32" OutputDirectory="../lib" IntermediateDirectory="Release" ConfigurationType="4" CharacterSet="2">
+      <Tool Name="VCCLCompilerTool" AdditionalIncludeDirectories="include;..\dep;..\Common\include" PreprocessorDefinitions="WIN32;NDEBUG;_LIB" RuntimeLibrary="4" UsePrecompiledHeader="0" WarningLevel="3" Detect64BitPortabilityProblems="TRUE" DebugInformationFormat="3" />
+      <Tool Name="VCCustomBuildTool" />
+      <Tool Name="VCLibrarianTool" OutputFile="$(OutDir)/PxPhysics.lib" />
+      <Tool Name="VCMIDLTool" />
+      <Tool Name="VCPostBuildEventTool" />
+      <Tool Name="VCPreBuildEventTool" />
+      <Tool Name="VCPreLinkEventTool" />
+      <Tool Name="VCResourceCompilerTool" />
+      <Tool Name="VCWebServiceProxyGeneratorTool" />
+      <Tool Name="VCXMLDataGeneratorTool" />
+      <Tool Name="VCManagedWrapperGeneratorTool" />
+      <Tool Name="VCAuxiliaryManagedWrapperGeneratorTool" />
+    </Configuration>
+  </Configurations>
+  <References>
+  </References>
+  <Files>
+    <Filter Name="src" Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx" UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
+      <File RelativePath=".\src\PxBoundingSphere.cpp">
+      </File>
+      <File RelativePath=".\src\PxLine.cpp">
+      </File>
+      <File RelativePath=".\src\PxMath.cpp">
+      </File>
+      <File RelativePath=".\src\PxMatrix.cpp">
+      </File>
+      <File RelativePath=".\src\PxPhysicsRoot.cpp">
+      </File>
+      <File RelativePath=".\src\PxPlane.cpp">
+      </File>
+      <File RelativePath=".\src\PxPointProjectile.cpp">
+      </File>
+      <File RelativePath=".\src\PxProjectile.cpp">
+      </File>
+      <File RelativePath=".\src\PxVector.cpp">
+      </File>
+      <File RelativePath=".\src\PxVector4d.cpp">
+      </File>
+      <Filter Name="Collision" Filter="">
+        <File RelativePath=".\src\Collision\PxCollisionManager.cpp">
+        </File>
+        <File RelativePath=".\src\Collision\PxNormalCollisionController.cpp">
+        </File>
+        <File RelativePath=".\src\Collision\PxQuakeCollisionController.cpp">
+        </File>
+      </Filter>
+    </Filter>
+    <Filter Name="include" Filter="h;hpp;hxx;hm;inl;inc;xsd" UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
+      <File RelativePath="include\PxMath.h" />
+      <File RelativePath="include\PxVector4d.h" />
+      <File RelativePath="include\PxPointProjectile.h" />
+      <File RelativePath="include\PxMatrix.h" />
+      <File RelativePath="include\PxPlane.h" />
+      <File RelativePath="include\PxProjectile.h" />
+      <File RelativePath="include\PxVector.h" />
+      <File RelativePath="include\PxBoundingSphere.h" />
+      <File RelativePath="include\PxLine.h" />
+      <File RelativePath="include\PxPhysicsRoot.h" />
+      <Filter Name="Collision">
+        <File RelativePath="include\PxQuakeCollisionController.h" />
+        <File RelativePath="include\PxCollisionManager.h" />
+        <File RelativePath="include\PxNormalCollisionController.h" />
+      </Filter>
+    </Filter>
+    <Filter Name="Resource Files" Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx" UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}">
+    </Filter>
+    <File RelativePath=".\ReadMe.txt">
+    </File>
+  </Files>
+  <Globals>
+  </Globals>
+</VisualStudioProject>

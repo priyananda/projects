@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="include\Collision">
+      <UniqueIdentifier>{35ef85ac-dd8d-439e-b84a-7e7ab4b2be58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="src\Collision">
+      <UniqueIdentifier>{abaefb3a-6cd3-409d-bb66-bc3f38680190}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\PxBoundingSphere.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxCollisionManager.h">
+      <Filter>include\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxLine.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxMath.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxMatrix.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxNormalCollisionController.h">
+      <Filter>include\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxPhysicsRoot.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxPlane.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxPointProjectile.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxProjectile.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxQuakeCollisionController.h">
+      <Filter>include\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxVector.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxVector4d.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Collision\PxCollisionManager.cpp">
+      <Filter>src\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Collision\PxNormalCollisionController.cpp">
+      <Filter>src\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Collision\PxQuakeCollisionController.cpp">
+      <Filter>src\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PxBoundingSphere.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PxLine.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PxMath.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PxMatrix.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PxPhysicsRoot.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PxPlane.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PxPointProjectile.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PxProjectile.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PxVector.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PxVector4d.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

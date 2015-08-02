@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="include\Graphics">
+      <UniqueIdentifier>{a56f665b-2e52-49df-9404-32229b24b810}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Graphics\Extensions">
+      <UniqueIdentifier>{363e371a-2ff5-4ab2-8e2f-eb0605df5655}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Graphics\Library">
+      <UniqueIdentifier>{a9cd1bad-1bc6-48c6-b468-97b2767fa139}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Graphics\Map">
+      <UniqueIdentifier>{b7981451-e5ea-4b63-9097-38c141f2d650}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Graphics\Map\Quake">
+      <UniqueIdentifier>{fa28be86-de9e-4115-ab5f-af8c302e2f72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Graphics\Models">
+      <UniqueIdentifier>{29c99635-5446-407c-ad93-d955d6a7feaa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Graphics\Shaders">
+      <UniqueIdentifier>{017285ba-2b72-4291-87bb-83eee1d31376}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Graphics\Textures">
+      <UniqueIdentifier>{b6df41f4-98c5-48f8-83d4-8551b9f3021e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Graphics\Window">
+      <UniqueIdentifier>{1b019eda-5309-4a8b-8680-4996093b6008}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="src\Graphics">
+      <UniqueIdentifier>{a9022d3a-30eb-409a-951d-b1fa6dd904c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Graphics\Extensions">
+      <UniqueIdentifier>{ce8884c6-b67a-425e-acaf-8699c9ae86e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Graphics\Library">
+      <UniqueIdentifier>{9b084d3d-3814-447f-9be5-6f399678ab3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Graphics\Map">
+      <UniqueIdentifier>{aa891074-d176-4812-8e73-d18cd25da6e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Graphics\Map\Quake">
+      <UniqueIdentifier>{d580a2a6-b586-4edf-892a-0517d9386df7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Graphics\Models">
+      <UniqueIdentifier>{b7ee584a-61a9-43ed-9005-9b4e5a5d732e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Graphics\Shaders">
+      <UniqueIdentifier>{9ed75973-075b-498b-a9a6-ec375254d8cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Graphics\Textures">
+      <UniqueIdentifier>{a35dbd67-14d9-4b3f-b22b-29287505e008}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Graphics\Window">
+      <UniqueIdentifier>{c90e42f1-9294-4f3b-bbc8-162b23246ccf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\glm.h">
+      <Filter>include\Graphics\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="include\l3ds.h">
+      <Filter>include\Graphics\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Px3DSModelCore.h">
+      <Filter>include\Graphics\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxAmmoItem.h">
+      <Filter>include\Graphics\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxArmourItem.h">
+      <Filter>include\Graphics\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxBitset.h">
+      <Filter>include\Graphics\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxBobbingItem.h">
+      <Filter>include\Graphics\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxBot.h">
+      <Filter>include\Graphics\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxBoundingBox.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxBSPDataStructures.h">
+      <Filter>include\Graphics\Map\Quake</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxCamera.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxConsole.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxCube.h">
+      <Filter>include\Graphics\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxExtensionManager.h">
+      <Filter>include\Graphics\Extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxFlag.h">
+      <Filter>include\Graphics\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxFountain.h">
+      <Filter>include\Graphics\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxFrustrum.h">
+      <Filter>include\Graphics\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxGlutWindow.h">
+      <Filter>include\Graphics\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxGraphicsRoot.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxHealthItem.h">
+      <Filter>include\Graphics\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxHoarding.h">
+      <Filter>include\Graphics\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxImageProvider.h">
+      <Filter>include\Graphics\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxIndexedPolygonSet.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxLensFlare.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxModel.h">
+      <Filter>include\Graphics\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxModelManager.h">
+      <Filter>include\Graphics\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxMultiTextureManager.h">
+      <Filter>include\Graphics\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxObjectFactory.h">
+      <Filter>include\Graphics\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxPolygon.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxQuake2Model.h">
+      <Filter>include\Graphics\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxQuake3EntityParser.h">
+      <Filter>include\Graphics\Map\Quake</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxQuake3EntityParser_Impl.h">
+      <Filter>include\Graphics\Map\Quake</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxQuake3Model.h">
+      <Filter>include\Graphics\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxQuakeMap.h">
+      <Filter>include\Graphics\Map\Quake</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxQuakeMapLoader.h">
+      <Filter>include\Graphics\Map\Quake</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxQuakeMapRenderer.h">
+      <Filter>include\Graphics\Map\Quake</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxQuakeTextureManager.h">
+      <Filter>include\Graphics\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxRectangle.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxShaderManager.h">
+      <Filter>include\Graphics\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxSimplePolygonSet.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxSkyBox.h">
+      <Filter>include\Graphics\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxSteps.h">
+      <Filter>include\Graphics\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxTesselatedMap.h">
+      <Filter>include\Graphics\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxTesselatedMapManager.h">
+      <Filter>include\Graphics\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxTesselator.h">
+      <Filter>include\Graphics\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxTextureManager.h">
+      <Filter>include\Graphics\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxTextWriter.h">
+      <Filter>include\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxTriangleSet.h">
+      <Filter>include\Graphics\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxWaveFrontModel.h">
+      <Filter>include\Graphics\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxWeaponItem.h">
+      <Filter>include\Graphics\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxWin32Window.h">
+      <Filter>include\Graphics\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxWindow.h">
+      <Filter>include\Graphics\Window</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Graphics\Extensions\PxExtensionManager.cpp">
+      <Filter>src\Graphics\Extensions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Library\PxAmmoItem.cpp">
+      <Filter>src\Graphics\Library</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Library\PxArmourItem.cpp">
+      <Filter>src\Graphics\Library</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Library\PxBobbingItem.cpp">
+      <Filter>src\Graphics\Library</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Library\PxBot.cpp">
+      <Filter>src\Graphics\Library</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Library\PxCube.cpp">
+      <Filter>src\Graphics\Library</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Library\PxFlag.cpp">
+      <Filter>src\Graphics\Library</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Library\PxFountain.cpp">
+      <Filter>src\Graphics\Library</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Library\PxHealthItem.cpp">
+      <Filter>src\Graphics\Library</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Library\PxHoarding.cpp">
+      <Filter>src\Graphics\Library</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Library\PxSkyBox.cpp">
+      <Filter>src\Graphics\Library</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Library\PxSteps.cpp">
+      <Filter>src\Graphics\Library</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Library\PxWeaponItem.cpp">
+      <Filter>src\Graphics\Library</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Map\PxBitset.cpp">
+      <Filter>src\Graphics\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Map\PxFrustrum.cpp">
+      <Filter>src\Graphics\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Map\PxObjectFactory.cpp">
+      <Filter>src\Graphics\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Map\PxTesselatedMap.cpp">
+      <Filter>src\Graphics\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Map\PxTesselatedMapManager.cpp">
+      <Filter>src\Graphics\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Map\PxTesselator.cpp">
+      <Filter>src\Graphics\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Map\PxTriangleSet.cpp">
+      <Filter>src\Graphics\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Map\Quake\PxBSPDataStructures.cpp">
+      <Filter>src\Graphics\Map\Quake</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Map\Quake\PxQuake3EntityParser.cpp">
+      <Filter>src\Graphics\Map\Quake</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Map\Quake\PxQuake3EntityParser_Impl.cpp">
+      <Filter>src\Graphics\Map\Quake</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Map\Quake\PxQuakeMap.cpp">
+      <Filter>src\Graphics\Map\Quake</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Map\Quake\PxQuakeMapLoader.cpp">
+      <Filter>src\Graphics\Map\Quake</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Map\Quake\PxQuakeMapRenderer.cpp">
+      <Filter>src\Graphics\Map\Quake</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Models\glm.cpp">
+      <Filter>src\Graphics\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Models\l3ds.cpp">
+      <Filter>src\Graphics\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Models\Px3DSModelCore.cpp">
+      <Filter>src\Graphics\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Models\PxModel.cpp">
+      <Filter>src\Graphics\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Models\PxModelManager.cpp">
+      <Filter>src\Graphics\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Models\PxQuake2Model.cpp">
+      <Filter>src\Graphics\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Models\PxQuake3Model.cpp">
+      <Filter>src\Graphics\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Models\PxWaveFrontModel.cpp">
+      <Filter>src\Graphics\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\PxBoundingBox.cpp">
+      <Filter>src\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\PxCamera.cpp">
+      <Filter>src\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\PxConsole.cpp">
+      <Filter>src\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\PxGraphicsRoot.cpp">
+      <Filter>src\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\PxIndexedPolygonSet.cpp">
+      <Filter>src\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\PxLensFlare.cpp">
+      <Filter>src\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\PxPolygon.cpp">
+      <Filter>src\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\PxRectangle.cpp">
+      <Filter>src\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\PxSimplePolygonSet.cpp">
+      <Filter>src\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\PxTextWriter.cpp">
+      <Filter>src\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Shaders\PxShaderManager.cpp">
+      <Filter>src\Graphics\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Textures\PxImageProvider.cpp">
+      <Filter>src\Graphics\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Textures\PxMultiTextureManager.cpp">
+      <Filter>src\Graphics\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Textures\PxQuakeTextureManager.cpp">
+      <Filter>src\Graphics\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Textures\PxTextureManager.cpp">
+      <Filter>src\Graphics\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Window\PxGlutWindow.cpp">
+      <Filter>src\Graphics\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Window\PxWin32Window.cpp">
+      <Filter>src\Graphics\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Window\PxWindow.cpp">
+      <Filter>src\Graphics\Window</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

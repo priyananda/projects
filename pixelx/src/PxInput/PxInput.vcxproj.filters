@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="include\Input">
+      <UniqueIdentifier>{60b58399-40db-41fc-a1be-9569ade655b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="src\Input">
+      <UniqueIdentifier>{06ec50c1-c1df-4e1d-86aa-4ca5cfc789b2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\PxCommand.h">
+      <Filter>include\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxCommandList.h">
+      <Filter>include\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxConfiguration.h">
+      <Filter>include\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxDataFileParser.h">
+      <Filter>include\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxDataFilesManager.h">
+      <Filter>include\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxInputRoot.h">
+      <Filter>include\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxShaderParser.h">
+      <Filter>include\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxStringTokenizer.h">
+      <Filter>include\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxXMLDataFileParser.h">
+      <Filter>include\Input</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Input\PxCommand.cpp">
+      <Filter>src\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\PxCommandList.cpp">
+      <Filter>src\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\PxConfiguration.cpp">
+      <Filter>src\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\PxDataFileParser.cpp">
+      <Filter>src\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\PxDataFilesManager.cpp">
+      <Filter>src\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\PxInputRoot.cpp">
+      <Filter>src\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\PxShaderParser.cpp">
+      <Filter>src\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\PxStringTokenizer.cpp">
+      <Filter>src\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\PxXMLDataFileParser.cpp">
+      <Filter>src\Input</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

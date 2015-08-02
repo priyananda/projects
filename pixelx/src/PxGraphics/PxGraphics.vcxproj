@@ -1,0 +1,177 @@
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGUID>{4C6E151E-E452-45F1-A754-A6FF9BC2F1AD}</ProjectGUID>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(LocalAppData)\Microsoft\VisualStudio\10.0\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(LocalAppData)\Microsoft\VisualStudio\10.0\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\lib</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">../lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>include;..\dep\DevIL\include;..\dep;..\Common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>MSVC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\dep;..\dep\DevIL\include;..\Common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>MSVC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\glm.h" />
+    <ClInclude Include="include\l3ds.h" />
+    <ClInclude Include="include\Px3DSModelCore.h" />
+    <ClInclude Include="include\PxAmmoItem.h" />
+    <ClInclude Include="include\PxArmourItem.h" />
+    <ClInclude Include="include\PxBitset.h" />
+    <ClInclude Include="include\PxBobbingItem.h" />
+    <ClInclude Include="include\PxBot.h" />
+    <ClInclude Include="include\PxBoundingBox.h" />
+    <ClInclude Include="include\PxBSPDataStructures.h" />
+    <ClInclude Include="include\PxCamera.h" />
+    <ClInclude Include="include\PxConsole.h" />
+    <ClInclude Include="include\PxCube.h" />
+    <ClInclude Include="include\PxExtensionManager.h" />
+    <ClInclude Include="include\PxFlag.h" />
+    <ClInclude Include="include\PxFountain.h" />
+    <ClInclude Include="include\PxFrustrum.h" />
+    <ClInclude Include="include\PxGlutWindow.h" />
+    <ClInclude Include="include\PxGraphicsRoot.h" />
+    <ClInclude Include="include\PxHealthItem.h" />
+    <ClInclude Include="include\PxHoarding.h" />
+    <ClInclude Include="include\PxImageProvider.h" />
+    <ClInclude Include="include\PxIndexedPolygonSet.h" />
+    <ClInclude Include="include\PxLensFlare.h" />
+    <ClInclude Include="include\PxModel.h" />
+    <ClInclude Include="include\PxModelManager.h" />
+    <ClInclude Include="include\PxMultiTextureManager.h" />
+    <ClInclude Include="include\PxObjectFactory.h" />
+    <ClInclude Include="include\PxPolygon.h" />
+    <ClInclude Include="include\PxQuake2Model.h" />
+    <ClInclude Include="include\PxQuake3EntityParser.h" />
+    <ClInclude Include="include\PxQuake3EntityParser_Impl.h" />
+    <ClInclude Include="include\PxQuake3Model.h" />
+    <ClInclude Include="include\PxQuakeMap.h" />
+    <ClInclude Include="include\PxQuakeMapLoader.h" />
+    <ClInclude Include="include\PxQuakeMapRenderer.h" />
+    <ClInclude Include="include\PxQuakeTextureManager.h" />
+    <ClInclude Include="include\PxRectangle.h" />
+    <ClInclude Include="include\PxShaderManager.h" />
+    <ClInclude Include="include\PxSimplePolygonSet.h" />
+    <ClInclude Include="include\PxSkyBox.h" />
+    <ClInclude Include="include\PxSteps.h" />
+    <ClInclude Include="include\PxTesselatedMap.h" />
+    <ClInclude Include="include\PxTesselatedMapManager.h" />
+    <ClInclude Include="include\PxTesselator.h" />
+    <ClInclude Include="include\PxTextureManager.h" />
+    <ClInclude Include="include\PxTextWriter.h" />
+    <ClInclude Include="include\PxTriangleSet.h" />
+    <ClInclude Include="include\PxWaveFrontModel.h" />
+    <ClInclude Include="include\PxWeaponItem.h" />
+    <ClInclude Include="include\PxWin32Window.h" />
+    <ClInclude Include="include\PxWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Graphics\Extensions\PxExtensionManager.cpp" />
+    <ClCompile Include="src\Graphics\Library\PxAmmoItem.cpp" />
+    <ClCompile Include="src\Graphics\Library\PxArmourItem.cpp" />
+    <ClCompile Include="src\Graphics\Library\PxBobbingItem.cpp" />
+    <ClCompile Include="src\Graphics\Library\PxBot.cpp" />
+    <ClCompile Include="src\Graphics\Library\PxCube.cpp" />
+    <ClCompile Include="src\Graphics\Library\PxFlag.cpp" />
+    <ClCompile Include="src\Graphics\Library\PxFountain.cpp" />
+    <ClCompile Include="src\Graphics\Library\PxHealthItem.cpp" />
+    <ClCompile Include="src\Graphics\Library\PxHoarding.cpp" />
+    <ClCompile Include="src\Graphics\Library\PxSkyBox.cpp" />
+    <ClCompile Include="src\Graphics\Library\PxSteps.cpp" />
+    <ClCompile Include="src\Graphics\Library\PxWeaponItem.cpp" />
+    <ClCompile Include="src\Graphics\Map\PxBitset.cpp" />
+    <ClCompile Include="src\Graphics\Map\PxFrustrum.cpp" />
+    <ClCompile Include="src\Graphics\Map\PxObjectFactory.cpp" />
+    <ClCompile Include="src\Graphics\Map\PxTesselatedMap.cpp" />
+    <ClCompile Include="src\Graphics\Map\PxTesselatedMapManager.cpp" />
+    <ClCompile Include="src\Graphics\Map\PxTesselator.cpp" />
+    <ClCompile Include="src\Graphics\Map\PxTriangleSet.cpp" />
+    <ClCompile Include="src\Graphics\Map\Quake\PxBSPDataStructures.cpp" />
+    <ClCompile Include="src\Graphics\Map\Quake\PxQuake3EntityParser.cpp" />
+    <ClCompile Include="src\Graphics\Map\Quake\PxQuake3EntityParser_Impl.cpp" />
+    <ClCompile Include="src\Graphics\Map\Quake\PxQuakeMap.cpp" />
+    <ClCompile Include="src\Graphics\Map\Quake\PxQuakeMapLoader.cpp" />
+    <ClCompile Include="src\Graphics\Map\Quake\PxQuakeMapRenderer.cpp" />
+    <ClCompile Include="src\Graphics\Models\glm.cpp" />
+    <ClCompile Include="src\Graphics\Models\l3ds.cpp" />
+    <ClCompile Include="src\Graphics\Models\Px3DSModelCore.cpp" />
+    <ClCompile Include="src\Graphics\Models\PxModel.cpp" />
+    <ClCompile Include="src\Graphics\Models\PxModelManager.cpp" />
+    <ClCompile Include="src\Graphics\Models\PxQuake2Model.cpp" />
+    <ClCompile Include="src\Graphics\Models\PxQuake3Model.cpp" />
+    <ClCompile Include="src\Graphics\Models\PxWaveFrontModel.cpp" />
+    <ClCompile Include="src\Graphics\PxBoundingBox.cpp" />
+    <ClCompile Include="src\Graphics\PxCamera.cpp" />
+    <ClCompile Include="src\Graphics\PxConsole.cpp" />
+    <ClCompile Include="src\Graphics\PxGraphicsRoot.cpp" />
+    <ClCompile Include="src\Graphics\PxIndexedPolygonSet.cpp" />
+    <ClCompile Include="src\Graphics\PxLensFlare.cpp" />
+    <ClCompile Include="src\Graphics\PxPolygon.cpp" />
+    <ClCompile Include="src\Graphics\PxRectangle.cpp" />
+    <ClCompile Include="src\Graphics\PxSimplePolygonSet.cpp" />
+    <ClCompile Include="src\Graphics\PxTextWriter.cpp" />
+    <ClCompile Include="src\Graphics\Shaders\PxShaderManager.cpp" />
+    <ClCompile Include="src\Graphics\Textures\PxImageProvider.cpp" />
+    <ClCompile Include="src\Graphics\Textures\PxMultiTextureManager.cpp" />
+    <ClCompile Include="src\Graphics\Textures\PxQuakeTextureManager.cpp" />
+    <ClCompile Include="src\Graphics\Textures\PxTextureManager.cpp" />
+    <ClCompile Include="src\Graphics\Window\PxGlutWindow.cpp" />
+    <ClCompile Include="src\Graphics\Window\PxWin32Window.cpp" />
+    <ClCompile Include="src\Graphics\Window\PxWindow.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,152 @@
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGUID>{266D161A-0CEB-483B-B3B4-705A2A115AF9}</ProjectGUID>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(LocalAppData)\Microsoft\VisualStudio\10.0\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(LocalAppData)\Microsoft\VisualStudio\10.0\Microsoft.Cpp.$(Platform).user.props')" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">PixelX</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">PixelX</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>include;..\dep;..\Common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>MSVC;PROJECT_PXCORE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>../lib;../dep/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>Debug/PixelX.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <ImportLibrary>../lib/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;..\dep;..\..\Common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>MSVC;PROJECT_PXCORE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>../lib;../dep/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ImportLibrary>../lib/$(TargetName).lib</ImportLibrary>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\PxEndGameScene.h" />
+    <ClInclude Include="include\PxEndGameSceneRenderer.h" />
+    <ClInclude Include="include\PxEntityFactory.h" />
+    <ClInclude Include="include\PxGameScene.h" />
+    <ClInclude Include="include\PxGameSceneRenderer.h" />
+    <ClInclude Include="include\PxGUIScene.h" />
+    <ClInclude Include="include\PxGUISceneRenderer.h" />
+    <ClInclude Include="include\PxHuman.h" />
+    <ClInclude Include="include\PxIntroScene.h" />
+    <ClInclude Include="include\PxIntroSceneRenderer.h" />
+    <ClInclude Include="include\PxLoadingScene.h" />
+    <ClInclude Include="include\PxLoadingSceneRenderer.h" />
+    <ClInclude Include="include\PxMapChooserGUIScene.h" />
+    <ClInclude Include="include\PxMapListGUIScene.h" />
+    <ClInclude Include="include\PxPlatform.h" />
+    <ClInclude Include="include\PxSceneRegulator.h" />
+    <ClInclude Include="include\PxTeamChooserScene.h" />
+    <ClInclude Include="include\PxWorld.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Common.cpp" />
+    <ClCompile Include="src\Core\EndGameScene\PxEndGameScene.cpp" />
+    <ClCompile Include="src\Core\EndGameScene\PxEndGameSceneRenderer.cpp" />
+    <ClCompile Include="src\Core\GameScene\PxEntityFactory.cpp" />
+    <ClCompile Include="src\Core\GameScene\PxGameScene.cpp" />
+    <ClCompile Include="src\Core\GameScene\PxGameSceneRenderer.cpp" />
+    <ClCompile Include="src\Core\GameScene\PxWorld.cpp" />
+    <ClCompile Include="src\Core\GUIScene\PxGUIScene.cpp" />
+    <ClCompile Include="src\Core\GUIScene\PxGUISceneRenderer.cpp" />
+    <ClCompile Include="src\Core\GUIScene\UI\PxMapChooserGUIScene.cpp" />
+    <ClCompile Include="src\Core\GUIScene\UI\PxMapListGUIScene.cpp" />
+    <ClCompile Include="src\Core\GUIScene\Ui\PxTeamChooserScene.cpp" />
+    <ClCompile Include="src\Core\IntroScene\PxIntroScene.cpp" />
+    <ClCompile Include="src\Core\IntroScene\PxIntroSceneRenderer.cpp" />
+    <ClCompile Include="src\Core\PxEngineRoot.cpp" />
+    <ClCompile Include="src\Core\PxHuman.cpp" />
+    <ClCompile Include="src\Core\PxSceneRegulator.cpp" />
+    <ClCompile Include="src\PxLog.cpp" />
+    <ClCompile Include="src\PxPlatform.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PxGraphics\PxGraphics.vcxproj">
+      <Project>{4c6e151e-e452-45f1-a754-a6ff9bc2f1ad}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\PxInput\PxInput.vcxproj">
+      <Project>{4c6e251e-e452-45f1-a754-a8ff9bc2f1ad}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\PxPhysics\PxPhysics.vcxproj">
+      <Project>{591452d9-aab8-492a-a567-15781c506038}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\PxSound\PxSound.vcxproj">
+      <Project>{591452d9-aae8-491a-a567-15781c506038}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

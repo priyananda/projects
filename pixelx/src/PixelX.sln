@@ -1,0 +1,45 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PxGraphics", "PxGraphics\PxGraphics.vcxproj", "{4C6E151E-E452-45F1-A754-A6FF9BC2F1AD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PxCore", "PxCore\PxCore.vcxproj", "{266D161A-0CEB-483B-B3B4-705A2A115AF9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PxInput", "PxInput\PxInput.vcxproj", "{4C6E251E-E452-45F1-A754-A8FF9BC2F1AD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PxSound", "PxSound\PxSound.vcxproj", "{591452D9-AAE8-491A-A567-15781C506038}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PxPhysics", "PxPhysics\PxPhysics.vcxproj", "{591452D9-AAB8-492A-A567-15781C506038}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Demo", "Demo\Demo.vcxproj", "{9588EE99-1CD6-4923-8D82-B8B9C47F92C7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C6E151E-E452-45F1-A754-A6FF9BC2F1AD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4C6E151E-E452-45F1-A754-A6FF9BC2F1AD}.Debug|Win32.Build.0 = Debug|Win32
+		{4C6E151E-E452-45F1-A754-A6FF9BC2F1AD}.Release|Win32.ActiveCfg = Release|Win32
+		{266D161A-0CEB-483B-B3B4-705A2A115AF9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{266D161A-0CEB-483B-B3B4-705A2A115AF9}.Debug|Win32.Build.0 = Debug|Win32
+		{266D161A-0CEB-483B-B3B4-705A2A115AF9}.Release|Win32.ActiveCfg = Release|Win32
+		{266D161A-0CEB-483B-B3B4-705A2A115AF9}.Release|Win32.Build.0 = Release|Win32
+		{4C6E251E-E452-45F1-A754-A8FF9BC2F1AD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4C6E251E-E452-45F1-A754-A8FF9BC2F1AD}.Debug|Win32.Build.0 = Debug|Win32
+		{4C6E251E-E452-45F1-A754-A8FF9BC2F1AD}.Release|Win32.ActiveCfg = Release|Win32
+		{591452D9-AAE8-491A-A567-15781C506038}.Debug|Win32.ActiveCfg = Debug|Win32
+		{591452D9-AAE8-491A-A567-15781C506038}.Debug|Win32.Build.0 = Debug|Win32
+		{591452D9-AAE8-491A-A567-15781C506038}.Release|Win32.ActiveCfg = Release|Win32
+		{591452D9-AAB8-492A-A567-15781C506038}.Debug|Win32.ActiveCfg = Debug|Win32
+		{591452D9-AAB8-492A-A567-15781C506038}.Debug|Win32.Build.0 = Debug|Win32
+		{591452D9-AAB8-492A-A567-15781C506038}.Release|Win32.ActiveCfg = Release|Win32
+		{9588EE99-1CD6-4923-8D82-B8B9C47F92C7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9588EE99-1CD6-4923-8D82-B8B9C47F92C7}.Debug|Win32.Build.0 = Debug|Win32
+		{9588EE99-1CD6-4923-8D82-B8B9C47F92C7}.Release|Win32.ActiveCfg = Release|Win32
+		{9588EE99-1CD6-4923-8D82-B8B9C47F92C7}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

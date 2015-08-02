@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="include\Core">
+      <UniqueIdentifier>{a828a5d3-9378-457b-bcec-4ef063dfffbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Core\EndGameScene">
+      <UniqueIdentifier>{b5a61cfb-7917-484c-bc5f-198354383b7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Core\GameScene">
+      <UniqueIdentifier>{3251ab67-a7d8-450a-963a-7c558b793fd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Core\GUIScene">
+      <UniqueIdentifier>{d5042ed5-9094-423a-be95-b4451e502644}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Core\GUIScene\UI">
+      <UniqueIdentifier>{89681443-bac0-4818-8df2-c9e95a308839}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Core\IntroScene">
+      <UniqueIdentifier>{2d6ec779-9ca9-4557-af1f-fe83aa77481f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Core\LoadingScene">
+      <UniqueIdentifier>{0a606779-d490-4175-b9ef-fe980a4a6cbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="src\Core">
+      <UniqueIdentifier>{bdad2a47-db71-43e7-ab9a-c0b9c5d76bd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Core\ChooseSideScene">
+      <UniqueIdentifier>{effc505f-e6c9-4742-b787-1fa0e4dc77d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Core\EndGameScene">
+      <UniqueIdentifier>{69fcf459-ee97-489e-8552-e8405219985a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Core\GameScene">
+      <UniqueIdentifier>{b274185f-8390-4cb7-a391-04bef7e43ca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Core\GUIScene">
+      <UniqueIdentifier>{f4371a99-7c23-4b05-be44-15528d2f7b97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Core\GUIScene\UI">
+      <UniqueIdentifier>{46c89495-1412-46a5-a2fa-0d257e0ae044}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Core\IntroScene">
+      <UniqueIdentifier>{2faecf2b-4383-4109-b352-8ff354c07fc0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\PxEndGameScene.h">
+      <Filter>include\Core\EndGameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxEndGameSceneRenderer.h">
+      <Filter>include\Core\EndGameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxEntityFactory.h">
+      <Filter>include\Core\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxGameScene.h">
+      <Filter>include\Core\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxGameSceneRenderer.h">
+      <Filter>include\Core\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxGUIScene.h">
+      <Filter>include\Core\GUIScene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxGUISceneRenderer.h">
+      <Filter>include\Core\GUIScene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxHuman.h">
+      <Filter>include\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxIntroScene.h">
+      <Filter>include\Core\IntroScene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxIntroSceneRenderer.h">
+      <Filter>include\Core\IntroScene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxLoadingScene.h">
+      <Filter>include\Core\LoadingScene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxLoadingSceneRenderer.h">
+      <Filter>include\Core\LoadingScene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxMapChooserGUIScene.h">
+      <Filter>include\Core\GUIScene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxMapListGUIScene.h">
+      <Filter>include\Core\GUIScene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxPlatform.h">
+      <Filter>include\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxSceneRegulator.h">
+      <Filter>include\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxTeamChooserScene.h">
+      <Filter>include\Core\GUIScene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PxWorld.h">
+      <Filter>include\Core\GameScene</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Common.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\EndGameScene\PxEndGameScene.cpp">
+      <Filter>src\Core\EndGameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\EndGameScene\PxEndGameSceneRenderer.cpp">
+      <Filter>src\Core\EndGameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\GameScene\PxEntityFactory.cpp">
+      <Filter>src\Core\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\GameScene\PxGameScene.cpp">
+      <Filter>src\Core\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\GameScene\PxGameSceneRenderer.cpp">
+      <Filter>src\Core\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\GameScene\PxWorld.cpp">
+      <Filter>src\Core\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\GUIScene\PxGUIScene.cpp">
+      <Filter>src\Core\GUIScene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\GUIScene\PxGUISceneRenderer.cpp">
+      <Filter>src\Core\GUIScene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\GUIScene\UI\PxMapChooserGUIScene.cpp">
+      <Filter>src\Core\GUIScene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\GUIScene\UI\PxMapListGUIScene.cpp">
+      <Filter>src\Core\GUIScene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\GUIScene\Ui\PxTeamChooserScene.cpp">
+      <Filter>src\Core\GUIScene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\IntroScene\PxIntroScene.cpp">
+      <Filter>src\Core\IntroScene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\IntroScene\PxIntroSceneRenderer.cpp">
+      <Filter>src\Core\IntroScene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\PxEngineRoot.cpp">
+      <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\PxHuman.cpp">
+      <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\PxSceneRegulator.cpp">
+      <Filter>src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PxLog.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PxPlatform.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
