@@ -73,14 +73,16 @@ void PxLensFlareRenderer::DrawQuad( int x, int y, int width, int height, GLuint 
                 (GLbyte)(colour >>  0 & 0xff),
                 (GLbyte)(colour >> 24 & 0xff) );
 
+	GLfloat fx = (GLfloat)x, fy = (GLfloat)y;
+
     glTexCoord2f( 0.0f, 0.0f );
-    glVertex3f( x, y, 1.0);
+    glVertex3f( fx, fy, 1.0);
     glTexCoord2f( 1.0f, 0.0f );
-    glVertex3f( x + width, y, 1.0);
+    glVertex3f( fx + width, fy, 1.0);
     glTexCoord2f( 1.0f, 1.0f );
-    glVertex3f( x + width, y + height, 1.0);
+    glVertex3f( fx + width, fy + height, 1.0);
     glTexCoord2f( 0.0f, 1.0f );
-    glVertex3f( x, y + height, 1.0);
+    glVertex3f( fx, fy + height, 1.0);
 
     glEnd();
 }
@@ -134,14 +136,14 @@ void PxLensFlareRenderer::Render( PxVector & cameraPoistion )
     glRenderMode(GL_RENDER);
 	if( m_sunProjection[1] == -1 ||  m_sunProjection[2] == -1 )
 		return;
-	m_sunProjection[1] = abs((int)m_sunProjection[1] - 400);
-	m_sunProjection[2] = abs((int)m_sunProjection[2] - 300);
+	m_sunProjection[1] = (float)abs((int)m_sunProjection[1] - 400);
+	m_sunProjection[2] = (float)abs((int)m_sunProjection[2] - 300);
 
 	PxGraphicsRoot::Switch();
 	glPushAttrib( GL_ALL_ATTRIB_BITS );
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	RenderFlare(m_sunProjection[1], m_sunProjection[2]);
+	RenderFlare((long)m_sunProjection[1], (long)m_sunProjection[2]);
 	glPopAttrib();
 	PxGraphicsRoot::Restore();
 }

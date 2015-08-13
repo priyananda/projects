@@ -16,10 +16,10 @@
 #pragma comment(lib, "devilImage.lib")
 #pragma comment(lib, "fmodvc.lib")
 
-#pragma comment(lib, "..\\dep\\DevIL\\lib\\Devil.lib")
-#pragma comment(lib, "..\\dep\\DevIL\\lib\\ilut.lib")
-#pragma comment(lib, "..\\dep\\DevIL\\lib\\ilu.lib")
-#pragma comment(lib, "..\\dep\\DevIL\\lib\\il_wrap.lib")
+#pragma comment(lib, "Devil.lib")
+#pragma comment(lib, "ilut.lib")
+#pragma comment(lib, "ilu.lib")
+#pragma comment(lib, "il_wrap.lib")
 
 HINSTANCE g_hInstance;
 

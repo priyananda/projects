@@ -1,7 +1,7 @@
 #include "PxIndexedPolygonSet.h"
 #include "PxSimplePolygonSet.h"
 
-void PxIndexedPolygonSet::AddPolygon( int index , PxPolygon * poly )
+void PxIndexedPolygonSet::AddPolygon( size_t index , PxPolygon * poly )
 {
 	if( index < polygons.size() )
 	{

@@ -4,8 +4,9 @@
 #include "PxVertex.h"
 #include "PxTextureManager.h"
 
-#include <hash_map>
-using std::hash_map;
+#include <unordered_map>
+using std::unordered_map;
+
 #include <vector>
 using std::vector;
 
@@ -20,6 +21,7 @@ struct PxTriangle
 			return second;
 		if( i == 2 )
 			return third;
+		throw std::out_of_range("PxTriangle[]");
 	}
 };
 struct PxMesh
@@ -46,13 +48,13 @@ class PxMeshes
 public:
 	PxMesh * GetMesh( cstrref texname , TextureMode mode );
 	long Count(){ return (long)mMeshes.size(); }
-	typedef hash_map<string,PxMesh *>::iterator Iterator;
+	typedef unordered_map<string,PxMesh *>::iterator Iterator;
 	Iterator begin(){ return mMeshes.begin(); }
 	Iterator end(){ return mMeshes.end(); }
 
 	void Clear();
 private:
-	hash_map<string,PxMesh *> mMeshes;
+	unordered_map<string,PxMesh *> mMeshes;
 };
 class PxTriangleSet
 {

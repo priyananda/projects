@@ -74,8 +74,8 @@ void PxIntroSceneRenderer::HandlePaint( PxWindow * window)
 	glLoadIdentity();
 
 	glTranslatef(0.0, 0.0,-8);
-	glRotatef(m_ElapsedTime/8, 1, 0, 0);
-	glRotatef(m_ElapsedTime/12, 0, 1, 0);
+	glRotatef((float)m_ElapsedTime/8, 1.0f, 0, 0);
+	glRotatef((float)m_ElapsedTime/12, 0, 1.0f, 0);
 
 	glViewport(0, 0, TEX_BUFF_WIDTH, TEX_BUFF_WIDTH);
 	RenderScene();

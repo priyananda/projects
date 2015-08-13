@@ -9,7 +9,7 @@ static bool g_debug_audio;
 
 void PxAudioManager::Init()
 {
-	g_debug_audio = PxConfiguration::GetLong("g_debug_audio");
+	g_debug_audio = (PxConfiguration::GetLong("g_debug_audio") != 0);
 	if(! g_debug_audio )
 		return;
 	
@@ -26,7 +26,7 @@ void PxAudioManager::Init()
 	{
 		_AudioData md;
 		md.path = "data\\" + (*iter)->Arguments[1];
-		md.loop = ( stricmp( (*iter)->Arguments[2].c_str() , "true" ) == 0);
+		md.loop = ( _stricmp( (*iter)->Arguments[2].c_str() , "true" ) == 0);
 		m_files[ (*iter)->Arguments[0] ] = md;
 	}
 }

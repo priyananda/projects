@@ -22,7 +22,7 @@ void PxShaderManager::Init()
 				out << ( i ? ","  : "" ) << (*iter)->Arguments[i];
 			out << ")" << endl;
 		}
-		for( int j = 0 ; j < shader.Stages.size() ; ++j )
+		for( unsigned j = 0 ; j < shader.Stages.size() ; ++j )
 		{
 			out << "\tStage" << j << endl;
 			PxCommandList & clist = shader.Stages[j];

@@ -22,7 +22,7 @@ static inline bool IsComment(char * buff)
 }
 static inline bool IsInclude(char * buff)
 {
-	int x = strnicmp( buff , "%include" , 8 );
+	int x = _strnicmp( buff , "%include" , 8 );
 	return x == 0;
 }
 static inline string GetIncludeFile(char * buff)

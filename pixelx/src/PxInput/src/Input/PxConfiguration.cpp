@@ -1,8 +1,8 @@
 #include "PxConfiguration.h"
 #include "PxDataFilesManager.h"
 
-hash_map<string,string> PxConfiguration::options;
-hash_map<int,int> PxConfiguration::keyBindigs;
+unordered_map<string,string> PxConfiguration::options;
+unordered_map<int,int> PxConfiguration::keyBindigs;
 bool PxConfiguration::keyStates[16];
 
 void PxConfiguration::Init()
@@ -15,7 +15,7 @@ void PxConfiguration::Init()
 	char * pArg = strstr( pCmd, "--config-file" );
 	if( pArg != NULL && *pArg != 0)
 	{
-		sscanf(pArg,"--config-file=%s" , buff );
+		sscanf_s(pArg, "--config-file=%s", buff, sizeof(buff));
 		ReadCommands(buff);
 	}
 }
@@ -52,7 +52,7 @@ long PxConfiguration::GetLong( cstrref name )
 
 float PxConfiguration::GetFloat( cstrref name )
 {
-	return atof(GetString(name).c_str());
+	return static_cast<float>(atof(GetString(name).c_str()));
 }
 
 bool PxConfiguration::Exists( cstrref name )
@@ -62,7 +62,7 @@ bool PxConfiguration::Exists( cstrref name )
 
 int PxConfiguration::MapKey( PxKeyBindingEnum ekb )
 {
-	for( hash_map<int,int>::iterator iter = keyBindigs.begin(); iter != keyBindigs.end(); ++iter )
+	for( unordered_map<int,int>::iterator iter = keyBindigs.begin(); iter != keyBindigs.end(); ++iter )
 		if( iter->second == ekb )
 			return iter->first;
 	return 0;

@@ -18,6 +18,7 @@ struct _AudioData
 	bool loop;
 	_AudioData():loop(false){id.streamid = 0;}
 };
+
 class PxAudioManager
 {
 	static map<string, _AudioData > m_files;

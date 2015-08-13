@@ -2,13 +2,13 @@
 #define _PIXELX_CONF_H
 #include "Common.h"
 
-#include <hash_map>
-using std::hash_map;
+#include <unordered_map>
+using std::unordered_map;
 
 class PxConfiguration
 {
-	static hash_map<string,string> options;
-	static hash_map<int,int> keyBindigs;
+	static unordered_map<string,string> options;
+	static unordered_map<int,int> keyBindigs;
 	static bool keyStates[16];
 
 public:
@@ -27,7 +27,7 @@ public:
 	static void		ReadCommands(cstrref name);
 };
 
-#define VARB(v) (bool)PxConfiguration::GetLong(v)
+#define VARB(v) (PxConfiguration::GetLong(v) != 0)
 #define VARF(v) PxConfiguration::GetFloat(v)
 #define VARS(v) PxConfiguration::GetString(v)
 #define VARL(v) PxConfiguration::GetLong(v)

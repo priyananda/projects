@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glgooey", "glgooey\msvc\glgooey\glgooey.vcxproj", "{24B62B75-3554-4C49-9CB6-5D3DC05B9487}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "core", "glgooey\msvc\glgooey\core\core.vcxproj", "{B9ECBF4D-7F40-4659-932F-C20E4B4AD07F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mmgr", "glgooey\msvc\glgooey\mmgr\mmgr.vcxproj", "{B047C749-8D17-401B-A635-5937F51E1E2A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "devILImage", "glgooey\msvc\glgooey\services\devILImage\devILImage.vcxproj", "{6622EDA2-D3D7-4025-9DE3-D3904ECE44E7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glfont", "glgooey\msvc\glgooey\services\glfont\glfont.vcxproj", "{922DC830-D832-4516-8702-1D1FB3AE13ED}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nilImage", "glgooey\msvc\glgooey\services\nilImage\nilImage.vcxproj", "{9ED0800A-D4DF-43E8-9D5A-EF847B9F780E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pngImage", "glgooey\msvc\glgooey\services\pngImage\pngImage.vcxproj", "{9FB4D1B6-B1EC-48EE-B419-C7BAABE9F6A9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24B62B75-3554-4C49-9CB6-5D3DC05B9487}.Debug|x86.ActiveCfg = Debug|Win32
+		{24B62B75-3554-4C49-9CB6-5D3DC05B9487}.Debug|x86.Build.0 = Debug|Win32
+		{24B62B75-3554-4C49-9CB6-5D3DC05B9487}.Release|x86.ActiveCfg = Release|Win32
+		{24B62B75-3554-4C49-9CB6-5D3DC05B9487}.Release|x86.Build.0 = Release|Win32
+		{B9ECBF4D-7F40-4659-932F-C20E4B4AD07F}.Debug|x86.ActiveCfg = Debug|Win32
+		{B9ECBF4D-7F40-4659-932F-C20E4B4AD07F}.Debug|x86.Build.0 = Debug|Win32
+		{B9ECBF4D-7F40-4659-932F-C20E4B4AD07F}.Release|x86.ActiveCfg = Release|Win32
+		{B9ECBF4D-7F40-4659-932F-C20E4B4AD07F}.Release|x86.Build.0 = Release|Win32
+		{B047C749-8D17-401B-A635-5937F51E1E2A}.Debug|x86.ActiveCfg = Debug|Win32
+		{B047C749-8D17-401B-A635-5937F51E1E2A}.Debug|x86.Build.0 = Debug|Win32
+		{B047C749-8D17-401B-A635-5937F51E1E2A}.Release|x86.ActiveCfg = Release|Win32
+		{B047C749-8D17-401B-A635-5937F51E1E2A}.Release|x86.Build.0 = Release|Win32
+		{6622EDA2-D3D7-4025-9DE3-D3904ECE44E7}.Debug|x86.ActiveCfg = Debug|Win32
+		{6622EDA2-D3D7-4025-9DE3-D3904ECE44E7}.Debug|x86.Build.0 = Debug|Win32
+		{6622EDA2-D3D7-4025-9DE3-D3904ECE44E7}.Release|x86.ActiveCfg = Release|Win32
+		{6622EDA2-D3D7-4025-9DE3-D3904ECE44E7}.Release|x86.Build.0 = Release|Win32
+		{922DC830-D832-4516-8702-1D1FB3AE13ED}.Debug|x86.ActiveCfg = Debug|Win32
+		{922DC830-D832-4516-8702-1D1FB3AE13ED}.Debug|x86.Build.0 = Debug|Win32
+		{922DC830-D832-4516-8702-1D1FB3AE13ED}.Release|x86.ActiveCfg = Release|Win32
+		{922DC830-D832-4516-8702-1D1FB3AE13ED}.Release|x86.Build.0 = Release|Win32
+		{9ED0800A-D4DF-43E8-9D5A-EF847B9F780E}.Debug|x86.ActiveCfg = Debug|Win32
+		{9ED0800A-D4DF-43E8-9D5A-EF847B9F780E}.Debug|x86.Build.0 = Debug|Win32
+		{9ED0800A-D4DF-43E8-9D5A-EF847B9F780E}.Release|x86.ActiveCfg = Release|Win32
+		{9ED0800A-D4DF-43E8-9D5A-EF847B9F780E}.Release|x86.Build.0 = Release|Win32
+		{9FB4D1B6-B1EC-48EE-B419-C7BAABE9F6A9}.Debug|x86.ActiveCfg = Debug|Win32
+		{9FB4D1B6-B1EC-48EE-B419-C7BAABE9F6A9}.Debug|x86.Build.0 = Debug|Win32
+		{9FB4D1B6-B1EC-48EE-B419-C7BAABE9F6A9}.Release|x86.ActiveCfg = Release|Win32
+		{9FB4D1B6-B1EC-48EE-B419-C7BAABE9F6A9}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

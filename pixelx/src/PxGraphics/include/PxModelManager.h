@@ -3,9 +3,9 @@
 
 #include "PxModel.h"
 #include "..\..\PxInput\include\PxDataFilesManager.h"
-#include <hash_map>
+#include <unordered_map>
 
-using std::hash_map;
+using std::unordered_map;
 
 enum PxModelType
 {
@@ -25,7 +25,7 @@ struct _ModelData
 };
 class PxModelManager
 {
-	static hash_map< string, _ModelData > cores;
+	static unordered_map< string, _ModelData > cores;
 	static void LoadModel( _ModelData & m );
 public:
 	static void Init();

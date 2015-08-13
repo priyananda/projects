@@ -74,7 +74,7 @@ void PxWindow::SaveScreenShot(cstrref filename)
 	}
 	
 	//open the file
-	file = fopen(filename.c_str(), "wb");
+	fopen_s(&file, filename.c_str(), "wb");
 
 	//save header
 	fwrite(TGAheader, 1, sizeof(TGAheader), file);

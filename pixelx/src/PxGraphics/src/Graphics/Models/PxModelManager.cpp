@@ -5,7 +5,7 @@
 #include "Px3DSModelCore.h"
 #include "PxBobbingItem.h"
 
-hash_map< string, _ModelData> PxModelManager::cores;
+unordered_map< string, _ModelData> PxModelManager::cores;
 
 void PxModelManager::Init()
 {

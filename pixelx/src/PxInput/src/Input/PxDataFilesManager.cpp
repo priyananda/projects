@@ -9,7 +9,7 @@ static string StdDataFiles[] =
 	"data\\audio.pxl"
 };
 static const int StdDataFilesCount = 5;
-hash_map<string,PxCommandList *> PxDataFilesManager::m_map;
+unordered_map<string,PxCommandList *> PxDataFilesManager::m_map;
 
 void PxDataFilesManager::Init()
 {

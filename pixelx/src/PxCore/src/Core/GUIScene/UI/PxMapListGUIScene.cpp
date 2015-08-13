@@ -72,7 +72,7 @@ _MainWindow::_MainWindow( PxMapListGUIScene * parent, int sw, int sh )
 
 static vector<PxWorld> worlds;
 static vector<GLuint> textures;
-static int g_selectedWorld = 0;
+static unsigned g_selectedWorld = 0;
 
 #include "../../PxGraphics/Include/PxImageProvider.h"
 void _MainWindow::AddFiles()

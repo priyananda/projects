@@ -63,12 +63,12 @@ void PxPolygon::Finalize()
 		PxTextureManager::Bind( texture , mode );
 
 	glBegin( GL_POLYGON );
-	for(int i = 0 ; i < vertices.size(); ++i)
+	for(size_t i = 0 ; i < vertices.size(); ++i)
 	{
 		PxVertex * v = vertices[i];
 		if( mode == eTexModeNoStretch )
-			glTexCoord2f(v->u,v->v);
-		glVertex3f( v->x,v->y,v->z );
+			glTexCoord2f((GLfloat)v->u, (GLfloat)v->v);
+		glVertex3f(v->x, v->y, v->z);
 	}
 	glEnd();
 	glEndList();

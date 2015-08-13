@@ -3,12 +3,12 @@
 
 #include "PxCommandList.h"
 
-#include <hash_map>
-using std::hash_map;
+#include <unordered_map>
+using std::unordered_map;
 
 class PxDataFilesManager
 {
-	static hash_map<string,PxCommandList *> m_map;
+	static unordered_map<string,PxCommandList *> m_map;
 public:
 	static void Init();
 	static void Load(cstrref filename);

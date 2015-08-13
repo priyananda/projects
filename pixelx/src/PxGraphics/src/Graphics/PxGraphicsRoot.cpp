@@ -22,7 +22,7 @@ void SetStartState(PxSceneRegulator * pRegulator)
 	pArg = strstr( pCmd, "--map" );
 	if( pArg != NULL && *pArg != 0 )
 	{
-		sscanf(pArg,"--map=%s", buff );
+		sscanf_s(pArg,"--map=%s", buff, sizeof(buff));
 		PxGameScene * pGameScene = new PxGameScene("game");
 		PxWorld * theWorld = new PxWorld;
 		theWorld->Deserialize( string("data\\worlds\\") + buff );
@@ -31,7 +31,7 @@ void SetStartState(PxSceneRegulator * pRegulator)
 	}
 	pArg = strstr( pCmd, "--start-state" );
 	if( pArg != NULL && *pArg != 0)
-		sscanf(pArg,"--start-state=%s" , buff );
+		sscanf_s(pArg,"--start-state=%s" , buff, sizeof(buff));
 	pRegulator->Signal( eScNamedScene , buff );
 }
 void PxGraphicsRoot::Init()

@@ -16,7 +16,7 @@ void PxSimplePolygonSet::Finalize()
 
 void PxSimplePolygonSet::Render(bool isWireFrame)
 {
-	for(int i = 0 ; i < polygons.size(); ++i )
+	for(size_t i = 0 ; i < polygons.size(); ++i )
 		polygons[i]->Render(isWireFrame);
 }
 

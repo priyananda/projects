@@ -6,7 +6,7 @@
 #include <list>
 using std::list;
 
-class PxQuakeMap;
+struct PxQuakeMap;
 class PxCamera;
 class PxBoundingSphere;
 

@@ -6,13 +6,13 @@
 #include <vector>
 using std::vector;
 
-#include <hash_map>
-using std::hash_map;
+#include <unordered_map>
+using std::unordered_map;
 
 class PxSceneRegulator : public ISceneRegulator
 {
 	vector<ISceneRenderer *> m_renderers;
-	hash_map<string,IScene *> m_scenes;
+	unordered_map<string,IScene *> m_scenes;
 	ISceneRenderer * m_currentRenderer;
 public:
 	PxSceneRegulator();

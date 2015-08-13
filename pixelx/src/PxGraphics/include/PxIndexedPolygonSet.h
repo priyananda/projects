@@ -23,10 +23,10 @@ class PxIndexedPolygonSet
 	vector< PxBoundingBox > boxes;
 	vector< vector< PxPolygon *> > polygons;
 public:
-	void AddPolygon( int index, PxPolygon * );
+	void AddPolygon( size_t index, PxPolygon * );
 	void AddPolygonsFrom( PxBoundingBox & box );
 	vector<PxPolygon*>& GetPolygons(int index);
-	int Count()
+	size_t Count()
 	{
 		return polygons.size();
 	}

@@ -13,7 +13,7 @@
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="..\..\bin"
-			IntermediateDirectory="Debug"
+			IntermediateDirectory="..\..\obj"
 			ConfigurationType="2"
 			CharacterSet="2"
 			WholeProgramOptimization="TRUE">
@@ -37,7 +37,7 @@
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="../lib;../dep/lib"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="Debug/PixelX.pdb"
+				ProgramDatabaseFile="$(OutDir)/PixelX.pdb"
 				SubSystem="2"
 				ImportLibrary="../lib/$(TargetName).lib"
 				TargetMachine="1"/>

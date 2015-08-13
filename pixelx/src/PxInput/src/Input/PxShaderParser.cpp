@@ -40,7 +40,8 @@ bool PxShaderParser::ignoreWhiteSpace(bool ignorenl)
 }
 void PxShaderParser::Parse(cstrref filename)
 {
-	m_file = fopen( filename.c_str() , "r" );
+	m_file = nullptr;
+	fopen_s( &m_file, filename.c_str() , "r" );
 	if( ! m_file )
 		return;
 	_ReadShaders();
