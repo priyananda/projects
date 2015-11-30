@@ -9,7 +9,7 @@
 PxConsole::PxConsole(int screenwidth, int screenheight,int consoleheight, PxConsoleCommandHandler * pHandler )
 {
 	memset( &m_console , 0 , sizeof(_console) );
-	m_console.max_height = consoleheight;
+	m_console.max_height = float(consoleheight);
 	m_console.speed = 80;
 	m_screenheight = screenheight;
 	m_screenwidth = screenwidth;
@@ -84,19 +84,19 @@ void PxConsole::PutMessage( const char *str, ... )
 
 	va_list argptr;
     va_start( argptr, str );
-    vsprintf( buffer, str, argptr );
+    vsprintf_s( buffer, str, argptr );
     va_end( argptr );
 
 	if( m_console.last_msg < CONSOLE_MSG )
 	{
-        strncpy( m_console.line[m_console.last_msg], buffer, CONSOLE_MSGLGTH );
+        strncpy_s( m_console.line[m_console.last_msg], buffer, CONSOLE_MSGLGTH );
         m_console.last_msg++;
     }
     else
 	{
 		for( i=0; i<CONSOLE_MSG-1 && i<m_console.last_msg-1; i++ )
-			strncpy( m_console.line[i], m_console.line[i+1], CONSOLE_MSGLGTH );
-		strncpy( m_console.line[m_console.last_msg-1], buffer, CONSOLE_MSGLGTH );
+			strncpy_s( m_console.line[i], m_console.line[i+1], CONSOLE_MSGLGTH );
+		strncpy_s( m_console.line[m_console.last_msg-1], buffer, CONSOLE_MSGLGTH );
     }
 }
 
@@ -107,20 +107,20 @@ void PxConsole::SaveCommand( const char *cmd, ... )
 
 	va_list argptr;
     va_start( argptr, cmd );
-    vsprintf( buffer, cmd, argptr );
+    vsprintf_s( buffer, cmd, argptr );
     va_end( argptr );
 
     if( m_console.last_cmd < CONSOLE_CMDLINE )
 	{
-        strncpy( m_console.command[m_console.last_cmd], buffer, CONSOLE_CMDLINELGTH );
+        strncpy_s( m_console.command[m_console.last_cmd], buffer, CONSOLE_CMDLINELGTH );
         m_console.last_cmd++;
         m_console.curr_cmd = m_console.last_cmd;
     }
     else
 	{
         for( i=0; i<CONSOLE_CMDLINE-1 && i<m_console.last_cmd-1; i++ )
-            strncpy( m_console.command[i], m_console.command[i+1], CONSOLE_CMDLINELGTH );
-        strncpy( m_console.command[m_console.last_cmd-1], buffer, CONSOLE_CMDLINELGTH );
+			strncpy_s( m_console.command[i], m_console.command[i+1], CONSOLE_CMDLINELGTH );
+		strncpy_s( m_console.command[m_console.last_cmd-1], buffer, CONSOLE_CMDLINELGTH );
     }
 }
 
@@ -230,7 +230,7 @@ void PxConsole::KeyCheck()
                 if( m_console.curr_cmd )
 				{
                     m_console.curr_cmd--;
-                    strncpy( m_console.buffer, m_console.command[m_console.curr_cmd], CONSOLE_CMDLINELGTH );
+                    strncpy_s( m_console.buffer, m_console.command[m_console.curr_cmd], CONSOLE_CMDLINELGTH );
                     m_console.bufferpos = strlen( m_console.buffer );
                     m_console.buffermax = m_console.bufferpos;
                 }
@@ -239,7 +239,7 @@ void PxConsole::KeyCheck()
                 if( m_console.curr_cmd<m_console.last_cmd-1 )
 				{
                     m_console.curr_cmd++;
-                    strncpy( m_console.buffer, m_console.command[m_console.curr_cmd], CONSOLE_CMDLINELGTH );
+                    strncpy_s( m_console.buffer, m_console.command[m_console.curr_cmd], CONSOLE_CMDLINELGTH );
                     m_console.bufferpos = strlen( m_console.buffer );
                     m_console.buffermax = m_console.bufferpos;
                 }
@@ -311,10 +311,10 @@ void PxConsole::Update( unsigned long frame_time )
 		glPolygonMode( GL_FRONT_AND_BACK , GL_FILL );
         PxTextureManager::Bind( "CONSOLE" , eTexModeNoStretch );
         glBegin(GL_QUADS);
-        glTexCoord2d( xshift*10.0f , yshift ); glVertex2f( 0, m_screenheight );
-		glTexCoord2d( 2.0f+xshift*10.0f, yshift ); glVertex2f( m_screenwidth, m_screenheight );
-		glTexCoord2d( 2.0f+xshift*10.0f, 1.0f + yshift ); glVertex2f( m_screenwidth, m_screenheight-m_console.height );
-		glTexCoord2d( xshift*10.0f , 1.0f + yshift ); glVertex2f( 0, m_screenheight-m_console.height );
+        glTexCoord2f( xshift*10.0f , yshift ); glVertex2f( 0, (float)m_screenheight );
+		glTexCoord2f( 2.0f+xshift*10.0f, yshift ); glVertex2f((float)m_screenwidth, (float)m_screenheight );
+		glTexCoord2f( 2.0f+xshift*10.0f, 1.0f + yshift ); glVertex2f((float)m_screenwidth, (float)m_screenheight-m_console.height );
+		glTexCoord2f( xshift*10.0f , 1.0f + yshift ); glVertex2f( 0, (float)m_screenheight-m_console.height );
         glEnd();
 
         glDisable( GL_BLEND );
@@ -322,8 +322,8 @@ void PxConsole::Update( unsigned long frame_time )
 
         glColor3f( 1.0f, 1.0f, 0.0f );
         glBegin( GL_LINES );
-        glVertex2f( 0, m_screenheight-m_console.height );
-        glVertex2f( m_screenwidth, m_screenheight-m_console.height );
+        glVertex2f( 0, (float)m_screenheight-m_console.height );
+        glVertex2f((float)m_screenwidth, (float)m_screenheight-m_console.height );
         glEnd();
 
         xshift += (float)(frame_time)*0.00002f;

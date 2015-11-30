@@ -6,7 +6,8 @@ bool PxQuake2ModelLoader::Load(char* filename)
 	FILE * file;
 	PxQuake2Header header;
 
-	if((file = fopen(filename, "rb"))==NULL)
+	fopen_s(&file, filename, "rb");
+	if(file == NULL)
 		return false;
 	fread(&header, sizeof(PxQuake2Header), 1, file);
 	if(header.magic != QUAKE2_MAGIC)

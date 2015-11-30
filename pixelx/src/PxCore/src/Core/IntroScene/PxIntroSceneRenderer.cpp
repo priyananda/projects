@@ -5,7 +5,7 @@
 #include "..\..\PxGraphics\include\PxTextWriter.h"
 #include "..\..\PxSound\include\PxAudioManager.h"
 
-static long sw,sh;
+static float screenWidth, screenHeight;
 static bool first = true;
 #define TEX_BUFF_WIDTH 512
 
@@ -21,13 +21,13 @@ void PxIntroSceneRenderer::Enter()
 	CreateBlurTexture();
 	CreateDisplayList();
 
-	sw = PxWindow::Window()->ScreenWidth;
-	sh = PxWindow::Window()->ScreenHeight;
+	screenWidth = float(PxWindow::Window()->ScreenWidth);
+	screenHeight = float(PxWindow::Window()->ScreenHeight);
 
-	glViewport(0, 0, sw, sh);
+	glViewport(0, 0, PxWindow::Window()->ScreenWidth, PxWindow::Window()->ScreenHeight);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(45.0, sw/sh, 1.0, 100.0);
+	gluPerspective(45.0, screenWidth / screenHeight, 1.0, 100.0);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	PxAudioManager::Loop( "INTRO" );
@@ -45,7 +45,7 @@ void PxIntroSceneRenderer::SetScene( IScene * scene)
 }
 void PxIntroSceneRenderer::Exit()
 {
-	glViewport(0, 0, sw, sh);
+	glViewport(0, 0, PxWindow::Window()->ScreenWidth, PxWindow::Window()->ScreenHeight);
 	glColor3f(1,1,1);
 	glDisable( GL_BLEND );
 }
@@ -85,8 +85,8 @@ void PxIntroSceneRenderer::HandlePaint( PxWindow * window)
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glViewport(
-		( sw - TEX_BUFF_WIDTH ) / 2,
-		( sh - TEX_BUFF_WIDTH ),
+		(PxWindow::Window()->ScreenWidth - TEX_BUFF_WIDTH ) / 2,
+		(PxWindow::Window()->ScreenHeight - TEX_BUFF_WIDTH ),
 		TEX_BUFF_WIDTH,
 		TEX_BUFF_WIDTH
 		);
@@ -164,7 +164,7 @@ void PxIntroSceneRenderer::RenderScene()
 	glPushMatrix();
 	// go to orthogonal view
 	glLoadIdentity();
-	glOrtho( 0, sw, sh, 0, 0, 1);
+	glOrtho( 0, screenWidth, screenHeight, 0, 0, 1);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
@@ -174,11 +174,11 @@ void PxIntroSceneRenderer::RenderScene()
 	glTexCoord2f(0.0, 1.0); 
 	glVertex2f(0, 0);
 	glTexCoord2f(0.0, 0.0);
-	glVertex2f(0, sh);
+	glVertex2f(0, screenHeight);
 	glTexCoord2f(1.0, 0.0);
-	glVertex2f(sw, sh);
+	glVertex2f(screenWidth, screenHeight);
 	glTexCoord2f(1.0, 1.0);
-	glVertex2f(sw, 0);
+	glVertex2f(screenWidth, 0);
 	glEnd();
 	// go back to 3D view
 	glMatrixMode(GL_PROJECTION);
@@ -191,7 +191,7 @@ void PxIntroSceneRenderer::RenderScene()
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(-1.3, 0.0, 0.0);
+	glTranslatef(-1.3f, 0.0f, 0.0f);
 	glCallList(m_DispList);
 
 	//glTranslatef(2.6, 0.0, 0.0);
@@ -209,14 +209,14 @@ void PxIntroSceneRenderer::RenderLogo()
 	glPushMatrix();
 	glLoadIdentity();
 
-	glOrtho( 0, sw, 0, sh, 0, 1);
-	glViewport(0, 0, sw, sh);
+	glOrtho( 0, screenWidth, 0, screenHeight, 0, 1);
+	glViewport(0, 0, (long)screenWidth, (long)screenHeight);
 	glDisable( GL_BLEND );
 	PxTextureManager::Bind( "INTRO_PXLOGO" , eTexModeNoStretch );
 	glBegin( GL_QUADS );
 	glTexCoord2f(0,1);glVertex2f(0,20);
-	glTexCoord2f(1,1);glVertex2f(sw,20);
-	glTexCoord2f(1,0);glVertex2f(sw,120);
+	glTexCoord2f(1,1);glVertex2f(screenWidth,20);
+	glTexCoord2f(1,0);glVertex2f(screenWidth,120);
 	glTexCoord2f(0,0);glVertex2f(0,120);
 	glEnd();
 

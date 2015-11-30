@@ -110,21 +110,20 @@ PxQuake3ModelCore::PxQuake3ModelCore(cstrref pathname)
 	for( PxCommandList::Iterator iter = clist->Commands.begin(); iter != clist->Commands.end(); ++iter )
 	{
 		string name = (*iter)->Command;
-		if( name == "modelname" );
 		if( name == "lower" )
-			sprintf(strLowerModel,"data\\%s" , (*iter)->Arguments[0].c_str() );
+			sprintf_s(strLowerModel,"data\\%s" , (*iter)->Arguments[0].c_str() );
 		if( name == "upper" )
-			sprintf(strUpperModel,"data\\%s" , (*iter)->Arguments[0].c_str() );
+			sprintf_s(strUpperModel,"data\\%s" , (*iter)->Arguments[0].c_str() );
 		if( name == "head" )
-			sprintf(strHeadModel,"data\\%s" , (*iter)->Arguments[0].c_str() );
+			sprintf_s(strHeadModel,"data\\%s" , (*iter)->Arguments[0].c_str() );
 		if( name == "lowerskin" )
-			sprintf(strLowerSkin,"data\\%s" , (*iter)->Arguments[0].c_str() );
+			sprintf_s(strLowerSkin,"data\\%s" , (*iter)->Arguments[0].c_str() );
 		if( name == "upperskin" )
-			sprintf(strUpperSkin,"data\\%s" , (*iter)->Arguments[0].c_str() );
+			sprintf_s(strUpperSkin,"data\\%s" , (*iter)->Arguments[0].c_str() );
 		if( name == "headskin" )
-			sprintf(strHeadSkin,"data\\%s" , (*iter)->Arguments[0].c_str() );
+			sprintf_s(strHeadSkin,"data\\%s" , (*iter)->Arguments[0].c_str() );
 		if( name == "texdir" )
-			sprintf(texBaseDir,"data\\%s" , (*iter)->Arguments[0].c_str() );
+			sprintf_s(texBaseDir,"data\\%s" , (*iter)->Arguments[0].c_str() );
 	}
 	this->LoadModel( 
 		strLowerModel,
@@ -315,7 +314,7 @@ bool PxQuake3ModelCore::LoadWeapon(LPSTR strPath, LPSTR strModel)
 	if(!strPath || !strModel) return false;
 
 	// Concatenate the path and model name together
-	sprintf(strWeaponModel, "%s\\%s.md3", strPath, strModel);
+	sprintf_s(strWeaponModel, "%s\\%s.md3", strPath, strModel);
 	
 	// Next we want to load the weapon mesh.  The PxQuake3ModelCore class has member
 	// variables for the weapon model and all it's sub-objects.  This is of type t3DModel.
@@ -343,7 +342,7 @@ bool PxQuake3ModelCore::LoadWeapon(LPSTR strPath, LPSTR strModel)
 	// scripting language for goodness sakes! :)  Keep this in mind when downloading new guns.
 
 	// Add the path, file name and .shader extension together to get the file name and path
-	sprintf(strWeaponShader, "%s\\%s.shader", strPath, strModel);
+	sprintf_s(strWeaponShader, "%s\\%s.shader", strPath, strModel);
 
 	// Load our textures associated with the gun from the weapon shader file
 	if(!loadMd3.LoadShader(&m_Weapon, strWeaponShader))
@@ -420,7 +419,7 @@ void PxQuake3ModelCore::LoadModelTextures(t3DModel *pModel, LPSTR strPath)
 			char strFullPath[255] = {0};
 
 			// Add the file name and path together so we can load the texture
-			sprintf(strFullPath, "%s\\%s", strPath, pModel->pMaterials[i].strFile);
+			sprintf_s(strFullPath, "%s\\%s", strPath, pModel->pMaterials[i].strFile);
 
 			// We pass in a reference to an index into our texture array member variable.
 			// The size() function returns the current loaded texture count.  Initially
@@ -709,13 +708,13 @@ bool PxQuake3ModelLoader::ImportMD3(t3DModel *pModel, char *strFileName)
 	// then load the rest of the data, then call our CleanUp() function.
 
 	// Open the MD3 file in binary
-	m_FilePointer = fopen(strFileName, "rb");
+	fopen_s(&m_FilePointer, strFileName, "rb");
 
 	// Make sure we have a valid file pointer (we found the file)
 	if(!m_FilePointer) 
 	{
 		// Display an error message and don't load anything if no file was found
-		sprintf(strMessage, "Unable to find the file: %s!", strFileName);
+		sprintf_s(strMessage, "Unable to find the file: %s!", strFileName);
 		MessageBox(NULL, strMessage, "Error", MB_OK);
 		return false;
 	}
@@ -737,7 +736,7 @@ bool PxQuake3ModelLoader::ImportMD3(t3DModel *pModel, char *strFileName)
 	if((ID[0] != 'I' || ID[1] != 'D' || ID[2] != 'P' || ID[3] != '3') || m_Header.version != 15)
 	{
 		// Display an error message for bad file format, then stop loading
-		sprintf(strMessage, "Invalid file format (Version not 15): %s!", strFileName);
+		sprintf_s(strMessage, "Invalid file format (Version not 15): %s!", strFileName);
 		MessageBox(NULL, strMessage, "Error", MB_OK);
 		return false;
 	}
@@ -881,7 +880,7 @@ void PxQuake3ModelLoader::ConvertDataStructures(t3DModel *pModel, tMd3MeshInfo m
 	t3DObject currentMesh = {0};
 
 	// Copy the name of the object to our object structure
-	strcpy(currentMesh.strName, meshHeader.strName);
+	strcpy_s(currentMesh.strName, sizeof(currentMesh.strName), meshHeader.strName);
 
 	// Assign the vertex, texture coord and face count to our new structure
 	currentMesh.numOfVerts   = meshHeader.numVertices;
@@ -1027,7 +1026,7 @@ bool PxQuake3ModelLoader::LoadSkin(t3DModel *pModel, LPSTR strSkin)
 				// Notice that with string we can pass in the address of an index
 				// and it will only pass in the characters from that point on. Cool huh?
 				// So now the strFile name should hold something like ("bitmap_name.bmp")
-				strcpy(texture.strFile, &strLine[textureNameStart]);
+				strcpy_s(texture.strFile, sizeof(texture.strFile), &strLine[textureNameStart]);
 				
 				// The tile or scale for the UV's is 1 to 1 
 				texture.uTile = texture.uTile = 1;
@@ -1103,7 +1102,7 @@ bool PxQuake3ModelLoader::LoadShader(t3DModel *pModel, LPSTR strShader)
 		tMaterialInfo texture;
 
 		// Copy the name of the file into our texture file name variable
-		strcpy(texture.strFile, strLine.c_str());
+		strcpy_s(texture.strFile, sizeof(texture.strFile), strLine.c_str());
 				
 		// The tile or scale for the UV's is 1 to 1 
 		texture.uTile = texture.uTile = 1;

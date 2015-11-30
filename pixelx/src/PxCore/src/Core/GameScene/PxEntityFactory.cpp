@@ -29,35 +29,35 @@ int PxEntityFactory::AddObjects( PxQuake3EntityCollection & entities , list<PxSo
 		PxQuake3Entity & entity = *iter;
 		PxModel * pModel = NULL;
 		float yfactor = 0, yangle = 0;
-		if( strnicmp( entity.ClassName.c_str() , QUAKE_AMMO , 5 ) == 0 )
+		if( _strnicmp( entity.ClassName.c_str() , QUAKE_AMMO , 5 ) == 0 )
 		{
 			pModel = new PxAmmoItem(10);
 		}
-		if( strnicmp( entity.ClassName.c_str() , QUAKE_WEAPON , 7 ) == 0 )
+		if( _strnicmp( entity.ClassName.c_str() , QUAKE_WEAPON , 7 ) == 0 )
 		{
 			pModel = new PxWeaponItem();
 		}
-		if( stricmp( entity.ClassName.c_str() , QUAKE_ARMOUR ) == 0 )
+		if( _stricmp( entity.ClassName.c_str() , QUAKE_ARMOUR ) == 0 )
 		{
 			pModel = new PxArmourItem(10);
 		}
-		if( stricmp( entity.ClassName.c_str() , QUAKE_ARMOUR_SHARD ) == 0 )
+		if( _stricmp( entity.ClassName.c_str() , QUAKE_ARMOUR_SHARD ) == 0 )
 		{
 			pModel = new PxBobbingItem( PxModelManager::GetModel( "QUAD" ) );
 		}
 		if( 
-			stricmp( entity.ClassName.c_str() , QUAKE_HEALTH_SMALL ) == 0 ||
-			stricmp( entity.ClassName.c_str() , QUAKE_HEALTH ) == 0 ||
-			stricmp( entity.ClassName.c_str() , QUAKE_HEALTH_LARGE ) == 0
+			_stricmp( entity.ClassName.c_str() , QUAKE_HEALTH_SMALL ) == 0 ||
+			_stricmp( entity.ClassName.c_str() , QUAKE_HEALTH ) == 0 ||
+			_stricmp( entity.ClassName.c_str() , QUAKE_HEALTH_LARGE ) == 0
 		)
 		{
 			pModel = new PxHealthItem(10);
 		}
-		if( stricmp( entity.ClassName.c_str() , QUAKE_PLAYER ) == 0 )
+		if( _stricmp( entity.ClassName.c_str() , QUAKE_PLAYER ) == 0 )
 		{
 			pModel = new PxBot( botname );
 			yfactor = 1.5f;
-			yangle = atof( entity[ "angle" ].c_str() );
+			yangle = float(atof( entity[ "angle" ].c_str() ));
 			++ret;
 		}
 		if( pModel )

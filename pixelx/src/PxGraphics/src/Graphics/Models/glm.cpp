@@ -184,7 +184,7 @@ glmAddGroup(GLMmodel* model, char* name)
     group = glmFindGroup(model, name);
     if (!group) {
         group = (GLMgroup*)malloc(sizeof(GLMgroup));
-        group->name = strdup(name);
+        group->name = _strdup(name);
         group->material = 0;
         group->numtriangles = 0;
         group->triangles = NULL;
@@ -231,7 +231,7 @@ glmDirName(char* path)
     char* dir;
     char* s;
     
-    dir = strdup(path);
+    dir = _strdup(path);
     
     s = strrchr(dir, '\\');
     if (s)
@@ -257,12 +257,13 @@ glmReadMTL(GLMmodel* model, char* name)
     GLuint nummaterials, i;
     
     dir = glmDirName(model->pathname);
-    filename = (char*)malloc(sizeof(char) * (strlen(dir) + strlen(name) + 1));
-    strcpy(filename, dir);
-    strcat(filename, name);
+	size_t allocSize = sizeof(char) * (strlen(dir) + strlen(name) + 1);
+    filename = (char*)malloc(allocSize);
+    strcpy_s(filename, allocSize, dir);
+    strcat_s(filename, allocSize, name);
     free(dir);
     
-    file = fopen(filename, "r");
+    fopen_s(&file, filename, "r");
     if (!file) {
         fprintf(stderr, "glmReadMTL() failed: can't open material file \"%s\".\n",
             filename);
@@ -272,7 +273,7 @@ glmReadMTL(GLMmodel* model, char* name)
     
     /* count the number of materials in the file */
     nummaterials = 1;
-    while(fscanf(file, "%s", buf) != EOF) {
+    while(fscanf_s(file, "%s", buf, sizeof(buf)) != EOF) {
         switch(buf[0]) {
         case '#':               /* comment */
             /* eat up rest of line */
@@ -281,7 +282,7 @@ glmReadMTL(GLMmodel* model, char* name)
         case 'n':               /* newmtl */
             fgets(buf, sizeof(buf), file);
             nummaterials++;
-            sscanf(buf, "%s %s", buf, buf);
+            sscanf_s(buf, "%s %s", buf, sizeof(buf), buf, sizeof(buf));
             break;
         default:
             /* eat up rest of line */
@@ -312,11 +313,11 @@ glmReadMTL(GLMmodel* model, char* name)
         model->materials[i].specular[2] = 0.0;
         model->materials[i].specular[3] = 1.0;
     }
-    model->materials[0].name = strdup("default");
+    model->materials[0].name = _strdup("default");
     
     /* now, read in the data */
     nummaterials = 0;
-    while(fscanf(file, "%s", buf) != EOF) {
+    while(fscanf_s(file, "%s", buf, sizeof(buf)) != EOF) {
         switch(buf[0]) {
         case '#':               /* comment */
             /* eat up rest of line */
@@ -324,12 +325,12 @@ glmReadMTL(GLMmodel* model, char* name)
             break;
         case 'n':               /* newmtl */
             fgets(buf, sizeof(buf), file);
-            sscanf(buf, "%s %s", buf, buf);
+            sscanf_s(buf, "%s %s", buf, sizeof(buf), buf, sizeof(buf));
             nummaterials++;
-            model->materials[nummaterials].name = strdup(buf);
+            model->materials[nummaterials].name = _strdup(buf);
             break;
         case 'N':
-            fscanf(file, "%f", &model->materials[nummaterials].shininess);
+            fscanf_s(file, "%f", &model->materials[nummaterials].shininess);
             /* wavefront shininess is from [0, 1000], so scale for OpenGL */
             model->materials[nummaterials].shininess /= 1000.0;
             model->materials[nummaterials].shininess *= 128.0;
@@ -337,19 +338,19 @@ glmReadMTL(GLMmodel* model, char* name)
         case 'K':
             switch(buf[1]) {
             case 'd':
-                fscanf(file, "%f %f %f",
+                fscanf_s(file, "%f %f %f",
                     &model->materials[nummaterials].diffuse[0],
                     &model->materials[nummaterials].diffuse[1],
                     &model->materials[nummaterials].diffuse[2]);
                 break;
             case 's':
-                fscanf(file, "%f %f %f",
+                fscanf_s(file, "%f %f %f",
                     &model->materials[nummaterials].specular[0],
                     &model->materials[nummaterials].specular[1],
                     &model->materials[nummaterials].specular[2]);
                 break;
             case 'a':
-                fscanf(file, "%f %f %f",
+                fscanf_s(file, "%f %f %f",
                     &model->materials[nummaterials].ambient[0],
                     &model->materials[nummaterials].ambient[1],
                     &model->materials[nummaterials].ambient[2]);
@@ -384,13 +385,14 @@ glmWriteMTL(GLMmodel* model, char* modelpath, char* mtllibname)
     GLuint i;
     
     dir = glmDirName(modelpath);
-    filename = (char*)malloc(sizeof(char) * (strlen(dir)+strlen(mtllibname)));
-    strcpy(filename, dir);
-    strcat(filename, mtllibname);
+	size_t allocSize = sizeof(char) * (strlen(dir) + strlen(mtllibname));
+    filename = (char*)malloc(allocSize);
+    strcpy_s(filename, allocSize, dir);
+    strcat_s(filename, allocSize, mtllibname);
     free(dir);
     
     /* open the file */
-    file = fopen(filename, "w");
+    fopen_s(&file, filename, "w");
     if (!file) {
         fprintf(stderr, "glmWriteMTL() failed: can't open file \"%s\".\n",
             filename);
@@ -444,7 +446,7 @@ glmFirstPass(GLMmodel* model, FILE* file)
     group = glmAddGroup(model, "default");
     
     numvertices = numnormals = numtexcoords = numtriangles = 0;
-    while(fscanf(file, "%s", buf) != EOF) {
+    while(fscanf_s(file, "%s", buf, sizeof(buf)) != EOF) {
         switch(buf[0]) {
         case '#':               /* comment */
             /* eat up rest of line */
@@ -475,8 +477,8 @@ glmFirstPass(GLMmodel* model, FILE* file)
             break;
             case 'm':
                 fgets(buf, sizeof(buf), file);
-                sscanf(buf, "%s %s", buf, buf);
-                model->mtllibname = strdup(buf);
+                sscanf_s(buf, "%s %s", buf, sizeof(buf), buf, sizeof(buf));
+                model->mtllibname = _strdup(buf);
                 glmReadMTL(model, buf);
                 break;
             case 'u':
@@ -487,7 +489,7 @@ glmFirstPass(GLMmodel* model, FILE* file)
                 /* eat up rest of line */
                 fgets(buf, sizeof(buf), file);
 #if SINGLE_STRING_GROUP_NAMES
-                sscanf(buf, "%s", buf);
+                sscanf_s(buf, "%s", buf);
 #else
                 buf[strlen(buf)-1] = '\0';  /* nuke '\n' */
 #endif
@@ -495,46 +497,46 @@ glmFirstPass(GLMmodel* model, FILE* file)
                 break;
             case 'f':               /* face */
                 v = n = t = 0;
-                fscanf(file, "%s", buf);
+                fscanf_s(file, "%s", buf, sizeof(buf));
                 /* can be one of %d, %d//%d, %d/%d, %d/%d/%d %d//%d */
                 if (strstr(buf, "//")) {
                     /* v//n */
-                    sscanf(buf, "%d//%d", &v, &n);
-                    fscanf(file, "%d//%d", &v, &n);
-                    fscanf(file, "%d//%d", &v, &n);
+                    sscanf_s(buf, "%d//%d", &v, &n);
+                    fscanf_s(file, "%d//%d", &v, &n);
+                    fscanf_s(file, "%d//%d", &v, &n);
                     numtriangles++;
                     group->numtriangles++;
-                    while(fscanf(file, "%d//%d", &v, &n) > 0) {
+                    while(fscanf_s(file, "%d//%d", &v, &n) > 0) {
                         numtriangles++;
                         group->numtriangles++;
                     }
-                } else if (sscanf(buf, "%d/%d/%d", &v, &t, &n) == 3) {
+                } else if (sscanf_s(buf, "%d/%d/%d", &v, &t, &n) == 3) {
                     /* v/t/n */
-                    fscanf(file, "%d/%d/%d", &v, &t, &n);
-                    fscanf(file, "%d/%d/%d", &v, &t, &n);
+                    fscanf_s(file, "%d/%d/%d", &v, &t, &n);
+                    fscanf_s(file, "%d/%d/%d", &v, &t, &n);
                     numtriangles++;
                     group->numtriangles++;
-                    while(fscanf(file, "%d/%d/%d", &v, &t, &n) > 0) {
+                    while(fscanf_s(file, "%d/%d/%d", &v, &t, &n) > 0) {
                         numtriangles++;
                         group->numtriangles++;
                     }
-                } else if (sscanf(buf, "%d/%d", &v, &t) == 2) {
+                } else if (sscanf_s(buf, "%d/%d", &v, &t) == 2) {
                     /* v/t */
-                    fscanf(file, "%d/%d", &v, &t);
-                    fscanf(file, "%d/%d", &v, &t);
+                    fscanf_s(file, "%d/%d", &v, &t);
+                    fscanf_s(file, "%d/%d", &v, &t);
                     numtriangles++;
                     group->numtriangles++;
-                    while(fscanf(file, "%d/%d", &v, &t) > 0) {
+                    while(fscanf_s(file, "%d/%d", &v, &t) > 0) {
                         numtriangles++;
                         group->numtriangles++;
                     }
                 } else {
                     /* v */
-                    fscanf(file, "%d", &v);
-                    fscanf(file, "%d", &v);
+                    fscanf_s(file, "%d", &v);
+                    fscanf_s(file, "%d", &v);
                     numtriangles++;
                     group->numtriangles++;
-                    while(fscanf(file, "%d", &v) > 0) {
+                    while(fscanf_s(file, "%d", &v) > 0) {
                         numtriangles++;
                         group->numtriangles++;
                     }
@@ -595,7 +597,7 @@ glmSecondPass(GLMmodel* model, FILE* file)
     numvertices = numnormals = numtexcoords = 1;
     numtriangles = 0;
     material = 0;
-    while(fscanf(file, "%s", buf) != EOF) {
+    while(fscanf_s(file, "%s", buf, sizeof(buf)) != EOF) {
         switch(buf[0]) {
         case '#':               /* comment */
             /* eat up rest of line */
@@ -604,21 +606,21 @@ glmSecondPass(GLMmodel* model, FILE* file)
         case 'v':               /* v, vn, vt */
             switch(buf[1]) {
             case '\0':          /* vertex */
-                fscanf(file, "%f %f %f", 
+                fscanf_s(file, "%f %f %f", 
                     &vertices[3 * numvertices + 0], 
                     &vertices[3 * numvertices + 1], 
                     &vertices[3 * numvertices + 2]);
                 numvertices++;
                 break;
             case 'n':           /* normal */
-                fscanf(file, "%f %f %f", 
+                fscanf_s(file, "%f %f %f", 
                     &normals[3 * numnormals + 0],
                     &normals[3 * numnormals + 1], 
                     &normals[3 * numnormals + 2]);
                 numnormals++;
                 break;
             case 't':           /* texcoord */
-                fscanf(file, "%f %f", 
+                fscanf_s(file, "%f %f", 
                     &texcoords[2 * numtexcoords + 0],
                     &texcoords[2 * numtexcoords + 1]);
                 numtexcoords++;
@@ -627,14 +629,14 @@ glmSecondPass(GLMmodel* model, FILE* file)
             break;
             case 'u':
                 fgets(buf, sizeof(buf), file);
-                sscanf(buf, "%s %s", buf, buf);
+                sscanf_s(buf, "%s %s", buf, sizeof(buf), buf, sizeof(buf));
                 group->material = material = glmFindMaterial(model, buf);
                 break;
             case 'g':               /* group */
                 /* eat up rest of line */
                 fgets(buf, sizeof(buf), file);
 #if SINGLE_STRING_GROUP_NAMES
-                sscanf(buf, "%s", buf);
+                sscanf_s(buf, "%s", buf);
 #else
                 buf[strlen(buf)-1] = '\0';  /* nuke '\n' */
 #endif
@@ -643,22 +645,22 @@ glmSecondPass(GLMmodel* model, FILE* file)
                 break;
             case 'f':               /* face */
                 v = n = t = 0;
-                fscanf(file, "%s", buf);
+                fscanf_s(file, "%s", buf, sizeof(buf));
                 /* can be one of %d, %d//%d, %d/%d, %d/%d/%d %d//%d */
                 if (strstr(buf, "//")) {
                     /* v//n */
-                    sscanf(buf, "%d//%d", &v, &n);
+                    sscanf_s(buf, "%d//%d", &v, &n);
                     T(numtriangles).vindices[0] = v;
                     T(numtriangles).nindices[0] = n;
-                    fscanf(file, "%d//%d", &v, &n);
+                    fscanf_s(file, "%d//%d", &v, &n);
                     T(numtriangles).vindices[1] = v;
                     T(numtriangles).nindices[1] = n;
-                    fscanf(file, "%d//%d", &v, &n);
+                    fscanf_s(file, "%d//%d", &v, &n);
                     T(numtriangles).vindices[2] = v;
                     T(numtriangles).nindices[2] = n;
                     group->triangles[group->numtriangles++] = numtriangles;
                     numtriangles++;
-                    while(fscanf(file, "%d//%d", &v, &n) > 0) {
+                    while(fscanf_s(file, "%d//%d", &v, &n) > 0) {
                         T(numtriangles).vindices[0] = T(numtriangles-1).vindices[0];
                         T(numtriangles).nindices[0] = T(numtriangles-1).nindices[0];
                         T(numtriangles).vindices[1] = T(numtriangles-1).vindices[2];
@@ -668,22 +670,22 @@ glmSecondPass(GLMmodel* model, FILE* file)
                         group->triangles[group->numtriangles++] = numtriangles;
                         numtriangles++;
                     }
-                } else if (sscanf(buf, "%d/%d/%d", &v, &t, &n) == 3) {
+                } else if (sscanf_s(buf, "%d/%d/%d", &v, &t, &n) == 3) {
                     /* v/t/n */
                     T(numtriangles).vindices[0] = v;
                     T(numtriangles).tindices[0] = t;
                     T(numtriangles).nindices[0] = n;
-                    fscanf(file, "%d/%d/%d", &v, &t, &n);
+                    fscanf_s(file, "%d/%d/%d", &v, &t, &n);
                     T(numtriangles).vindices[1] = v;
                     T(numtriangles).tindices[1] = t;
                     T(numtriangles).nindices[1] = n;
-                    fscanf(file, "%d/%d/%d", &v, &t, &n);
+                    fscanf_s(file, "%d/%d/%d", &v, &t, &n);
                     T(numtriangles).vindices[2] = v;
                     T(numtriangles).tindices[2] = t;
                     T(numtriangles).nindices[2] = n;
                     group->triangles[group->numtriangles++] = numtriangles;
                     numtriangles++;
-                    while(fscanf(file, "%d/%d/%d", &v, &t, &n) > 0) {
+                    while(fscanf_s(file, "%d/%d/%d", &v, &t, &n) > 0) {
                         T(numtriangles).vindices[0] = T(numtriangles-1).vindices[0];
                         T(numtriangles).tindices[0] = T(numtriangles-1).tindices[0];
                         T(numtriangles).nindices[0] = T(numtriangles-1).nindices[0];
@@ -696,19 +698,19 @@ glmSecondPass(GLMmodel* model, FILE* file)
                         group->triangles[group->numtriangles++] = numtriangles;
                         numtriangles++;
                     }
-                } else if (sscanf(buf, "%d/%d", &v, &t) == 2) {
+                } else if (sscanf_s(buf, "%d/%d", &v, &t) == 2) {
                     /* v/t */
                     T(numtriangles).vindices[0] = v;
                     T(numtriangles).tindices[0] = t;
-                    fscanf(file, "%d/%d", &v, &t);
+                    fscanf_s(file, "%d/%d", &v, &t);
                     T(numtriangles).vindices[1] = v;
                     T(numtriangles).tindices[1] = t;
-                    fscanf(file, "%d/%d", &v, &t);
+                    fscanf_s(file, "%d/%d", &v, &t);
                     T(numtriangles).vindices[2] = v;
                     T(numtriangles).tindices[2] = t;
                     group->triangles[group->numtriangles++] = numtriangles;
                     numtriangles++;
-                    while(fscanf(file, "%d/%d", &v, &t) > 0) {
+                    while(fscanf_s(file, "%d/%d", &v, &t) > 0) {
                         T(numtriangles).vindices[0] = T(numtriangles-1).vindices[0];
                         T(numtriangles).tindices[0] = T(numtriangles-1).tindices[0];
                         T(numtriangles).vindices[1] = T(numtriangles-1).vindices[2];
@@ -720,15 +722,15 @@ glmSecondPass(GLMmodel* model, FILE* file)
                     }
                 } else {
                     /* v */
-                    sscanf(buf, "%d", &v);
+                    sscanf_s(buf, "%d", &v);
                     T(numtriangles).vindices[0] = v;
-                    fscanf(file, "%d", &v);
+                    fscanf_s(file, "%d", &v);
                     T(numtriangles).vindices[1] = v;
-                    fscanf(file, "%d", &v);
+                    fscanf_s(file, "%d", &v);
                     T(numtriangles).vindices[2] = v;
                     group->triangles[group->numtriangles++] = numtriangles;
                     numtriangles++;
-                    while(fscanf(file, "%d", &v) > 0) {
+                    while(fscanf_s(file, "%d", &v) > 0) {
                         T(numtriangles).vindices[0] = T(numtriangles-1).vindices[0];
                         T(numtriangles).vindices[1] = T(numtriangles-1).vindices[2];
                         T(numtriangles).vindices[2] = v;
@@ -1304,7 +1306,7 @@ glmReadOBJ(char* filename)
     FILE*   file;
     
     /* open the file */
-    file = fopen(filename, "r");
+    fopen_s(&file, filename, "r");
     if (!file) {
         fprintf(stderr, "glmReadOBJ() failed: can't open data file \"%s\".\n",
             filename);
@@ -1313,7 +1315,7 @@ glmReadOBJ(char* filename)
     
     /* allocate a new model */
     model = (GLMmodel*)malloc(sizeof(GLMmodel));
-    model->pathname    = strdup(filename);
+    model->pathname    = _strdup(filename);
     model->mtllibname    = NULL;
     model->numvertices   = 0;
     model->vertices    = NULL;
@@ -1425,7 +1427,7 @@ glmWriteOBJ(GLMmodel* model, char* filename, GLuint mode)
     
     
     /* open the file */
-    file = fopen(filename, "w");
+    fopen_s(&file, filename, "w");
     if (!file) {
         fprintf(stderr, "glmWriteOBJ() failed: can't open file \"%s\" to write.\n",
             filename);
@@ -1481,7 +1483,7 @@ glmWriteOBJ(GLMmodel* model, char* filename, GLuint mode)
     /* spit out the texture coordinates */
     if (mode & GLM_TEXTURE) {
         fprintf(file, "\n");
-        fprintf(file, "# %d texcoords\n", model->texcoords);
+        fprintf(file, "# %d texcoords\n", model->numtexcoords);
         for (i = 1; i <= model->numtexcoords; i++) {
             fprintf(file, "vt %f %f\n", 
                 model->texcoords[2 * i + 0],
@@ -1787,7 +1789,7 @@ glmReadPPM(char* filename, int* width, int* height)
     unsigned char* image;
     char head[70];          /* max line <= 70 in PPM (per spec). */
     
-    fp = fopen(filename, "rb");
+    fopen_s(&fp, filename, "rb");
     if (!fp) {
         perror(filename);
         return NULL;
@@ -1808,11 +1810,11 @@ glmReadPPM(char* filename, int* width, int* height)
         if (head[0] == '#')     /* skip comments. */
             continue;
         if (i == 0)
-            i += sscanf(head, "%d %d %d", &w, &h, &d);
+            i += sscanf_s(head, "%d %d %d", &w, &h, &d);
         else if (i == 1)
-            i += sscanf(head, "%d %d", &h, &d);
+            i += sscanf_s(head, "%d %d", &h, &d);
         else if (i == 2)
-            i += sscanf(head, "%d", &d);
+            i += sscanf_s(head, "%d", &d);
     }
     
     /* grab all the image data in one fell swoop. */

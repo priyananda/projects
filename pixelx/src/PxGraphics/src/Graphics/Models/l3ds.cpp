@@ -1180,7 +1180,7 @@ L3DS::~L3DS()
 bool L3DS::LoadFile(const char *filename)
 {
     FILE *f;
-    f = fopen(filename, "rb");
+    fopen_s(&f, filename, "rb");
     if (f == 0)
     {
         ErrorMsg("L3DS::LoadFile - cannot open file");
@@ -1467,7 +1467,7 @@ bool L3DS::Read3DS()
     for (uint i=0; i<m_meshes.size(); i++)
         m_meshes[i].Optimize(m_optLevel);
     m_pos = 0;
-    strcpy(m_objName, "");
+	m_objName[0] = 0;
     return true;
 }
 
@@ -1779,7 +1779,7 @@ void L3DS::ReadMaterial(const LChunk &parent)
             }
             ReadASCIIZ(str, 30);
             if (strcmp(str, "") == 0)
-                strcpy(mat.GetReflectionMap().mapName, "auto");
+                strcpy_s(mat.GetReflectionMap().mapName, sizeof(LMap::mapName), "auto");
             break;
         }
         
@@ -1805,7 +1805,7 @@ void L3DS::ReadMap(const LChunk &chunk, LMap& map)
             break;
         case MAT_MAPNAME:
             ReadASCIIZ(str, 20);
-            strcpy(map.mapName, str);
+            strcpy_s(map.mapName, sizeof(map.mapName), str);
             break;
         case MAT_MAP_USCALE:
             map.uScale = ReadFloat();

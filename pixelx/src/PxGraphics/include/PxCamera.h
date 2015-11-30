@@ -36,7 +36,8 @@ private:
 	PxVector m_vUpVector;
 	PxVector m_vStrafe;
 	PxVector m_vOldPosition;
-	long MouseSpeed,JumpHeight,RunFactor,CrouchHeight,GravityFactor;
+	long MouseSpeed, JumpHeight, RunFactor, CrouchHeight;
+	float GravityFactor;
 	long CenterX, CenterY;
 	friend PxCollisionManager;
 	friend PxDirector;
