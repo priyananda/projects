@@ -15,12 +15,11 @@ namespace Us.QuizPl
 
         static void Main(string[] args)
         {
-            Dictionary<string, object> slideProperties = new Dictionary<string, object>();
-            slideProperties.Add("Name", "Slide7");
-            slideProperties.Add("DocName", "Quiz 117");
-            slideProperties.Add("Author", "Priyananda");
-            slideProperties.Add("ImageURL", "http://a.com/b.jpg");
-            string jsonData = JsonParser.ToJson(slideProperties);
+            Dictionary<string, object> presentationProperties = new Dictionary<string, object>();
+            presentationProperties.Add("PresentationId", "5066549580791808");
+            presentationProperties.Add("ImageURL", "http://ding.com/a.jpg");
+            presentationProperties.Add("TextContent", "Nimmajji Pinda Loafer");
+            string jsonData = JsonParser.ToJson(presentationProperties);
 
             StringBuilder builder = new StringBuilder();
             builder.Append("slide=");

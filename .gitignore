@@ -5,3 +5,5 @@
 /**/*.sdf
 /**/*.pdb
 /**/*.class
+/**/appengine-generated/indexes/*
+/**/appengine-generated/*.bin

@@ -1,32 +1,37 @@
 package us.quizpl;
 import java.io.IOException;
-import java.util.Map.Entry;
 import javax.servlet.http.*;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import us.quizpl.model.Presentation;
+import us.quizpl.model.Slide;
+
 @SuppressWarnings("serial")
 public class ImportServlet extends HttpServlet {
+	
+	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		resp.setContentType("text/plain");
 		
-		String jsonData = (String) req.getParameter("slide");
 		JsonParser parser = new JsonParser();
-		JsonElement jsonElement = parser.parse(jsonData);
-		JsonObject jsonObj = jsonElement.getAsJsonObject();
 		
-		StringBuilder outputString = new StringBuilder();
-		for (Entry<String, JsonElement> attrib : jsonObj.entrySet()) {
-			String name = attrib.getKey();
-			String value = attrib.getValue().toString();
-			outputString.append(name);
-			outputString.append(" : ");
-			outputString.append(value);
-			outputString.append("\n");
+		String jsonData = (String) req.getParameter("presentation");
+		if (jsonData != null) {
+			JsonObject jsonObj  = parser.parse(jsonData).getAsJsonObject();
+			Presentation presentation = Presentation.create(jsonObj);
+			resp.getOutputStream().print(Long.toString(presentation.getId()));
 		}
 		
-		resp.getOutputStream().print(outputString.toString());
+		jsonData = (String) req.getParameter("slide");
+		if (jsonData != null) {
+			JsonObject jsonObj  = parser.parse(jsonData).getAsJsonObject();
+			Slide slide = Slide.create(jsonObj);
+			Presentation pres = slide.getPresentation();
+			resp.getOutputStream().print(
+				String.format("Uploaded slide %s for Pres{Name=%s, Author=%s}", slide.getId(), pres.getName(), pres.getAuthor().getName()));
+		}
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		doGet(req, resp);
