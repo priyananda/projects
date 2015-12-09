@@ -1,7 +1,6 @@
 package us.quizpl;
 import java.io.IOException;
 import javax.servlet.http.*;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 

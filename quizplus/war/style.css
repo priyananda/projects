@@ -1,0 +1,41 @@
+@import url('http://fonts.googleapis.com/css?family=Arvo:700|Open+Sans:400italic,400');
+
+html
+{
+	font-family: sans-serif;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+body
+{
+	color: #0f2a36;
+	font-family: 'Open Sans', Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	line-height: 1.25em;
+	text-align: center;
+}
+
+h1
+{
+	font-family: 'Adelle W01 Bold', 'Arvo', Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+	font-size: 91px;
+	font-weight: 500;
+	border-top: 4px solid white;
+	color: #00374f;
+	display: inline-block;
+	min-height: 70px;
+	margin: 55px auto 0;
+	padding: 0 10px;
+	z-index: 2;
+}
+
+h2
+{
+	color: #dd3b2a;
+	font-size: 22px;
+	font-style: italic;
+	font-weight: 400;
+}
+
+

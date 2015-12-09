@@ -7,24 +7,90 @@
 <!-- but may lead to some differences in layout.   -->
 
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Hello App Engine</title>
-  </head>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-  <body>
-    <h1>Hello App Engine!</h1>
-	
-    <table>
-      <tr>
-        <td colspan="2" style="font-weight:bold;">Available Servlets:</td>        
-      </tr>
-      <tr>
-        <td><a href="quizplus">Quizplus</a></td>
-      </tr>
-      <tr>
-        <td><a href="import">Import</a></td>
-      </tr>
-    </table>
-  </body>
+<link rel="stylesheet" media="screen" href="style.css">
+<link rel="stylesheet" type="text/css" href="w2ui-1.4.3.min.css" />
+<link rel="stylesheet"
+	href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="w2ui-1.4.3.min.js"></script>
+
+<title>Quiz Plus</title>
+</head>
+
+<script>
+
+  </script>
+
+<body>
+	<h1>
+		Quiz<sup>+</sup>
+	</h1>
+	<h2>Searcheable archive of the Seattle Area Quizzers.</h2>
+
+	<center>
+		<div id="form"
+			style="text-align: center; width: 500px; margin-top: 50px;">
+			<form id="searchForm" action="/quizplus">
+				<div class="w2ui-page page-0">
+					<br />
+					<div>
+						<input name="field_text" type="text" maxlength="100"
+							style="width: 450px; font-size: 14px;">
+					</div>
+					<div id="accordion" style="text-align: left; margin-top: 40px;">
+						<h3>Advanced</h3>
+						<table width="100%" style="cell-padding: 10px;">
+							<tr>
+								<td>Author:
+								<td><input name="field_author" type="text" maxlength="100"
+									style="width: 300px !important;">
+							<tr>
+								<td>Date:
+								<td><input name="field_date" type="text" maxlength="100"
+									style="width: 120px">
+						</table>
+					</div>
+					<br />
+				</div>
+
+				<div class="w2ui-buttons">
+					<button class="btn" name="save" id="searchButton">Search</button>
+				</div>
+			</form>
+		</div>
+		<div style="margin-top: 30px;">&copy; Priyananda Shenoy 2015-2022. All content is owned by their
+		respective authors.</div>
+	</center>
+</body>
+
+<script>
+  $('#form').w2form({ 
+	name     : 'form',
+	fields: [
+	 { name: 'field_text', type: 'text', required: true },
+	 { name: 'field_date', type: 'date' },
+	 { name: 'field_author', type: 'enum', required: true, 
+			options: {openOnFocus: true,  items: ['Priyananda', 'Nandini', 'Suchitra', 'Pranav', 'Adarsh'] } },
+    ],
+    actions: {
+      save: function () {
+      }
+    }
+  });
+  $( "#searchButton" ).button({icons: {primary: "ui-icon-search"}});
+  
+  $(function() {
+    $( "#accordion" ).accordion({
+      collapsible: true,
+      heightStyle: 'content'
+    });
+  });
+  </script>
 </html>

@@ -7,6 +7,8 @@ import com.google.appengine.api.search.IndexSpec;
 import com.google.appengine.api.search.SearchServiceFactory;
 import com.google.gson.JsonObject;
 
+import us.quizpl.StorageHelper;
+
 public class Slide {
 	
 	public Slide(Document doc) {
@@ -24,6 +26,8 @@ public class Slide {
 		String presId = jsonObject.getAsJsonPrimitive(FIELD_PRESENTATIONID.toLowerCase()).getAsString();
 		String imageUrl = jsonObject.getAsJsonPrimitive(FIELD_IMAGEURL.toLowerCase()).getAsString();
 		String textContent = jsonObject.getAsJsonPrimitive(FIELD_TEXTCONTENT.toLowerCase()).getAsString();
+		
+		imageUrl = StorageHelper.getUrlForGcsFile(BUCKET_NAME, imageUrl);
 		
 		Document doc = Document.newBuilder()
 				.addField(Field.newBuilder().setName(FIELD_PRESENTATIONID).setAtom(presId))
@@ -58,4 +62,5 @@ public class Slide {
 	private final static String FIELD_PRESENTATIONID = "PresentationId";
 	private final static String FIELD_IMAGEURL = "ImageURL";
 	private final static String FIELD_TEXTCONTENT = "TextContent";
+	private final static String BUCKET_NAME = "quizplus_storage";
 }
