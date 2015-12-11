@@ -29,19 +29,16 @@
   </script>
 
 <body>
-	<h1>
-		Quiz<sup>+</sup>
-	</h1>
-	<h2>Searcheable archive of the Seattle Area Quizzers.</h2>
-
 	<center>
+		<h1>Quiz<sup>+</sup></h1>
+		<h2>Searcheable archive of the Seattle Area Quizzers.</h2>
 		<div id="form"
 			style="text-align: center; width: 500px; margin-top: 50px;">
-			<form id="searchForm" action="/quizplus">
+			<form id="searchForm" action="/Search.jsp">
 				<div class="w2ui-page page-0">
 					<br />
 					<div>
-						<input name="field_text" type="text" maxlength="100"
+						<input name="field_search_text" type="text" maxlength="100"
 							style="width: 450px; font-size: 14px;">
 					</div>
 					<div id="accordion" style="text-align: left; margin-top: 40px;">
@@ -74,7 +71,7 @@
   $('#form').w2form({ 
 	name     : 'form',
 	fields: [
-	 { name: 'field_text', type: 'text', required: true },
+	 { name: 'field_search_text', type: 'text', required: true },
 	 { name: 'field_date', type: 'date' },
 	 { name: 'field_author', type: 'enum', required: true, 
 			options: {openOnFocus: true,  items: ['Priyananda', 'Nandini', 'Suchitra', 'Pranav', 'Adarsh'] } },

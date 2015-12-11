@@ -32,7 +32,7 @@ namespace Us.QuizPl
             Dictionary<string, object> properties = new Dictionary<string, object>();
             properties.Add("PresentationId", docId);
             properties.Add("ImageURL", slide.CanonicalName);
-            properties.Add("TextContent", slide.Text);
+            properties.Add("TextContent", slide.Text.Replace("\"", "'"));
 
             ExecuteImport(
                 "slide",

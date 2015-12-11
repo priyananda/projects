@@ -45,7 +45,6 @@ namespace Us.QuizPl
                 foreach (var slide in doc.Slides)
                 {
                     importClient.ImportQuizSlide(docId, slide);
-                    break;
                 }
             }
         }
