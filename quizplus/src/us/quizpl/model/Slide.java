@@ -4,13 +4,11 @@ import java.util.List;
 
 import com.google.appengine.api.search.Document;
 import com.google.appengine.api.search.Field;
-import com.google.appengine.api.search.Index;
-import com.google.appengine.api.search.IndexSpec;
 import com.google.appengine.api.search.ScoredDocument;
-import com.google.appengine.api.search.SearchServiceFactory;
 import com.google.gson.JsonObject;
 
 import us.quizpl.StorageHelper;
+import us.quizpl.search.SearchEngine;
 
 public class Slide {
 	
@@ -19,7 +17,7 @@ public class Slide {
 	}
 	
 	public static Slide getById(String docId) {
-		Document doc = getIndex().get(docId);
+		Document doc = SearchEngine.getIndex().get(docId);
 		if (doc == null)
 			return null;
 		return new Slide(doc);
@@ -29,6 +27,7 @@ public class Slide {
 		String presId = jsonObject.getAsJsonPrimitive(FIELD_PRESENTATIONID.toLowerCase()).getAsString();
 		String imageUrl = jsonObject.getAsJsonPrimitive(FIELD_IMAGEURL.toLowerCase()).getAsString();
 		String textContent = jsonObject.getAsJsonPrimitive(FIELD_TEXTCONTENT.toLowerCase()).getAsString();
+		String slideIndex = jsonObject.getAsJsonPrimitive(FIELD_SLIDEINDEX.toLowerCase()).getAsString();
 		
 		imageUrl = StorageHelper.getUrlForGcsFile(BUCKET_NAME, imageUrl);
 		String authorName = getAuthorName(presId);
@@ -38,8 +37,9 @@ public class Slide {
 				.addField(Field.newBuilder().setName(FIELD_IMAGEURL).setAtom(imageUrl))
 				.addField(Field.newBuilder().setName(FIELD_AUTHOR).setAtom(authorName))
 				.addField(Field.newBuilder().setName(FIELD_TEXTCONTENT).setText(textContent))
+				.addField(Field.newBuilder().setName(FIELD_SLIDEINDEX).setAtom(slideIndex))
 				.build();
-		getIndex().put(doc);
+		SearchEngine.getIndex().put(doc);
 		return new Slide(doc);
 	}
 	
@@ -53,12 +53,16 @@ public class Slide {
 		return m_document.getOnlyField(FIELD_AUTHOR).getAtom();
 	}
 	
+	public String getImageUrl() {
+		return m_document.getOnlyField(FIELD_IMAGEURL).getAtom();
+	}
+	
 	public String getTextContent() {
 		List<Field> fields = ((ScoredDocument) m_document).getExpressions();
 		if (fields != null) {
 			for (Field field : fields) {
 				if (FIELD_TEXTCONTENT.equals(field.getName()))
-					return field.getText();
+					return field.getHTML();
 			}
 		}
 		return m_document.getOnlyField(FIELD_TEXTCONTENT).getText();
@@ -68,12 +72,8 @@ public class Slide {
 		return m_document.getId();
 	}
 	
-	public static Index getIndex() {
-		if (s_index == null) {
-			IndexSpec indexSpec = IndexSpec.newBuilder().setName(INDEX_NAME).build(); 
-		    s_index = SearchServiceFactory.getSearchService().getIndex(indexSpec);
-		}
-		return s_index;
+	public int getSlideIndex() {
+		return Integer.parseInt(m_document.getOnlyField(FIELD_SLIDEINDEX).getAtom());
 	}
 	
 	private static String getAuthorName(String presIdAsString) {
@@ -83,11 +83,10 @@ public class Slide {
 	}
 	
 	private Document m_document;
-	private static Index s_index;
-	private final static String INDEX_NAME = "Slides";
-	private final static String FIELD_PRESENTATIONID = "PresentationId";
-	private final static String FIELD_IMAGEURL = "ImageURL";
+	public final static String FIELD_PRESENTATIONID = "PresentationId";
+	public final static String FIELD_IMAGEURL = "ImageURL";
 	public  final static String FIELD_TEXTCONTENT = "TextContent";
-	private final static String FIELD_AUTHOR = "Author";
-	private final static String BUCKET_NAME = "quizplus_storage";
+	public final static String FIELD_AUTHOR = "Author";
+	public final static String FIELD_SLIDEINDEX = "SlideIndex";
+	public final static String BUCKET_NAME = "quizplus_storage";
 }

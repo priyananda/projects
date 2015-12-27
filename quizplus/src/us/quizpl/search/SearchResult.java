@@ -1,4 +1,4 @@
-package us.quizpl;
+package us.quizpl.search;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 import com.google.appengine.api.search.ScoredDocument;
@@ -17,7 +17,7 @@ public class SearchResult
 		
 	}
 	
-	public static SearchResult fromScoredDocument(ScoredDocument doc) {
+	public static SearchResult fromScoredDocument(SearchArgs args, ScoredDocument doc) {
 		SearchResult result = new SearchResult();
 		Slide slide = new Slide(doc);
 		Presentation pres = slide.getPresentation();
@@ -25,8 +25,7 @@ public class SearchResult
 		result.setAuthor(pres.getAuthor().getName());
 		result.setSnippet(StringEscapeUtils.escapeEcmaScript(slide.getTextContent()));
 		result.setRank(doc.getRank());
-		
-		
+		result.setId(doc.getId());
 		return result;
 	}
 	
@@ -62,8 +61,17 @@ public class SearchResult
 		m_rank = rank;
 	}
 
+	public String getId() {
+		return m_id;
+	}
+
+	private void setId(String id) {
+		m_id = id;
+	}
+
 	private String m_snippet;
 	private String m_author;
 	private String m_quiz;
+	private String m_id;
 	private int m_rank;
 }

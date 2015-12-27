@@ -1,8 +1,6 @@
-package us.quizpl;
+package us.quizpl.search;
 
 import java.util.Date;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 public class SearchArgs {
@@ -15,6 +13,7 @@ public class SearchArgs {
 		searchArgs.m_authors = request.getParameterValues(FIELD_AUTHOR);
 		searchArgs.m_limit = DEFAULT_LIMIT;
 		searchArgs.m_offset = DEFAULT_OFFSET;
+		searchArgs.m_isDevAppServer = request.getServerName().equalsIgnoreCase("localhost");
 		return searchArgs;
 	}
 	
@@ -37,12 +36,17 @@ public class SearchArgs {
 	public int getLimit() {
 		return m_limit;
 	}
+	
+	public boolean IsRunningInDevServer() {
+		return m_isDevAppServer;
+	}
 
 	private String m_searchText;
 	private String[] m_authors;
 	private Date m_date;
 	private int m_offset;
 	private int m_limit;
+	private boolean m_isDevAppServer;
 	
 	private static final int DEFAULT_OFFSET = 0;
 	private static final int DEFAULT_LIMIT = 100;

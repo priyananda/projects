@@ -118,6 +118,7 @@
     <Compile Include="GoogleStorageUploader.cs" />
     <Compile Include="ImageHelper.cs" />
     <Compile Include="ImporterClient.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Mono.Options\Options.cs" />
     <Compile Include="QuizDocument.cs" />
     <Compile Include="QuizSlide.cs" />

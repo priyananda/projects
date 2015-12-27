@@ -53,8 +53,8 @@ public class Presentation extends ModelObjectBase {
 		return (Date) m_entity.getProperty(FIELD_DATE);
 	}
 	
-	public int getSlideCount() {
-		return (int) m_entity.getProperty(FIELD_SLIDECOUNT);
+	public long getSlideCount() {
+		return (long) m_entity.getProperty(FIELD_SLIDECOUNT);
 	}
 	
 	public Author getAuthor() {

@@ -11,46 +11,81 @@ namespace Us.QuizPl
 {
     class ImporterClient
     {
+        public bool UseTestServer { get; set; }
+
         public string ImportQuizDocument(QuizDocument doc)
+        {
+            Logger.Log("Importing Document {0} ...", doc.Name);
+
+            Dictionary<string, object> properties = SerializeDoc(doc);
+            StringBuilder builder = new StringBuilder();
+            BuildData(builder, "presentation", properties);
+            string docId = ExecuteImport(builder.ToString());
+
+            Logger.Log("Document Imported with docId: {0}", docId);
+
+            return docId;
+        }
+
+        private Dictionary<string, object> SerializeDoc(QuizDocument doc)
         {
             Dictionary<string, object> properties = new Dictionary<string, object>();
             properties.Add("Name", doc.Name);
             properties.Add("Date", doc.Date.ToShortDateString());
             properties.Add("Author", doc.Author);
             properties.Add("SlideCount", doc.Slides.Count);
-
-            string docId = ExecuteImport(
-                "presentation",
-                properties
-            );
-
-            return docId;
+            return properties;
         }
 
-        public void ImportQuizSlide(string docId, QuizSlide slide)
+        private Dictionary<string, object> SerializeSlide(string docId, QuizSlide slide)
         {
             Dictionary<string, object> properties = new Dictionary<string, object>();
             properties.Add("PresentationId", docId);
             properties.Add("ImageURL", slide.CanonicalName);
             properties.Add("TextContent", slide.Text.Replace("\"", "'"));
-
-            ExecuteImport(
-                "slide",
-                properties
-            );
+            properties.Add("SlideIndex", slide.SlideIndex.ToString());
+            return properties;
         }
 
-        private string ExecuteImport(string paramName, Dictionary<string, object> properties)
+        public void ImportQuizSlide(string docId, QuizSlide slide)
+        {
+            Logger.Log("Import Slide {0} of document {1}", slide.SlideIndex, docId);
+
+            Dictionary<string, object> properties = SerializeSlide(docId, slide);
+            StringBuilder builder = new StringBuilder();
+            BuildData(builder, "slide", properties);
+            string slideResult = ExecuteImport(builder.ToString());
+
+            Logger.Log(slideResult);
+        }
+
+        public void BulkImportQuizSlides(string docId, QuizDocument doc)
+        {
+            StringBuilder builder = new StringBuilder();
+
+            foreach(var slide in doc.Slides)
+            {
+                Logger.Log("Import Slide {0} of document {1}", slide.SlideIndex, docId);
+                Dictionary<string, object> properties = SerializeSlide(docId, slide);
+                BuildData(builder, "slide", properties);
+            }
+            string slideResult = ExecuteImport(builder.ToString());
+            Logger.Log(slideResult);
+        }
+
+        private void BuildData(StringBuilder builder, string paramName, Dictionary<string, object> properties)
         {
             string jsonData = JsonParser.ToJson(properties);
-
-            StringBuilder builder = new StringBuilder();
             builder.Append(paramName);
             builder.Append("=");
             builder.Append(WebUtility.UrlEncode(jsonData));
-            byte[] data = Encoding.ASCII.GetBytes(builder.ToString());
+        }
 
-            HttpWebRequest request = (HttpWebRequest) HttpWebRequest.Create(CONNECTION_URL);
+        private string ExecuteImport(string dataAsString)
+        {
+            byte[] data = Encoding.ASCII.GetBytes(dataAsString);
+            HttpWebRequest request = (HttpWebRequest) HttpWebRequest.Create(
+                this.UseTestServer ? CONNECTION_URL_TEST : CONNECTION_URL_PROD);
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
             request.ContentLength = data.Length;
@@ -71,6 +106,7 @@ namespace Us.QuizPl
             }
         }
 
-        private const string CONNECTION_URL = "http://localhost:8888/import";
+        private const string CONNECTION_URL_TEST = "http://localhost:8888/import";
+        private const string CONNECTION_URL_PROD = "http://quizpl.us/import";
     }
 }

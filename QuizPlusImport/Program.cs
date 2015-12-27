@@ -14,7 +14,8 @@ namespace Us.QuizPl
         static void Main(string[] args)
         {
             Command command = CommandFactory.Parse(args);
-            command.Execute();
+            if (command != null)
+                command.Execute();
         }
     }
 }

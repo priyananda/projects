@@ -22,14 +22,16 @@ public class ImportServlet extends HttpServlet {
 			Presentation presentation = Presentation.create(jsonObj);
 			resp.getOutputStream().print(Long.toString(presentation.getId()));
 		}
-		
-		jsonData = (String) req.getParameter("slide");
-		if (jsonData != null) {
-			JsonObject jsonObj  = parser.parse(jsonData).getAsJsonObject();
-			Slide slide = Slide.create(jsonObj);
-			Presentation pres = slide.getPresentation();
-			resp.getOutputStream().print(
-				String.format("Uploaded slide %s for Pres{Name=%s, Author=%s}", slide.getId(), pres.getName(), pres.getAuthor().getName()));
+
+		String[] slideParams = req.getParameterValues("slide");
+		if (slideParams != null) {
+			for( String jsonSlideData : slideParams) {
+				JsonObject jsonObj  = parser.parse(jsonSlideData).getAsJsonObject();
+				Slide slide = Slide.create(jsonObj);
+				Presentation pres = slide.getPresentation();
+				resp.getOutputStream().print(
+					String.format("Uploaded slide %s for Pres{Name=%s, Author=%s}", slide.getId(), pres.getName(), pres.getAuthor().getName()));
+			}
 		}
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {

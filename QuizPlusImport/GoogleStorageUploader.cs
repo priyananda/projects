@@ -38,7 +38,7 @@ namespace Us.QuizPl
 
                 var req = service.Objects.Get(BUCKET_NAME, fileobj.Name);
                 fileobj = req.Execute();
-                Console.WriteLine("\tUploaded {0} as {1} MediaLink: {2} ",
+                Logger.Log("\tUploaded {0} as {1} MediaLink: {2}, SelfLink: {3} ",
                     Path.GetFileName(slide.ImagePath), fileobj.Name, fileobj.MediaLink, fileobj.SelfLink);
             }
         }
