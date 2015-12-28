@@ -22,8 +22,7 @@ namespace Us.QuizPl
             PPT.Presentation ppt = pptApp.Presentations.Open(filePath);
             Directory.Delete(IMAGE_TEMP_PATH, true);
             ppt.SaveCopyAs(IMAGE_TEMP_PATH, Microsoft.Office.Interop.PowerPoint.PpSaveAsFileType.ppSaveAsJPG);
-            doc.Name = Path.GetFileNameWithoutExtension(filePath);
-            doc.Date = new DateTime(2011, 06, 01);
+            doc.ExtractDetails(filePath);
             
             foreach (PPT.Slide pptSlide in ppt.Slides)
             {
@@ -37,6 +36,27 @@ namespace Us.QuizPl
             pptApp.Quit();
 
             return doc;
+        }
+
+        public void SetDate(string dateAsString)
+        {
+            this.Date = new DateTime(
+                Int32.Parse(dateAsString.Substring(0, 4)),
+                Int32.Parse(dateAsString.Substring(4, 2)),
+                Int32.Parse(dateAsString.Substring(6, 2))
+            );
+        }
+
+        private void ExtractDetails(string filePath)
+        {
+            String filename = Path.GetFileNameWithoutExtension(filePath);
+            string[] parts = filename.Split('.');
+            if (parts != null && parts.Length == 3)
+            {
+                this.Name = parts[0];
+                this.Author = parts[1];
+                SetDate(parts[2]);
+            }
         }
 
         private const string IMAGE_TEMP_PATH = @"c:\temp\images_ppt";

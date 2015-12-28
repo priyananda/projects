@@ -36,4 +36,15 @@ h2
 	font-weight: 400;
 }
 
+.searchFormStyle
+{
+	text-align: center;
+	width: 500px;
+	margin-top: 50px;
+}
 
+.fieldSearchTextStyle
+{
+	font-size: 14px;
+	margin-top: 20px;
+}

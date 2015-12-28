@@ -42,41 +42,42 @@ namespace Us.QuizPl
         {
             foreach (var filename in FilesList)
             {
-                Logger.Log("Extracting Quiz from file: {0}", filename);
-                QuizDocument doc = QuizDocument.Parse(filename);
-                if (this.Author != null)
-                    doc.Author = this.Author;
-                if (this.Name != null)
-                    doc.Name = this.Name;
-                if (this.DateAsString != null)
-                    doc.Date = new DateTime(
-                        Int32.Parse(this.DateAsString.Substring(0, 4)),
-                        Int32.Parse(this.DateAsString.Substring(4, 2)),
-                        Int32.Parse(this.DateAsString.Substring(6, 2))
-                    );
+                try {
+                    Logger.Log("Extracting Quiz from file: {0}", filename);
+                    QuizDocument doc = QuizDocument.Parse(filename);
+                    if (this.Author != null)
+                        doc.Author = this.Author;
+                    if (this.Name != null)
+                        doc.Name = this.Name;
+                    if (this.DateAsString != null)
+                        doc.SetDate(this.DateAsString);
 
-                if (!UseTestServer && !SkipImageUpload)
-                {
-                    Logger.Log("Uploading Images for {0} ...", doc.Name);
-                    var googleStorageClient = new GoogleStorageUploader();
-                    googleStorageClient.UploadQuiz(doc);
-                }
-
-                Logger.Log("Uploading Data for {0} ...", doc.Name);
-                var importClient = new ImporterClient();
-                importClient.UseTestServer = this.UseTestServer;
-                string docId = importClient.ImportQuizDocument(doc);
-
-                if (this.DoBulkUpload)
-                {
-                    importClient.BulkImportQuizSlides(docId, doc);
-                }
-                else
-                {
-                    foreach (var slide in doc.Slides)
+                    if (!UseTestServer && !SkipImageUpload)
                     {
-                        importClient.ImportQuizSlide(docId, slide);
+                        Logger.Log("Uploading Images for {0} ...", doc.Name);
+                        var googleStorageClient = new GoogleStorageUploader();
+                        googleStorageClient.UploadQuiz(doc);
                     }
+
+                    Logger.Log("Uploading Data for {0} ...", doc.Name);
+                    var importClient = new ImporterClient();
+                    importClient.UseTestServer = this.UseTestServer;
+                    string docId = importClient.ImportQuizDocument(doc);
+
+                    if (this.DoBulkUpload)
+                    {
+                        importClient.BulkImportQuizSlides(docId, doc);
+                    }
+                    else
+                    {
+                        foreach (var slide in doc.Slides)
+                        {
+                            importClient.ImportQuizSlide(docId, slide);
+                        }
+                    }
+                }catch(Exception e)
+                {
+                    Logger.Log(e.ToString());
                 }
             }
         }
