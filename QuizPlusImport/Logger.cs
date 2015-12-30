@@ -23,7 +23,7 @@ namespace Us.QuizPl
 
         private static void InitLogFile()
         {
-            s_streamWriter = new StreamWriter(DateTime.Today.ToString("yyyyMMdd-HHmm") + ".log");
+            s_streamWriter = new StreamWriter(DateTime.Now.ToString("yyyyMMdd-hhmm") + ".log");
             s_streamWriter.AutoFlush = true;
         }
         private static StreamWriter s_streamWriter;

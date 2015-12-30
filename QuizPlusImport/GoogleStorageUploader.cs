@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Google.Apis.Services;
-using Google.Apis.Storage.v1.Data;
+using GSD = Google.Apis.Storage.v1.Data;
 using System.IO;
+using Google.Apis.Requests;
 
 namespace Us.QuizPl
 {
@@ -26,20 +27,20 @@ namespace Us.QuizPl
 
             foreach(var slide in doc.Slides)
             {
-                var fileobj = new Google.Apis.Storage.v1.Data.Object()
-                {
-                    Name = slide.CanonicalName
-                };
-                service.Objects.Insert(
+                var fileobj = new GSD.Object() { Name = slide.CanonicalName };
+                var uploadStream = new FileStream(slide.ImagePath, FileMode.Open, FileAccess.Read);
+                var uploadRequest = service.Objects.Insert(
                     fileobj,
                     BUCKET_NAME,
-                    new FileStream(slide.ImagePath, FileMode.Open, FileAccess.Read),
-                    "image/jpeg").Upload();
+                    uploadStream,
+                    "image/jpeg");
 
-                var req = service.Objects.Get(BUCKET_NAME, fileobj.Name);
-                fileobj = req.Execute();
-                Logger.Log("\tUploaded {0} as {1} MediaLink: {2}, SelfLink: {3} ",
-                    Path.GetFileName(slide.ImagePath), fileobj.Name, fileobj.MediaLink, fileobj.SelfLink);
+                var task = uploadRequest.UploadAsync();
+                task.ContinueWith(t =>
+                {
+                    // Remeber to clean the stream.
+                    uploadStream.Dispose();
+                });
             }
         }
 

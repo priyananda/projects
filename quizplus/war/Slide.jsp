@@ -55,15 +55,9 @@
 </div>
 
 <script>
-  $('.jcarousel')
-    .on('jcarousel:createend', function() {
-        // Arguments:
-        // 1. The method to call
-        // 2. The index of the item (note that indexes are 0-based)
-        // 3. A flag telling jCarousel jumping to the index without animation
-        $(this).jcarousel('scroll', 1, false);
-    })
-    .jcarousel();
+	$(window).load(function(){
+	    $('.jcarousel').jcarousel('scroll', 1, false);
+	});
 </script>
 
 </body>

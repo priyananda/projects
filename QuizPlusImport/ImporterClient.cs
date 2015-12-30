@@ -68,6 +68,7 @@ namespace Us.QuizPl
                 Logger.Log("Import Slide {0} of document {1}", slide.SlideIndex, docId);
                 Dictionary<string, object> properties = SerializeSlide(docId, slide);
                 BuildData(builder, "slide", properties);
+                builder.Append("&");
             }
             string slideResult = ExecuteImport(builder.ToString());
             Logger.Log(slideResult);
