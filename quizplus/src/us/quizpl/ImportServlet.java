@@ -24,13 +24,15 @@ public class ImportServlet extends HttpServlet {
 		}
 
 		String[] slideParams = req.getParameterValues("slide");
+		String authorNameCached = null;
 		if (slideParams != null) {
 			for( String jsonSlideData : slideParams) {
 				JsonObject jsonObj  = parser.parse(jsonSlideData).getAsJsonObject();
-				Slide slide = Slide.create(jsonObj);
-				Presentation pres = slide.getPresentation();
+				Slide slide = Slide.create(jsonObj, authorNameCached);
+				if (authorNameCached == null)
+					authorNameCached = slide.getAuthorName();
 				resp.getOutputStream().print(
-					String.format("Uploaded slide %s for Pres{Name=%s, Author=%s}", slide.getId(), pres.getName(), pres.getAuthor().getName()));
+					String.format("Uploaded slide %s", slide.getId()));
 			}
 		}
 	}

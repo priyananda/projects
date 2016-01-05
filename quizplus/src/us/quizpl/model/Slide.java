@@ -23,14 +23,15 @@ public class Slide {
 		return new Slide(doc);
 	}
 	
-	public static Slide create(JsonObject jsonObject) {
+	public static Slide create(JsonObject jsonObject, String authorName) {
 		String presId = jsonObject.getAsJsonPrimitive(FIELD_PRESENTATIONID.toLowerCase()).getAsString();
 		String imageUrl = jsonObject.getAsJsonPrimitive(FIELD_IMAGEURL.toLowerCase()).getAsString();
 		String textContent = jsonObject.getAsJsonPrimitive(FIELD_TEXTCONTENT.toLowerCase()).getAsString();
 		String slideIndex = jsonObject.getAsJsonPrimitive(FIELD_SLIDEINDEX.toLowerCase()).getAsString();
 		
 		imageUrl = StorageHelper.getUrlForGcsFile(BUCKET_NAME, imageUrl);
-		String authorName = getAuthorName(presId);
+		if (authorName == null)
+			authorName = getAuthorName(presId);
 		
 		Document doc = Document.newBuilder()
 				.addField(Field.newBuilder().setName(FIELD_PRESENTATIONID).setAtom(presId))

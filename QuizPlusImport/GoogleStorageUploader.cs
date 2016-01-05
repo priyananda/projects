@@ -15,7 +15,7 @@ namespace Us.QuizPl
 {
     class GoogleStorageUploader
     {
-        public void UploadQuiz(QuizDocument doc)
+        public void UploadQuiz(QuizDocument doc, bool useAsync = false)
         {
             var credential = GetCredentials();
             StorageService service = new StorageService(
@@ -35,12 +35,22 @@ namespace Us.QuizPl
                     uploadStream,
                     "image/jpeg");
 
-                var task = uploadRequest.UploadAsync();
-                task.ContinueWith(t =>
+                if (useAsync)
                 {
-                    // Remeber to clean the stream.
+                    var task = uploadRequest.UploadAsync();
+                    task.ContinueWith(t =>
+                    {
+                        // Remeber to clean the stream.
+                        Logger.Log("Uploaded image " + slide.ImagePath);
+                        uploadStream.Dispose();
+                    });
+                }
+                else
+                {
+                    uploadRequest.Upload();
+                    Logger.Log("Uploaded image " + slide.ImagePath);
                     uploadStream.Dispose();
-                });
+                }
             }
         }
 
