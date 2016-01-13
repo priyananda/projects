@@ -33,13 +33,13 @@
 	<div style="width: 100%; height:800px;" id="layout">;
 
 		<div width="100%" style="background-color: lightgray;" id="topPane">
+            <form action="/Search.jsp" method="GET">
 			<table>
 			 <tr> <td> <h1 style="font-size: 30px; margin: 0px; margin-top: 10px; min-height:30px;">Quiz<sup>+</sup></h1>
-			 <form action="/Search.jsp" method="GET">
 			 	<td > <input name="field_search_text" type="text" maxlength="100" style="width: 450px; font-size: 14px;" value='<%= args.getSearchText() %>'>
 			 	<td > <input type="submit" value="Search"></input>
-			 </form>
 			</table>
+			</form>
 		</div>
 		
 		<div id="searchResultsGrid" style="margin-left: 30px; margin-top: 10px; width: 755px; height: 800px;" />
