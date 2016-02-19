@@ -10,7 +10,7 @@ static bool first = true;
 #define TEX_BUFF_WIDTH 512
 
 PxIntroSceneRenderer::PxIntroSceneRenderer(ISceneRegulator * pReg)
-:m_pCurrentScene(NULL)
+:m_pCurrentScene(nullptr)
 {
 	m_pRegulator = pReg;
 }
@@ -38,7 +38,7 @@ bool PxIntroSceneRenderer::AcceptScene( IScene * scene)
 }
 void PxIntroSceneRenderer::SetScene( IScene * scene)
 {
-	if( m_pCurrentScene != NULL )
+	if( m_pCurrentScene != nullptr )
 		m_pCurrentScene->Dispose();
 	m_pCurrentScene = static_cast< PxIntroScene * > (scene);
 	m_pCurrentScene->Initialize();

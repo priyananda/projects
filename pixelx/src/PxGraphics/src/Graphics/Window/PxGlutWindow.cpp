@@ -2,7 +2,7 @@
 #include "GL/glut.h"
 #include "..\..\PxInput\include\PxConfiguration.h"
 
-static PxWindow * g_theWindow = NULL;
+static PxWindow * g_theWindow = nullptr;
 
 static void __display_func()
 {

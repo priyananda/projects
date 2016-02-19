@@ -39,22 +39,22 @@ PxQuakeMap::PxQuakeMap():
 
 PxQuakeMap::~PxQuakeMap()
 {
-	if( decalTextures ) { delete [] decalTextures ; decalTextures = NULL; }
-	if( isTextureLoaded ) { delete [] isTextureLoaded;isTextureLoaded = NULL; }
-	if( isTextureSolid ) { delete [] isTextureSolid;isTextureSolid = NULL; }
-	if( planes ) { delete [] planes; planes= NULL; }
-	if( nodes ) { delete [] nodes;nodes = NULL; }
-	if( leaves ) { delete [] leaves;leaves = NULL; }
-	if( leafFaces ) { delete [] leafFaces;leafFaces = NULL; }
-	if( leafBrushes ) { delete [] leafBrushes;leafBrushes = NULL; }
-	if( brushes ) { delete [] brushes;brushes = NULL; }
-	if( brushSides ) { delete [] brushSides;brushSides = NULL; }
-	if( vertices ) { delete [] vertices;vertices = NULL; }
-	if( meshIndices ) { delete [] meshIndices;meshIndices = NULL; }
-	if( polygonFaces ) { delete [] polygonFaces;polygonFaces = NULL; }
-	if( meshFaces ) { delete [] meshFaces;meshFaces = NULL; }
-	if( patches ) { delete [] patches;patches = NULL; }
-	if( lightmapTextures ) { delete [] lightmapTextures;lightmapTextures = NULL; }
+	if( decalTextures ) { delete [] decalTextures ; decalTextures = nullptr; }
+	if( isTextureLoaded ) { delete [] isTextureLoaded;isTextureLoaded = nullptr; }
+	if( isTextureSolid ) { delete [] isTextureSolid;isTextureSolid = nullptr; }
+	if( planes ) { delete [] planes; planes= nullptr; }
+	if( nodes ) { delete [] nodes;nodes = nullptr; }
+	if( leaves ) { delete [] leaves;leaves = nullptr; }
+	if( leafFaces ) { delete [] leafFaces;leafFaces = nullptr; }
+	if( leafBrushes ) { delete [] leafBrushes;leafBrushes = nullptr; }
+	if( brushes ) { delete [] brushes;brushes = nullptr; }
+	if( brushSides ) { delete [] brushSides;brushSides = nullptr; }
+	if( vertices ) { delete [] vertices;vertices = nullptr; }
+	if( meshIndices ) { delete [] meshIndices;meshIndices = nullptr; }
+	if( polygonFaces ) { delete [] polygonFaces;polygonFaces = nullptr; }
+	if( meshFaces ) { delete [] meshFaces;meshFaces = nullptr; }
+	if( patches ) { delete [] patches;patches = nullptr; }
+	if( lightmapTextures ) { delete [] lightmapTextures;lightmapTextures = nullptr; }
 }
 
 

@@ -49,18 +49,18 @@ _MapChooserWindow::_MapChooserWindow( PxMapChooserGUIScene * parent )
 	}
 }
 
-static vector<PxWorld> worlds;
+static vector<UP<PxWorld>> worlds;
 void _MapChooserWindow::AddFiles()
 {
 	WIN32_FIND_DATA lpFindFileData;
 	HANDLE h = FindFirstFile("data\\worlds\\*.pxw", &lpFindFileData);
-	PxWorld theWorld;
 	while(true)
 	{
 		string s = lpFindFileData.cFileName;
-		theWorld.Deserialize( "data\\worlds\\" + s );
-		mListBox.addString(theWorld.GetName());
-		worlds.push_back( theWorld );
+		UP<PxWorld> theWorld(std::make_unique<PxWorld>());
+		theWorld->Deserialize( "data\\worlds\\" + s );
+		mListBox.addString(theWorld->GetName());
+		worlds.push_back( std::move(theWorld) );
 
 		if( FindNextFile(h,&lpFindFileData) == FALSE )
 			break;
@@ -86,7 +86,7 @@ void PxMapChooserGUIScene::Initialize()
 void PxMapChooserGUIScene::mButton_Click()
 {
 	PxGameScene * pGameScene = new PxGameScene("game");
-	pGameScene->World = & worlds[g_selectedWorld];
+	pGameScene->World = worlds[g_selectedWorld].get();
 	m_pSceneRegulator->AddScene( pGameScene );
 	m_pSceneRegulator->Signal( eScNamedScene , "game" );
 }
@@ -96,7 +96,6 @@ void PxMapChooserGUIScene::Dispose()
 	if( m_pWindow )
 	{
 		//delete m_pWindow;
-		//m_pWindow = NULL;
+		//m_pWindow = nullptr;
 	}
 }
-

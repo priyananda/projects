@@ -9,7 +9,7 @@ class PxBoundingBox
 	bool inited;
 	PxPolygon polygons[6];
 public:
-	PxBoundingBox():inited(false),Parent(NULL){}
+	PxBoundingBox():inited(false),Parent(nullptr){}
 	GLfloat x,y,z,length,width,height;
 	void Render();
 	void Finalize();

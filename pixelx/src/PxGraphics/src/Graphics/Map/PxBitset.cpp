@@ -5,7 +5,7 @@ bool PxBitSet::Init(int numberOfBits)
 	//Delete any memory allocated to bits
 	if(bits)
 		delete [] bits;
-	bits=NULL;
+	bits=nullptr;
 
 	//Calculate size
 	numBytes=(numberOfBits>>3)+1;

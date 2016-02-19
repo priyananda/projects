@@ -55,55 +55,55 @@ PxSkyBox::PxSkyBox(float l,float w,float h,float dl,float dw,float dh)
 }
 void PxSkyBox::Register( PxPolygonCollection * coll )
 {
-	PxPolygon * poly;
+	std::unique_ptr<PxPolygon> poly;
 	
-	poly = new PxPolygon();
+	poly.reset(new PxPolygon());
 	poly->SetTexture( "SKYBOX_LEFT" );
-	poly->AddVertex( SkyboxVertex[0].x , SkyboxVertex[0].y,SkyboxVertex[0].z,0.0f,0.0f);
-	poly->AddVertex( SkyboxVertex[1].x , SkyboxVertex[1].y,SkyboxVertex[1].z,1.0f,0.0f);
-	poly->AddVertex( SkyboxVertex[5].x , SkyboxVertex[5].y,SkyboxVertex[5].z,1.0f,1.0f);
-	poly->AddVertex( SkyboxVertex[4].x , SkyboxVertex[4].y,SkyboxVertex[4].z,0.0f,1.0f);
-	coll->AddPolygon( poly );
+	poly->AddVertex( SkyboxVertex[0].x , SkyboxVertex[0].y,SkyboxVertex[0].z,0,0);
+	poly->AddVertex( SkyboxVertex[1].x , SkyboxVertex[1].y,SkyboxVertex[1].z,1,0);
+	poly->AddVertex( SkyboxVertex[5].x , SkyboxVertex[5].y,SkyboxVertex[5].z,1,1);
+	poly->AddVertex( SkyboxVertex[4].x , SkyboxVertex[4].y,SkyboxVertex[4].z,0,1);
+	coll->AddPolygon( std::move(poly) );
 
-	poly = new PxPolygon();
+	poly.reset(new PxPolygon());
 	poly->SetTexture( "SKYBOX_BACK" );
-	poly->AddVertex( SkyboxVertex[1].x , SkyboxVertex[1].y,SkyboxVertex[1].z,0.0f,0.0f);
-	poly->AddVertex( SkyboxVertex[2].x , SkyboxVertex[2].y,SkyboxVertex[2].z,1.0f,0.0f);
-	poly->AddVertex( SkyboxVertex[6].x , SkyboxVertex[6].y,SkyboxVertex[6].z,1.0f,1.0f);
-	poly->AddVertex( SkyboxVertex[5].x , SkyboxVertex[5].y,SkyboxVertex[5].z,0.0f,1.0f);
-	coll->AddPolygon( poly );
+	poly->AddVertex( SkyboxVertex[1].x , SkyboxVertex[1].y,SkyboxVertex[1].z,0,0);
+	poly->AddVertex( SkyboxVertex[2].x , SkyboxVertex[2].y,SkyboxVertex[2].z,1,0);
+	poly->AddVertex( SkyboxVertex[6].x , SkyboxVertex[6].y,SkyboxVertex[6].z,1,1);
+	poly->AddVertex( SkyboxVertex[5].x , SkyboxVertex[5].y,SkyboxVertex[5].z,0,1);
+	coll->AddPolygon(std::move(poly));
 
-	poly = new PxPolygon();
+	poly.reset(new PxPolygon());
 	poly->SetTexture( "SKYBOX_RIGHT" );
-	poly->AddVertex( SkyboxVertex[2].x , SkyboxVertex[2].y,SkyboxVertex[2].z,0.0f,0.0f);
-	poly->AddVertex( SkyboxVertex[3].x , SkyboxVertex[3].y,SkyboxVertex[3].z,1.0f,0.0f);
-	poly->AddVertex( SkyboxVertex[7].x , SkyboxVertex[7].y,SkyboxVertex[7].z,1.0f,1.0f);
-	poly->AddVertex( SkyboxVertex[6].x , SkyboxVertex[6].y,SkyboxVertex[6].z,0.0f,1.0f);
-	coll->AddPolygon( poly );
+	poly->AddVertex( SkyboxVertex[2].x , SkyboxVertex[2].y,SkyboxVertex[2].z,0,0);
+	poly->AddVertex( SkyboxVertex[3].x , SkyboxVertex[3].y,SkyboxVertex[3].z,1,0);
+	poly->AddVertex( SkyboxVertex[7].x , SkyboxVertex[7].y,SkyboxVertex[7].z,1,1);
+	poly->AddVertex( SkyboxVertex[6].x , SkyboxVertex[6].y,SkyboxVertex[6].z,0,1);
+	coll->AddPolygon(std::move(poly));
 
-	poly = new PxPolygon();
+	poly.reset(new PxPolygon());
 	poly->SetTexture( "SKYBOX_FRONT" );
-	poly->AddVertex( SkyboxVertex[3].x , SkyboxVertex[3].y,SkyboxVertex[3].z,0.0f,0.0f);
-	poly->AddVertex( SkyboxVertex[0].x , SkyboxVertex[0].y,SkyboxVertex[0].z,1.0f,0.0f);
-	poly->AddVertex( SkyboxVertex[4].x , SkyboxVertex[4].y,SkyboxVertex[4].z,1.0f,1.0f);
-	poly->AddVertex( SkyboxVertex[7].x , SkyboxVertex[7].y,SkyboxVertex[7].z,0.0f,1.0f);
-	coll->AddPolygon( poly );
+	poly->AddVertex( SkyboxVertex[3].x , SkyboxVertex[3].y,SkyboxVertex[3].z,0,0);
+	poly->AddVertex( SkyboxVertex[0].x , SkyboxVertex[0].y,SkyboxVertex[0].z,1,0);
+	poly->AddVertex( SkyboxVertex[4].x , SkyboxVertex[4].y,SkyboxVertex[4].z,1,1);
+	poly->AddVertex( SkyboxVertex[7].x , SkyboxVertex[7].y,SkyboxVertex[7].z,0,1);
+	coll->AddPolygon(std::move(poly));
 
-	poly = new PxPolygon();
+	poly.reset(new PxPolygon());
 	poly->SetTexture( "SKYBOX_RIGHT" );
-	poly->AddVertex( SkyboxVertex[2].x , SkyboxVertex[2].y,SkyboxVertex[2].z,0.0f,0.0f);
-	poly->AddVertex( SkyboxVertex[3].x , SkyboxVertex[3].y,SkyboxVertex[3].z,1.0f,0.0f);
-	poly->AddVertex( SkyboxVertex[7].x , SkyboxVertex[7].y,SkyboxVertex[7].z,1.0f,1.0f);
-	poly->AddVertex( SkyboxVertex[6].x , SkyboxVertex[6].y,SkyboxVertex[6].z,0.0f,1.0f);
-	coll->AddPolygon( poly );
+	poly->AddVertex( SkyboxVertex[2].x , SkyboxVertex[2].y,SkyboxVertex[2].z,0,0);
+	poly->AddVertex( SkyboxVertex[3].x , SkyboxVertex[3].y,SkyboxVertex[3].z,1,0);
+	poly->AddVertex( SkyboxVertex[7].x , SkyboxVertex[7].y,SkyboxVertex[7].z,1,1);
+	poly->AddVertex( SkyboxVertex[6].x , SkyboxVertex[6].y,SkyboxVertex[6].z,0,1);
+	coll->AddPolygon(std::move(poly));
 
-	poly = new PxPolygon();
+	poly.reset(new PxPolygon());
 	poly->SetTexture( "SKYBOX_TOP" );
-	poly->AddVertex( SkyboxVertex[7].x , SkyboxVertex[7].y,SkyboxVertex[7].z,0.0f,1.0f);
-	poly->AddVertex( SkyboxVertex[4].x , SkyboxVertex[4].y,SkyboxVertex[4].z,1.0f,1.0f);
-	poly->AddVertex( SkyboxVertex[5].x , SkyboxVertex[5].y,SkyboxVertex[5].z,1.0f,0.0f);
-	poly->AddVertex( SkyboxVertex[6].x , SkyboxVertex[6].y,SkyboxVertex[6].z,0.0f,0.0f);
-	coll->AddPolygon( poly );
+	poly->AddVertex( SkyboxVertex[7].x , SkyboxVertex[7].y,SkyboxVertex[7].z,0,1);
+	poly->AddVertex( SkyboxVertex[4].x , SkyboxVertex[4].y,SkyboxVertex[4].z,1,1);
+	poly->AddVertex( SkyboxVertex[5].x , SkyboxVertex[5].y,SkyboxVertex[5].z,1,0);
+	poly->AddVertex( SkyboxVertex[6].x , SkyboxVertex[6].y,SkyboxVertex[6].z,0,0);
+	coll->AddPolygon(std::move(poly));
 }
 void PxSkyBox::Render()
 {

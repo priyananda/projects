@@ -11,15 +11,14 @@ void PxModelManager::Init()
 {
 	PxCommandList * clist = PxDataFilesManager::Get( "MODEL_LIST" );
 	if(!clist) return;
-	for( PxCommandList::Iterator iter = clist->Commands.begin(); iter != clist->Commands.end(); ++iter )
+	for( const auto& pCmd : *clist )
 	{
 		_ModelData md;
-		PxCommand * pCmd = *iter;
 		md.path = "data\\" + pCmd->Arguments[1];
 		md.type = pCmd->Command;
-		md.core = NULL;
+		md.core = nullptr;
 		md.name = pCmd->Arguments[0];
-		if( pCmd->ArgCount > 2 )
+		if( pCmd->Arguments.size() > 2 )
 			md.texname = pCmd->Arguments[2];
 		cores[ pCmd->Arguments[0] ] = md;
 	}
@@ -34,9 +33,9 @@ PxModel * PxModelManager::CreateModel( cstrref name )
 PxModelCore * PxModelManager::GetModel( cstrref name )
 {
 	if( cores.find(name) == cores.end() )
-		return NULL;
+		return nullptr;
 	_ModelData md = cores[ name ];
-	if( md.core == NULL )
+	if( md.core == nullptr )
 		LoadModel( md );
 	cores[ name ] = md;
 	return md.core;

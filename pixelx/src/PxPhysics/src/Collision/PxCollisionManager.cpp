@@ -4,7 +4,7 @@
 #include "PxNormalCollisionController.h"
 
 PxNormalCollisionController * pNormal = new PxNormalCollisionController;
-PxQuakeCollisionController  * pQuake  = NULL;
+PxQuakeCollisionController  * pQuake  = nullptr;
 
 void PxCollisionManager::Register( PxSolidObject * p )
 {

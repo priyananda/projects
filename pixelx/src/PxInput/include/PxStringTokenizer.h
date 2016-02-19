@@ -1,6 +1,4 @@
-#ifndef _PIXELX_STRINGTOK_H
-#define _PIXELX_STRINGTOK_H
-
+#pragma once
 #include "Common.h"
 
 #include <list>
@@ -11,6 +9,3 @@ class PxStringTokenizer
 public:
 	static int Tokenize( cstrref input , list<string> & ret);
 };
-
-#endif
-

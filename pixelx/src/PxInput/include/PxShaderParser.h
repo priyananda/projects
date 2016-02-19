@@ -1,6 +1,4 @@
-#ifndef PIXELX_SHADERPARSER_H
-#define PIXELX_SHADERPARSER_H
-
+#pragma once
 #include "PxCommandList.h"
 
 #include <map>
@@ -12,29 +10,52 @@ class PxShaderData
 {
 public:
 	string Name;
-	PxCommandList Commands;
-	vector< PxCommandList > Stages;
+	std::unique_ptr<PxCommandList> Commands;
+	vector< std::unique_ptr<PxCommandList> > Stages;
 
-	PxShaderData( cstrref name = "" ) : Name(name){}
+	PxShaderData( cstrref name = "" ) :
+		Name(name)
+	{
+	}
+
+	PxShaderData(const PxShaderData&) = delete;
+
+	PxShaderData(PxShaderData&& other) :
+		Name(std::move(other.Name)),
+		Commands(std::move(other.Commands)),
+		Stages(std::move(other.Stages))
+	{
+	}
+
+	void AddCommand(UP<PxCommand>&& spCmd)
+	{
+		if (!this->Commands)
+			this->Commands = std::move(std::make_unique<PxCommandList>());
+		this->Commands->Commands.emplace_back(std::move(spCmd));
+	}
+
+	void AddCommandToStage(UP<PxCommand>&& spCmd)
+	{
+		if (!this->Stages.empty())
+			this->Stages.back()->Commands.emplace_back(std::move(spCmd));
+	}
 };
+
 class PxShaderParser
 {
-	map<string,PxShaderData> m_shaders;
+	map<string, std::unique_ptr<PxShaderData>> m_shaders;
 	FILE * m_file;
 
-	string getNextToken(bool ignoreNewline);
-	bool ignoreWhiteSpace(bool ignorenl);
+	string _GetNextToken(bool ignoreNewline);
+	bool _IgnoreWhiteSpace(bool ignorenl);
 	void _ReadShaders();
 public:
 	void Parse( cstrref filename );
 	typedef map<string,PxShaderData>::iterator Iterator;
     const PxShaderData & operator [] ( cstrref name );
-	Iterator begin(){ return m_shaders.begin(); }
-	Iterator end(){ return m_shaders.end(); }
+	auto begin(){ return m_shaders.begin(); }
+	auto end(){ return m_shaders.end(); }
 };
 
-#define FOR_EACH_SHADER(iter,shaders)	\
-	for( PxShaderParser::Iterator iter = shaders.begin(); iter != shaders.end() ; ++iter )
-
-#endif
-
+#define FOR_EACH_SHADER(item, shaders)	\
+	for( auto& item : shaders )

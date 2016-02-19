@@ -1,5 +1,4 @@
-#ifndef _PIXELX_AUDIOMGR_H
-#define _PIXELX_AUDIOMGR_H
+#pragma once
 
 #include "Common.h"
 
@@ -30,5 +29,3 @@ public:
 	static void Play( cstrref name );
 	static void Loop( cstrref name );
 };
-#endif
-

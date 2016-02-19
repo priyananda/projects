@@ -24,13 +24,13 @@ PxFlag::PxFlag( float ph, float fw, float fl, float x , float y , float z, cstrr
 void PxFlag::Register(PxPolygonCollection * pColl)
 {
 	//PxRectangle * rect = new PxRectangle( bBox.x, bBox.y + bBox.width - flagwidth , bBox.z, bBox.length , flagwidth, 0 );
-	PxPolygon * poly = new PxPolygon();
+	auto poly = std::make_unique<PxPolygon>();
 	poly->AddVertex(bBox.x , bBox.width	- flagwidth , bBox.z,1,1 );
 	poly->AddVertex(bBox.x , bBox.width , bBox.z,1,0 );
 	poly->AddVertex(bBox.x + bBox.length , bBox.width, bBox.z,0,0 );
 	poly->AddVertex(bBox.x + bBox.length , bBox.width - flagwidth , bBox.z,0,1 );
 	poly->SetTexture(texname);
-	pColl->AddPolygon( poly );
+	pColl->AddPolygon( std::move(poly) );
 }
 
 void PxFlag::Render()

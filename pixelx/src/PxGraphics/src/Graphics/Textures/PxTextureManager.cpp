@@ -7,14 +7,14 @@
 void PxTextureManager::Init()
 {
 	PxCommandList * clist = PxDataFilesManager::Get( "TEXTURE_LIST" );
-	if( clist == NULL )
+	if( clist == nullptr )
 		return;
-	for( PxCommandList::Iterator iter = clist->Commands.begin(); iter != clist->Commands.end(); ++iter )
+	for( const auto& spCmd : *clist )
 	{
-		if( (*iter)->Command == "tex" )
+		if( spCmd->Command == "tex" )
 		{
-			string _name = (*iter)->Arguments[0];
-			string _path = string("data\\") + (*iter)->Arguments[1];
+			string _name = spCmd->Arguments[0];
+			string _path = string("data\\") + spCmd->Arguments[1];
 			if( m_textures.find(_name) == m_textures.end() )
 			{
 				m_textures[_name] = TEXTURE_NOT_LOADED;

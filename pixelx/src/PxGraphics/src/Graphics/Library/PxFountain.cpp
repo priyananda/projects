@@ -11,7 +11,7 @@ static bool isBlood = false;
 PxFountain::PxFountain(float x,float y,float z)
 {
 	for(int i = 0; i < NUMBER_OF_STREAMS ; ++i )
-		stream[i] = NULL;
+		stream[i] = nullptr;
 	bBox.x = x - 10;bBox.y = y; bBox.z = z -10;
 	bBox.length = 20;bBox.width = 12; bBox.height = 20;
 	bBox.Parent = this;

@@ -14,7 +14,7 @@ class PxPolygon
 	GLuint texture;
 	string texturename;
 	GLuint dList;
-	vector< PxVertex *> vertices;
+	vector<std::unique_ptr<PxVertex>> vertices;
 
 	// This will use only the first 3 vertices of the polygon.
 	// If the vertex data is non planar, well, god knows!!
@@ -26,6 +26,10 @@ public:
 	// After this, normal is updated
 	void AddVertex( const PxVertex &);
 	void AddVertex(  GLfloat _x ,GLfloat _y ,GLfloat _z,GLuint _u = -1,GLuint _v = -1);
+	void AddVertexF(GLfloat _x, GLfloat _y, GLfloat _z, GLfloat _u = -1, GLfloat _v = -1)
+	{
+		AddVertex(_x, _y, _z, static_cast<GLuint>(_u), static_cast<GLuint>(_v));
+	}
 
 	// Gets the n'th vertex( slow )
 	PxVector operator[](int index) const;
@@ -44,11 +48,19 @@ public:
 
 	string GetTexture(){ return texturename; }
 	TextureMode GetTextureMode();
-	vector<PxVertex *> & GetVertices(){ return vertices; }
+	vector<std::unique_ptr<PxVertex>> & GetVertices(){ return vertices; }
 
 	PxPolygon()
 		:dList(-1),texture(-1){}
-	~PxPolygon();
+
+	PxPolygon(const PxPolygon& other) :
+		texture(other.texture),
+		texturename(other.texturename),
+		dList(other.dList)
+	{
+		for (const auto& spOtherVertex : other.vertices)
+			this->vertices.emplace_back(std::make_unique<PxVertex>(*spOtherVertex));
+	}
 };
 
 #endif

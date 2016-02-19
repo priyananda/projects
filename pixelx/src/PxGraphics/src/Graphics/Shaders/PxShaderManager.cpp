@@ -10,27 +10,30 @@ void PxShaderManager::Init()
 	m_parser.Parse( "data/qbase/scripts/sfx.shader" );
 	ofstream out;
 	out.open( "shaders.log" );
-	FOR_EACH_SHADER(iter,m_parser)
+	for(auto& item : m_parser)
 	{
-		PxLog::LogMessage( "[SHADER] %s " , (*iter).first.c_str() );
-		PxShaderData & shader = (*iter).second;
+		PxLog::LogMessage( "[SHADER] %s " , item.first.c_str() );
+		PxShaderData & shader = *(item.second);
 		out << shader.Name << endl;
-		FOR_EACH_CLIST((&shader.Commands),iter)
+		if (shader.Commands)
 		{
-			out << "\t" << (*iter)->Command << "(";
-			for( int i = 0 ; i < (*iter)->ArgCount; ++i )
-				out << ( i ? ","  : "" ) << (*iter)->Arguments[i];
-			out << ")" << endl;
+			for (auto& spCmd : *(shader.Commands))
+			{
+				out << "\t" << spCmd->Command << "(";
+				for (size_t i = 0; i < spCmd->Arguments.size(); ++i)
+					out << (i ? "," : "") << spCmd->Arguments[i];
+				out << ")" << endl;
+			}
 		}
 		for( unsigned j = 0 ; j < shader.Stages.size() ; ++j )
 		{
 			out << "\tStage" << j << endl;
-			PxCommandList & clist = shader.Stages[j];
-			FOR_EACH_CLIST((&clist),iter)
+			PxCommandList & clist = *(shader.Stages[j]);
+			for (auto& spCmd : clist)
 			{
-				out << "\t\t" << (*iter)->Command << "(";
-				for( int i = 0 ; i < (*iter)->ArgCount; ++i )
-					out << ( i ? ","  : "" ) << (*iter)->Arguments[i];
+				out << "\t\t" << spCmd->Command << "(";
+				for( size_t i = 0 ; i < spCmd->Arguments.size(); ++i )
+					out << ( i ? ","  : "" ) << spCmd->Arguments[i];
 				out << ")" << endl;
 			}
 		}

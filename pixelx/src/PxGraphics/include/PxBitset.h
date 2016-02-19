@@ -6,13 +6,13 @@
 class PxBitSet
 {
 public:
-	PxBitSet() : numBytes(0), bits(NULL)
+	PxBitSet() : numBytes(0), bits(nullptr)
 	{}
 	~PxBitSet()
 	{
 		if(bits)
 			delete [] bits;
-		bits=NULL;
+		bits=nullptr;
 	}
 
 	bool Init(int numberOfBits);

@@ -21,29 +21,25 @@ extern bool g_debug_drawbsp;
 
 void PxWorld::Deserialize( cstrref filename )
 {
-	PxCommandList * commands = PxDataFileParser::Parse( filename );
-	if( commands == NULL )
+	UP<PxCommandList> commands (PxDataFileParser::Parse( filename ));
+	if( commands == nullptr )
 		return;
-	for(
-		PxCommandList::Iterator iter = commands->Commands.begin();
-		iter != commands->Commands.end();
-		++iter
-	)
+	for( const auto &spCmd : *commands)
 	{
-		if( (*iter)->Command == "worldname" )
-			mName = (*iter)->Arguments[0];
-		if( (*iter)->Command == "bsppath" )
-			mBspFileName = (*iter)->Arguments[0];
-		if( (*iter)->Command == "trifile" )
-			mTriFileName = (*iter)->Arguments[0];
-		if( (*iter)->Command == "bgsound" )
-			mBGSound = (*iter)->Arguments[0];
-		if( (*iter)->Command == "enablefog" )
-			mEnableFog = (*iter)->Arguments[0] != "0";
-		if( (*iter)->Command == "enablelight" )
-			mEnableLight = (*iter)->Arguments[0] != "0";
-		if( (*iter)->Command == "bot" )
-			mBotName = (*iter)->Arguments[0];
+		if( spCmd->Command == "worldname" )
+			mName = spCmd->Arguments[0];
+		if( spCmd->Command == "bsppath" )
+			mBspFileName = spCmd->Arguments[0];
+		if( spCmd->Command == "trifile" )
+			mTriFileName = spCmd->Arguments[0];
+		if( spCmd->Command == "bgsound" )
+			mBGSound = spCmd->Arguments[0];
+		if( spCmd->Command == "enablefog" )
+			mEnableFog = spCmd->Arguments[0] != "0";
+		if( spCmd->Command == "enablelight" )
+			mEnableLight = spCmd->Arguments[0] != "0";
+		if( spCmd->Command == "bot" )
+			mBotName = spCmd->Arguments[0];
 	}
 	int len = mName.length();
 	for(int i = 0 ; i < len ; ++i )
@@ -63,7 +59,7 @@ void PxWorld::Initialize()
 	mWorldMap = PxTesselatedMapManager::Restore( mTriFileName );
 	size_t count = mWorldMap->Objects.size();
 
-	for( int i = 0 ; i < count ; ++i )
+	for( size_t i = 0 ; i < count ; ++i )
 	{
 		PxRuntimeObject obj = mWorldMap->Objects[i];
 		PxBoundingBox bbox;
@@ -127,7 +123,7 @@ void PxWorld::Render(PxWindow * pWindow)
 	mPolygonSet.Render();
 	for( list<PxSolidObject *>::iterator iter = mRuntimeObjects.begin(); iter != mRuntimeObjects.end(); ++iter )
 	{
-		if( *iter == NULL )
+		if( *iter == nullptr )
 			continue;
 		if( g_debug_bbox )
 			(*iter)->GetBoundingBox().Render();

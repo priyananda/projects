@@ -7,6 +7,11 @@ using std::string;
 typedef const string & cstrref;
 typedef string & strref;
 
+#include <memory>
+
+template <typename T>
+using UP = std::unique_ptr<T>;
+
 #define WIN32_LEAN_AND_MEAN
 
 #include <windows.h>

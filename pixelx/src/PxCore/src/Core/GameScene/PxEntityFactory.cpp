@@ -27,7 +27,7 @@ int PxEntityFactory::AddObjects( PxQuake3EntityCollection & entities , list<PxSo
 		++iter
 	){
 		PxQuake3Entity & entity = *iter;
-		PxModel * pModel = NULL;
+		PxModel * pModel = nullptr;
 		float yfactor = 0, yangle = 0;
 		if( _strnicmp( entity.ClassName.c_str() , QUAKE_AMMO , 5 ) == 0 )
 		{

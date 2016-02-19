@@ -18,7 +18,7 @@ public:
 	PxSceneRegulator();
 	
 	void AddScene( IScene * );
-	void Signal( long condition , void * params = NULL);
+	void Signal( long condition , void * params = nullptr);
 private:
 	ISceneRenderer * FindRenderer( IScene * );
 };

@@ -10,10 +10,10 @@ void PxConfiguration::Init()
 	static char buff[100];
 	ReadCommands("CONFIG");
 	LPSTR pCmd = GetCommandLine();
-	if( pCmd == NULL || pCmd[0] == 0 )
+	if( pCmd == nullptr || pCmd[0] == 0 )
 		return;
 	char * pArg = strstr( pCmd, "--config-file" );
-	if( pArg != NULL && *pArg != 0)
+	if( pArg != nullptr && *pArg != 0)
 	{
 		sscanf_s(pArg, "--config-file=%s", buff, sizeof(buff));
 		ReadCommands(buff);
@@ -34,10 +34,12 @@ void PxConfiguration::SetKey( int KeyCode)
 		return;
 	keyStates[ keyBindigs[KeyCode] ] = true;
 }
+
 void PxConfiguration::RegisterKey( int keyCode , PxKeyBindingEnum keb )
 {
 	keyBindigs[ keyCode ] = keb;
 }
+
 string PxConfiguration::GetString( cstrref name )
 {
 	if( options.find( name ) == options.end() )
@@ -73,9 +75,9 @@ void PxConfiguration::ReadCommands(cstrref name)
 	PxCommandList * clist = PxDataFilesManager::Get( name );
 	if(! clist )
 		return;
-	for( PxCommandList::Iterator iter = clist->Commands.begin(); iter != clist->Commands.end(); ++iter )
+	for( auto& spCmd : clist->Commands )
 	{
-		PxCommand * p = (*iter);
+		PxCommand * p = spCmd.get();
 		if( p->Command == "set" )
 			options[ p->Arguments[0] ] = p->Arguments[1];
 		if( p->Command == "bind" )

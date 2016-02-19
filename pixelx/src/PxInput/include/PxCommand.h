@@ -1,26 +1,21 @@
-#ifndef _PIXELX_CMD_H
-#define _PIXELX_CMD_H
+#pragma once
 
 #include "Common.h"
 
 #include <list>
 using std::list;
 
+#include <vector>
+using std::vector;
+
 class PxCommand
 {
 public:
 	string Command;
-	string *Arguments;
-	int ArgCount;
-
-	PxCommand(): Arguments(NULL),ArgCount(0){}
-	void SetArguments( list<string> & args );
-	~PxCommand()
+	vector<string> Arguments;
+	void SetArguments(list<string> & args)
 	{
-		if( ArgCount > 0 )
-			delete [] Arguments;
+		Arguments.clear();
+		Arguments.assign(args.begin(), args.end());
 	}
 };
-
-#endif
-

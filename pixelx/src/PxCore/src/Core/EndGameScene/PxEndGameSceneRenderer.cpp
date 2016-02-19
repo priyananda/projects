@@ -6,7 +6,7 @@
 extern bool g_debug_win;
 static int g_tex_id = 0;
 PxEndGameSceneRenderer::PxEndGameSceneRenderer( ISceneRegulator * pReg )
-	: m_pRegulator(pReg), m_pCurrentScene(NULL)
+	: m_pRegulator(pReg), m_pCurrentScene(nullptr)
 {}
 
 bool PxEndGameSceneRenderer::AcceptScene( IScene * p )

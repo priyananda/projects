@@ -1,15 +1,10 @@
-#ifndef _PIXELX_DATAPARSER_H
-#define _PIXELX_DATAPARSER_H
-
+#pragma once
 #include "PxCommandlist.h"
 
 class PxDataFileParser
 {
 	static void Process( char * line , PxCommandList * clist );
 public:
-	static PxCommandList * Parse(cstrref filename);
+	static std::unique_ptr<PxCommandList> Parse(cstrref filename);
 	static bool Parse(cstrref filename, PxCommandList * pList );
 };
-
-#endif
-

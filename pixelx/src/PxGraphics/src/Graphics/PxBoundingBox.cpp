@@ -51,9 +51,7 @@ void PxBoundingBox::Register( PxPolygonCollection * pColl )
 	}
 	for( int i = 0; i < 6 ; ++i )
 	{
-		PxPolygon * p = new PxPolygon();
-		*p = polygons[i];
-		pColl->AddPolygon(p);
+		pColl->AddPolygon(std::make_unique<PxPolygon>(polygons[i]));
 	}
 }
 

@@ -16,11 +16,11 @@ void SetStartState(PxSceneRegulator * pRegulator)
 {
 	char buff[100] = "intro";
 	LPSTR pCmd = GetCommandLine();
-	if( pCmd == NULL || pCmd[0] == 0 )
+	if( pCmd == nullptr || pCmd[0] == 0 )
 		return;
 	char * pArg;
 	pArg = strstr( pCmd, "--map" );
-	if( pArg != NULL && *pArg != 0 )
+	if( pArg != nullptr && *pArg != 0 )
 	{
 		sscanf_s(pArg,"--map=%s", buff, sizeof(buff));
 		PxGameScene * pGameScene = new PxGameScene("game");
@@ -30,7 +30,7 @@ void SetStartState(PxSceneRegulator * pRegulator)
 		pRegulator->AddScene( pGameScene );
 	}
 	pArg = strstr( pCmd, "--start-state" );
-	if( pArg != NULL && *pArg != 0)
+	if( pArg != nullptr && *pArg != 0)
 		sscanf_s(pArg,"--start-state=%s" , buff, sizeof(buff));
 	pRegulator->Signal( eScNamedScene , buff );
 }

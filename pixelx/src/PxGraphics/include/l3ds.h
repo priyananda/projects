@@ -409,14 +409,14 @@ public:
     LLight& GetLight(uint index);
     // returns the pointer to the material
     LMaterial& GetMaterial(uint index);
-    // returns the pointer to the material with a given name, or NULL if the material was not found
+    // returns the pointer to the material with a given name, or nullptr if the material was not found
     LMaterial* FindMaterial(const std::string &name);
-    // returns the pointer to the mesh with a given name, or NULL if the mesh with such name 
+    // returns the pointer to the mesh with a given name, or nullptr if the mesh with such name 
     // is not present in the scene
     LMesh* FindMesh(const std::string &name);
-    // returns the pointer to the camera with a given name, or NULL if not found
+    // returns the pointer to the camera with a given name, or nullptr if not found
     LLight* FindCamera(const std::string &name);
-    // returns the pointer to the light with a given name, or NULL if not found
+    // returns the pointer to the light with a given name, or nullptr if not found
     LLight* FindLight(const std::string &name);
     // sets the optimization level to a given value
     void SetOptimizationLevel(LOptimizationLevel value);

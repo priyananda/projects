@@ -187,7 +187,7 @@ glmAddGroup(GLMmodel* model, char* name)
         group->name = _strdup(name);
         group->material = 0;
         group->numtriangles = 0;
-        group->triangles = NULL;
+        group->triangles = nullptr;
         group->next = model->groups;
         model->groups = group;
         model->numgroups++;
@@ -298,7 +298,7 @@ glmReadMTL(GLMmodel* model, char* name)
     
     /* set the default material */
     for (i = 0; i < nummaterials; i++) {
-        model->materials[i].name = NULL;
+        model->materials[i].name = nullptr;
         model->materials[i].shininess = 65.0;
         model->materials[i].diffuse[0] = 0.8;
         model->materials[i].diffuse[1] = 0.8;
@@ -1024,7 +1024,7 @@ glmVertexNormals(GLMmodel* model, GLfloat angle)
     indices for each vertex */
     members = (GLMnode**)malloc(sizeof(GLMnode*) * (model->numvertices + 1));
     for (i = 1; i <= model->numvertices; i++)
-        members[i] = NULL;
+        members[i] = nullptr;
     
     /* for every triangle, create a node for each vertex in it */
     for (i = 0; i < model->numtriangles; i++) {
@@ -1316,21 +1316,21 @@ glmReadOBJ(char* filename)
     /* allocate a new model */
     model = (GLMmodel*)malloc(sizeof(GLMmodel));
     model->pathname    = _strdup(filename);
-    model->mtllibname    = NULL;
+    model->mtllibname    = nullptr;
     model->numvertices   = 0;
-    model->vertices    = NULL;
+    model->vertices    = nullptr;
     model->numnormals    = 0;
-    model->normals     = NULL;
+    model->normals     = nullptr;
     model->numtexcoords  = 0;
-    model->texcoords       = NULL;
+    model->texcoords       = nullptr;
     model->numfacetnorms = 0;
-    model->facetnorms    = NULL;
+    model->facetnorms    = nullptr;
     model->numtriangles  = 0;
-    model->triangles       = NULL;
+    model->triangles       = nullptr;
     model->nummaterials  = 0;
-    model->materials       = NULL;
+    model->materials       = nullptr;
     model->numgroups       = 0;
-    model->groups      = NULL;
+    model->groups      = nullptr;
     model->position[0]   = 0.0;
     model->position[1]   = 0.0;
     model->position[2]   = 0.0;
@@ -1773,7 +1773,7 @@ glmWeld(GLMmodel* model, GLfloat epsilon)
  *
  * The rgb data is returned as an array of unsigned chars (packed
  * rgb).  The malloc()'d memory should be free()'d by the caller.  If
- * an error occurs, an error message is sent to stderr and NULL is
+ * an error occurs, an error message is sent to stderr and nullptr is
  * returned.
  *
  * filename   - name of the .ppm file.
@@ -1792,7 +1792,7 @@ glmReadPPM(char* filename, int* width, int* height)
     fopen_s(&fp, filename, "rb");
     if (!fp) {
         perror(filename);
-        return NULL;
+        return nullptr;
     }
     
     /* grab first two chars of the file and make sure that it has the
@@ -1800,7 +1800,7 @@ glmReadPPM(char* filename, int* width, int* height)
     fgets(head, 70, fp);
     if (strncmp(head, "P6", 2)) {
         fprintf(stderr, "%s: Not a raw PPM file\n", filename);
-        return NULL;
+        return nullptr;
     }
     
     /* grab the three elements in the header (width, height, maxval). */

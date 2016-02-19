@@ -6,25 +6,25 @@ using std::ifstream;
 
 list<string> line;
 
-PxCommandList * PxDataFileParser::Parse(cstrref filename)
+std::unique_ptr<PxCommandList> PxDataFileParser::Parse(cstrref filename)
 {
-	PxCommandList * clist = new PxCommandList();
-	if( ! Parse( filename , clist ) )
-	{
-		delete clist;
-		return NULL;
-	}
+	std::unique_ptr<PxCommandList> clist(new PxCommandList());
+	if( ! Parse( filename , clist.get() ) )
+		clist = nullptr;
 	return clist;
 }
+
 static inline bool IsComment(char * buff)
 {
 	return buff[0] == '#'  || buff[0] == 0;
 }
+
 static inline bool IsInclude(char * buff)
 {
 	int x = _strnicmp( buff , "%include" , 8 );
 	return x == 0;
 }
+
 static inline string GetIncludeFile(char * buff)
 {
 	char * start = strchr(buff, '"');
@@ -32,6 +32,7 @@ static inline string GetIncludeFile(char * buff)
 	*end = 0;
 	return string( start + 1 );
 }
+
 bool PxDataFileParser::Parse( cstrref filename , PxCommandList * clist )
 {
 	char buff[255];
@@ -61,10 +62,10 @@ void PxDataFileParser::Process( char * buff , PxCommandList * clist )
 	if( IsComment(buff) )
 		return;
 	
-	PxCommand * pcmd = new PxCommand();
+	std::unique_ptr<PxCommand> pcmd ( new PxCommand() );
 	pcmd->Command = line.front();
 	line.pop_front();
 	pcmd->SetArguments( line );
-	clist->Commands.push_back(pcmd);
+	clist->Commands.push_back(std::move(pcmd));
 }
 

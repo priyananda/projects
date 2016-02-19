@@ -6,7 +6,7 @@ void PxQuake3Entity::AddParam( cstrref name , cstrref value )
 	DEFINE_VARF(g_debug_bspscale);
 	if( name == "origin" )
 	{
-		sscanf(
+		sscanf_s(
 			value.c_str(),
 			"%f %f %f",
 			&Origin.x,
@@ -32,7 +32,8 @@ string PxQuake3Entity::operator []( cstrref name )
 
 void PxQuake3EntityParser::Parse( cstrref filename , PxQuake3EntityCollection & coll )
 {
-	FILE * fp = fopen( filename.c_str() , "r" );
+	FILE * fp = nullptr;
+	fopen_s(&fp, filename.c_str(), "r");
 	if( fp )
 	{
 		Parse( fp, coll);

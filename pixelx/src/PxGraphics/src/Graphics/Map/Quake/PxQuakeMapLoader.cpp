@@ -5,20 +5,21 @@
 
 #include <stdio.h>
 
-#define CLEAR_AND_RETURNNULL \
+#define CLEAR_AND_RETURNnullptr \
 	{\
 		delete map; \
-		return NULL; \
+		return nullptr; \
 	}
 DECLARE_VARF(g_debug_bspscale);
 PxQuakeMap * PxQuakeMapLoader::Load(char * filename, int curveTesselation)
 {
 	ASSIGN_VARF(g_debug_bspscale);
-	FILE * file = fopen(filename, "rb");
+	FILE * file = nullptr;
+	fopen_s(&file, filename, "rb");
 	if(!file)
 	{
 		PxLog::LogMessage("Unable to open %s", filename);
-		return NULL;
+		return nullptr;
 	}
 
 	fread(&header, sizeof(PxBSPHeader), 1, file);
@@ -28,7 +29,7 @@ PxQuakeMap * PxQuakeMapLoader::Load(char * filename, int curveTesselation)
 	){
 		PxLog::LogMessage("What the fuck is this file: %s ? Not a BSP file", filename);
 		fclose(file);
-		return NULL;
+		return nullptr;
 	}
 
 	if( header.string[4] != 0x2e )
@@ -38,46 +39,46 @@ PxQuakeMap * PxQuakeMapLoader::Load(char * filename, int curveTesselation)
 	map = new PxQuakeMap();
 	
 	if(!LoadEntityString(file))
-		CLEAR_AND_RETURNNULL
+		CLEAR_AND_RETURNnullptr
 
 	if(!LoadTextures(file))
-		CLEAR_AND_RETURNNULL
+		CLEAR_AND_RETURNnullptr
 
 	if(!LoadPlanes(file))
-		CLEAR_AND_RETURNNULL
+		CLEAR_AND_RETURNnullptr
 
 	if(!LoadNodes(file))
-		CLEAR_AND_RETURNNULL
+		CLEAR_AND_RETURNnullptr
 	
 	if(!LoadLeaves(file))
-		CLEAR_AND_RETURNNULL
+		CLEAR_AND_RETURNnullptr
 
 	if(!LoadLeafFaces(file))
-		CLEAR_AND_RETURNNULL
+		CLEAR_AND_RETURNnullptr
 
 	if(!LoadLeafBrushes(file))
-		CLEAR_AND_RETURNNULL
+		CLEAR_AND_RETURNnullptr
 
 	if(!LoadBrushes(file))
-		CLEAR_AND_RETURNNULL
+		CLEAR_AND_RETURNnullptr
 
 	if(!LoadBrushSides(file))
-		CLEAR_AND_RETURNNULL
+		CLEAR_AND_RETURNnullptr
 
 	if(!LoadVertices(file))
-		CLEAR_AND_RETURNNULL
+		CLEAR_AND_RETURNnullptr
 
 	if(!LoadMeshIndices(file))
-		CLEAR_AND_RETURNNULL
+		CLEAR_AND_RETURNnullptr
 
 	if(!LoadFaces(file, curveTesselation))
-		CLEAR_AND_RETURNNULL
+		CLEAR_AND_RETURNnullptr
 
 	if(!LoadLightmaps(file))
-		CLEAR_AND_RETURNNULL
+		CLEAR_AND_RETURNnullptr
 
 	if(!LoadVisData(file))
-		CLEAR_AND_RETURNNULL
+		CLEAR_AND_RETURNnullptr
 
 	LoadConfig( filename );
 	fclose(file);
@@ -89,7 +90,8 @@ bool PxQuakeMapLoader::LoadEntityString(FILE * file)
 {
 	int numEntities = header.directoryEntries[bspEntities].length;
 	fseek(file, header.directoryEntries[bspEntities].offset, SEEK_SET);
-	FILE * tempFile = fopen( "temp.ent" , "w" );
+	FILE * tempFile = nullptr;
+	fopen_s(&tempFile, "temp.ent", "w");
 	char ch = 0;
     for( int i = 0 ; i < numEntities; ++i )
 	{
@@ -147,7 +149,7 @@ bool PxQuakeMapLoader::LoadVertices(FILE * file)
 
 	if(loadVertices)
 		delete [] loadVertices;
-	loadVertices=NULL;
+	loadVertices=nullptr;
 
 	return true;
 }
@@ -255,7 +257,7 @@ bool PxQuakeMapLoader::LoadFaces(FILE * file, int curveTesselation)
 
 	if(loadFaces)
 		delete [] loadFaces;
-	loadFaces=NULL;
+	loadFaces=nullptr;
 
 	return true;
 }
@@ -283,7 +285,7 @@ bool PxQuakeMapLoader::LoadTextures(FILE * file)
 		}
 		map->isTextureLoaded[i] = (map->decalTextures[i] != 0);
 		map->isTextureSolid[i] =(loadTextures[i].contents & 1);
-		if( stricmp( loadTextures[i].name , "textures/sfx/flame1_hell" ) )
+		if( _stricmp( loadTextures[i].name , "textures/sfx/flame1_hell" ) )
 			map->isTextureShader[i] = true;
 		else
 			map->isTextureShader[i] = false;
@@ -291,7 +293,7 @@ bool PxQuakeMapLoader::LoadTextures(FILE * file)
 
 	if(loadTextures)
 		delete [] loadTextures;
-	loadTextures=NULL;
+	loadTextures=nullptr;
 
 	return true;
 }
@@ -355,7 +357,7 @@ bool PxQuakeMapLoader::LoadLightmaps(FILE * file)
 
 	if(loadLightmaps)
 		delete [] loadLightmaps;
-	loadLightmaps=NULL;
+	loadLightmaps=nullptr;
 
 	return true;
 }
@@ -437,7 +439,7 @@ bool PxQuakeMapLoader::LoadVisData(FILE * file)
 	{
 		map->visibilityData.numClusters = -1;
 		map->visibilityData.bytesPerCluster = -1;
-		map->visibilityData.bitset = NULL;
+		map->visibilityData.bitset = nullptr;
 		return true;
 	}
 	fseek(file, header.directoryEntries[bspVisData].offset, SEEK_SET);

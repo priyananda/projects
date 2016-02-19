@@ -269,7 +269,7 @@ glmWeld(GLMmodel* model, GLfloat epsilon);
  *
  * The rgb data is returned as an array of unsigned chars (packed
  * rgb).  The malloc()'d memory should be free()'d by the caller.  If
- * an error occurs, an error message is sent to stderr and NULL is
+ * an error occurs, an error message is sent to stderr and nullptr is
  * returned.
  *
  * filename   - name of the .ppm file.

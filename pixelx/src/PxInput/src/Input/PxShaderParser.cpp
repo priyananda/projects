@@ -22,7 +22,7 @@ inline bool _isspc( int ch )
 {
 	return ch == -1 || isspace( ch );
 }
-bool PxShaderParser::ignoreWhiteSpace(bool ignorenl)
+bool PxShaderParser::_IgnoreWhiteSpace(bool ignorenl)
 {
 	char ch = 0;
 	while( ! feof( m_file ) )
@@ -46,13 +46,14 @@ void PxShaderParser::Parse(cstrref filename)
 		return;
 	_ReadShaders();
 	fclose( m_file );
+	m_file = nullptr;
 }
 
 void PxShaderParser::_ReadShaders()
 {
 	while( ! feof( m_file ) )
 	{
-		string token = getNextToken( true );
+		string token = _GetNextToken( true );
 		if( token == OBRACE )
 		{
 			switch(_state)
@@ -60,9 +61,9 @@ void PxShaderParser::_ReadShaders()
 				case eParserInsideShader:
 				{
 					_state = eParserInsideStage;
-					PxShaderData & shader = m_shaders[ m_currentShaderName ];
-					PxCommandList clist;
-					shader.Stages.push_back( clist );
+					PxShaderData & shader = *(m_shaders[ m_currentShaderName ]);
+					std::unique_ptr<PxCommandList> commandList(new PxCommandList);
+					shader.Stages.push_back( std::move(commandList) );
 					break;
 				}
 				case eParserOutside:
@@ -89,55 +90,54 @@ void PxShaderParser::_ReadShaders()
 			case eParserOutside:
 			{
 				m_currentShaderName = token;
-				this->m_shaders[ token ] = PxShaderData( token );
+				std::unique_ptr<PxShaderData> pShaderData(new PxShaderData(token));
+				this->m_shaders[token] = std::move(pShaderData);
 				break;
 			}
 			case eParserInsideShader:
 			{
-				PxCommandList & clist = this->m_shaders[ m_currentShaderName ].Commands;
-				PxCommand * command = new PxCommand;
+				std::unique_ptr<PxCommand> command(new PxCommand);
 				command->Command = token;
 				list<string> args;
 				while( ! feof( m_file ) )
 				{
-					token = getNextToken( false );
+					token = _GetNextToken( false );
 					if( token == "" || token == NL )
 						break;
 					args.push_back( token );
 				}
 				command->SetArguments( args );
-				clist.Commands.push_back( command );
+				this->m_shaders[m_currentShaderName]->AddCommand(std::move(command));
 				break;
 			}
 			case eParserInsideStage:
 			{
-				PxCommandList & clist = this->m_shaders[ m_currentShaderName ].Stages.back();
-				PxCommand * command = new PxCommand;
+				std::unique_ptr<PxCommand> command(new PxCommand);
 				command->Command = token;
 				list<string> args;
 				while( ! feof( m_file ) )
 				{
-					token = getNextToken( false );
+					token = _GetNextToken( false );
 					if( token == "" || token == NL )
 						break;
 					args.push_back( token );
 				}
 				command->SetArguments( args );
-				clist.Commands.push_back( command );
+				this->m_shaders[m_currentShaderName]->AddCommandToStage(std::move(command));
 				break;
 			}
 		}
 	}
 }
 
-string PxShaderParser::getNextToken( bool ignorenl )
+string PxShaderParser::_GetNextToken( bool ignorenl )
 {
 	static char buff[300];
 	char ch = 0;
 	int count = 0;
 	bool last_char_slash = false;
 	
-	if( ignoreWhiteSpace(ignorenl) )
+	if( _IgnoreWhiteSpace(ignorenl) )
 		return NL;
 	
 	while( ! feof( m_file ) )
@@ -157,7 +157,7 @@ string PxShaderParser::getNextToken( bool ignorenl )
 				if( --count )
 					break;
 				last_char_slash = false;
-				if( ignoreWhiteSpace(ignorenl) )
+				if( _IgnoreWhiteSpace(ignorenl) )
 					return NL;
 			}
 			else

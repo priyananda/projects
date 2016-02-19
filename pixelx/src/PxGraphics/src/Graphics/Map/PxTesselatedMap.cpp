@@ -16,7 +16,7 @@ void PxTesselatedMap::AddObject( string name, PxRuntimeObjectType type, string p
 
 void PxTesselatedMap::AddPolygon( PxPolygon & p )
 {
-	mPolySet.AddPolygon(new PxPolygon(p));
+	mPolySet.AddPolygon(std::make_unique<PxPolygon>(p));
 }
 PxTriangleSet * PxTesselatedMap::GetTriangleSet()
 {

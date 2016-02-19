@@ -103,27 +103,27 @@ PxQuake3ModelCore::PxQuake3ModelCore(cstrref pathname)
 	memset(&m_Upper, 0, sizeof(t3DModel));
 	memset(&m_Lower, 0, sizeof(t3DModel));
 	memset(&m_Weapon, 0, sizeof(t3DModel));
-	PxCommandList * clist = PxDataFileParser::Parse(pathname);
+	std::unique_ptr<PxCommandList> clist(PxDataFileParser::Parse(pathname));
 
-	if( clist == NULL )
+	if( clist == nullptr )
 		return;
-	for( PxCommandList::Iterator iter = clist->Commands.begin(); iter != clist->Commands.end(); ++iter )
+	for( auto& spCmd : *clist )
 	{
-		string name = (*iter)->Command;
+		string name = spCmd->Command;
 		if( name == "lower" )
-			sprintf_s(strLowerModel,"data\\%s" , (*iter)->Arguments[0].c_str() );
+			sprintf_s(strLowerModel,"data\\%s" , spCmd->Arguments[0].c_str() );
 		if( name == "upper" )
-			sprintf_s(strUpperModel,"data\\%s" , (*iter)->Arguments[0].c_str() );
+			sprintf_s(strUpperModel,"data\\%s" , spCmd->Arguments[0].c_str() );
 		if( name == "head" )
-			sprintf_s(strHeadModel,"data\\%s" , (*iter)->Arguments[0].c_str() );
+			sprintf_s(strHeadModel,"data\\%s" , spCmd->Arguments[0].c_str() );
 		if( name == "lowerskin" )
-			sprintf_s(strLowerSkin,"data\\%s" , (*iter)->Arguments[0].c_str() );
+			sprintf_s(strLowerSkin,"data\\%s" , spCmd->Arguments[0].c_str() );
 		if( name == "upperskin" )
-			sprintf_s(strUpperSkin,"data\\%s" , (*iter)->Arguments[0].c_str() );
+			sprintf_s(strUpperSkin,"data\\%s" , spCmd->Arguments[0].c_str() );
 		if( name == "headskin" )
-			sprintf_s(strHeadSkin,"data\\%s" , (*iter)->Arguments[0].c_str() );
+			sprintf_s(strHeadSkin,"data\\%s" , spCmd->Arguments[0].c_str() );
 		if( name == "texdir" )
-			sprintf_s(texBaseDir,"data\\%s" , (*iter)->Arguments[0].c_str() );
+			sprintf_s(texBaseDir,"data\\%s" , spCmd->Arguments[0].c_str() );
 	}
 	this->LoadModel( 
 		strLowerModel,
@@ -686,10 +686,10 @@ PxQuake3ModelLoader::PxQuake3ModelLoader()
 	memset(&m_Header, 0, sizeof(tMd3Header));
 
 	// Set the pointers to null
-	m_pSkins=NULL;
-	m_pTexCoords=NULL;
-	m_pTriangles=NULL;
-	m_pBones=NULL;
+	m_pSkins=nullptr;
+	m_pTexCoords=nullptr;
+	m_pTriangles=nullptr;
+	m_pBones=nullptr;
 }
 
 
@@ -715,7 +715,7 @@ bool PxQuake3ModelLoader::ImportMD3(t3DModel *pModel, char *strFileName)
 	{
 		// Display an error message and don't load anything if no file was found
 		sprintf_s(strMessage, "Unable to find the file: %s!", strFileName);
-		MessageBox(NULL, strMessage, "Error", MB_OK);
+		MessageBox(nullptr, strMessage, "Error", MB_OK);
 		return false;
 	}
 	
@@ -737,7 +737,7 @@ bool PxQuake3ModelLoader::ImportMD3(t3DModel *pModel, char *strFileName)
 	{
 		// Display an error message for bad file format, then stop loading
 		sprintf_s(strMessage, "Invalid file format (Version not 15): %s!", strFileName);
-		MessageBox(NULL, strMessage, "Error", MB_OK);
+		MessageBox(nullptr, strMessage, "Error", MB_OK);
 		return false;
 	}
 	
@@ -791,9 +791,9 @@ void PxQuake3ModelLoader::ReadMD3Data(t3DModel *pModel)
 	// array of pointers.  We don't want to store any information, just pointers to t3DModels.
 	pModel->pLinks = (t3DModel **) malloc(sizeof(t3DModel) * m_Header.numTags);
 	
-	// Initilialize our link pointers to NULL
+	// Initilialize our link pointers to nullptr
 	for (i = 0; i < m_Header.numTags; i++)
-		pModel->pLinks[i] = NULL;
+		pModel->pLinks[i] = nullptr;
 
 	// Now comes the loading of the mesh data.  We want to use ftell() to get the current
 	// position in the file.  This is then used to seek to the starting position of each of
@@ -988,7 +988,7 @@ bool PxQuake3ModelLoader::LoadSkin(t3DModel *pModel, LPSTR strSkin)
 	if(fin.fail())
 	{
 		// Display the error message and return false
-		MessageBox(NULL, "Unable to load skin!", "Error", MB_OK);
+		MessageBox(nullptr, "Unable to load skin!", "Error", MB_OK);
 		return false;
 	}
 
@@ -1085,7 +1085,7 @@ bool PxQuake3ModelLoader::LoadShader(t3DModel *pModel, LPSTR strShader)
 	if(fin.fail())
 	{
 		// Display the error message and return false
-		MessageBox(NULL, "Unable to load shader!", "Error", MB_OK);
+		MessageBox(nullptr, "Unable to load shader!", "Error", MB_OK);
 		return false;
 	}
 

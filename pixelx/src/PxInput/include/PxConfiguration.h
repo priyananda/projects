@@ -1,5 +1,4 @@
-#ifndef _PIXELX_CONF_H
-#define _PIXELX_CONF_H
+#pragma once
 #include "Common.h"
 
 #include <unordered_map>
@@ -46,5 +45,3 @@ public:
 #define DECLARE_VARF(v) static float v
 #define DECLARE_VARS(v) static string v
 #define DECLARE_VARL(v) static long v
-#endif
-

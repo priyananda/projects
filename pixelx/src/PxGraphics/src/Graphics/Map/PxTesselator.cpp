@@ -8,7 +8,7 @@ using std::vector;
 
 static void Tesselate( PxPolygon & p , PxTriangleSet * pts )
 {
-	vector<PxVertex *> & pverts = p.GetVertices();
+	vector<std::unique_ptr<PxVertex>> & pverts = p.GetVertices();
 	bool isAllZero = true;
 	int numTriangles = pverts.size() - 2;
 	bool isGrass = p.GetTexture() == "GRASS";

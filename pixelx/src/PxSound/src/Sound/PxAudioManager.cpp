@@ -22,12 +22,12 @@ void PxAudioManager::Init()
 	PxCommandList * clist = PxDataFilesManager::Get("AUDIO_LIST");
 	if( ! clist )
 		return;
-	FOR_EACH_CLIST(clist,iter)
+	for(const auto& cmd : *clist)
 	{
 		_AudioData md;
-		md.path = "data\\" + (*iter)->Arguments[1];
-		md.loop = ( _stricmp( (*iter)->Arguments[2].c_str() , "true" ) == 0);
-		m_files[ (*iter)->Arguments[0] ] = md;
+		md.path = "data\\" + cmd->Arguments[1];
+		md.loop = ( _stricmp( cmd->Arguments[2].c_str() , "true" ) == 0);
+		m_files[ cmd->Arguments[0] ] = md;
 	}
 }
 
@@ -36,7 +36,7 @@ void PxAudioManager::Play( cstrref name )
 	if( m_files.find(name) == m_files.end() )
 		return;
 	_AudioData ad = m_files[ name ];
-	if( ad.id.sampleid == NULL )
+	if( ad.id.sampleid == nullptr )
 		Load(ad);
 	Play( ad );
 	m_files[ name ] = ad;
@@ -79,7 +79,7 @@ void PxAudioManager::Loop( cstrref name )
 	if( m_files.find(name) == m_files.end() )
 		return;
 	_AudioData ad = m_files[ name ];
-	if( ad.id.sampleid == NULL )
+	if( ad.id.sampleid == nullptr )
 	{
 		Load(ad);
 		m_files[ name ] = ad;

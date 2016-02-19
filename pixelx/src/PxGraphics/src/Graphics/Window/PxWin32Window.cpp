@@ -16,9 +16,9 @@ void PxWin32Window::ChangeToFullScreen()
 {
 	DEVMODE dmSettings;
 	memset(&dmSettings,0,sizeof(dmSettings));
-	if(!EnumDisplaySettings(NULL,-1,&dmSettings))
+	if(!EnumDisplaySettings(nullptr,-1,&dmSettings))
 	{
-		MessageBox(NULL, "Could Not Enum Display Settings", "Error", MB_OK);
+		MessageBox(nullptr, "Could Not Enum Display Settings", "Error", MB_OK);
 		return;
 	}
 	dmSettings.dmPelsWidth	= ScreenWidth;
@@ -26,7 +26,7 @@ void PxWin32Window::ChangeToFullScreen()
 	dmSettings.dmFields     = DM_BITSPERPEL | DM_PELSWIDTH | DM_PELSHEIGHT;
 	if(ChangeDisplaySettings(&dmSettings, 4) != DISP_CHANGE_SUCCESSFUL)
 	{
-		MessageBox(NULL, "Display Mode Not Compatible", "Error", MB_OK);
+		MessageBox(nullptr, "Display Mode Not Compatible", "Error", MB_OK);
 		PostQuitMessage(0);
 	}
 }
@@ -38,8 +38,8 @@ void PxWin32Window::CreateTheFuckingWindow()
 	wndclass.style = CS_HREDRAW | CS_VREDRAW;
 	wndclass.lpfnWndProc = MyFuckedUpWinProc;
 	wndclass.hInstance = g_hInstance;
-	wndclass.hIcon = LoadIcon(NULL, IDI_APPLICATION);
-	wndclass.hCursor = LoadCursor(NULL, IDC_ARROW);
+	wndclass.hIcon = LoadIcon(nullptr, IDI_APPLICATION);
+	wndclass.hCursor = LoadCursor(nullptr, IDC_ARROW);
 	wndclass.hbrBackground = (HBRUSH) (COLOR_WINDOW+1);
 	wndclass.lpszClassName = "KickMyAss";
 	
@@ -60,7 +60,7 @@ void PxWin32Window::CreateTheFuckingWindow()
 	WindowHandle = CreateWindow(
 		"KickMyAss", "ShenoyIsGod", dwStyle, 0, 0,
 		rWindow.right  - rWindow.left, rWindow.bottom - rWindow.top, 
-		NULL, NULL, g_hInstance, NULL
+		nullptr, nullptr, g_hInstance, nullptr
 	);
 
 	ShowWindow(WindowHandle, SW_SHOWNORMAL);
@@ -86,12 +86,12 @@ bool PxWin32Window::SetupPixelFormat(int BitsPerPixel)
  
     if ((pixelformat = ChoosePixelFormat(DeviceContext, &pfd)) == FALSE ) 
     { 
-        MessageBox(NULL, "ChoosePixelFormat failed", "Error", MB_OK); 
+        MessageBox(nullptr, "ChoosePixelFormat failed", "Error", MB_OK); 
         return FALSE; 
     } 
     if (SetPixelFormat(DeviceContext, pixelformat, &pfd) == FALSE) 
     { 
-        MessageBox(NULL, "SetPixelFormat failed", "Error", MB_OK); 
+        MessageBox(nullptr, "SetPixelFormat failed", "Error", MB_OK); 
         return FALSE; 
     } 
     return TRUE;
@@ -112,7 +112,7 @@ long PxWin32Window::MessageLoop()
 	MSG msg;
 	while(true)
 	{
-		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
         {
 			if(msg.message == WM_QUIT)
 				break;
@@ -128,12 +128,12 @@ void PxWin32Window::Close()
 {
 	if (OpenglContext)											
 	{
-		wglMakeCurrent(NULL, NULL);
+		wglMakeCurrent(nullptr, nullptr);
 		wglDeleteContext(OpenglContext);
 	}
 	if (DeviceContext)
 		ReleaseDC(WindowHandle, DeviceContext);
-	ChangeDisplaySettings(NULL,0);
+	ChangeDisplaySettings(nullptr,0);
 	ShowCursor(TRUE);
 	UnregisterClass("KickMyAss", g_hInstance);
 	PostQuitMessage(0);

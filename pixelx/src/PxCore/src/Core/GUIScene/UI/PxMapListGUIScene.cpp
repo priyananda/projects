@@ -30,7 +30,7 @@ public:
 
 _MainWindow::_MainWindow( PxMapListGUIScene * parent, int sw, int sh )
 	:Gooey::FrameWindow(
-		Gooey::Core::Rectangle(0, 0, sw, sh),
+		Gooey::Core::Rectangle(0, 0, (float)sw, (float)sh),
 		0,
 		"Choose a Map"
 	),
@@ -55,8 +55,8 @@ _MainWindow::_MainWindow( PxMapListGUIScene * parent, int sw, int sh )
 		mButtonNext.pressed.connect(this, &_MainWindow::mButtonNext_Click);
 		mButtonOK.pressed.connect(this, &_MainWindow::mButtonOK_Click);
 		int wid = sw - 120;
-		mTextBox.setSize(Gooey::Core::Vector2( wid , sh - 200 ));
-        mPanel.setLayouter(NULL);
+		mTextBox.setSize(Gooey::Core::Vector2( float(wid) , float(sh - 200) ));
+        mPanel.setLayouter(nullptr);
 		mPanel.addChildWindow(&mButtonPrev);
 		mPanel.addChildWindow(&mTextBox);
 		mPanel.addChildWindow(&mButtonNext);
@@ -70,7 +70,7 @@ _MainWindow::_MainWindow( PxMapListGUIScene * parent, int sw, int sh )
 	}
 }
 
-static vector<PxWorld> worlds;
+static vector<UP<PxWorld>> worlds;
 static vector<GLuint> textures;
 static unsigned g_selectedWorld = 0;
 
@@ -79,16 +79,17 @@ void _MainWindow::AddFiles()
 {
 	WIN32_FIND_DATA lpFindFileData;
 	HANDLE h = FindFirstFile("data\\worlds\\*.pxw", &lpFindFileData);
-	PxWorld theWorld;
 	//<hack>
 	PxImageProvider::Reset();
 	//<endhack>
 	while(true)
 	{
 		string s = lpFindFileData.cFileName;
-		theWorld.Deserialize( "data\\worlds\\" + s );
-		worlds.push_back( theWorld );
-		string fileName = theWorld.GetBSPFileName();
+
+		UP<PxWorld> theWorld(std::make_unique<PxWorld>());
+		theWorld->Deserialize( "data\\worlds\\" + s );
+		string fileName = theWorld->GetBSPFileName();
+		worlds.push_back(std::move(theWorld));
 		int l = fileName.find("maps");
 		fileName.replace( l , 4 , "qbase\\levelshots" );
 		l = fileName.find(".bsp");
@@ -125,7 +126,7 @@ void _MainWindow::mButtonOK_Click()
 }
 void _MainWindow::DrawWorld()
 {
-	PxWorld & world = worlds[ g_selectedWorld ];
+	PxWorld & world = *worlds[ g_selectedWorld ];
 	mTextBox.setText( world.GetName() );
 }
 
@@ -147,7 +148,7 @@ void PxMapListGUIScene::Initialize()
 void PxMapListGUIScene::mButton_Click()
 {
 	PxGameScene * pGameScene = new PxGameScene("game");
-	pGameScene->World = & worlds[g_selectedWorld];
+	pGameScene->World = worlds[g_selectedWorld].get();
 	m_pSceneRegulator->AddScene( pGameScene );
 	m_pSceneRegulator->Signal( eScNamedScene , "game" );
 }
@@ -158,7 +159,7 @@ void PxMapListGUIScene::Dispose()
 	{
 		Gooey::WindowManager::instance().removeAllWindows();
 		//delete m_pWindow;
-		//m_pWindow = NULL;
+		//m_pWindow = nullptr;
 	}
 }
 

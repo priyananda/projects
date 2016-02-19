@@ -11,7 +11,7 @@
 #include "PxTeamChooserScene.h"
 
 PxSceneRegulator::PxSceneRegulator()
-	:m_currentRenderer(NULL)
+	:m_currentRenderer(nullptr)
 {
 	m_renderers.push_back(
 		new PxGUISceneRenderer( this )
@@ -50,9 +50,9 @@ void PxSceneRegulator::Signal( long condition , void * params )
 				return;
 			IScene * pScene = m_scenes[sname];
 			ISceneRenderer * pSceneRenderer = FindRenderer(pScene);
-			if( pSceneRenderer == NULL)
+			if( pSceneRenderer == nullptr)
 				return;
-			if( m_currentRenderer != NULL)
+			if( m_currentRenderer != nullptr)
 				m_currentRenderer->Exit();
 			m_currentRenderer = pSceneRenderer;
 			m_currentRenderer->Enter();
@@ -67,6 +67,6 @@ ISceneRenderer * PxSceneRegulator::FindRenderer( IScene * pScene )
 	for( int i = 0 ; i < count ; ++i )
 		if( m_renderers[i]->AcceptScene(pScene) )
 			return m_renderers[i];
-	return NULL;
+	return nullptr;
 }
 

@@ -18,6 +18,6 @@ struct PxParticle
 typedef PxVertex PxPoint;
 
 #define PI 3.14159f
-#define GRAVITY_ACCL 9.8
+#define GRAVITY_ACCL 9.8f
 
 #endif

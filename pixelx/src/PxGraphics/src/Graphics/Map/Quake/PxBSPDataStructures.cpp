@@ -26,18 +26,18 @@ PxBSPBiquadraticPatch::~PxBSPBiquadraticPatch()
 {
 	if(vertices)
 		delete [] vertices; 
-	vertices=NULL;
+	vertices=nullptr;
 
 	if(indices)
 		delete [] indices;
-	indices=NULL;
+	indices=nullptr;
 }
 
 PxBSPVisibilityData::~PxBSPVisibilityData()
 {
 	if(bitset)
 		delete [] bitset;
-	bitset=NULL;
+	bitset=nullptr;
 }
 
 bool PxBSPBiquadraticPatch::Tesselate(int newTesselation)

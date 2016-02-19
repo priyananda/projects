@@ -59,8 +59,8 @@ string PxQuakeTextureManager::MapTexturePath( cstrref name )
 		PxCommandList * pList = PxDataFilesManager::Get("data\\qtexmap.pxl");
 		if( pList )
 		{
-			FOR_EACH_CLIST(pList,iter)
-				mapQuakeTex[ (*iter)->Command ] = (*iter)->Arguments[0];
+			for( const auto& spCmd : *pList)
+				mapQuakeTex[ spCmd->Command ] = spCmd->Arguments[0];
 		}
 	}
 	if( mapQuakeTex.find( name ) != mapQuakeTex.end() )

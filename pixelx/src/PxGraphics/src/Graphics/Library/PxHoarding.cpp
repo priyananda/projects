@@ -20,15 +20,16 @@ PxBoundingBox & PxHoarding::GetBoundingBox()
 
 void PxHoarding::Register(PxPolygonCollection * coll)
 {
-	PxRectangle * s1,*s2;
+	std::unique_ptr<PxRectangle> s1;
+	std::unique_ptr<PxRectangle> s2;
 	if( bbox.length < bbox.height )
 	{
-		s1 = new PxRectangle(	bbox.x	,bbox.y + bbox.width, bbox.z,
+		s1.reset(new PxRectangle(	bbox.x	,bbox.y + bbox.width, bbox.z,
 								0		,- bbox.width * 0.75f	, bbox.height,
-								m_texname );
-		s2 = new PxRectangle(	bbox.x + bbox.length,bbox.y + bbox.width,bbox.z+bbox.height,
+								m_texname ));
+		s2.reset(new PxRectangle(	bbox.x + bbox.length,bbox.y + bbox.width,bbox.z+bbox.height,
 								0					,-bbox.width * 0.75f	,-bbox.height,
-								m_texname );
+								m_texname ));
 		PxCube c1(bbox.x,bbox.y,bbox.z,bbox.length,bbox.width *0.25f,bbox.length );
 		c1.SetTexture("WOOD1");
 		c1.Register(coll);
@@ -38,12 +39,12 @@ void PxHoarding::Register(PxPolygonCollection * coll)
 	}
 	else
 	{
-		s1 = new PxRectangle(	bbox.x,		bbox.y + bbox.width	,bbox.z,
+		s1.reset(new PxRectangle(	bbox.x,		bbox.y + bbox.width	,bbox.z,
 								bbox.length,-bbox.width  * 0.75f			,0,
-								m_texname );
-		s2 = new PxRectangle(	bbox.x+bbox.length,		bbox.y + bbox.width ,bbox.z + bbox.height,
+								m_texname ));
+		s1.reset(new PxRectangle(	bbox.x+bbox.length,		bbox.y + bbox.width ,bbox.z + bbox.height,
 								-bbox.length,-bbox.width * 0.75f			,0,
-								m_texname );
+								m_texname ));
 		PxCube c1(bbox.x,bbox.y,bbox.z,bbox.height,bbox.width *0.25f,bbox.height );
 		c1.SetTexture("WOOD1");
 		c1.Register(coll);
@@ -51,8 +52,8 @@ void PxHoarding::Register(PxPolygonCollection * coll)
 		c2.SetTexture("WOOD1");
 		c2.Register(coll);
 	}
-	coll->AddPolygon(s1);
-	coll->AddPolygon(s2);
+	coll->AddPolygon(std::move(s1));
+	coll->AddPolygon(std::move(s1));
 }
 
 void PxHoarding::Render()

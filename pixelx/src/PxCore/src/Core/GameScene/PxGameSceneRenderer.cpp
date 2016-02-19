@@ -87,22 +87,22 @@ void PxGameSceneRenderer::WriteStuff(float fpsval,float sw, float sh)
 		glTexCoord2f( 0,0);glVertex2i(0,(GLint)sh);
 	glEnd();
 
-	sprintf( fps , "FPS : %2.2f" , fpsval );
+	sprintf_s( fps , _countof(fps), "FPS : %2.2f" , fpsval );
 	PxTextWriter::Write( int(sw - 400) ,int(sh - 50), fps , 1, 255,255,255 );
-	sprintf( fps , "Position: %2.2f, %2.2f ,%2.2f" , m_currentWorld->GetCamera().Position().x,m_currentWorld->GetCamera().Position().y,m_currentWorld->GetCamera().Position().z );
+	sprintf_s( fps , _countof(fps), "Position: %2.2f, %2.2f ,%2.2f" , m_currentWorld->GetCamera().Position().x,m_currentWorld->GetCamera().Position().y,m_currentWorld->GetCamera().Position().z );
 	PxTextWriter::Write( int(sw - 400) ,int(sh - 100), fps , 1, 255,255,255 );
-	sprintf( fps , "View: %2.2f, %2.2f ,%2.2f" , m_currentWorld->GetCamera().View().x,m_currentWorld->GetCamera().View().y,m_currentWorld->GetCamera().View().z );
+	sprintf_s( fps , _countof(fps), "View: %2.2f, %2.2f ,%2.2f" , m_currentWorld->GetCamera().View().x,m_currentWorld->GetCamera().View().y,m_currentWorld->GetCamera().View().z );
 	PxTextWriter::Write( int(sw - 400) ,int(sh - 150), fps , 1, 255,255,255 );
-	sprintf( fps , "Triangles Drawn: %d " , m_currentWorld->GetRenderedTrianglesCount() + g_debug_tricount);
+	sprintf_s( fps , _countof(fps), "Triangles Drawn: %d " , m_currentWorld->GetRenderedTrianglesCount() + g_debug_tricount);
 	PxTextWriter::Write( int(sw - 400) ,int(sh - 200), fps , 1, 255,255,255 );
-	sprintf( fps , "%d " , m_currentWorld->GetHuman().iPlayerAmmo );
+	sprintf_s( fps , _countof(fps), "%d " , m_currentWorld->GetHuman().iPlayerAmmo );
 	PxTextWriter::Write( 280 ,70, fps , 3, 0,0,255 );
-	sprintf( fps , "%d " , m_currentWorld->GetHuman().iPlayerHealth );
+	sprintf_s( fps , _countof(fps), "%d " , m_currentWorld->GetHuman().iPlayerHealth );
 	PxTextWriter::Write( 420 ,70, fps , 3, 0,0,255 );
-	sprintf( fps , "Frags: %ld/%ld" , m_currentWorld->GetHuman().iFragCount, m_currentWorld->GetWorldFragCount() );
-	PxTextWriter::Write( 100 , sh - 70, fps , 1, 255,255,255 );
-	sprintf( fps , "Time: %2d:%2d" , g_minutes , g_seconds );
-	PxTextWriter::Write( 100 , sh - 100, fps , 1, 255,255,255 );
+	sprintf_s( fps , _countof(fps), "Frags: %ld/%ld" , m_currentWorld->GetHuman().iFragCount, m_currentWorld->GetWorldFragCount() );
+	PxTextWriter::Write( 100 , int(sh - 70), fps , 1, 255,255,255 );
+	sprintf_s( fps , _countof(fps), "Time: %2d:%2d" , g_minutes , g_seconds );
+	PxTextWriter::Write( 100 , int(sh - 100), fps , 1, 255,255,255 );
 	PxGraphicsRoot::Restore();
 }
 void PxGameSceneRenderer::HandlePaint(PxWindow * pWindow )
@@ -112,7 +112,7 @@ void PxGameSceneRenderer::HandlePaint(PxWindow * pWindow )
 	if( ! m_inited )
 	{
 		PxImageProvider::Reset();
-		LoadingScreen(pWindow->ScreenWidth, pWindow->ScreenHeight);
+		LoadingScreen(float(pWindow->ScreenWidth), float(pWindow->ScreenHeight));
 		pWindow->Update();
 		PxAudioManager::Play( "LAUGH" );
 		Init();
@@ -152,11 +152,12 @@ void PxGameSceneRenderer::HandlePaint(PxWindow * pWindow )
 string GetShotFileName()
 {
 	static char buff[30];
-	FILE * fp = NULL;
 	for( int i = 0; i < 99 ; ++i )
 	{
-		sprintf(buff,"data\\shots\\shot%d.tga" , i );
-		if( (fp = fopen( buff, "rb" )) == NULL )
+		sprintf_s(buff, _countof(buff), "data\\shots\\shot%d.tga" , i );
+		FILE * fp = nullptr;
+		fopen_s(&fp, buff, "rb");
+		if( fp == nullptr )
 			return string(buff);
 		else
 			fclose(fp);
@@ -227,25 +228,25 @@ void PxGameSceneRenderer::HandleChar( int charCode )
 
 int PxGameSceneRenderer::HandleCommand( const char * cmd )
 {
-	if( stricmp( cmd, "wireframe" ) == 0 )
+	if( _stricmp( cmd, "wireframe" ) == 0 )
 		g_debug_wireframe = !g_debug_wireframe;
-	if( stricmp( cmd, "q!" ) == 0 )
+	if( _stricmp( cmd, "q!" ) == 0 )
 		PostQuitMessage(0);
-	if( stricmp( cmd, "giveall" ) == 0 )
+	if( _stricmp( cmd, "giveall" ) == 0 )
 	{
 		m_currentWorld->GetHuman().iPlayerHealth = 100;
 		m_currentWorld->GetHuman().iPlayerAmmo = 42;
 	}
-	if( stricmp( cmd , "resettime" ) == 0 )
+	if(_stricmp( cmd , "resettime" ) == 0 )
 		g_startTime = timeGetTime();	
-	if( stricmp( cmd, "drawbsp" ) == 0 )
+	if(_stricmp( cmd, "drawbsp" ) == 0 )
 		g_debug_drawbsp = !g_debug_drawbsp;
-	if( stricmp( cmd, "clip" ) == 0 )
+	if(_stricmp( cmd, "clip" ) == 0 )
 		g_debug_collision = !g_debug_collision;
 	if( strstr( cmd, "pos" ) )
 	{
 		float x,y,z;
-		sscanf( cmd , "pos %f %f %f" , 
+		sscanf_s( cmd , "pos %f %f %f" , 
 			&x,
 			&y,
 			&z
@@ -260,8 +261,8 @@ int PxGameSceneRenderer::HandleCommand( const char * cmd )
 	{
 		char which;
 		float x,y,z,det;
-		sscanf( cmd , "+%c %f" ,
-			&which,
+		sscanf_s( cmd , "+%c %f" ,
+			&which, 1,
 			&det
 		);
 		x = m_currentWorld->GetCamera().Position().x;

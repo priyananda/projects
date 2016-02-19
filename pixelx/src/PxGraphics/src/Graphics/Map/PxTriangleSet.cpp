@@ -3,11 +3,12 @@
 static string CreateHash(cstrref tname, TextureMode mode)
 {
 	static char buff[100];
-	sprintf(buff,"%s%d", tname.c_str() , mode );
+	sprintf_s(buff, 100, "%s%d", tname.c_str() , mode );
 	return string(buff);
 }
+
 PxMesh::PxMesh(cstrref texname,TextureMode mode )
-	:mTriangleArray(NULL),TextureName(texname),TexMode(mode),mTriangleCount(0)
+	:mTriangleArray(nullptr),TextureName(texname),TexMode(mode),mTriangleCount(0)
 {
 }
 
@@ -42,7 +43,7 @@ void PxMesh::Render()
 
 PxMesh * PxMeshes::GetMesh( cstrref texname , TextureMode mode )
 {
-	PxMesh * ret = NULL;
+	PxMesh * ret = nullptr;
 	string hash = CreateHash(texname,mode);
 	if( mMeshes.find(hash) == mMeshes.end() )
 	{
@@ -67,7 +68,7 @@ PxMesh::~PxMesh()
 	if( mTriangleArray )
 	{
 		delete [] mTriangleArray;
-		mTriangleArray = NULL;
+		mTriangleArray = nullptr;
 	}
 }
 PxTriangleSet::PxTriangleSet( )
@@ -78,7 +79,7 @@ PxTriangleSet::PxTriangleSet( )
 void PxTriangleSet::AddTriangle( cstrref texname , TextureMode mode, PxTriangle & pt )
 {
 	PxMesh * pMesh = mMeshes.GetMesh(texname,mode);
-	if( pMesh != NULL )
+	if( pMesh != nullptr )
 		pMesh->AddTriangle(pt);
 }
 

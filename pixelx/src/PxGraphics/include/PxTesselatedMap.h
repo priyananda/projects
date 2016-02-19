@@ -16,7 +16,7 @@ class PxTesselatedMap
 public:
 	vector<PxRuntimeObject> Objects;
 
-	PxTesselatedMap():mTriangleSet(NULL){}
+	PxTesselatedMap():mTriangleSet(nullptr){}
 	
 	~PxTesselatedMap()
 	{

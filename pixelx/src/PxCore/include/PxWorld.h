@@ -31,6 +31,8 @@ public:
 	PxWorld(cstrref filename){ Deserialize(filename); }
 	~PxWorld();
 
+	PxWorld(const PxWorld&) = delete;
+
 	void Deserialize(cstrref filename);
 	void Initialize();
 	void Render(PxWindow *);

@@ -22,7 +22,7 @@ static bool isCtrlPressed()
 }
 
 PxGUISceneRenderer::PxGUISceneRenderer(ISceneRegulator * pReg)
-:m_pRegulator(pReg),m_pCurrentScene(NULL){}
+:m_pRegulator(pReg),m_pCurrentScene(nullptr){}
 
 bool PxGUISceneRenderer::AcceptScene(IScene * pScene)
 {
@@ -43,17 +43,17 @@ void PxGUISceneRenderer::Enter()
 
 void PxGUISceneRenderer::Exit()
 {
-	if( m_pCurrentScene != NULL )
+	if( m_pCurrentScene != nullptr )
 	{
 		m_pCurrentScene->Dispose();
-		m_pCurrentScene = NULL;
+		m_pCurrentScene = nullptr;
 	}
 	PxGraphicsRoot::Restore();
 }
 
 void PxGUISceneRenderer::SetScene(IScene * pScene)
 {
-	if( m_pCurrentScene != NULL )
+	if( m_pCurrentScene != nullptr )
 	{
 		m_pCurrentScene->Dispose();
 	}

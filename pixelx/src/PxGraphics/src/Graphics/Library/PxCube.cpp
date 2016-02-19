@@ -21,52 +21,54 @@ void PxCube::SetTexture(cstrref name)
 
 void PxCube::Register(PxPolygonCollection * coll)
 {
-	PxPolygon * poly = new PxPolygon();
-	poly->AddVertex( m_box.x, m_box.y , m_box.z ,  m_box.x, m_box.y );
-	poly->AddVertex( m_box.x + m_box.length, m_box.y , m_box.z , m_box.x + m_box.length, m_box.y);
-	poly->AddVertex( m_box.x + m_box.length, m_box.y + m_box.width , m_box.z,m_box.x + m_box.length, m_box.y + m_box.width );
-	poly->AddVertex( m_box.x, m_box.y + m_box.width , m_box.z , m_box.x, m_box.y + m_box.width);
+	UP<PxPolygon> poly;
+	
+	poly.reset(new PxPolygon());
+	poly->AddVertexF( m_box.x, m_box.y , m_box.z ,  m_box.x, m_box.y );
+	poly->AddVertexF( m_box.x + m_box.length, m_box.y , m_box.z , m_box.x + m_box.length, m_box.y);
+	poly->AddVertexF( m_box.x + m_box.length, m_box.y + m_box.width , m_box.z,m_box.x + m_box.length, m_box.y + m_box.width );
+	poly->AddVertexF( m_box.x, m_box.y + m_box.width , m_box.z , m_box.x, m_box.y + m_box.width);
 	poly->SetTexture( m_texname );
-	coll->AddPolygon( poly );
+	coll->AddPolygon( std::move(poly) );
 
-	poly = new PxPolygon();
-	poly->AddVertex( m_box.x, m_box.y , m_box.z + m_box.height ,m_box.x, m_box.y);
-	poly->AddVertex( m_box.x + m_box.length, m_box.y , m_box.z + m_box.height,m_box.x + m_box.length, m_box.y );
-	poly->AddVertex( m_box.x + m_box.length, m_box.y + m_box.width , m_box.z + m_box.height,m_box.x + m_box.length, m_box.y + m_box.width );
-	poly->AddVertex( m_box.x, m_box.y + m_box.width , m_box.z + m_box.height , m_box.x, m_box.y + m_box.width);
+	poly.reset(new PxPolygon());
+	poly->AddVertexF( m_box.x, m_box.y , m_box.z + m_box.height ,m_box.x, m_box.y);
+	poly->AddVertexF( m_box.x + m_box.length, m_box.y , m_box.z + m_box.height,m_box.x + m_box.length, m_box.y );
+	poly->AddVertexF( m_box.x + m_box.length, m_box.y + m_box.width , m_box.z + m_box.height,m_box.x + m_box.length, m_box.y + m_box.width );
+	poly->AddVertexF( m_box.x, m_box.y + m_box.width , m_box.z + m_box.height , m_box.x, m_box.y + m_box.width);
 	poly->SetTexture( m_texname );
-	coll->AddPolygon( poly );
+	coll->AddPolygon(std::move(poly));
 
-	poly = new PxPolygon();
-	poly->AddVertex( m_box.x, m_box.y , m_box.z ,m_box.x,m_box.z);
-	poly->AddVertex( m_box.x + m_box.length, m_box.y , m_box.z ,m_box.x + m_box.length,m_box.z);
-	poly->AddVertex( m_box.x + m_box.length, m_box.y , m_box.z + m_box.height ,m_box.x + m_box.length, m_box.z + m_box.height);
-	poly->AddVertex( m_box.x, m_box.y , m_box.z + m_box.height,m_box.x, m_box.z + m_box.height );
+	poly.reset(new PxPolygon());
+	poly->AddVertexF( m_box.x, m_box.y , m_box.z ,m_box.x,m_box.z);
+	poly->AddVertexF( m_box.x + m_box.length, m_box.y , m_box.z ,m_box.x + m_box.length,m_box.z);
+	poly->AddVertexF( m_box.x + m_box.length, m_box.y , m_box.z + m_box.height ,m_box.x + m_box.length, m_box.z + m_box.height);
+	poly->AddVertexF( m_box.x, m_box.y , m_box.z + m_box.height,m_box.x, m_box.z + m_box.height );
 	poly->SetTexture(  m_texname );
-	coll->AddPolygon( poly );
+	coll->AddPolygon(std::move(poly));
 
-	poly = new PxPolygon();
-	poly->AddVertex( m_box.x, m_box.y + m_box.width , m_box.z ,m_box.x,m_box.z);
-	poly->AddVertex( m_box.x + m_box.length, m_box.y + m_box.width , m_box.z ,m_box.x + m_box.length, m_box.z );
-	poly->AddVertex( m_box.x + m_box.length, m_box.y + m_box.width , m_box.z + m_box.height,m_box.x + m_box.length,m_box.z + m_box.height );
-	poly->AddVertex( m_box.x, m_box.y + m_box.width , m_box.z + m_box.height, m_box.x, m_box.z + m_box.height);
+	poly.reset(new PxPolygon());
+	poly->AddVertexF( m_box.x, m_box.y + m_box.width , m_box.z ,m_box.x,m_box.z);
+	poly->AddVertexF( m_box.x + m_box.length, m_box.y + m_box.width , m_box.z ,m_box.x + m_box.length, m_box.z );
+	poly->AddVertexF( m_box.x + m_box.length, m_box.y + m_box.width , m_box.z + m_box.height,m_box.x + m_box.length,m_box.z + m_box.height );
+	poly->AddVertexF( m_box.x, m_box.y + m_box.width , m_box.z + m_box.height, m_box.x, m_box.z + m_box.height);
 	poly->SetTexture(  m_texname );
-	coll->AddPolygon( poly );
+	coll->AddPolygon(std::move(poly));
 
-	poly = new PxPolygon();
-	poly->AddVertex( m_box.x, m_box.y , m_box.z, m_box.y , m_box.z  );
-	poly->AddVertex( m_box.x, m_box.y + m_box.width , m_box.z,m_box.y + m_box.width , m_box.z );
-	poly->AddVertex( m_box.x, m_box.y + m_box.width , m_box.z + m_box.height,m_box.y + m_box.width , m_box.z + m_box.height );
-	poly->AddVertex( m_box.x, m_box.y , m_box.z + m_box.height,m_box.y , m_box.z + m_box.height );
+	poly.reset(new PxPolygon());
+	poly->AddVertexF( m_box.x, m_box.y , m_box.z, m_box.y , m_box.z  );
+	poly->AddVertexF( m_box.x, m_box.y + m_box.width , m_box.z,m_box.y + m_box.width , m_box.z );
+	poly->AddVertexF( m_box.x, m_box.y + m_box.width , m_box.z + m_box.height,m_box.y + m_box.width , m_box.z + m_box.height );
+	poly->AddVertexF( m_box.x, m_box.y , m_box.z + m_box.height,m_box.y , m_box.z + m_box.height );
 	poly->SetTexture(  m_texname );
-	coll->AddPolygon( poly );
+	coll->AddPolygon(std::move(poly));
 
-	poly = new PxPolygon();
-	poly->AddVertex( m_box.x + m_box.length, m_box.y , m_box.z , m_box.y , m_box.z );
-	poly->AddVertex( m_box.x + m_box.length, m_box.y + m_box.width , m_box.z, m_box.y + m_box.width , m_box.z );
-	poly->AddVertex( m_box.x + m_box.length, m_box.y + m_box.width , m_box.z + m_box.height,m_box.y + m_box.width , m_box.z + m_box.height );
-	poly->AddVertex( m_box.x + m_box.length, m_box.y , m_box.z + m_box.height,m_box.y , m_box.z + m_box.height );
+	poly.reset(new PxPolygon());
+	poly->AddVertexF( m_box.x + m_box.length, m_box.y , m_box.z , m_box.y , m_box.z );
+	poly->AddVertexF( m_box.x + m_box.length, m_box.y + m_box.width , m_box.z, m_box.y + m_box.width , m_box.z );
+	poly->AddVertexF( m_box.x + m_box.length, m_box.y + m_box.width , m_box.z + m_box.height,m_box.y + m_box.width , m_box.z + m_box.height );
+	poly->AddVertexF( m_box.x + m_box.length, m_box.y , m_box.z + m_box.height,m_box.y , m_box.z + m_box.height );
 	poly->SetTexture(  m_texname );
-	coll->AddPolygon( poly );
+	coll->AddPolygon(std::move(poly));
 }
 

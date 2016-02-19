@@ -78,7 +78,7 @@ struct PxBSPBiquadraticPatch
 	int * trianglesPerRow;
 	unsigned int ** rowIndexPointers;
 
-	PxBSPBiquadraticPatch() : vertices(NULL){}
+	PxBSPBiquadraticPatch() : vertices(nullptr){}
 	~PxBSPBiquadraticPatch();
 };
 struct PxBSPPatch

@@ -14,7 +14,7 @@ void PxTesselatedMapManager::Persist( PxTesselatedMap * pMap, cstrref filename )
 	for( PxMeshes::Iterator iter = pTS->begin(); iter != pTS->end(); ++iter)
 	{
 		PxMesh * pmesh = iter->second;
-		sprintf( buff , "mesh %d %s %d",pmesh->NumTriangles(),pmesh->TextureName.c_str(),pmesh->TexMode );
+		sprintf_s( buff , _countof(buff), "mesh %d %s %d",pmesh->NumTriangles(),pmesh->TextureName.c_str(),pmesh->TexMode );
 		out << buff << endl;
 		int numTriangles = pmesh->NumTriangles();
 		for( int i = 0 ; i < numTriangles ; ++i )
@@ -23,7 +23,7 @@ void PxTesselatedMapManager::Persist( PxTesselatedMap * pMap, cstrref filename )
 			for( int j = 0 ; j < 3 ; ++j )
 			{
 				PxVertex * v = &pt[j];
-				sprintf( buff, "%f %f %f %d %d" , v->x,v->y,v->z, v->u,v->v );
+				sprintf_s(buff, _countof(buff), "%f %f %f %d %d" , v->x,v->y,v->z, v->u,v->v );
 				out << buff << endl;
 			}
 		}
@@ -33,11 +33,11 @@ void PxTesselatedMapManager::Persist( PxTesselatedMap * pMap, cstrref filename )
 	out << pMap->Objects.size() << endl;
 	for( vector<PxRuntimeObject>::iterator iter = pMap->Objects.begin(); iter != pMap->Objects.end(); ++iter )
 	{
-		sprintf( buff , "%s %d %s" , (*iter).Name.c_str() , iter->Type , iter->Params.c_str() );
+		sprintf_s(buff, _countof(buff), "%s %d %s" , (*iter).Name.c_str() , iter->Type , iter->Params.c_str() );
 		out << buff << endl;
-		sprintf( buff , "%f %f %f" , iter->x , iter->y , iter->z );
+		sprintf_s(buff, _countof(buff), "%f %f %f" , iter->x , iter->y , iter->z );
 		out << buff << endl;
-		sprintf( buff , "%f %f %f" , iter->dx , iter->dy , iter->dz );
+		sprintf_s(buff, _countof(buff), "%f %f %f" , iter->dx , iter->dy , iter->dz );
 		out << buff << endl;
 	}
 }
@@ -56,22 +56,22 @@ PxTesselatedMap * PxTesselatedMapManager::Restore( cstrref filename )
 	
 	ifstream in(filename.c_str());
 	if(!in)
-		return NULL;
+		return nullptr;
 	
 	in.getline(buff,511);
-	sscanf(buff,"%d", & numMeshes );
+	sscanf_s(buff,"%d", & numMeshes );
 
 	for( int i = 0 ; i < numMeshes; ++i )
 	{
 		in.getline(buff,511);
-		sscanf(buff,"mesh %d %s %d", & numTriangles , texname, &texmode);
+		sscanf_s(buff,"mesh %d %s %d", & numTriangles , texname, _countof(texname), &texmode);
 		for( int j = 0 ; j < numTriangles ; ++j )
 		{
 			PxTriangle tri;
 			for( int k = 0 ; k < 3 ; ++k )
 			{
 				in.getline( buff, 511 );
-				sscanf( buff , "%f %f %f %d %d" , &tri[k].x,&tri[k].y,&tri[k].z,&tri[k].u,&tri[k].v);
+				sscanf_s( buff , "%f %f %f %d %d" , &tri[k].x,&tri[k].y,&tri[k].z,&tri[k].u,&tri[k].v);
 			}
 			pts->AddTriangle( texname , (TextureMode)texmode , tri );
 		}
@@ -79,19 +79,19 @@ PxTesselatedMap * PxTesselatedMapManager::Restore( cstrref filename )
 	pts->Finalize();
 	// objects section
 	in.getline(buff,511);
-	sscanf(buff,"%d", & numObjects );
+	sscanf_s(buff,"%d", & numObjects );
 	
 	while( numObjects -- > 0 )
 	{
 		PxRuntimeObject obj;
 		in.getline( buff, 511 );
-		sscanf( buff ,"%s %d %s" , name , &obj.Type , params );
+		sscanf_s( buff ,"%s %d %s" , name, _countof(name) , &obj.Type , params, _countof(params) );
 		obj.Name = name;
 		obj.Params = params;
 		in.getline( buff, 511 );
-		sscanf( buff ,"%f %f %f" , &obj.x , &obj.y , &obj.z );
+		sscanf_s( buff ,"%f %f %f" , &obj.x , &obj.y , &obj.z );
 		in.getline( buff, 511 );
-		sscanf( buff , "%f %f %f" , &obj.dx , &obj.dy , &obj.dz );
+		sscanf_s( buff , "%f %f %f" , &obj.dx , &obj.dy , &obj.dz );
 		pmap->Objects.push_back( obj );
 	}
 

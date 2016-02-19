@@ -19,7 +19,7 @@ class _PxTeamChooserUIWindow : public Gooey::FrameWindow
 public:
 	_PxTeamChooserUIWindow::_PxTeamChooserUIWindow( PxTeamChooserScene * parent, int sw, int sh )
 		:Gooey::FrameWindow(
-			Gooey::Core::Rectangle(0, 0, sw, sh),
+			Gooey::Core::Rectangle(0, 0, float(sw), float(sh)),
 			0,
 			"Choose a Map"
 		),
@@ -32,7 +32,7 @@ public:
 		Gooey::CheckBox* radioButton1 = new Gooey::CheckBox(0, "Radio Button 1", radioButtons);
 		Gooey::CheckBox* radioButton2 = new Gooey::CheckBox(0, "Radio Button 2", radioButtons);
 		
-        mPanel.setLayouter(NULL);
+        mPanel.setLayouter(nullptr);
 		mPanel.addChildWindow(radioButton1);
 		mPanel.addChildWindow(radioButton2);
 		mPanel.addChildWindow(&mButtonOK);

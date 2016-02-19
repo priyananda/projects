@@ -7,14 +7,20 @@ using std::list;
 
 class PxSimplePolygonSet : public PxPolygonCollection
 {
-	vector<PxPolygon *> polygons;
+	vector<std::unique_ptr<PxPolygon>> polygons;
 	GLuint dlist;
 public:
-	void AddPolygon( PxPolygon * );
+	PxSimplePolygonSet() = default;
+	PxSimplePolygonSet(const PxSimplePolygonSet&) = delete;
+
+	void AddPolygon( std::unique_ptr<PxPolygon>&& spPoly);
 	void Finalize();
 	void Render(bool isWireFrame = false);
 
-	PxPolygon operator[]( int index );
+	PxPolygon& operator[](int index)
+	{
+		return *Item(index);
+	}
 	int Count();
 	void Clear()
 	{
@@ -23,7 +29,7 @@ public:
 
 	PxPolygon * Item(int i)
 	{
-		return polygons[i];
+		return polygons[i].get();
 	}
 };
 

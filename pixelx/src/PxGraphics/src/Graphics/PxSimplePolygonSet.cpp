@@ -1,8 +1,8 @@
 #include "PxSimplePolygonSet.h"
 
-void PxSimplePolygonSet::AddPolygon( PxPolygon * poly )
+void PxSimplePolygonSet::AddPolygon( std::unique_ptr<PxPolygon>&& poly )
 {
-	polygons.push_back( poly );
+	polygons.push_back( std::move(poly) );
 }
 void PxSimplePolygonSet::Finalize()
 {
@@ -18,13 +18,6 @@ void PxSimplePolygonSet::Render(bool isWireFrame)
 {
 	for(size_t i = 0 ; i < polygons.size(); ++i )
 		polygons[i]->Render(isWireFrame);
-}
-
-PxPolygon PxSimplePolygonSet::operator [](int index)
-{
-	PxPolygon ret;
-	ret = *(polygons[index]);
-	return ret;
 }
 
 int PxSimplePolygonSet::Count()

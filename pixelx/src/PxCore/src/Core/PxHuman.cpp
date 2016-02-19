@@ -1,6 +1,6 @@
 #include "PxHuman.h"
 
-PxHuman * PxHuman::m_theHuman = NULL;
+PxHuman * PxHuman::m_theHuman = nullptr;
 
 void PxHuman::AddHealth(long l)
 {

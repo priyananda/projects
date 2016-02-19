@@ -4,11 +4,11 @@
 #include <mmsystem.h>
 
 // Singleton Implementation
-PxWindow * PxWindow::pSingleInstance = NULL;
+PxWindow * PxWindow::pSingleInstance = nullptr;
 
 PxWindow * PxWindow::Window()
 {
-	if( pSingleInstance == NULL )
+	if( pSingleInstance == nullptr )
 		pSingleInstance = PxPlatform::CreateAWindow();
 	return pSingleInstance;
 }

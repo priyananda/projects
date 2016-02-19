@@ -5,7 +5,7 @@
 #include "PxParticleBase.h"
 
 #define NUMBER_OF_STREAMS 4
-#define FOUNTAIN_HEIGHT 12.25
+#define FOUNTAIN_HEIGHT 12.25f
 class PxFountain : public PxSolidObject
 {
 	PxBoundingBox bBox;

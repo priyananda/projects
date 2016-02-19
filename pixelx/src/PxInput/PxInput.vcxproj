@@ -37,9 +37,9 @@
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\lib\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\obj\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\obj\pxinput\</IntDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\lib\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\obj\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\..\obj\pxinput\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -79,8 +79,6 @@
     <ClInclude Include="include\PxXMLDataFileParser.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Input\PxCommand.cpp" />
-    <ClCompile Include="src\Input\PxCommandList.cpp" />
     <ClCompile Include="src\Input\PxConfiguration.cpp" />
     <ClCompile Include="src\Input\PxDataFileParser.cpp" />
     <ClCompile Include="src\Input\PxDataFilesManager.cpp" />

@@ -8,31 +8,31 @@ static string StdDataFiles[] =
 	"data\\config.pxl",
 	"data\\audio.pxl"
 };
-static const int StdDataFilesCount = 5;
-unordered_map<string,PxCommandList *> PxDataFilesManager::m_map;
+
+unordered_map<string, std::unique_ptr<PxCommandList>> PxDataFilesManager::m_map;
 
 void PxDataFilesManager::Init()
 {
-	for( int i = 0 ; i < StdDataFilesCount ; ++i )
-		Load( StdDataFiles[i] );
+	for (const auto& strFileName : StdDataFiles)
+		Load(strFileName);
 }
 
 void PxDataFilesManager::Load(cstrref filename)
 {
-	PxCommandList * clist = PxDataFileParser::Parse( filename );
-	if( clist == NULL )
+	std::unique_ptr<PxCommandList> clist = PxDataFileParser::Parse( filename );
+	if( clist == nullptr )
 		return;
-	m_map[ clist->Type ] = clist;
+	m_map[ clist->Type ] = std::move(clist);
 }
 
 PxCommandList * PxDataFilesManager::Get( cstrref filename )
 {
 	if( m_map.find(filename) != m_map.end() )
-		return m_map[filename];
-	PxCommandList * clist = PxDataFileParser::Parse( filename );
-	if( clist == NULL )
-		return NULL;
-	m_map[ clist->Type ] = clist;
-	return clist;
+		return m_map[filename].get();
+	std::unique_ptr<PxCommandList> clist = PxDataFileParser::Parse( filename );
+	if( clist == nullptr )
+		return nullptr;
+	m_map[ clist->Type ] = std::move(clist);
+	return clist.get();
 }
 

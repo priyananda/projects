@@ -4,10 +4,11 @@
 void PxPolygon::CalculateNormal()
 {
 	if( vertices.size() < 3 ) return;
-	PxVertex * Vertex[3] = {
-		*vertices.begin(),
-		*(++vertices.begin()),
-		*(++(++vertices.begin()))
+	PxVertex* Vertex[3] =
+	{
+		vertices[0].get(),
+		vertices[1].get(),
+		vertices[2].get()
 	};
 	GLfloat ux;
 	GLfloat uy;
@@ -29,13 +30,13 @@ void PxPolygon::CalculateNormal()
 
 void PxPolygon::AddVertex( const PxVertex & pv )
 {
-	vertices.push_back( new PxVertex(pv) );
+	vertices.emplace_back( new PxVertex(pv) );
 	CalculateNormal();
 }
 
 void PxPolygon::AddVertex(  GLfloat _x ,GLfloat _y,GLfloat _z,GLuint _u,GLuint _v)
 {
-	vertices.push_back( new PxVertex(_x,_y,_z,_u,_v));
+	vertices.push_back( std::make_unique<PxVertex>(_x,_y,_z,_u,_v));
 	CalculateNormal();
 }
 void PxPolygon::Render(bool isWireFrame)
@@ -53,7 +54,7 @@ void PxPolygon::Finalize()
 {
 	if( dList != -1 )
 		return;
-	PxVertex * v = vertices.front();
+	PxVertex * v = vertices.front().get();
 	TextureMode mode = GetTextureMode();
 
 	dList = glGenLists(1);
@@ -65,7 +66,7 @@ void PxPolygon::Finalize()
 	glBegin( GL_POLYGON );
 	for(size_t i = 0 ; i < vertices.size(); ++i)
 	{
-		PxVertex * v = vertices[i];
+		PxVertex * v = vertices[i].get();
 		if( mode == eTexModeNoStretch )
 			glTexCoord2f((GLfloat)v->u, (GLfloat)v->v);
 		glVertex3f(v->x, v->y, v->z);
@@ -94,7 +95,7 @@ PxVector PxPolygon::operator [](int index ) const
 
 TextureMode PxPolygon::GetTextureMode()
 {
-	PxVertex * v = vertices.front();
+	PxVertex * v = vertices.front().get();
 	TextureMode mode = eTexModeNoStretch;
 
 	if( v->u == -1 )
@@ -105,15 +106,5 @@ TextureMode PxPolygon::GetTextureMode()
 	else if ( v->v == -1 )
 			mode = eTexModeStretchY;
 	return mode;
-}
-
-PxPolygon::~PxPolygon()
-{
-	int size = vertices.size();
-	//for(int i = 0 ; i < size ; ++i)
-	//{
-	//	delete vertices[i];
-	//}
-	vertices.clear();
 }
 

@@ -1,9 +1,5 @@
-#ifndef _PIXELX_XMLDATAPARSER
-#define _PIXELX_XMLDATAPARSER
-
+#pragma once
 class PxXMLDataFileParser
 {
 public:
 };
-#endif
-
