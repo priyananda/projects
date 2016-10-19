@@ -9,12 +9,13 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.gson.JsonObject;
 
 import us.quizpl.model.ModelObjectBase;
 
-public class TeamInfo extends ModelObjectBase {
-	public TeamInfo(Entity entity) {
+public class Finalist extends ModelObjectBase {
+	public Finalist(Entity entity) {
 		super(entity);
 	}
 	
@@ -30,20 +31,20 @@ public class TeamInfo extends ModelObjectBase {
 	public void setSecondPersonName(String secondPersonName) {
 		m_entity.setProperty(FIELD_SECOND_PERSON, secondPersonName);
 	}
-	public boolean isFinalist() {
-		return (boolean) m_entity.getProperty(FIELD_IS_FINALIST);
+	public long getScore() {
+		return (long) m_entity.getProperty(FIELD_SCORE);
 	}
-	public void setFinalist(boolean isFinalist) {
-		m_entity.setProperty(FIELD_IS_FINALIST, isFinalist);
+	public void setScore(long score) {
+		m_entity.setProperty(FIELD_SCORE, score);
 	}
 	
-	public static TeamInfo getOrCreateFromJson(JsonObject jsonObject) {
+	public static Finalist getOrCreateFromJson(JsonObject jsonObject) {
 		long teamId = jsonObject.getAsJsonPrimitive(FIELD_TEAM_ID.toLowerCase()).getAsLong();
-		TeamInfo teamInfo = getOrCreate(teamId);
+		Finalist teamInfo = getOrCreate(teamId);
 		
 		teamInfo.setFirstPersonName(jsonObject.getAsJsonPrimitive(FIELD_FIRST_PERSON.toLowerCase()).getAsString());
 		teamInfo.setSecondPersonName(jsonObject.getAsJsonPrimitive(FIELD_SECOND_PERSON.toLowerCase()).getAsString());
-		teamInfo.setFinalist(jsonObject.getAsJsonPrimitive(FIELD_IS_FINALIST.toLowerCase()).getAsBoolean());
+		teamInfo.setScore(jsonObject.getAsJsonPrimitive(FIELD_SCORE.toLowerCase()).getAsLong());
 		
 		teamInfo.save();
 		return teamInfo;
@@ -54,12 +55,12 @@ public class TeamInfo extends ModelObjectBase {
 		jsonObject.addProperty(FIELD_TEAM_ID.toLowerCase(), getId());
 		jsonObject.addProperty(FIELD_FIRST_PERSON.toLowerCase(), getFirstPersonName());
 		jsonObject.addProperty(FIELD_SECOND_PERSON.toLowerCase(), getSecondPersonName());
-		jsonObject.addProperty(FIELD_IS_FINALIST.toLowerCase(), isFinalist());
+		jsonObject.addProperty(FIELD_SCORE.toLowerCase(), getScore());
 		return jsonObject;
 	}
 	
-	public static TeamInfo getOrCreate(long id){
-		TeamInfo teamInfo = new TeamInfo(null);
+	public static Finalist getOrCreate(long id){
+		Finalist teamInfo = new Finalist(null);
 		ModelObjectBase.loadObject(teamInfo, ENTITY_NAME, id);
 		if (teamInfo.m_entity != null)
 			return teamInfo;
@@ -71,22 +72,23 @@ public class TeamInfo extends ModelObjectBase {
 		return teamInfo;
 	}
 	
-	public static ArrayList<TeamInfo> getAllTeams() {
-		ArrayList<TeamInfo> teams = new ArrayList<TeamInfo>();
+	public static ArrayList<Finalist> getAllTeams() {
+		ArrayList<Finalist> teams = new ArrayList<Finalist>();
 		
 		Query query = new Query(ENTITY_NAME);
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		query.addSort(FIELD_SCORE, SortDirection.DESCENDING);
 	    PreparedQuery pq = datastore.prepare(query);
 	    for (Entity entity : pq.asIterable()) {
-	    	teams.add(new TeamInfo(entity));
+	    	teams.add(new Finalist(entity));
 		}
 	    
 	    return teams;
 	}
 	
-	private static String ENTITY_NAME         = "TeamInfo";
+	private static String ENTITY_NAME         = "Finalist";
 	private static String FIELD_TEAM_ID       = "TeamId";
 	private static String FIELD_FIRST_PERSON  = "FirstPersonName";
 	private static String FIELD_SECOND_PERSON = "SecondPersonName";
-	private static String FIELD_IS_FINALIST   = "IsFinalist";
+	private static String FIELD_SCORE         = "Score";
 }

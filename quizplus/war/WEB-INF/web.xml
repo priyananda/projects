@@ -6,7 +6,7 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet>
 		<servlet-name>Quizplus</servlet-name>
-		<servlet-class>us.quizpl.app.PrelimsGetter</servlet-class>
+		<servlet-class>us.quizpl.QuizplusServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>Import</servlet-name>
@@ -17,12 +17,12 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     	<jsp-file>/Search.jsp</jsp-file>
 	</servlet>
 	<servlet>
-    	<servlet-name>PrelimsGet</servlet-name>
-    	<servlet-class>us.quizpl.app.PrelimsGetter</servlet-class>
+    	<servlet-name>TeamInfoGet</servlet-name>
+    	<servlet-class>us.quizpl.app.TeamInfoGetter</servlet-class>
 	</servlet>
 	<servlet>
-    	<servlet-name>PrelimsSet</servlet-name>
-    	<servlet-class>us.quizpl.app.PrelimsSetter</servlet-class>
+    	<servlet-name>TeamInfoSet</servlet-name>
+    	<servlet-class>us.quizpl.app.TeamInfoSetter</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
@@ -39,13 +39,13 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet-mapping>
-    	<servlet-name>PrelimsGet</servlet-name>
-    	<url-pattern>/prelimsget</url-pattern>
+    	<servlet-name>TeamInfoGet</servlet-name>
+    	<url-pattern>/teaminfoget</url-pattern>
 	</servlet-mapping>
 	
 	<servlet-mapping>
-    	<servlet-name>PrelimsSet</servlet-name>
-    	<url-pattern>/prelimsset</url-pattern>
+    	<servlet-name>TeamInfoSet</servlet-name>
+    	<url-pattern>/teaminfoset</url-pattern>
 	</servlet-mapping>
 	
 	<welcome-file-list>

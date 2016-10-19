@@ -1,13 +1,12 @@
 package us.quizpl.app.model;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-public class PrelimsState {
-	public static JsonObject getPrelimsStateAsJson(){
+public class PrelimsAccessor implements TeamInfoAccessor {
+	@Override
+	public JsonObject getTeamsAsJson(){
 		ArrayList<TeamInfo> teams = TeamInfo.getAllTeams();
 		
 		JsonArray jsonArray = new JsonArray();
@@ -20,7 +19,8 @@ public class PrelimsState {
 		return jobjOuter;
 	}
 	
-	public static void updateStateFromJson(JsonObject jsonObj){
+	@Override
+	public void updateStateFromJson(JsonObject jsonObj){
 		TeamInfo.getOrCreateFromJson(jsonObj);
 	}
 }
