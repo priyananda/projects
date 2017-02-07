@@ -3,7 +3,6 @@
 
 #include "Common.h"
 #include "glext.h"
-#include "wglext.h"
 
 enum PxExtensions
 {
@@ -19,6 +18,8 @@ public:
 	static void Init();
 	static bool IsEnabled( PxExtensions ext );
 };
+
+#ifdef PLATFORM_WINDOWS
 
 //ARBMultitexture
 extern PFNGLACTIVETEXTUREARBPROC				glActiveTextureARB;
@@ -64,5 +65,8 @@ extern PFNGLMULTIDRAWELEMENTSEXTPROC			glMultiDrawElementsEXT;
 
 //Swap Control
 extern PFNWGLSWAPINTERVALEXTPROC				wglSwapIntervalEXT;
+
+#endif
+
 #endif
 

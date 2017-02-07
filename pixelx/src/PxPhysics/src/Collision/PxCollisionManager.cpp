@@ -1,5 +1,5 @@
 #include "PxCollisionManager.h"
-#include "..\..\PxGraphics\include\PxCamera.h"
+#include "../../PxGraphics/include/PxCamera.h"
 #include "PxQuakeCollisionController.h"
 #include "PxNormalCollisionController.h"
 

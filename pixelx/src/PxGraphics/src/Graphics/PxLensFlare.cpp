@@ -64,7 +64,7 @@ void PxLensFlareRenderer::RenderFlare(long lx, long ly)
 
 void PxLensFlareRenderer::DrawQuad( int x, int y, int width, int height, GLuint texID, unsigned int colour )
 {
-	PxTextureManager::Bind( texID , eTexModeNoStretch );
+	PxTextureManager::Bind( texID , TextureMode::NoStretch );
 
     glBegin(GL_QUADS);
 

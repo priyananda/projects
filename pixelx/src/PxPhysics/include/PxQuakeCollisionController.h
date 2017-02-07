@@ -2,7 +2,7 @@
 #define _PIXELX_QUAKECOLLISIONCONTROLLER_H
 
 #include "ICollisionController.h"
-#include "..\..\PxGraphics\include\PxQuakeMap.h"
+#include "../../PxGraphics/include/PxQuakeMap.h"
 
 class PxQuakeCollisionController
 {
@@ -20,6 +20,7 @@ class PxQuakeCollisionController
 	void CheckBrush( PxBSPBrush * brush, const PxVector & , const PxVector &);
 public:
 	PxQuakeCollisionController( PxQuakeMap * pMap );
+	virtual ~PxQuakeCollisionController() = default;
 	bool IsInside(const PxVector & point);
 
 	virtual bool Collide(PxCamera & );

@@ -1,7 +1,7 @@
 #ifndef _PIXELX_ENTITYPARSER_H
 #define _PIXELX_ENTITYPARSER_H
 
-#include "..\..\PxPhysics\include\PxVector.h"
+#include "../../PxPhysics/include/PxVector.h"
 
 #include <map>
 using std::map;

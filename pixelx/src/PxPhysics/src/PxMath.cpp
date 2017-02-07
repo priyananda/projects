@@ -67,7 +67,7 @@ double PxMath::AngleBetweenVectors( const PxVector & Vector1,const PxVector & Ve
 	double angle = acos( dotProduct / vectorsMagnitude );
 
 	// Here we make sure that the angle is not a -1.#IND0000000 number, which means indefinate
-	if(_isnan(angle))
+	if(std::isnan(angle))
 		return 0;
 	
 	// Return the angle in radians

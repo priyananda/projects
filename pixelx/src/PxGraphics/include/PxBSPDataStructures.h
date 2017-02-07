@@ -2,7 +2,7 @@
 #define _PIXELX_BSPDATASTR_H
 
 #include "PxBitset.h"
-#include "..\..\PxPhysics\include\PxPlane.h"
+#include "../../PxPhysics/include/PxPlane.h"
 
 struct PxBSPNode
 {

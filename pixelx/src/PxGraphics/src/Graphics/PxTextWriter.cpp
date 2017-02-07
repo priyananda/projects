@@ -1,7 +1,7 @@
 #include "PxTextWriter.h"
 #include "PxTextureManager.h"
 #include "PxWin32Window.h"
-#include "..\..\PxInput\include\PxConfiguration.h"
+#include "../../PxInput/include/PxConfiguration.h"
 
 static GLYPHMETRICSFLOAT gmf[256];
 

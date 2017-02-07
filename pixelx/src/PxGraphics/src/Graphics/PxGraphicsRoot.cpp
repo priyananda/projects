@@ -1,17 +1,17 @@
-#include "..\..\PxInput\include\PxConfiguration.h"
+#include "../../PxInput/include/PxConfiguration.h"
 #include "Interfaces.h"
 #include "PxTextWriter.h"
 #include "PxModelManager.h"
 #include "PxExtensionManager.h"
 #include "PxWindow.h"
-#include "..\..\PxCore\include\PxSceneRegulator.h"
+#include "../../PxCore/include/PxSceneRegulator.h"
 #include "PxTextureManager.h"
 #include "PxImageProvider.h"
 
 PxWindow * PxGraphicsRoot::Window;
 
-#include "..\..\PxCore\include\PxGameScene.h"
-#include "..\..\PxCore\include\PxWorld.h"
+#include "../../PxCore/include/PxGameScene.h"
+#include "../../PxCore/include/PxWorld.h"
 void SetStartState(PxSceneRegulator * pRegulator)
 {
 	char buff[100] = "intro";
@@ -22,7 +22,7 @@ void SetStartState(PxSceneRegulator * pRegulator)
 	pArg = strstr( pCmd, "--map" );
 	if( pArg != nullptr && *pArg != 0 )
 	{
-		sscanf_s(pArg,"--map=%s", buff, sizeof(buff));
+		sscanf_s(pArg,"--map=%s", BUFFER_AND_SIZE(buff));
 		PxGameScene * pGameScene = new PxGameScene("game");
 		PxWorld * theWorld = new PxWorld;
 		theWorld->Deserialize( string("data\\worlds\\") + buff );
@@ -31,7 +31,7 @@ void SetStartState(PxSceneRegulator * pRegulator)
 	}
 	pArg = strstr( pCmd, "--start-state" );
 	if( pArg != nullptr && *pArg != 0)
-		sscanf_s(pArg,"--start-state=%s" , buff, sizeof(buff));
+		sscanf_s(pArg,"--start-state=%s" , BUFFER_AND_SIZE(buff));
 	pRegulator->Signal( eScNamedScene , buff );
 }
 void PxGraphicsRoot::Init()

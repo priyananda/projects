@@ -2,7 +2,7 @@
 #define _PIXELX_LENSFLARE_H
 
 #include "PxVertex.h"
-#include "..\..\PxPhysics\include\PxVector.h"
+#include "../../PxPhysics/include/PxVector.h"
 
 class PxFlareElement
 {
@@ -15,12 +15,19 @@ public:
 
 struct PxFlare
 {
-	float scale;
-	float maxSize;
-	int numElements;
-	PxFlareElement * elements;
-	PxFlare():elements(0), numElements(0){}
-	PxFlare(int _numElements):numElements(_numElements), elements( new PxFlareElement[_numElements] ){}
+	float scale = 1;
+	float maxSize = 0;
+	int numElements = 0;
+	PxFlareElement * elements = nullptr;
+
+	PxFlare()
+	{
+	}
+	PxFlare(int _numElements):
+		numElements(_numElements),
+		elements( new PxFlareElement[_numElements] )
+	{
+	}
 };
 class PxLensFlareRenderer
 {
