@@ -15,17 +15,17 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" media="screen" href="style.css">
-<link rel="stylesheet" type="text/css" href="w2ui-1.4.3.min.css" />
-<link rel="stylesheet" href="flexslider.css" type="text/css">
+<link rel="stylesheet" media="screen" href="style/style.css">
+<link rel="stylesheet" type="text/css" href="style/w2ui-1.4.3.min.css" />
+<link rel="stylesheet" type="text/css" href="style/flexslider.css">
+<link rel="stylesheet" href="style/jcarousel.basic.css">
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-<link rel="stylesheet" href="jcarousel.basic.css">
 
 <script	src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<script type="text/javascript" src="w2ui-1.4.3.min.js"></script>
-<script type="text/javascript" src="jquery.jcarousel.min.js"></script>
-<script type="text/javascript" src="jcarousel.basic.js"></script>
+<script type="text/javascript" src="scripts/w2ui-1.4.3.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.jcarousel.min.js"></script>
+<script type="text/javascript" src="scripts/jcarousel.basic.js"></script>
 
 <title>Quiz Plus</title>
 

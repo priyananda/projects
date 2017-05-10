@@ -55,10 +55,10 @@ public class SlideRetriever {
 	
 	private static String getImageFromSlide(Slide slide, boolean isDevAppServer) {
 		if (isDevAppServer)
-			return Math.random() > 0.5 ? "/Slide1.jpg" : "/Slide2.jpg";
+			return Math.random() > 0.5 ? "/test/Slide1.jpg" : "/test/Slide2.jpg";
 		else
 			return slide.getImageUrl();
 	}
 
-	private static final String FIELD_SLIDEID = "slideid"; 
+	private static final String FIELD_SLIDEID = "slideid";
 }

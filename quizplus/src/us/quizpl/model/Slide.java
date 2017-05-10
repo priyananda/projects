@@ -58,6 +58,10 @@ public class Slide {
 		return m_document.getOnlyField(FIELD_IMAGEURL).getAtom();
 	}
 	
+	public String getThumbnailUrl() {
+		return getImageUrl() + "=s50";
+	}
+	
 	public String getTextContent() {
 		List<Field> fields = ((ScoredDocument) m_document).getExpressions();
 		if (fields != null) {
