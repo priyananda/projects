@@ -1,13 +1,46 @@
 #include "PxAudioManager.h"
-#include "..\..\PxInput\include\PxDataFilesManager.h"
-#include "..\..\PxInput\include\PxConfiguration.h"
+#include "../../PxInput/include/PxDataFilesManager.h"
+#include "../../PxInput/include/PxConfiguration.h"
 
-map<string, _AudioData > PxAudioManager::m_files;
+#include <map>
+using std::map;
+
+#include "fmod/fmod.h"
+
+struct _AudioData
+{
+	string path;
+	union{
+		FSOUND_STREAM * streamid;
+		FSOUND_SAMPLE * sampleid;
+	}id;
+	bool loop;
+	_AudioData():loop(false){id.streamid = 0;}
+};
+
+class PxAudioManagerCore
+{
+public:
+	static map<string, _AudioData > m_files;
+	static void Play( const _AudioData & ad );
+	static void Loop( const _AudioData & ad );
+	static void Load( _AudioData & ad );
+	static void Init();
+	static void Play( cstrref name );
+	static void Loop( cstrref name );
+};
+
+map<string, _AudioData > PxAudioManagerCore::m_files;
 static bool g_debug_audio;
 
 #define LOOP_STREAM_CHANNEL 17
 
 void PxAudioManager::Init()
+{
+	PxAudioManagerCore::Init();
+}
+
+void PxAudioManagerCore::Init()
 {
 	g_debug_audio = (PxConfiguration::GetLong("g_debug_audio") != 0);
 	if(! g_debug_audio )
@@ -26,23 +59,29 @@ void PxAudioManager::Init()
 	{
 		_AudioData md;
 		md.path = "data\\" + cmd->Arguments[1];
-		md.loop = ( _stricmp( cmd->Arguments[2].c_str() , "true" ) == 0);
+		md.loop = ( String::equalsIgnoreCase( cmd->Arguments[2].c_str() , "true" ) );
 		m_files[ cmd->Arguments[0] ] = md;
 	}
 }
 
 void PxAudioManager::Play( cstrref name )
 {
+	PxAudioManagerCore::Play(name);
+}
+
+void PxAudioManagerCore::Play( cstrref name )
+{
 	if( m_files.find(name) == m_files.end() )
 		return;
-	_AudioData ad = m_files[ name ];
+	_AudioData& ad = m_files[ name ];
 	if( ad.id.sampleid == nullptr )
 		Load(ad);
 	Play( ad );
 	m_files[ name ] = ad;
 }
 
-void PxAudioManager::Load( _AudioData & data )
+
+void PxAudioManagerCore::Load( _AudioData & data )
 {
 	if( data.id.sampleid )
 		return;
@@ -62,7 +101,7 @@ void PxAudioManager::Load( _AudioData & data )
 	}
 }
 
-void PxAudioManager::Play( _AudioData & ad )
+void PxAudioManagerCore::Play( const _AudioData & ad )
 {
 	if( g_debug_audio )
 	{
@@ -74,6 +113,11 @@ void PxAudioManager::Play( _AudioData & ad )
 }
 
 void PxAudioManager::Loop( cstrref name )
+{
+	PxAudioManagerCore::Loop(name);
+}
+
+void PxAudioManagerCore::Loop( cstrref name )
 {
 	FSOUND_StopSound( LOOP_STREAM_CHANNEL );
 	if( m_files.find(name) == m_files.end() )
@@ -87,7 +131,7 @@ void PxAudioManager::Loop( cstrref name )
 	Loop( ad );
 }
 
-void PxAudioManager::Loop( _AudioData & ad  )
+void PxAudioManagerCore::Loop( const _AudioData & ad  )
 {
 	if( ad.loop )
 		FSOUND_SetLoopMode(

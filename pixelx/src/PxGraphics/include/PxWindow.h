@@ -2,7 +2,7 @@
 #define _PIXELX_WINDOW_H
 
 #include "Common.h"
-#include "PxInputEventhandler.h"
+#include "PxInputEventHandler.h"
 
 class PxWindow
 {

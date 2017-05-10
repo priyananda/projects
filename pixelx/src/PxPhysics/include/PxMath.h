@@ -2,8 +2,8 @@
 #define _PIXELX_MATH_H
 
 #include "PxVector.h"
-#include "..\..\PxGraphics\include\PxPolygon.h"
-#include "..\..\PxGraphics\include\PxQuakeMap.h"
+#include "../../PxGraphics/include/PxPolygon.h"
+#include "../../PxGraphics/include/PxQuakeMap.h"
 
 enum PxIntersectionEnum
 {

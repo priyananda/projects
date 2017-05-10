@@ -1,6 +1,6 @@
 #include "PxNormalCollisionController.h"
 #include "PxMath.h"
-#include "..\..\PxGraphics\include\PxCamera.h"
+#include "../../PxGraphics/include/PxCamera.h"
 #include "PxBoundingSphere.h"
 
 vector<PxBoundingBox> mBoundingBoxes;

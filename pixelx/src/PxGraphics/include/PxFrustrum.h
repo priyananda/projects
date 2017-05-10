@@ -1,7 +1,7 @@
 #ifndef _PIXELX_FRUSTRUM_H
 #define _PIXELX_FRUSTRUM_H
 
-#include "..\..\PxPhysics\include\PxPlane.h"
+#include "../../PxPhysics/include/PxPlane.h"
 
 enum PxFrustrumPlanes
 {

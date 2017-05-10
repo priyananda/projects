@@ -1,7 +1,7 @@
 #ifndef _PIXELX_SOLIDOBJECT_H
 #define _PIXELX_SOLIDOBJECT_H
-#include "..\..\PxGraphics\include\PxBoundingBox.h"
-#include "..\..\PxGraphics\include\PxPolygonCollection.h"
+#include "../../PxGraphics/include/PxBoundingBox.h"
+#include "../../PxGraphics/include/PxPolygonCollection.h"
 
 class PxSolidObject
 {

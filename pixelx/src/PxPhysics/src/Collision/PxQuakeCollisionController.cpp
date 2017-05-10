@@ -1,10 +1,9 @@
 #include "PxQuakeCollisionController.h"
 #include "PxMath.h"
-#include "..\..\PxGraphics\include\PxCamera.h"
+#include "../../PxGraphics/include/PxCamera.h"
 #include "PxBoundingSphere.h"
 
 PxBitSet collidableFaces;
-static bool g_inited = false;
 
 #define BSP_EPSILON 0.003125f
 #define BSP_MAXSTEPS 2.0f

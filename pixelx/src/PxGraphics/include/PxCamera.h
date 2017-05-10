@@ -4,7 +4,7 @@
 class PxCollisionManager;
 class PxDirector;
 #include "PxFrustrum.h"
-#include "..\..\PxPhysics\include\PxBoundingSphere.h"
+#include "../../PxPhysics/include/PxBoundingSphere.h"
 
 class PxCamera {
 public:

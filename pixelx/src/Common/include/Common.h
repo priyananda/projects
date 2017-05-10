@@ -1,5 +1,6 @@
-#ifndef _PIXELX_COMMON_H
-#define _PIXELX_COMMON_H
+#pragma once
+
+#include "Platform.h"
 
 #include <string>
 using std::string;
@@ -12,11 +13,8 @@ typedef string & strref;
 template <typename T>
 using UP = std::unique_ptr<T>;
 
-#define WIN32_LEAN_AND_MEAN
-
-#include <windows.h>
-#include <gl\gl.h>
-#include <gl\glu.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
 
 enum PxKeyBindingEnum
 {
@@ -53,7 +51,29 @@ enum PxOrientation
 	eZAxiz
 };
 
-#include "PxLog.h"
-
+class String
+{
+public:
+	static bool equals(cstrref s1, cstrref s2)
+	{
+		return s1 == s2;
+	}
+	static bool equalsIgnoreCase(cstrref s1, cstrref s2)
+	{
+		return equalsIgnoreCase(s1.c_str(), s2.c_str());
+	}
+	static bool equals(const char* s1, const char* s2)
+	{
+		return ::strcmp(s1, s2) == 0;
+	}
+	static bool equalsIgnoreCase(const char* s1, const char* s2)
+	{
+#ifdef PLATFORM_LINUX
+	return ::strcasecmp(s1, s2) == 0;
+#else
+	return ::_stricmp(s1, s2) == 0;
 #endif
+	}
+};
 
+#include "PxLog.h"

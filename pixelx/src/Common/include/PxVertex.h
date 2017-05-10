@@ -7,7 +7,7 @@ class PxVertex
 {
 public:
 	GLfloat x,y,z;
-	GLuint  u,v;
+	GLint  u,v;
 
 	// -1,-1 tex co-ordinates means autogen textures for that axis
 	PxVertex( GLfloat _x = 0 ,GLfloat _y = 0 ,GLfloat _z = 0,GLuint _u = -1,GLuint _v = -1)

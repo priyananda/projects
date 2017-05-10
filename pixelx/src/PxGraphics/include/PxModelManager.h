@@ -2,7 +2,7 @@
 #define _PIXELX_MODELMANAGER_H
 
 #include "PxModel.h"
-#include "..\..\PxInput\include\PxDataFilesManager.h"
+#include "../../PxInput/include/PxDataFilesManager.h"
 #include <unordered_map>
 
 using std::unordered_map;

@@ -1,5 +1,5 @@
 #include "PxBoundingSphere.h"
-#include "..\..\PxGraphics\include\PxBoundingBox.h"
+#include "../../PxGraphics/include/PxBoundingBox.h"
 #include "PxPlane.h"
 
 void PxBoundingSphere::Set(const PxVector & newCentre, const float newRadius)

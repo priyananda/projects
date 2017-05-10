@@ -1,7 +1,7 @@
 #ifndef _PIXELX_HUMAN_H
 #define _PIXELX_HUMAN_H
 
-#include "..\..\PxGraphics\include\PxCamera.h"
+#include "../../PxGraphics/include/PxCamera.h"
 
 class PxHuman
 {

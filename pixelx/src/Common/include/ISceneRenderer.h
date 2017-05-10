@@ -2,7 +2,7 @@
 #define _PIXELX_ISCENERENDERER
 
 #include "Common.h"
-#include "PxInputEventhandler.h"
+#include "PxInputEventHandler.h"
 
 enum PxSceneType
 {

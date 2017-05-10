@@ -1,7 +1,5 @@
 #include "PxPointProjectile.h"
-#include "..\..\PxGraphics\include\PxTextureManager.h"
-
-#include "gl/glut.h"
+#include "../../PxGraphics/include/PxTextureManager.h"
 
 void PxPointProjectile::Render()
 {
@@ -15,7 +13,7 @@ void PxPointProjectile::Render()
 	glPopMatrix();
 }
 
-#include "..\..\PxSound\include\PxAudioManager.h"
+#include "../../PxSound/include/PxAudioManager.h"
 void PxPointProjectile::HandleCollision()
 {
 	PxAudioManager::Play( "EXPLOSION" );

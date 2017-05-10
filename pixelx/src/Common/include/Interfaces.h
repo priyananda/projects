@@ -1,14 +1,8 @@
-#ifndef _PIXELX_INTERFACES_H
-#define _PIXELX_INTERFACES_H
+#pragma once
 
 #include "Common.h"
 
 class PxWindow;
-#ifdef PROJECT_PXCORE
-	#define PXCORE_DLLDECL __declspec( dllexport )
-#else
-	#define PXCORE_DLLDECL __declspec( dllimport )
-#endif
 
 class PxGraphicsRoot
 {
@@ -50,5 +44,3 @@ public:
 	void Close();
 	void Process();
 };
-
-#endif

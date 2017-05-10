@@ -2,8 +2,8 @@
 #define _PIXELX_NORMALCOLLISIONCONTROLLER_H
 
 #include "ICollisionController.h"
-#include "..\..\PxGraphics\include\PxIndexedPolygonSet.h"
-#include "..\..\PxGraphics\include\PxBoundingBox.h"
+#include "../../PxGraphics/include/PxIndexedPolygonSet.h"
+#include "../../PxGraphics/include/PxBoundingBox.h"
 #include "PxSolidObject.h"
 
 class PxNormalCollisionController

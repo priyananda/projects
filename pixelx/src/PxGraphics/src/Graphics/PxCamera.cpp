@@ -1,7 +1,7 @@
 #include "PxCamera.h"
 #include "PxFrustrum.h"
-#include "..\..\PxPhysics\include\PxCollisionManager.h"
-#include "..\..\PxInput\include\PxConfiguration.h"
+#include "../../PxPhysics/include/PxCollisionManager.h"
+#include "../../PxInput/include/PxConfiguration.h"
 
 PxVector g_vVelocity(0, 0, 0);
 

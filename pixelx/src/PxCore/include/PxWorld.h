@@ -2,10 +2,10 @@
 #define _PIXELX_WORLD_H
 
 #include "PxHuman.h"
-#include "..\..\PxGraphics\include\PxWindow.h"
-#include "..\..\PxGraphics\include\PxQuakeMapRenderer.h"
-#include "..\..\PxGraphics\include\PxTesselatedMap.h"
-#include "..\..\PxGraphics\include\PxSimplePolygonSet.h"
+#include "../../PxGraphics/include/PxWindow.h"
+#include "../../PxGraphics/include/PxQuakeMapRenderer.h"
+#include "../../PxGraphics/include/PxTesselatedMap.h"
+#include "../../PxGraphics/include/PxSimplePolygonSet.h"
 
 class PxWorld
 {

@@ -22,6 +22,23 @@
 #define CONSOLE_PGDOWN          (256+8)
 #define CONSOLE_TOTAL_KEYS      (256+9)
 
+#ifdef PLATFORM_LINUX
+
+const int VK_LEFT = 0;
+const int VK_RIGHT = 0;
+const int VK_UP = 0;
+const int VK_DOWN = 0;
+const int VK_DELETE = 0;
+const int VK_HOME = 0;
+const int VK_END = 0;
+const int VK_PRIOR = 0;
+const int VK_NEXT = 0;
+
+void MessageBeep(int)
+{
+}
+
+#endif
 
 // m_console definition
 

@@ -1,5 +1,6 @@
 #include "PxConfiguration.h"
 #include "PxDataFilesManager.h"
+#include <cstring>
 
 unordered_map<string,string> PxConfiguration::options;
 unordered_map<int,int> PxConfiguration::keyBindigs;
@@ -15,7 +16,7 @@ void PxConfiguration::Init()
 	char * pArg = strstr( pCmd, "--config-file" );
 	if( pArg != nullptr && *pArg != 0)
 	{
-		sscanf_s(pArg, "--config-file=%s", buff, sizeof(buff));
+		sscanf_s(pArg, "--config-file=%s", BUFFER_AND_SIZE(buff));
 		ReadCommands(buff);
 	}
 }

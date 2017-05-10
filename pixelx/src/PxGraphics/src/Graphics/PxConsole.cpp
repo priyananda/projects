@@ -309,7 +309,7 @@ void PxConsole::Update( unsigned long frame_time )
 		glEnable(GL_BLEND);
         glBlendFunc( GL_ONE, GL_ZERO );
 		glPolygonMode( GL_FRONT_AND_BACK , GL_FILL );
-        PxTextureManager::Bind( "CONSOLE" , eTexModeNoStretch );
+        PxTextureManager::Bind( "CONSOLE" , TextureMode::NoStretch );
         glBegin(GL_QUADS);
         glTexCoord2f( xshift*10.0f , yshift ); glVertex2f( 0, (float)m_screenheight );
 		glTexCoord2f( 2.0f+xshift*10.0f, yshift ); glVertex2f((float)m_screenwidth, (float)m_screenheight );

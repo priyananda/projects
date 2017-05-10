@@ -2,18 +2,18 @@
 #define _PIXELX_POLYGON_H
 
 #include "PxVertex.h"
-#include "..\..\PxPhysics\include\PxVector.h"
+#include "../../PxPhysics/include/PxVector.h"
 
 #include <vector>
 using std::vector;
 
-enum TextureMode;
+enum class TextureMode : uint8_t;
 
 class PxPolygon
 {
-	GLuint texture;
+	GLint texture = -1;
 	string texturename;
-	GLuint dList;
+	GLint dList = -1;
 	vector<std::unique_ptr<PxVertex>> vertices;
 
 	// This will use only the first 3 vertices of the polygon.
@@ -51,7 +51,8 @@ public:
 	vector<std::unique_ptr<PxVertex>> & GetVertices(){ return vertices; }
 
 	PxPolygon()
-		:dList(-1),texture(-1){}
+	{
+	}
 
 	PxPolygon(const PxPolygon& other) :
 		texture(other.texture),

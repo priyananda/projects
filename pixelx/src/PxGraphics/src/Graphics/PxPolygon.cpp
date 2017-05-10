@@ -54,7 +54,6 @@ void PxPolygon::Finalize()
 {
 	if( dList != -1 )
 		return;
-	PxVertex * v = vertices.front().get();
 	TextureMode mode = GetTextureMode();
 
 	dList = glGenLists(1);
@@ -67,7 +66,7 @@ void PxPolygon::Finalize()
 	for(size_t i = 0 ; i < vertices.size(); ++i)
 	{
 		PxVertex * v = vertices[i].get();
-		if( mode == eTexModeNoStretch )
+		if( mode == TextureMode::NoStretch )
 			glTexCoord2f((GLfloat)v->u, (GLfloat)v->v);
 		glVertex3f(v->x, v->y, v->z);
 	}
@@ -96,15 +95,15 @@ PxVector PxPolygon::operator [](int index ) const
 TextureMode PxPolygon::GetTextureMode()
 {
 	PxVertex * v = vertices.front().get();
-	TextureMode mode = eTexModeNoStretch;
+	TextureMode mode = TextureMode::NoStretch;
 
 	if( v->u == -1 )
 		if( v->v == -1 )
-			mode = eTexModeStretchBoth;
+			mode = TextureMode::StretchBoth;
 		else
-			mode = eTexModeStretchX;
+			mode = TextureMode::StretchX;
 	else if ( v->v == -1 )
-			mode = eTexModeStretchY;
+			mode = TextureMode::StretchY;
 	return mode;
 }
 

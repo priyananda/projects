@@ -1,0 +1,5 @@
+linux_bin/*
+linux_obj/*
+linux_lib/*
+obj/*
+
