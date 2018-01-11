@@ -26,7 +26,7 @@ function CustomChartRenderer(chartInstance, easing) {
     });
   }
 
-angular.module('QuizRunnerModule')
+quizRunnerModule
   .config(['ChartJsProvider', function (ChartJsProvider) {
     Chart.plugins.register({
 	 afterDatasetsDraw: CustomChartRenderer

@@ -1,15 +1,6 @@
-angular
-  .module('QuizRunnerModule',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngRoute', 'chart.js'])
-  .controller('RootController', function ($scope, $mdSidenav) {
-	  $scope.scores = [
-		{name: "Team 1", points: 100},
-		{name: "Team 2", points: 320},
-		{name: "Team 3", points: 320},
-		{name: "Team 4", points: 320},
-		{name: "Team 5", points: 320},
-		{name: "Team 6", points: 320}
-	  ];
-	  $scope.testVar = "Nakkan";
+quizRunnerModule
+  .controller('RootController', function ($scope, $mdSidenav, QuizState) {
+	  $scope.scores = QuizState.getTeamScores();
   })
   .config(function($routeProvider) {
     $routeProvider
