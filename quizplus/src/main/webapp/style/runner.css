@@ -1,0 +1,11 @@
+.score_value {
+	font-size: 24;
+	text-align: right;
+	font-weight: bold;
+}
+
+.team_name {
+	font-style: italic;
+	font-color: darkgrey;
+	text-align: right;
+}

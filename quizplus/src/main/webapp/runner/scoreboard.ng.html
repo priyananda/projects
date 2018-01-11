@@ -1,0 +1,20 @@
+<section layout="row" layout-sm="column"  layout-wrap>
+<md-content ng-repeat="teamscore in ctrl.scores" layout="column">
+  <md-card md-image-no-fill md-whiteframe="5">
+	<md-card-title>
+		<md-card-title-text>
+			<span class="md-title team_name">{{teamscore.name}}</span>
+		</md-card-title-text>
+	</md-card-title>
+	
+	<md-card-content>
+	<p class="score_value">{{teamscore.points}}</p>
+	</md-card-content>
+	
+	<md-card-actions layout="row" layout-align="end center">
+		<md-button class="md-fab md-mini md-primary">+5</md-button>
+		<md-button class="md-fab md-mini md-primary">-5</md-button>
+	</md-card-actions>
+  </md-card>
+</md-content>
+</section>
