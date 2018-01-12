@@ -93,7 +93,6 @@ quizRunnerModule
 	$scope.onClick = function (points, evt) {
 		var activePoint = points[0];
 		if (activePoint !== undefined) {
-			//alert(activePoint._chart.data.datasets[activePoint._datasetIndex].data[activePoint._index].indexLabel);
 			var qid = activePoint._chart.data.datasets[activePoint._datasetIndex].data[activePoint._index].id;
 			$location.path('/question/' + qid);
   		    if (!$scope.$$phase) {

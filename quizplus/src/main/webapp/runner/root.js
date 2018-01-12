@@ -5,7 +5,7 @@ quizRunnerModule
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {
-          templateUrl : 'runner/questionchooser.ng.html',
+          templateUrl : 'quiz219/questionchooser.ng.html',
           controller  : 'QuestionChooserController'
       })
       .when('/question/:id', {
