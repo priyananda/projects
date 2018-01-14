@@ -8,19 +8,23 @@ function CustomChartRenderer(chartInstance, easing) {
         meta.data.forEach(function(element, index) {
           // Draw the text in black, with the specified font
           ctx.fillStyle = 'rgb(0, 0, 0)';
-          var fontSize = 16;
+          var fontSize = 12;
           var fontStyle = 'normal';
+          if ( dataset.data[index].id >= 16 && dataset.data[index].id <= 21)
+        	  fontStyle = 'bold';
           var fontFamily = 'Roboto';
           ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
           // Just naively convert to string for now
           // <---- ADJUST TO DESIRED TEXT --->
-          var dataString = dataset.data[index].indexLabel;
+          var dataString = dataset.data[index].indexLabel.split('\n');
           // Make sure alignment settings are correct
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           var padding = 5;
           var position = element.tooltipPosition();
-          ctx.fillText(dataString, position.x, position.y - (fontSize / 2) - padding);
+          ctx.fillText(dataString[0], position.x, position.y - (fontSize / 2) - padding);
+          if (dataString.length > 1)
+        	  ctx.fillText(dataString[1], position.x, position.y - (fontSize / 2) - padding + 15);
         });
       }
     });
@@ -31,7 +35,6 @@ quizRunnerModule
     Chart.plugins.register({
 	 afterDatasetsDraw: CustomChartRenderer
 	});
-
    }])
   .controller('QuestionChooserController', function ($scope, $location) {
 	  $scope.options = {
@@ -73,11 +76,18 @@ quizRunnerModule
 	            callback: function(value, index, values) { return ""; }
 	          }
 	        }]
-	      }
+	      },
+	      elements: {
+	    	point: {
+	    	  backgroundColor: function(context) { return bubbleColors[context.datasetIndex].backgroundColor; },
+	    	  borderColor: function(context) { return bubbleColors[context.datasetIndex].borderColor; },
+	    	},
+	      },
 	    };
 	  
 	$scope.series = new Array();
 	$scope.data = new Array();
+	$scope.colors = bubbleColors;
 	
 	for (i = 0; i < questionInfo.length; ++i) {
 		$scope.series.push(questionInfo[i].genre);
