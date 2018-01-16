@@ -3,19 +3,22 @@
     <md-button class="md-icon-button md-fab md-mini" ng-click="goto('/')">
       <md-icon md-font-set="material-icons">home</md-icon>
     </md-button>
-    <md-button class="md-icon-button md-fab md-mini">
+    <md-button class="md-icon-button md-fab md-mini" ng-click="prev()" ng-disabled="isPrevDisabled()">
       <md-icon md-font-set="material-icons">skip_previous</md-icon>
     </md-button>
-    <md-button class="md-icon-button md-fab md-mini">
+    <md-button class="md-icon-button md-fab md-mini" ng-click="next()"  ng-disabled="isNextDisabled()">
       <md-icon md-font-set="material-icons">skip_next</md-icon>
     </md-button>
-    <md-button class="md-icon-button md-fab md-mini">
+    <md-button class="md-icon-button md-fab md-mini" ng-click="showAnswer()">
       <md-icon md-font-set="material-icons">check</md-icon>
     </md-button>
   </div>
 </md-toolbar>
 
-<img ng-src="/test/Slide{{qid}}.jpg" style="border: 1px black;"/>
+<img ng-src="{{currentImage}}" style="border: 1px solid black;"></image>
+
+<!--
 <object width="640" height="385">
 	<param name="movie" value="http://www.youtube.com/v/tDwoBYCrEx0&hl=en&fs=1&rel=0&autoplay=0&showinfo=0&start=30"></param>
 </object>
+ -->

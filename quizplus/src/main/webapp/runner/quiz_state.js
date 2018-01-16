@@ -22,7 +22,7 @@ quizRunnerModule
 	 };
 	 
 	 _currentState.loadFromLocalStorage = function() {
-		 var tsSaved = $window.localStorage.getItem('quiz214-team-scores');
+		 var tsSaved = $window.localStorage.getItem('quiz219-team-scores');
 		 if (tsSaved != null) {
 			 _teamScores = JSON.parse(tsSaved);
 		 } else {
@@ -35,7 +35,7 @@ quizRunnerModule
 				{name: "Team 6", points: 0}
 			  ];
 		 }
-		 var qsSaved = $window.localStorage.getItem('quiz214-questions-closed');
+		 var qsSaved = $window.localStorage.getItem('quiz219-questions-closed');
 		 if (qsSaved != null) {
 			 _questionClosed = JSON.parse(qsSaved);
 		 } else {
@@ -46,8 +46,8 @@ quizRunnerModule
 	 };
 	 
 	 _currentState.saveToLocalStorage = function() {
-		 $window.localStorage.setItem('quiz214-team-scores', JSON.stringify(_teamScores));
-		 $window.localStorage.setItem('quiz214-questions-closed', JSON.stringify(_questionClosed));
+		 $window.localStorage.setItem('quiz219-team-scores', JSON.stringify(_teamScores));
+		 $window.localStorage.setItem('quiz219-questions-closed', JSON.stringify(_questionClosed));
 	 };
 	 
 	 _currentState.loadFromLocalStorage();

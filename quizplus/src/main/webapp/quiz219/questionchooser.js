@@ -36,7 +36,7 @@ quizRunnerModule
 	 afterDatasetsDraw: CustomChartRenderer
 	});
    }])
-  .controller('QuestionChooserController', function ($scope, $location) {
+  .controller('QuestionChooserController', function ($scope, $location, QuizState) {
 	  $scope.options = {
 		  title: {
 			  text: "\u{1F3B6} \u{1F3B7} \u{1F3B8} Quiz 219 The Music Quiz \u{1F3B9} \u{1F3BA} \u{1F3BB}",
@@ -90,6 +90,8 @@ quizRunnerModule
 	$scope.colors = bubbleColors;
 	
 	for (i = 0; i < questionInfo.length; ++i) {
+		if (QuizState.isQuestionClosed(i + 1))
+			continue;
 		$scope.series.push(questionInfo[i].genre);
 		$scope.data.push({
 			id: questionInfo[i].id,

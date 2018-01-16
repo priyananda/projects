@@ -1,6 +1,6 @@
 var questionInfo = [
- { id:  1, location: [90, 90, 30], genre: "Carnatic", clues: [{slideid: 1}],
-	answer: {slideid: 2}},
+ { id:  1, location: [90, 90, 30], genre: "Carnatic", clues: [{slideid: 1}, {slideid: 2}, {slideid: 3}],
+	answer: {slideid: 4}},
  { id:  2, location: [90, 80, 30], genre: "Hindustani", clues: [{slideid: 1}],
 	answer: {slideid: 2}},
  { id:  3, location: [60, 70, 30], genre: "African", clues: [{slideid: 1}],
