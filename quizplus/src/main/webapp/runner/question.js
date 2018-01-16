@@ -20,8 +20,10 @@ quizRunnerModule
 	$scope.renderSlide = function() {
 		if ($scope.isShowingAnswer()) {
 			$scope.currentImage = $scope.getImagePath($scope.question.answer);
+			$scope.videoUrl = $scope.getFullVideoUrl($scope.question.answer.vurl);
 		} else {
 			$scope.currentImage = $scope.getImagePath($scope.question.clues[$scope.currentSlideIdx]);
+			$scope.videoUrl = $scope.getFullVideoUrl($scope.question.clues[$scope.currentSlideIdx].vurl);
 		}
 	}
 	$scope.next = function() {
@@ -44,6 +46,12 @@ quizRunnerModule
 	$scope.getImagePath = function(ows) {
 		return "/test/Slide" + ows.slideid + ".jpg";
 	};
+	$scope.getFullVideoUrl = function(vurl) {
+		if (vurl === undefined || vurl == null)
+			return undefined;
+		//return "http://www.youtube.com/v/" + vurl + "&hl=en&fs=1&rel=0&autoplay=0&showinfo=0&start=30";
+		return "https://www.youtube.com/embed/" + vurl + "?hl=en&fs=1&rel=0&autoplay=0&showinfo=0&start=30";
+	}
 	
 	$scope.renderSlide();
   });

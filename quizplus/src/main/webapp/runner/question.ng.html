@@ -1,4 +1,6 @@
-<md-toolbar class="md-hue-1"  flex="100" width="1024">
+<div width="1024">
+
+<md-toolbar class="md-hue-1"  flex="100">
   <div class="md-toolbar-tools">
     <md-button class="md-icon-button md-fab md-mini" ng-click="goto('/')">
       <md-icon md-font-set="material-icons">home</md-icon>
@@ -15,10 +17,18 @@
   </div>
 </md-toolbar>
 
-<img ng-src="{{currentImage}}" style="border: 1px solid black;"></image>
+<img ng-src="{{currentImage}}" style="border: 1px solid black;" width="1024" height="768"></image>
 
-<!--
-<object width="640" height="385">
-	<param name="movie" value="http://www.youtube.com/v/tDwoBYCrEx0&hl=en&fs=1&rel=0&autoplay=0&showinfo=0&start=30"></param>
+<iframe id="ytplayer" type="text/html" width="640" height="385" ng-if="videoUrl" class="question_video"
+  ng-src="{{videoUrl}}"
+  frameborder="0"></iframe>
+
+<!-- 
+<object width="640" height="385" ng-if="videoUrl" class="question_video">
+tDwoBYCrEx0
+	<param name="movie" ng-value="getFullVideoUrl()"></param>
+	<param name="movie" ng-value="getFullVideoUrl()"></param>
 </object>
- -->
+-->
+
+ </div>
