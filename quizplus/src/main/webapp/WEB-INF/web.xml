@@ -15,5 +15,13 @@
   	<servlet-name>Search</servlet-name>
    	<url-pattern>/search</url-pattern>
   </servlet-mapping>
+  <servlet>
+	<servlet-name>Authorize</servlet-name>
+	<jsp-file>/Authorize.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Authorize</servlet-name>
+   	<url-pattern>/authorize</url-pattern>
+  </servlet-mapping>
 	
 </web-app>

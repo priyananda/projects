@@ -1,6 +1,9 @@
 quizRunnerModule
-  .controller('RootController', function ($scope, $mdSidenav, QuizState) {
+  .controller('RootController', function ($scope, $mdSidenav, QuizState, AuthState, $location) {
 	  $scope.scores = QuizState.getTeamScores();
+	  if (!AuthState.isLoggedIn()) {
+		  $location.path('/error');
+	  }
   })
   .config(function($routeProvider) {
     $routeProvider
@@ -11,6 +14,10 @@ quizRunnerModule
       .when('/question/:id', {
           templateUrl : 'runner/question.ng.html',
           controller  : 'QuestionController'
+      })
+      .when('/error', {
+    	  templateUrl : 'runner/errorpage.ng.html',
+          controller  : 'ErrorPageController'
       });
   })
   .config(function($mdThemingProvider) {
