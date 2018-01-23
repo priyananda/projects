@@ -10,7 +10,7 @@ function CustomChartRenderer(chartInstance, easing) {
           ctx.fillStyle = 'rgb(0, 0, 0)';
           var fontSize = 12;
           var fontStyle = 'normal';
-          if ( dataset.data[index].id >= 15 && dataset.data[index].id <= 21)
+          if ( dataset.data[index].id >= 16 && dataset.data[index].id <= 21)
         	  fontStyle = 'bold';
           var fontFamily = 'Roboto';
           ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);

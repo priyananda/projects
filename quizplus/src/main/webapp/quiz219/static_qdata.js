@@ -19,7 +19,7 @@ var questionInfo = [
 	answer: {slideid: 22}},
  { id: 10, location: [80, 30, 30], genre: "Indipop\n2", clues: [{slideid: 23},{slideid: 24, vid : 5}],
 	answer: {slideid: 25}},
- { id: 11, location: [90, 20, 30], genre: "K Pop", clues: [{slideid: 26},{slideid: 27}],
+ { id: 11, location: [90, 20, 30], genre: "Korean", clues: [{slideid: 26},{slideid: 27}],
 	answer: {slideid: 28}},
  { id: 12, location: [10, 60, 30], genre: "60s\nPop", clues: [{slideid: 29}, {slideid: 30, vid : 6}],
 	answer: {slideid: 31}},
@@ -27,7 +27,8 @@ var questionInfo = [
 	answer: {slideid: 33}},
  { id: 14, location: [20, 60, 30], genre: "Soul", clues: [{slideid: 34}],
 	answer: {slideid: 35}},
- { id: 15, location: [30, 90, 35], genre: "Western\nClassical (AP)", clues: [{slideid: 36},{slideid: 37, vid : 7},{slideid: 38}],
+// 36, 37 - dumped
+ { id: 15, location: [30, 90, 35], genre: "Western\nClassical", clues: [{slideid: 38}],
 	answer: {slideid: 39}},
  { id: 16, location: [50, 80, 35], genre: "Rip Offs(AP)", clues: [{slideid: 40, vid: 8}],
 	answer: {slideid: 41}},
