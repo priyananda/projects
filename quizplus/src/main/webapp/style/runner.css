@@ -5,9 +5,10 @@
 }
 
 .team_name {
+	font-size: 24;
 	font-style: italic;
 	font-color: darkgrey;
-	text-align: right;
+	text-align: left;
 }
 
 .question_video {

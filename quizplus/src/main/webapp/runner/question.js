@@ -20,10 +20,10 @@ quizRunnerModule
 	$scope.renderSlide = function() {
 		if ($scope.isShowingAnswer()) {
 			$scope.currentImage = $scope.getImagePath($scope.question.answer);
-			$scope.videoUrl = $scope.getFullVideoUrl($scope.question.answer.vurl);
+			$scope.videoUrl = $scope.getFullVideoUrl($scope.question.answer);
 		} else {
 			$scope.currentImage = $scope.getImagePath($scope.question.clues[$scope.currentSlideIdx]);
-			$scope.videoUrl = $scope.getFullVideoUrl($scope.question.clues[$scope.currentSlideIdx].vurl);
+			$scope.videoUrl = $scope.getFullVideoUrl($scope.question.clues[$scope.currentSlideIdx]);
 		}
 	}
 	$scope.next = function() {
@@ -44,13 +44,16 @@ quizRunnerModule
 		QuizState.closeQuestion($scope.qid);
 	};
 	$scope.getImagePath = function(ows) {
-		return "/test/Slide" + ows.slideid + ".jpg";
+		//return imageInfo[ows.slideid - 1].url;
+		return imageInfo[0].url;
 	};
-	$scope.getFullVideoUrl = function(vurl) {
-		if (vurl === undefined || vurl == null)
+	$scope.getFullVideoUrl = function(ows) {
+		if (ows.vid === undefined || ows.vid == null)
 			return undefined;
+		var vurl = videoInfo[ows.vid - 1].ytid;
+		var vstart = videoInfo[ows.vid - 1].start;
 		//return "http://www.youtube.com/v/" + vurl + "&hl=en&fs=1&rel=0&autoplay=0&showinfo=0&start=30";
-		return "https://www.youtube.com/embed/" + vurl + "?hl=en&fs=1&rel=0&autoplay=0&showinfo=0&start=30";
+		return "https://www.youtube.com/embed/" + vurl + "?hl=en&fs=1&rel=0&autoplay=0&showinfo=0&start=" + vstart;
 	}
 	
 	$scope.renderSlide();

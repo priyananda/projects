@@ -7,8 +7,6 @@ quizRunnerModule
 	};
 	$scope.minusFive = function(teamscore) {
 		teamscore.points -= 5;
-		if (teamscore.points < 0)
-			teamscore.points = 0;
 		QuizState.saveToLocalStorage();
 	};
 	$scope.clearStorage = function() {

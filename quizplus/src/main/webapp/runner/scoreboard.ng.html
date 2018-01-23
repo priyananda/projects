@@ -1,17 +1,19 @@
 <section layout="row" layout-sm="column"  layout-wrap>
 <md-content ng-repeat="teamscore in ctrl.scores" layout="column">
-  <md-card md-image-no-fill md-whiteframe="5">
+  <md-card md-whiteframe="5" width="40"> <!-- 
 	<md-card-title>
 		<md-card-title-text>
-			<span class="md-title team_name">{{teamscore.name}}</span>
+			 
 		</md-card-title-text>
 	</md-card-title>
+	 -->
 	
 	<md-card-content>
-	<p class="score_value">{{teamscore.points}}</p>
+	<span class="md-title team_name">{{teamscore.name}}</span>
+	<span class="score_value">{{teamscore.points}}</span>
 	</md-card-content>
 	
-	<md-card-actions layout="row" layout-align="end center">
+	<md-card-actions layout="row" layout-align="center end">
 		<md-button class="md-fab md-mini md-primary" ng-click="plusFive(teamscore)">+5</md-button>
 		<md-button class="md-fab md-mini md-primary" ng-click="minusFive(teamscore)">-5</md-button>
 	</md-card-actions>

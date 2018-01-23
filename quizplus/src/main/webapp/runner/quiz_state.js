@@ -27,12 +27,12 @@ quizRunnerModule
 			 _teamScores = JSON.parse(tsSaved);
 		 } else {
 			 _teamScores = [
-				{name: "Team 1", points: 0},
-				{name: "Team 2", points: 0},
-				{name: "Team 3", points: 0},
-				{name: "Team 4", points: 0},
-				{name: "Team 5", points: 0},
-				{name: "Team 6", points: 0}
+				{name: "T1", points: 0},
+				{name: "T2", points: 0},
+				{name: "T3", points: 0},
+				{name: "T4", points: 0},
+				{name: "T5", points: 0},
+				{name: "T6", points: 0}
 			  ];
 		 }
 		 var qsSaved = $window.localStorage.getItem('quiz219-questions-closed');
