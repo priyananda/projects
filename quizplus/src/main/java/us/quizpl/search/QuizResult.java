@@ -31,6 +31,12 @@ public class QuizResult {
 	public ArrayList<String> getSlideImageThumbs() {
 		return m_slideImageThumbs;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		// coz, nothing compares to you
+		return false;
+	}
 
 	private String m_name;
 	private Date m_date;

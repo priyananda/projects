@@ -30,7 +30,7 @@ var questionInfo = [
 // 36, 37 - dumped
  { id: 15, location: [30, 90, 35], genre: "Western\nClassical", clues: [{slideid: 38}],
 	answer: {slideid: 39}},
- { id: 16, location: [50, 80, 35], genre: "Rip Offs(AP)", clues: [{slideid: 40, vid: 8}],
+ { id: 16, location: [20, 90, 35], genre: "Classical\nPictorial(AP)", clues: [{slideid: 40}],
 	answer: {slideid: 41}},
  { id: 17, location: [10, 50, 35], genre: "Local\nVariables(AP)", clues: [{slideid: 42},{slideid: 43},{slideid: 44},{slideid: 45},{slideid: 46},{slideid: 47}],
 	answer: {slideid: 48}},

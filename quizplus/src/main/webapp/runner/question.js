@@ -44,8 +44,7 @@ quizRunnerModule
 		QuizState.closeQuestion($scope.qid);
 	};
 	$scope.getImagePath = function(ows) {
-		//return imageInfo[ows.slideid - 1].url;
-		return imageInfo[0].url;
+		return imageInfo[ows.slideid - 1].url + "=s1024";
 	};
 	$scope.getFullVideoUrl = function(ows) {
 		if (ows.vid === undefined || ows.vid == null)
