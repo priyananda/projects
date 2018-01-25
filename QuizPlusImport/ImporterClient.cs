@@ -1,11 +1,11 @@
-﻿using Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Us.QuizPl
 {
@@ -30,20 +30,20 @@ namespace Us.QuizPl
         private Dictionary<string, object> SerializeDoc(QuizDocument doc)
         {
             Dictionary<string, object> properties = new Dictionary<string, object>();
-            properties.Add("Name", doc.Name);
-            properties.Add("Date", doc.Date.ToShortDateString());
-            properties.Add("Author", doc.Author);
-            properties.Add("SlideCount", doc.Slides.Count);
+            properties.Add("name", doc.Name);
+            properties.Add("date", doc.Date.ToShortDateString());
+            properties.Add("author", doc.Author);
+            properties.Add("slidecount", doc.Slides.Count);
             return properties;
         }
 
         private Dictionary<string, object> SerializeSlide(string docId, QuizSlide slide)
         {
             Dictionary<string, object> properties = new Dictionary<string, object>();
-            properties.Add("PresentationId", docId);
-            properties.Add("ImageURL", slide.CanonicalName);
-            properties.Add("TextContent", slide.Text.Replace("\"", "'"));
-            properties.Add("SlideIndex", slide.SlideIndex.ToString());
+            properties.Add("presentationid", docId);
+            properties.Add("imageurl", slide.CanonicalName);
+            properties.Add("textcontent", slide.Text.Replace("\"", "'"));
+            properties.Add("slideindex", slide.SlideIndex.ToString());
             return properties;
         }
 
@@ -76,7 +76,7 @@ namespace Us.QuizPl
 
         private void BuildData(StringBuilder builder, string paramName, Dictionary<string, object> properties)
         {
-            string jsonData = JsonParser.ToJson(properties);
+            string jsonData = JsonConvert.SerializeObject(properties, Formatting.None);
             builder.Append(paramName);
             builder.Append("=");
             builder.Append(WebUtility.UrlEncode(jsonData));
@@ -107,7 +107,7 @@ namespace Us.QuizPl
             }
         }
 
-        private const string CONNECTION_URL_TEST = "http://localhost:8888/import";
+        private const string CONNECTION_URL_TEST = "http://localhost:8080/import";
         private const string CONNECTION_URL_PROD = "http://quizpl.us/import";
     }
 }

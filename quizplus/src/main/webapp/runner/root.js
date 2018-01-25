@@ -1,9 +1,6 @@
 quizRunnerModule
   .controller('RootController', function ($scope, $mdSidenav, QuizState, AuthState, $location) {
 	  $scope.scores = QuizState.getTeamScores();
-	  if (!AuthState.isLoggedIn()) {
-		  $location.path('/error');
-	  }
   })
   .config(function($routeProvider) {
     $routeProvider

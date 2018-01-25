@@ -2,18 +2,22 @@
 
 <md-toolbar class="md-hue-1"  flex="100">
   <div class="md-toolbar-tools">
+    <span>Go Back:</span>
     <md-button class="md-icon-button md-fab md-mini" ng-click="goto('/')">
       <md-icon md-font-set="material-icons">home</md-icon>
     </md-button>
+    <span>Previous Slide:</span>
     <md-button class="md-icon-button md-fab md-mini" ng-click="prev()" ng-disabled="isPrevDisabled()">
       <md-icon md-font-set="material-icons">skip_previous</md-icon>
     </md-button>
+    <span>Next Slide:</span>
     <md-button class="md-icon-button md-fab md-mini" ng-click="next()"  ng-disabled="isNextDisabled()">
       <md-icon md-font-set="material-icons">skip_next</md-icon>
     </md-button>
+    <span>Show Answer:</span>
     <md-button class="md-icon-button md-fab md-mini" ng-click="showAnswer()">
       <md-icon md-font-set="material-icons">check</md-icon>
-    </md-button>
+    </md-button> 
   </div>
 </md-toolbar>
 
