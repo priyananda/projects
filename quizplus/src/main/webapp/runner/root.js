@@ -5,8 +5,8 @@ quizRunnerModule
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {
-          templateUrl : 'quiz219/questionchooser.ng.html',
-          controller  : 'QuestionChooserController'
+          templateUrl : 'quiz222/roundchooser.ng.html',
+          controller  : 'RoundChooserController'
       })
       .when('/question/:id', {
           templateUrl : 'runner/question.ng.html',
@@ -15,10 +15,26 @@ quizRunnerModule
       .when('/error', {
     	  templateUrl : 'runner/errorpage.ng.html',
           controller  : 'ErrorPageController'
-      });
+      })
+      .when('/r1', {
+          templateUrl : 'quiz222/round1.ng.html',
+          controller  : 'Round1Controller'
+      })
+      .when('/r2', {
+          templateUrl : 'quiz222/round2.ng.html',
+          controller  : 'Round2Controller'
+      })
+      .when('/r3', {
+          templateUrl : 'quiz222/round3.ng.html',
+          controller  : 'Round3Controller'
+      })
+      .when('/r4', {
+          templateUrl : 'quiz222/round4.ng.html',
+          controller  : 'Round4Controller'
+      })
   })
   .config(function($mdThemingProvider) {
      $mdThemingProvider.theme('default')
-     	.primaryPalette('light-blue')
-     	.accentPalette('orange');
+     	.primaryPalette('orange')
+     	.accentPalette('indigo');
   });
