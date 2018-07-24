@@ -8,7 +8,7 @@ quizRunnerModule
           templateUrl : 'quiz222/roundchooser.ng.html',
           controller  : 'RoundChooserController'
       })
-      .when('/question/:id', {
+      .when('/r/:rid/q/:id', {
           templateUrl : 'runner/question.ng.html',
           controller  : 'QuestionController'
       })
