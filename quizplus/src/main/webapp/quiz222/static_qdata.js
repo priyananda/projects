@@ -75,3 +75,42 @@ var questionInfo = [
  { id: 37, location: [40, 30, 30], genre: "Folk", clues: [{slideid: 99}],
 	answer: {slideid: 100}},
 ];
+
+var linkInfo = [
+	"Liberty City",
+	"East Coast",
+	"Etymology",
+	"Italians",
+	"France",
+	"Femme Fatale",
+	"Cricket",
+	"Cricket",
+	"Brit Lit",
+	"Sea Sickness",
+	"Oceania",
+	"Calendar",
+	"Nippon",
+	"\u00B5"
+];
+
+var r2topics = [
+	{name: "Foo Bar Brew Ha 1", qids: [16, 17]},
+	{name: "Foo Bar Brew Ha 2", qids: [18, 19]},
+	{name: "Foo Bar 3", qids: [20, 21]},
+	{name: "Foo Bar 4", qids: [22, 23]},
+	{name: "Foo Bar 5", qids: [24, 25]},
+	{name: "Foo Bar 6", qids: [27, 28]},
+];
+
+var r3keys = [
+	{name: "Dollars Colony", kqid: 28},
+	{name: "Stormy or Sunny?", msg: "PG13QuizOnlyWholeSomeQuestionsCheeThooShaantamPaapamException"},
+	{name: "Fwd: Fwd: Re: Fwd:", msg: "PleaseDontLynchTheQuizMasterException"},
+	{name: "Bonjour, mi amore", kqid: 29},
+	{name: "Winds of Winter", msg: "OhYouSweetSummerChildException"},
+	{name: "Dee and Dum", kqid: 30},
+	{name: "Bard but not Beedle", kqid: 31},
+	{name: "Tabs vs Spaces", msg: "TabsAreAHeresySpacesAreTheOneTrueGodException"},
+	{name: "Hum log-o", kqid: 32},
+	{name: "Kal Aaj aur Kal", kqid: 33},
+];

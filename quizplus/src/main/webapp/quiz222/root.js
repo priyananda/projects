@@ -28,10 +28,6 @@ quizRunnerModule
           templateUrl : 'quiz222/round3.ng.html',
           controller  : 'Round3Controller'
       })
-      .when('/r4', {
-          templateUrl : 'quiz222/round4.ng.html',
-          controller  : 'Round4Controller'
-      })
   })
   .config(function($mdThemingProvider) {
      $mdThemingProvider.theme('default')

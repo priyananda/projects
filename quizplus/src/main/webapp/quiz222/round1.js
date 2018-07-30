@@ -18,25 +18,39 @@ quizRunnerModule
                                     fromLinkableSelfNode: true, toLinkableSelfNode: true,
                                     fromLinkableDuplicates: true, toLinkableDuplicates: true
                                   }),
-                                $(go.TextBlock, { margin: 30, editable: false },
+                                $(go.TextBlock, { margin: 10, editable: false },
                                   new go.Binding("text", "name").makeTwoWay())
                               ),
                 linkTemplate: $(go.Link,
                                 { relinkableFrom: true, relinkableTo: true },
                                 $(go.Shape),
-                                $(go.Shape, { toArrow: "Standard", stroke: null, strokeWidth: 0 })
+                                $(go.Shape, { toArrow: "Diamond", scale: 2}),
+                                $(go.Shape, { fromArrow: "Diamond", scale: 2 }),
+                                $(go.Panel, "Auto",
+                                        $(go.Shape,  // the label background, which becomes transparent around the edges
+                                          { fill: $(go.Brush, "Radial", { 0: "rgb(240, 240, 240)", 0.3: "rgb(240, 240, 240)", 1: "rgba(240, 240, 240, 0)" }),
+                                            stroke: null }),
+                                        $(go.TextBlock,  // the label text
+                                          { textAlign: "center",
+                                            font: "10pt helvetica, arial, sans-serif",
+                                            stroke: "#555555",
+                                            margin: 4 },
+                                          new go.Binding("text", "text"))
+                                )
                               ),
                 initialContentAlignment: go.Spot.Center,
                 layout:
-                    $(go.LayeredDigraphLayout,
-                      { direction: 0, layerSpacing: 6, columnSpacing: 6, setsPortSpots: false }),
+                    $(go.CircularLayout,
+                      { direction: go.CircularLayout.Clockwise,
+                    	arrangement: go.CircularLayout.ConstantDistance,
+                    	radius: 300}),
                 "ModelChanged": updateAngular,
                 "ChangedSelection": updateSelection,
                 "undoManager.isEnabled": true,
                 allowLink: false,
                 allowMove: false,
                 allowRelink: false,
-                autoScale: go.Diagram.Uniform,
+                //autoScale: go.Diagram.Uniform,
             });
             function onDoubleClick(e, obj){
             	$location.path('/r/1/q/' + obj.part.key);
@@ -89,27 +103,26 @@ quizRunnerModule
 
 quizRunnerModule
   .controller('Round1Controller', function ($scope, $routeParams, $location, QuizState) {
-	  $scope.model = new go.GraphLinksModel(
-	    [
-          { key: 1, name: "Q1", color: "lightblue" },
-          { key: 2, name: "Q2", color: "orange" },
-          { key: 3, name: "Q3", color: "lightgreen" },
-          { key: 4, name: "Q4", color: "pink" },
-          { key: 5, name: "Q5", color: "pink" },
-          { key: 6, name: "Q6", color: "pink" }
-        ],
-	    [
-          { from: 1, to: 2 },
-          { from: 2, to: 1 },
-          { from: 2, to: 3 },
-          { from: 3, to: 2 },
-          { from: 3, to: 4 },
-          { from: 4, to: 3 },
-          { from: 4, to: 5 },
-          { from: 5, to: 4 },
-          { from: 5, to: 6 },
-          { from: 6, to: 5 },
-        ]);
+	  var r1state = QuizState.getR1State();
+	  var qnodes = [];
+	  var qlinks = [];
+	  for (var i = 1; i <= 15; ++i) {
+		  var effectiveColor = "lightgrey";
+		  if (i == r1state.start || i == r1state.end){
+			  effectiveColor = "lightgreen";
+		  } else if (i < r1state.start || i > r1state.end) {
+			  effectiveColor = "lightblue";
+		  }
+		  qnodes.push({key: i, name: "Q" + i, color: effectiveColor});
+		  var effectiveText = "";
+		  if (i < r1state.start || i >= r1state.end) {
+			  effectiveText = linkInfo[i - 1];
+		  }
+		  if (i < 15) {
+			  qlinks.push({from: i, to: i + 1, text: effectiveText});
+		  }
+	  }
+	  $scope.model = new go.GraphLinksModel(qnodes, qlinks);
 	  $scope.model.selectedNodeData = null;
 	  $scope.goToQuestion = function(qid) {
 		  $location.path('/r/1/q/' + qid);

@@ -6,6 +6,13 @@ quizRunnerModule
 	$scope.goto = function(where){
 		$location.path(where);
 	};
+	$scope.goToHome = function() {
+		if ($routeParams.rid !== undefined) {
+			$scope.goto('/r' + $routeParams.rid);
+		} else {
+			$scope.goto('/');
+		}
+	};
 	$scope.isShowingAnswer = function() {
 		return $scope.currentSlideIdx < 0;
 	};
