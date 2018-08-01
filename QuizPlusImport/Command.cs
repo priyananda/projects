@@ -58,7 +58,6 @@ namespace Us.QuizPl
                         var googleStorageClient = new GoogleStorageUploader();
                         googleStorageClient.UploadQuiz(doc);
                     }
-                    return;
 
                     Logger.Log("Uploading Data for {0} ...", doc.Name);
                     var importClient = new ImporterClient();

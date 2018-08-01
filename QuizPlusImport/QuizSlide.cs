@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PPT = Microsoft.Office.Interop.PowerPoint;
+//using PPT = Microsoft.Office.Interop.PowerPoint;
 
 namespace Us.QuizPl
 {
@@ -15,6 +15,7 @@ namespace Us.QuizPl
         public string Text;
         public QuizDocument QuizDoc;
 
+        /*
         public static QuizSlide Parse(PPT.Slide pptSlide, string directory)
         {
             QuizSlide slide = new QuizSlide();
@@ -27,6 +28,16 @@ namespace Us.QuizPl
                     builder.AppendLine(shape.TextFrame.TextRange.Text);
             }
             slide.Text = builder.ToString();
+            return slide;
+        }
+        */
+
+        public static QuizSlide Parse(int slideNumber, string directory)
+        {
+            QuizSlide slide = new QuizSlide();
+            slide.SlideIndex = slideNumber;
+            slide.ImagePath = Path.Combine(directory, "Slide" + slide.SlideIndex + ".png");
+            slide.Text = "";
             return slide;
         }
 

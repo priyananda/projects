@@ -33,7 +33,7 @@ namespace Us.QuizPl
                     fileobj,
                     BUCKET_NAME,
                     uploadStream,
-                    "image/jpeg");
+                    "image/png");
 
                 if (useAsync)
                 {

@@ -45,7 +45,7 @@ public class QuizMedia extends HttpServlet {
 		JsonArray jsonArray = new JsonArray();
 		for (long i = 1; i <= slideCount; ++i) {
 			String servingUrl = StorageHelper.getUrlForGcsFile(Slide.BUCKET_NAME,
-				String.format("%1$s/Slide%2$d.jpg", presentation.getName(), i));
+				String.format("%1$s/Slide%2$d.png", presentation.getName(), i));
 			jsonArray.add(toJsonObject(servingUrl));
 		}
 		JsonObject jobjOuter = new JsonObject();

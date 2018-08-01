@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PPT = Microsoft.Office.Interop.PowerPoint;
+//using PPT = Microsoft.Office.Interop.PowerPoint;
 
 namespace Us.QuizPl
 {
@@ -15,13 +15,14 @@ namespace Us.QuizPl
         public List<QuizSlide> Slides = new List<QuizSlide>();
         public DateTime Date;
 
+        /*
         public static QuizDocument Parse(string filePath)
         {
             QuizDocument doc = new QuizDocument();
             PPT.Application pptApp = new PPT.Application();
             PPT.Presentation ppt = pptApp.Presentations.Open(filePath);
             Directory.Delete(IMAGE_TEMP_PATH, true);
-            ppt.SaveCopyAs(IMAGE_TEMP_PATH, Microsoft.Office.Interop.PowerPoint.PpSaveAsFileType.ppSaveAsJPG);
+            //ppt.SaveCopyAs(IMAGE_TEMP_PATH, Microsoft.Office.Interop.PowerPoint.PpSaveAsFileType.ppSaveAsJPG);
             doc.ExtractDetails(filePath);
             
             foreach (PPT.Slide pptSlide in ppt.Slides)
@@ -35,6 +36,22 @@ namespace Us.QuizPl
             ppt.Close();
             pptApp.Quit();
 
+            return doc;
+        }
+        */
+
+        public static QuizDocument Parse(string directory)
+        {
+            QuizDocument doc = new QuizDocument();
+            doc.ExtractDetails(directory);
+
+            string[] files = Directory.GetFiles(directory);
+            for (int slideIndex = 1; slideIndex <= files.Length; ++slideIndex)
+            {
+                QuizSlide docSlide = QuizSlide.Parse(slideIndex, directory);
+                docSlide.QuizDoc = doc;
+                doc.Slides.Add(docSlide);
+            }
             return doc;
         }
 
