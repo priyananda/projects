@@ -1,5 +1,4 @@
 [
-  "appengine-api",
-  "googlecloudstorage",
-  "clouddatastore"
+  "appengine-endpoints",
+  "appengine-api"
 ]
