@@ -1,12 +1,11 @@
 .score_value {
-	font-size: 24;
+	font-size: 16;
 	text-align: right;
 	font-weight: bold;
 }
 
 .team_name {
-	font-size: 24;
-	font-style: italic;
+	font-size: 16;
 	font-color: darkgrey;
 	text-align: left;
 }
@@ -19,4 +18,9 @@
 
 .code_font {
 	font-family: monospace;
+}
+
+.sup {
+	font-size:14px;
+	vertical-align:super;
 }
