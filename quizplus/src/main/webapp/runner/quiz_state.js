@@ -70,7 +70,7 @@ quizRunnerModule
 		 var qsSaved = $window.localStorage.getItem('quiz222-questions-closed');
 		 if (qsSaved != null) {
 			 _questionClosed = JSON.parse(qsSaved);
-		 } else {
+		 } else if (questionInfo !== undefined){
 			 _questionClosed = [];
 			 for (i = 0; i < questionInfo.length; ++i)
 				 _questionClosed.push(false);

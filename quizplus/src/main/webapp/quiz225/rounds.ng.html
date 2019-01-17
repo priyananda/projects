@@ -1,1 +1,16 @@
-Rounds!!!
+<div class="rounds_content">
+	<div class="rounds_container">
+		<md-content>
+			<md-list flex>
+				<md-list-item class="md-3-line" ng-repeat="round in round_info">
+          <img ng-src="/quiz225/img/{{round.icon}}.png" class="md-avatar" />
+          <div class="md-list-item-text" layout="column">
+            <h3><a ng-href="{{round.link}}">{{ round.title }}</a></h3>
+            <span class="green_link">{{ round.display_link }}</span>
+            <p>{{ round.snippet }}</p>
+          </div>
+        </md-list-item>
+			</md-list>
+		</md-content>
+	</div>
+</div>

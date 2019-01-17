@@ -24,3 +24,23 @@
 	font-size:14px;
 	vertical-align:super;
 }
+
+.rounds_content {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	background-image: url("/quiz225/img/roundsbg.png");
+	background-repeat: no-repeat;
+	width: 1367px;
+	height: 946px;
+}
+
+.green_link {
+	color: green;
+}
+
+.rounds_container {
+	position: absolute;
+	left: 70px;
+	top: 150px;
+}
