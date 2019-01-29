@@ -1,7 +1,6 @@
 package us.quizpl.app;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,15 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.apphosting.api.search.DocumentPb.Document.Storage;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import us.quizpl.StorageHelper;
 import us.quizpl.model.Presentation;
 import us.quizpl.model.Slide;
-import us.quizpl.search.QuizResult;
-import us.quizpl.search.QuizRetriever;
 
 @WebServlet(
 	name = "QuizMedia",

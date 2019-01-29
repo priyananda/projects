@@ -1,8 +1,7 @@
 package us.quizpl.model;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import com.google.appengine.api.datastore.Entity;
 import com.google.gson.JsonObject;
@@ -25,13 +24,7 @@ public class Presentation extends ModelObjectBase {
 		entity.setProperty(FIELD_NAME, jsonObject.getAsJsonPrimitive(FIELD_NAME.toLowerCase()).getAsString());
 		
 		String dateAsString = jsonObject.getAsJsonPrimitive(FIELD_DATE.toLowerCase()).getAsString();
-		Date date = null;
-		try {
-			date = DateFormat.getDateInstance(DateFormat.SHORT).parse(dateAsString);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		entity.setProperty(FIELD_DATE, date);
+		entity.setProperty(FIELD_DATE, dateAsString);
 		
 		String author = jsonObject.getAsJsonPrimitive(FIELD_AUTHOR.toLowerCase()).getAsString();
 		long authorId = Author.getByName(author, true).getId();
@@ -49,8 +42,9 @@ public class Presentation extends ModelObjectBase {
 		return (String) m_entity.getProperty(FIELD_NAME);
 	}
 	
-	public Date getDate() {
-		return (Date) m_entity.getProperty(FIELD_DATE);
+	public LocalDate getDate() {
+		String dateAsString = (String) m_entity.getProperty(FIELD_DATE);
+		return LocalDate.parse(dateAsString, DateTimeFormatter.ISO_LOCAL_DATE);
 	}
 	
 	public long getSlideCount() {

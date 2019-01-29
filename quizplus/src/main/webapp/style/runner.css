@@ -44,3 +44,48 @@
 	left: 70px;
 	top: 150px;
 }
+
+.band_background {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	background-image: url("/quiz225/img/band.jpg");
+	background-repeat: no-repeat;
+	width: 1024px;
+	height: 574px;
+}
+
+.band_rules {
+	position: absolute;
+	left: 0px;
+	top: 580px;
+	border: 1px solid darkgray;
+	background-color: lightgray;
+	width: 1004px;
+	font-family: 'VT323'; 
+	font-size: 22px;
+	padding-left: 20px; 
+}
+
+.start_link {
+	margin: auto;
+	width: 100%;
+	text-align: center;
+}
+
+.wiki_background {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	background-image: url("/quiz225/img/wikibg.png");
+	background-repeat: no-repeat;
+	width: 999px;
+	height: 673px;
+}
+
+.wiki_links_section {
+	position: absolute;
+	left: 200px;
+	top: 250px;
+	width: 400px;
+}

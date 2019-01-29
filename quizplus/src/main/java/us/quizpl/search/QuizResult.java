@@ -1,14 +1,14 @@
 package us.quizpl.search;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class QuizResult {
 	
-	public Date getDate() {
+	public LocalDate getDate() {
 		return m_date;
 	}
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		m_date = date;
 	}
 	public String getName() {
@@ -39,7 +39,7 @@ public class QuizResult {
 	}
 
 	private String m_name;
-	private Date m_date;
+	private LocalDate m_date;
 	private String m_author;
 	private ArrayList<String> m_slideImageUrls = new ArrayList<String>();
 	private ArrayList<String> m_slideImageThumbs = new ArrayList<String>();

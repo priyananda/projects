@@ -5,8 +5,8 @@ quizRunnerModule.controller('LandingPageController', function($scope,
 	$scope.selectedItem = "";
 	$scope.options = [ "Pete's quiz", "Is Pete the Pete in For Pete's Sake?",
 			"Will Pete win the Nobel Prize?",
-			"What does the fox say? asks Pete", "Royal Wedding",
-			"Royale with Cheese" ];
+			"What does the fox say? asks Pete", "India vs Australia",
+			"Royale with Cheese", "Indian restaurants in Antarctica" ];
 	$scope.querySearch = function(searchStr) {
 		var results = searchStr ? $scope.options.filter(createFilterFor(searchStr))
 				: $scope.options;
