@@ -3,7 +3,7 @@ quizRunnerModule.controller('LandingPageController', function($scope,
 	ctrl = this;
 	$scope.searchText = "";
 	$scope.selectedItem = "";
-	$scope.options = [ "Pete's quiz", "Is Pete the Pete in For Pete's Sake?",
+	$scope.options = [ "Pete wrecks the Internet", "Is Pete the Pete in For Pete's Sake?",
 			"Will Pete win the Nobel Prize?",
 			"What does the fox say? asks Pete", "India vs Australia",
 			"Royale with Cheese", "Indian restaurants in Antarctica" ];

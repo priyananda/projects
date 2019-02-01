@@ -1,5 +1,5 @@
 quizRunnerModule
-  .controller('QuestionController', function ($scope, $routeParams, $location, QuizState) {
+  .controller('QuestionController', function ($scope, $routeParams, $location, $mdBottomSheet, QuizState) {
 	$scope.qid = $routeParams.id;
 	$scope.question = questionInfo[$routeParams.id - 1];
 	$scope.currentSlideIdx = 0;
@@ -28,6 +28,7 @@ quizRunnerModule
 		if ($scope.isShowingAnswer()) {
 			$scope.currentImage = $scope.getImagePath($scope.question.answer);
 			$scope.videoUrl = $scope.getFullVideoUrl($scope.question.answer);
+			$scope.showBottomSheet();
 		} else {
 			$scope.currentImage = $scope.getImagePath($scope.question.clues[$scope.currentSlideIdx]);
 			$scope.videoUrl = $scope.getFullVideoUrl($scope.question.clues[$scope.currentSlideIdx]);
@@ -58,9 +59,27 @@ quizRunnerModule
 			return undefined;
 		var vurl = videoInfo[ows.vid - 1].ytid;
 		var vstart = videoInfo[ows.vid - 1].start;
-		//return "http://www.youtube.com/v/" + vurl + "&hl=en&fs=1&rel=0&autoplay=0&showinfo=0&start=30";
 		return "https://www.youtube.com/embed/" + vurl + "?hl=en&fs=1&rel=0&autoplay=0&showinfo=0&start=" + vstart;
-	}
+	};
+	$scope.showBottomSheet = function() {
+		if (QuizState.getGraph() === null || !QuizState.getGraph().shouldShowLinks($scope.qid)) {
+			return;
+		}
+		$mdBottomSheet.show({
+			templateUrl: '/runner/bandlinks.ng.html',
+		    controller: 'BandLinksController',
+		    clickOutsideToClose: false
+	    });
+	};
 	
 	$scope.renderSlide();
+  })
+  .controller('BandLinksController', function ($scope, $location, $mdBottomSheet, QuizState) {
+	$scope.nextTeams = QuizState.getGraph().getLinks;
+	$scope.goToNextQuestion = function(team) {
+		QuizState.getGraph().advance(team);
+		var where = '/question/' + QuizState.getGraph().getCurrentQuestion;
+		$mdBottomSheet.hide();
+		$location.path(where);
+	};
   });
