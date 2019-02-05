@@ -22,6 +22,15 @@ quizRunnerModule
 		 $window.localStorage.clear();
 	 };
 	 
+	 _currentState.addToAllTeams = function(delta) {
+		 _teamScores.forEach(function(score) {
+			if (score.points + delta < 0)
+				score.points = 0;
+			else
+				score.points += delta;
+		 });
+	 };
+	 
 	 _currentState.getGraph = function() {
 		 return _graph;
 	 };

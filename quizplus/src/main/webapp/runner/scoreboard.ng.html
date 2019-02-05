@@ -1,14 +1,29 @@
-<section layout="row" layout-sm="column" layout-wrap>
+<section layout="column" layout-sm="column" layout-wrap>
 	<md-content ng-repeat="teamscore in ctrl.scores" layout="column">
-	<md-card md-whiteframe="5" width="30"> <md-card-content>
-	<div width="100%">
-		<span class="team_name">{{teamscore.name}}</span> has <span
-			class="score_value">{{teamscore.points}}</span> likes.
-	</div>
-	<md-button class="md-fab md-mini md-primary"
-		ng-click="plusFive(teamscore)">&#x1F44D;</md-button> <md-button
-		class="md-fab md-mini md-primary" ng-click="minusFive(teamscore)">&#x1F44E;</md-button>
-	</md-card-content> </md-card> </md-content>
-	<md-content> <md-button class="md-primary"
-		ng-click="clearStorage()">Clear Local Storage</md-button> </md-content>
+		<md-card md-whiteframe="5" width="30">
+		 <md-card-content>
+			<div width="100%">
+				<span class="team_name">{{teamscore.name}}</span> has <span
+					class="score_value">{{teamscore.points}}</span> likes.
+			</div>
+			<section layout="row" style="margin-left: -10px;">
+			  <md-button class="md-icon-button like_button" ng-click="addToTeam(teamscore, 5)">
+				  <i class="material-icons">thumb_up</i>
+			  </md-button>
+		    <md-button class="md-icon-button like_button" ng-click="addToTeam(teamscore, -5)">
+		      <i class="material-icons">thumb_down</i>
+			  </md-button>
+			  <md-button class="md-icon-button like_button" ng-click="addToTeam(teamscore, 10)">
+		      <i class="material-icons">favorite</i>
+			  </md-button>
+			</section>
+		 </md-card-content>
+	 </md-card>
+	</md-content>
+	<md-content>
+		<md-button class="md-primary"	ng-click="clearStorage()">Clear Local Storage</md-button>
+		<md-button class="md-primary" ng-click="plus100()">Acche Din (+100)</md-button>
+		<md-button class="md-primary" ng-click="minus100()">Bure Din (-100)</md-button>
+		<md-button class="md-primary" ng-click="resetGraph()">Reset Graph</md-button>
+	</md-content>
 </section>

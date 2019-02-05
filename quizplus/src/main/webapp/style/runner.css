@@ -89,3 +89,30 @@
 	top: 250px;
 	width: 400px;
 }
+
+.ebay_background {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	background-image: url("/quiz225/img/ebaybg.png");
+	background-repeat: no-repeat;
+	width: 999px;
+	height: 673px;
+}
+
+.ebay_content {
+	position: absolute;
+	left: 350px;
+	top: 400px;
+	width: 400px;
+}
+
+.like_button {
+	font-size: 9px;
+	height: 9px;
+	width: 9px;
+	font-color: red;
+	padding: 0px;
+	margin: 0px;
+	fill: #DE3641;
+}

@@ -1,17 +1,21 @@
 quizRunnerModule
   .controller('ScoreBoardController', function ($scope, QuizState) {
 	ctrl = this;
-	$scope.plusFive = function(teamscore) {
-		teamscore.points += 5;
-		QuizState.saveToLocalStorage();
-	};
-	$scope.minusFive = function(teamscore) {
-		teamscore.points -= 5;
+	$scope.addToTeam = function(teamscore, delta) {
+		teamscore.points += delta;
 		QuizState.saveToLocalStorage();
 	};
 	$scope.clearStorage = function() {
 		QuizState.clearLocalStorage();
-	}
+	};
+	$scope.plus100 = function() {
+		QuizState.addToAllTeams(100);
+		QuizState.saveToLocalStorage();
+	};
+	$scope.minus100 = function() {
+		QuizState.addToAllTeams(-100);
+		QuizState.saveToLocalStorage();
+	};
 });
 
 quizRunnerModule.component('scoreboard', {
