@@ -62,7 +62,7 @@ quizRunnerModule
 		return "https://www.youtube.com/embed/" + vurl + "?hl=en&fs=1&rel=0&autoplay=0&showinfo=0&start=" + vstart;
 	};
 	$scope.showBottomSheet = function() {
-		if (QuizState.getGraph() === null || !QuizState.getGraph().shouldShowLinks($scope.qid)) {
+		if (!$scope.shouldShowTeam()) {
 			return;
 		}
 		$mdBottomSheet.show({
@@ -71,6 +71,12 @@ quizRunnerModule
 		    clickOutsideToClose: false
 	    });
 	};
+	$scope.shouldShowTeam = function() {
+		return (QuizState.getGraph() !== null && QuizState.getGraph().shouldShowLinks($scope.qid));
+	};
+	$scope.getCurrentTeam = function() {
+		return QuizState.getGraph().getCurrentTeam;
+	}
 	
 	$scope.renderSlide();
   })

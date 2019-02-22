@@ -22,11 +22,11 @@ quizRunnerModule
       })
       .when('/yt', {
           templateUrl : 'quiz225/yt.ng.html',
-          controller  : 'EmptyController'
+          controller  : 'YouTubeController'
       })
-      .when('/ebay', {
-          templateUrl : 'quiz225/ebay.ng.html',
-          controller  : 'EbayPageController'
+      .when('/snap', {
+          templateUrl : 'quiz225/snap.ng.html',
+          controller  : 'SnapPageController'
       })
       .when('/ig', {
           templateUrl : 'quiz225/ig.ng.html',

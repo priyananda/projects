@@ -1,6 +1,6 @@
 <div width="1024">
 
-<md-toolbar class="md-hue-1"  flex="100">
+<md-toolbar flex="100">
   <div class="md-toolbar-tools">
     <span>Go Back:</span>
     <md-button class="md-icon-button md-fab md-mini" ng-click="goToHome()">
@@ -20,6 +20,7 @@
     </md-button> 
   </div>
 </md-toolbar>
+<div ng-if="shouldShowTeam()" class="team_header">Question to Team {{getCurrentTeam()}}</div>
 
 <img ng-src="{{currentImage}}" style="border: 1px solid black;" width="1024" height="768"></image>
 

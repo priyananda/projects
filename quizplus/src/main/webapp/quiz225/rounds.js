@@ -6,25 +6,25 @@ quizRunnerModule
 			link: "#/wiki",
 			title: "Pete's quiz on Wikipedia",
 			display_link: "http://en.wikipedia.org/wiki/Petes_Quiz",
-			snippet: "Pete's Quiz is the most popular page on Wikipedia"
+			snippet: "Where every question has [citation needed]"
 		}, {
 			icon: "yt",
 			link: "#/yt",
 			title: "Pete's quiz on YouTube",
 			display_link: "http://youtube.com/Petes_Quiz",
-			snippet: "Pete makes literally the best videos ever..."
+			snippet: "Can't be worse than Youtube Rewind 2018 ..."
 		}, {
-			icon: "ebay",
-			link: "#/ebay",
-			title: "Pete's quiz on Ebay",
-			display_link: "http://ebay.com/Petes_Quiz",
-			snippet: "Bid on the best Pete has to offer..."
+			icon: "snap",
+			link: "#/snap",
+			title: "Avengers: Thanos Snaps Again",
+			display_link: "http://marvel.com/AvengersPetefinityWar",
+			snippet: "Just give us all your money, already"
 		}, {
 			icon: "ig",
 			link: "#/ig",
 			title: "Pete's quiz on Instagram",
 			display_link: "http://instagram.com/@Pete",
-			snippet: "#cool #pete #forgetthatwerefacebook"
+			snippet: "#cool #pete #forgetthatwearefacebook"
 		}, {
 			icon: "netflix",
 			link: "#/netflix",

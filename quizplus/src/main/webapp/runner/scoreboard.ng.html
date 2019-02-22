@@ -14,7 +14,10 @@
 		      <i class="material-icons">thumb_down</i>
 			  </md-button>
 			  <md-button class="md-icon-button like_button" ng-click="addToTeam(teamscore, 10)">
-		      <i class="material-icons">favorite</i>
+		      <i class="material-icons">trending_up</i>
+			  </md-button>
+			  <md-button class="md-icon-button like_button" ng-click="addToTeam(teamscore, -10)">
+		      <i class="material-icons">trending_down</i>
 			  </md-button>
 			</section>
 		 </md-card-content>
@@ -22,8 +25,16 @@
 	</md-content>
 	<md-content>
 		<md-button class="md-primary"	ng-click="clearStorage()">Clear Local Storage</md-button>
-		<md-button class="md-primary" ng-click="plus100()">Acche Din (+100)</md-button>
-		<md-button class="md-primary" ng-click="minus100()">Bure Din (-100)</md-button>
 		<md-button class="md-primary" ng-click="resetGraph()">Reset Graph</md-button>
+		<md-menu>
+			<md-button class="md-primary" ng-click="showSnapMenu($mdMenu, $event)">The Snap</md-button>
+			<md-menu-content width="4">
+				<md-menu-item  ng-repeat="teamscore in ctrl.scores">
+					<md-checkbox>
+						{{teamscore.name}}
+					</md-checkbox>
+				</md-menu-item>
+			</md-menu-content>
+		</md-menu>
 	</md-content>
 </section>

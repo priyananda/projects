@@ -1,5 +1,5 @@
 quizRunnerModule
-  .controller('ScoreBoardController', function ($scope, QuizState) {
+  .controller('ScoreBoardController', function ($scope, $mdMenu, QuizState) {
 	ctrl = this;
 	$scope.addToTeam = function(teamscore, delta) {
 		teamscore.points += delta;
@@ -8,13 +8,8 @@ quizRunnerModule
 	$scope.clearStorage = function() {
 		QuizState.clearLocalStorage();
 	};
-	$scope.plus100 = function() {
-		QuizState.addToAllTeams(100);
-		QuizState.saveToLocalStorage();
-	};
-	$scope.minus100 = function() {
-		QuizState.addToAllTeams(-100);
-		QuizState.saveToLocalStorage();
+	$scope.showSnapMenu = function(event) {
+		$mdMenu.open(event);
 	};
 });
 

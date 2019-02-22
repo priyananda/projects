@@ -35,6 +35,9 @@ class Graph {
 	get getCurrentQuestion() {
 		return this.currentQuestion;
 	}
+	get getCurrentTeam() {
+		return this.currentTeam;
+	}
 	advance(nextTeamId) {
 		this.currentTeam = nextTeamId;
 		this.currentQuestion++;

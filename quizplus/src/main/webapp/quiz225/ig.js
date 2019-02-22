@@ -1,19 +1,11 @@
 quizRunnerModule
   .controller('InstagramPageController', function ($scope, $routeParams, $location, QuizState) {
-	  $scope.questions = [
-		{id: 1, image: "/quiz225/img/ig.png"},
-		{id: 1, image: "/quiz225/img/ig.png"},
-		{id: 1, image: "/quiz225/img/ig.png"},
-		{id: 1, image: "/quiz225/img/ig.png"},
-		{id: 1, image: "/quiz225/img/ig.png"},
-		{id: 1, image: "/quiz225/img/ig.png"},
-		{id: 1, image: "/quiz225/img/ig.png"},
-		{id: 1, image: "/quiz225/img/ig.png"},
-		{id: 1, image: "/quiz225/img/ig.png"},
-		{id: 1, image: "/quiz225/img/ig.png"},
-		{id: 1, image: "/quiz225/img/ig.png"},
-		{id: 1, image: "/quiz225/img/ig.png"},
-		{id: 1, image: "/quiz225/img/ig.png"},
-		{id: 1, image: "/quiz225/img/ig.png"}
-	  ];
+	  $scope.questions = [];
+	  for (i = 13; i <= 24; ++i) {
+		  var closed = QuizState.isQuestionClosed(i)
+		  $scope.questions.push({
+			id: i,
+		  	image: "/quiz225/img/ig" + (closed ? "" : i) + ".png"
+		  });
+	  }
   });

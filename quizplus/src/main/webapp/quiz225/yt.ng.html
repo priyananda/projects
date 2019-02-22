@@ -1,5 +1,13 @@
-<iframe width="560" height="315"
-	src="https://www.youtube.com/embed/videoseries?list=LL8RSsHjx8g_oBoUar6x8H1g" frameborder="0"
-	allow="autoplay; encrypted-media"
-	allowfullscreen>
-</iframe>
+<md-list>
+	<md-list-item ng-repeat="video in videos" style="padding: 10px">
+		<iframe width="445" height="250"
+			src="{{video.url}}"
+			frameborder="1"
+			allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+			allowfullscreen>
+		</iframe>
+		<div ng-if="video.answer_url">
+			<a ng-href="{{video.answer_url}}" target="_blank">Answer</a>
+		</div>
+	</md-list-item>
+</md-list>
