@@ -40,6 +40,10 @@ quizRunnerModule
           templateUrl : 'quiz225/pronhub.ng.html',
           controller  : 'EmptyController'
       })
+      .when('/bbc', {
+          templateUrl : 'quiz225/bbc.ng.html',
+          controller  : 'EmptyController'
+      })
       .when('/question/:id', {
           templateUrl : 'runner/question.ng.html',
           controller  : 'QuestionController'

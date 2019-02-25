@@ -37,6 +37,12 @@ quizRunnerModule
 			title: "Pete's quiz on PornHub",
 			display_link: "http://pornhub.com/Petes_Dirtiest_Deeds_Part5",
 			snippet: "Hot and steamy ..."
+		}, {
+			icon: "bbc",
+			link: "#/bbc",
+			title: "BBC Mastermind",
+			display_link: "http://bbc.com/MasterMind_MiddleAged_Challenge",
+			snippet: "Your two minutes begin now..."
 		},
 	  ];
   });
