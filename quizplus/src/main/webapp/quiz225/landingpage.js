@@ -3,10 +3,15 @@ quizRunnerModule.controller('LandingPageController', function($scope,
 	ctrl = this;
 	$scope.searchText = "";
 	$scope.selectedItem = "";
-	$scope.options = [ "Pete wrecks the Internet", "Is Pete the Pete in For Pete's Sake?",
-			"Will Pete win the Nobel Prize?",
-			"Pete na mila re man ka", "India vs Australia",
-			"Royale with Cheese", "Indian restaurants in Antarctica" ];
+	$scope.options = [
+		"Pete wrecks the Internet", //0
+		"Is Pete the Pete in For Pete's Sake?", //1
+		"Will Pete win the Nobel Prize?", //2
+		"Pete na mila re man ka", //3
+		"India vs Australia", //4
+		"Royale with Cheese", //5
+		"Indian restaurants in Antarctica", //6
+		"Happy Birthday!"]; //7
 	$scope.querySearch = function(searchStr) {
 		var results = searchStr ? $scope.options.filter(createFilterFor(searchStr))
 				: $scope.options;
@@ -21,6 +26,8 @@ quizRunnerModule.controller('LandingPageController', function($scope,
 			$scope.goto("/rounds");
 		} else if ($scope.selectedItem == $scope.options[4]) {
 			$scope.goto("/congrats");
+		} else if ($scope.selectedItem == $scope.options[7]) {
+			$scope.goto("/nb");
 		}
 	};
 	function createFilterFor(query) {
