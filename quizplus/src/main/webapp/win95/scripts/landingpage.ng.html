@@ -1,0 +1,18 @@
+<md-content class="md-padding">
+  <img src="/quiz225/img/google.png" width="500px"/>
+  <form ng-submit="$event.preventDefault()">
+		<md-autocomplete
+				md-selected-item="selectedItem"
+				md-search-text="searchText"
+		    md-items="item in querySearch(searchText)"
+		    md-item-text="item"
+		    md-min-length="0"
+		    md-no-cache="true"
+		    placeholder="Search">
+		  <md-item-template>
+		    <span md-highlight-text="searchText" md-highlight-flags="^i">{{item}}</span>
+		  </md-item-template>
+		</md-autocomplete>
+		<md-button class="md-primary md-raised" ng-click="onSearch()">I'm feeling lucky</md-button>
+	</form>
+</md-content>
