@@ -99,7 +99,7 @@ body, .App {
 }
 
 .desktop-icon-label {
-  width: 100px;
+  width: 80px;
   padding-bottom: 0px;
   color: #fff;
   line-height: 18px;
@@ -108,9 +108,56 @@ body, .App {
 
 .score-text-label {
 	position: relative;
-  left: -40px;
-  top: -10px;
-  display: inline-block;
+	left: -25px;
+	top: -10px;
   color: #000;
   font-weight: 700;
+}
+
+.team-ctx-menu {
+	background: lightgrey;
+	color: black;
+	list-style:none;
+	padding: 5px;
+}
+
+.desktop-icon {
+	width: 80px;
+	text-align: center;
+}
+
+.desktop-icon-image {
+	width: 32px;
+	height: 32px;
+}
+
+.winamp-frame{
+	background-image: url(../assets/windows/winamp-bg.png);
+	width: 800px;
+	height: 700px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.winamp-playlist-frame {
+	padding-top: 200px;
+	color: green;
+}
+
+.winamp-playlist-label {
+	font-size: 15px;
+  font-weight: bold;
+  margin-left: 20px;
+  color: white;
+}
+
+.winamp-playlist {
+	font-size: 15px;
+  font-weight: bold;
+} 
+
+.winamp-playlist a {
+	color: green;
+	font-size: 15px;
+  font-weight: bold;
 }

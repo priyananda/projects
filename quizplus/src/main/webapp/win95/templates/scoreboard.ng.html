@@ -1,0 +1,22 @@
+<table width="100px" height="100%">
+	<tr ng-repeat="teamscore in ctrl.scores">
+		<td>
+			<div class="desktop-icon" context-menu="ctrl.teamMenu" context-menu-class="team-ctx-menu">
+				<img src="assets/desktop-icons/score_txt.png" class="desktop-icon-image">
+				<span class="score-text-label">{{teamscore.points}}</span>
+				<div class="desktop-icon-label">{{teamscore.name}}</div>
+			</div>
+		</td>
+	</tr>
+	<tr ng-repeat="navIcon in ctrl.navIcons">
+	 <td>
+      <div class="desktop-icon">
+        <img ng-src="{{navIcon.icon}}" class ="desktop-icon-image">
+        <div class="desktop-icon-label">
+          <a ng-if="navIcon.link" ng-href="{{navIcon.link}}">{{navIcon.text}}</a>
+          <span ng-if="!navIcon.link">{{navIcon.text}}</a>
+        </div>
+      </div>
+    </td>
+	</tr>
+</table>

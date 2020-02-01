@@ -5,11 +5,15 @@ quizRunnerModule
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {
-          templateUrl : 'scripts/landingpage.ng.html',
-          controller  : 'LandingPageController'
+          templateUrl : 'templates/landingpage.ng.html',
+          controller  : 'EmptyController'
+      })
+      .when('/winamp', {
+          templateUrl : 'templates/winamp.ng.html',
+          controller  : 'WinAmpController'
       })
       .when('/question/:id', {
-          templateUrl : 'scripts/question.ng.html',
+          templateUrl : 'templates/question.ng.html',
           controller  : 'QuestionController'
       });
   })

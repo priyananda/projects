@@ -1,20 +1,27 @@
 <html>
 
 <head>
-	<link rel="stylesheet" href="styles/global-styles.css" />
+	<link rel="stylesheet" href="styles/styles.css" />
 	<link rel="stylesheet" href="https://material.angularjs.org/1.1.0/docs.css" />
+	<link rel="stylesheet" href="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.0/angular-material.css" />
 	<title>The 90s Quiz - Priyananda</title>
 </head>
 
 <body ng-app="QuizRunnerModule">
 	<div class="App" ng-controller="RootController as rootCtrl">
 		<section layout="row" flex="">
-			<md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4"
-	    	id="leftSideNav" md-is-open="true" md-is-locked-open="true" md-disable-backdrop="true" flex="15">
-	      <md-content layout-padding="" layout="column" layout-align="start start">
+			<md-sidenav class="md-sidenav-left App" md-component-id="left"
+	    	id="leftSideNav" md-is-open="true" md-is-locked-open="true" md-disable-backdrop="true" flex="10">
+	      <md-content class="App" layout-padding="" layout="column" layout-align="start start">
 	        <scoreboard scores="scores"></scoreboard>
 	      </md-content>
 	    </md-sidenav>
+	    
+	    <md-content class="App" flex="" layout-padding="" layout="column" layout-align="top center">
+	      <div id="mainpage" flex="">
+        <div ng-view></div>
+      </div>
+    </md-content>
 		</section>
 	</div>
 	<div class="nav">
@@ -40,6 +47,8 @@
 	<script src="scripts/static_media.js"></script>
 	<script src="scripts/quiz_state.js"></script>
 	<script src="scripts/auth.js"></script>
+	<script src="scripts/empty.js"></script>
+	<script src="scripts/winamp.js"></script>
 	<script src="scripts/errorpage.js"></script>
 	<script src="scripts/root.js"></script>
 	<script src="scripts/scoreboard.js"></script>
