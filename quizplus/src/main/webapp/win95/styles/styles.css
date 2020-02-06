@@ -119,6 +119,7 @@ body, .App {
 	color: black;
 	list-style:none;
 	padding: 5px;
+	border: 1px black solid;
 }
 
 .desktop-icon {
@@ -140,7 +141,7 @@ body, .App {
 }
 
 .winamp-playlist-frame {
-	padding-top: 200px;
+	padding-top: 100px;
 	color: green;
 }
 
@@ -160,4 +161,32 @@ body, .App {
 	color: green;
 	font-size: 15px;
   font-weight: bold;
+}
+
+.winamp-audio-player {
+	padding-top: 115px;
+	padding-left: 20px;
+	max-height: 50px;
+}
+
+.yahoo-frame{
+  width: 600px;
+  height: 600px;
+  font-size: 15px;
+  color: blue;
+  background-color: white;
+}
+
+.yahoo-links {
+	padding-left: 20px;
+}
+
+.crystal-table {
+	margin-left: 30px;
+}
+
+.crystal-table td {
+	width: 60px;
+	height: 50px;
+	text-align: center;
 }

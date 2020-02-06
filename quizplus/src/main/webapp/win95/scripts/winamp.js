@@ -3,19 +3,21 @@ quizRunnerModule
 	  $scope.goto = function(where){
 			$location.path(where);
 		};
-	  $scope.playlists = [
-		{
+	  $scope.playlists = [{
 		  name: 'Kyunki Film bhi Kabhi Song Thi',
 		  songs: [
-			{name: 'Foo.mp3'},
-			{name: 'Bar.mp3'},
+			  {name: 'Foo.mp3', src: '../test/q1audio.mp3'},
+			  {name: 'Bar.mp3'},
 		  ]
 		},{
-		  name: 'Duniya Ja Tel Lene',
+		  name: 'What year is it?',
 		  songs: [
-			{name: 'Xoo.mp3'},
-			{name: 'PuS.mp3'},
+			  {name: 'Xoo.mp3', src: '../test/q1audio.mp3'},
+			  {name: 'PuS.mp3'},
 		  ]
 		}
-	  ]
+	  ];
+	  $scope.setActive = function(song){
+	    $scope.selectedSong = song.src;
+	  };
   });
