@@ -1,0 +1,22 @@
+<div>
+  <img src="assets/windows/cr-maze-bg.jpg" width="600"></img>
+</div>
+<h3>Welcome, <b>Team {{team}}</b></h3>
+
+<div class="yahoo-links">
+	<p> Solve the puzzle and enter the answer to win a crystal.
+	<br />
+	<md-input-container>
+	  <label>Enter your guess</label>
+	  <input ng-model="answer">
+	</md-input-container>
+	<br />
+	<md-button class="md-raised" ng-click="checkAnswer()">Submit</md-button>
+	
+	<div ng-if="response">
+	  <h3 ng-if="response.result">Correct! You got a <img src="assets/icons/crystal.png"/></h3>
+	  <h3 ng-if="!response.result">Incorrect! Try Again!</h3>
+	</div>
+	
+	<a ng-href="#/status/{{team}}">Back</a>
+ </div>
