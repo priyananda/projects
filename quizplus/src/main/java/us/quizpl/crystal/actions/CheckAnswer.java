@@ -64,7 +64,7 @@ public class CheckAnswer extends HttpServlet {
 	}
 	private boolean isCorrectAnswer(QuestionCategory question, String answer) {
 		String correctAns = ANSWERS.get(question);
-		String actualAns = answer.strip().toLowerCase();
+		String actualAns = answer.trim().toLowerCase();
 		return correctAns.equals(actualAns);
 	}
 }
