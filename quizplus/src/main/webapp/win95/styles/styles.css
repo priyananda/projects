@@ -192,3 +192,7 @@ body, .App {
 	text-align: center;
 	border: 1px solid lightgrey;
 }
+
+.crui {
+	font-size: 30px;
+}
