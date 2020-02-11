@@ -1,56 +1,42 @@
 var questionInfo = [
- { id:  1,   clues: [{slideid: 1}],
-	answer: {slideid: 2}},
- { id:  2,   clues: [{slideid: 3}],
-	answer: {slideid: 4}},
- { id:  3,   clues: [{slideid: 5}],
-	answer: {slideid: 6}},
- { id:  4,   clues: [{slideid: 7}],
-	answer: {slideid: 8}},
- { id:  5,   clues: [{slideid: 9}],
-	answer: {slideid: 10}},
- { id:  6,   clues: [{slideid: 11}],
-	answer: {slideid: 12}},
- { id:  7,   clues: [{slideid: 13}],
-	answer: {slideid: 14}},
- { id:  8,   clues: [{slideid: 15}], 
-	answer: {slideid: 16}},
- { id:  9,   clues: [{slideid: 17}],
-	answer: {slideid: 18}},
- { id: 10,   clues: [{slideid: 19}],
-	answer: {slideid: 20}},
- { id: 11,   clues: [{slideid: 21}],
-	answer: {slideid: 22}},
- { id: 12,   clues: [{slideid: 23}],
-	answer: {slideid: 24}},
- { id: 13,   clues: [{slideid: 25}],
-	answer: {slideid: 26}},
- { id: 14,   clues: [{slideid: 27}],
-	answer: {slideid: 28}},
- { id: 15,   clues: [{slideid: 29}],
-	answer: {slideid: 30}},
- { id: 16,   clues: [{slideid: 31}],
-	answer: {slideid: 32}},
- { id: 17,   clues: [{slideid: 33}],
-	answer: {slideid: 34}},
- { id: 18,   clues: [{slideid: 35}],
-	answer: {slideid: 36}},
- { id: 19,   clues: [{slideid: 37}],
-	answer: {slideid: 38}},
- { id: 20,   clues: [{slideid: 39}],
-	answer: {slideid: 40}},
- { id: 21,   clues: [{slideid: 41}],
-	answer: {slideid: 42}},
- { id: 22,   clues: [{slideid: 43}],
-	answer: {slideid: 44}},
- { id: 23,   clues: [{slideid: 45}],
-	answer: {slideid: 46}},
- { id: 24,   clues: [{slideid: 47}],
-	answer: {slideid: 48}},
- { id: 25,   clues: [{slideid: 49}],
-	answer: {slideid: 50}},
- { id: 26,   clues: [{slideid: 51}, {slideid: 52}],
-	answer: {slideid: 53}},
- { id: 27,   clues: [{slideid: 54}, {slideid: 55}, {slideid: 56}, {slideid: 57}, {slideid: 58}, {slideid: 59}],
-	answer: {slideid: 60}},
+  // Encarta
+  {id: 1, clues:[
+    {slideid: 1}, {slideid: 2}, {slideid: 3}, {slideid: 4}, {slideid: 5},
+    {slideid: 6}, {slideid: 7}, {slideid: 8}, {slideid: 9}, {slideid: 10},
+    {slideid: 11}, {slideid: 12}, {slideid: 13}, {slideid: 14}, {slideid: 15},
+    {slideid: 16}, {slideid: 17}, {slideid: 18}, {slideid: 19}, {slideid: 20},
+    {slideid: 21}, {slideid: 22}, {slideid: 23}, {slideid: 24}, {slideid: 25}]},
+  
+  //Indipop
+  {id: 2, clues:[
+    {slideid: 26}, {slideid: 27}, {slideid: 28}, {slideid: 29}, {slideid: 30},
+    {slideid: 31}, {slideid: 32}, {slideid: 33}, {slideid: 34}, {slideid: 35},
+    {slideid: 36}, {slideid: 37}]},
+  
+  //Music
+  {id: 3, clues:[
+    {slideid: 38}, {slideid: 39}, {slideid: 40, vid: 1}, {slideid: 41}, {slideid: 42},
+    {slideid: 43}, {slideid: 44}, {slideid: 45}, {slideid: 46}, {slideid: 47}]},
+  
+  //TV
+  {id: 4, clues:[
+    {slideid: 48}, {slideid: 49}, {slideid: 50}, {slideid: 51}, {slideid: 52},
+    {slideid: 53}, {slideid: 54, vid: 2}, {slideid: 55}, {slideid: 56}, {slideid: 57},
+    {slideid: 58}, {slideid: 59}]},
+  
+  //DotCom
+  {id: 5, clues:[
+    {slideid: 60}, {slideid: 61}, {slideid: 62}, {slideid: 63}, {slideid: 64},
+    {slideid: 65}, {slideid: 66}, {slideid: 67}, {slideid: 68}, {slideid: 69}]},
+    
+  //DotCom
+  {id: 6, clues:[
+    {slideid: 70}, {slideid: 71}, {slideid: 72}, {slideid: 73}, {slideid: 74},
+    {slideid: 75}, {slideid: 76, vid: 3}, {slideid: 77}, {slideid: 78}, {slideid: 79}]},
+  
+  //Books
+  {id: 7, clues:[
+    {slideid: 80}, {slideid: 81}, {slideid: 82}, {slideid: 83}, {slideid: 84},
+    {slideid: 85}, {slideid: 86}, {slideid: 87}, {slideid: 88}, {slideid: 89},
+    {slideid: 90}, {slideid: 91}, {slideid: 92}]}
 ];
