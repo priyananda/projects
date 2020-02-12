@@ -10,7 +10,7 @@ quizRunnerModule
 		if ($routeParams.rid !== undefined) {
 			$scope.goto('/r' + $routeParams.rid);
 		} else {
-			$scope.goto('/');
+			$scope.goto('/yahoo');
 		}
 	};
 	$scope.isShowingAnswer = function() {
