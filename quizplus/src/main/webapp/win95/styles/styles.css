@@ -196,3 +196,9 @@ body, .App {
 .crui {
 	font-size: 30px;
 }
+
+.question_video {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+}
