@@ -1,5 +1,4 @@
-quizRunnerModule.controller('ScoreBoardController', function($scope, $mdMenu,
-		QuizState) {
+quizRunnerModule.controller('ScoreBoardController', function($scope, $mdMenu, QuizState) {
 	ctrl = this;
 	$scope.addToTeam = function(teamscore, delta) {
 		teamscore.points += delta;
@@ -11,7 +10,11 @@ quizRunnerModule.controller('ScoreBoardController', function($scope, $mdMenu,
 	$scope.showSnapMenu = function(event) {
 		$mdMenu.open(event);
 	};
-	this.teamMenu = [ {
+	this.teamMenu = [{
+		text : '+ 20 Points',
+		click : function($itemScope, $event, modelValue, text, $li) {
+			$scope.addToTeam($itemScope.teamscore, 20);
+		}, {
 		text : '+ 10 Points',
 		click : function($itemScope, $event, modelValue, text, $li) {
 			$scope.addToTeam($itemScope.teamscore, 10);
@@ -24,12 +27,12 @@ quizRunnerModule.controller('ScoreBoardController', function($scope, $mdMenu,
 	}, {
 		text : '- 5 Points',
 		click : function($itemScope, $event, modelValue, text, $li) {
-			$scope.addToTeam($itemScope.teamscore, 5);
+			$scope.addToTeam($itemScope.teamscore, -5);
 		}
 	}, {
-		text : '- 5 Points',
+		text : '- 10 Points',
 		click : function($itemScope, $event, modelValue, text, $li) {
-			$scope.addToTeam($itemScope.teamscore, 5);
+			$scope.addToTeam($itemScope.teamscore, -10);
 		}
 	}];
 	this.navIcons = [ {
@@ -48,12 +51,12 @@ quizRunnerModule.controller('ScoreBoardController', function($scope, $mdMenu,
 		icon : 'assets/desktop-icons/winamp.png',
 		link : '#/winamp'
 	}, {
-		text : 'Bhajans',
-		icon : 'assets/desktop-icons/Folder.png'
-	}, {
 		text : 'Crystal Maze',
 		icon : 'assets/desktop-icons/cr-maze.jpeg',
 		link : '#/crystal'
+	}, {
+		text : 'Bhajans',
+		icon : 'assets/desktop-icons/Folder.png'
 	}, {
 		text : 'AoE',
 		icon : 'assets/desktop-icons/Folder.png'

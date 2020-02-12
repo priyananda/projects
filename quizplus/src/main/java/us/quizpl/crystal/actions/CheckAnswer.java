@@ -22,10 +22,10 @@ public class CheckAnswer extends HttpServlet {
 	private static final long serialVersionUID = 5851426410344488046L;
 	
 	private static final ImmutableMap<QuestionCategory, String> ANSWERS = ImmutableMap.of(
-		QuestionCategory.PHYSICAL, "foo",
-		QuestionCategory.MENTAL, "doo",
-		QuestionCategory.MYSTERY, "goo",
-		QuestionCategory.SKILL, "zoo"
+		QuestionCategory.PHYSICAL, "tesla",
+		QuestionCategory.MENTAL, "titanic",
+		QuestionCategory.MYSTERY, "tarkan",
+		QuestionCategory.SKILL, "toyota"
     );
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
