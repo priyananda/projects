@@ -1,0 +1,39 @@
+<div class="team-full-page-container">
+  <md-toolbar class="md-theme-light" ng-if="!ctrl.hidechrome">
+    <h4 class="md-toolbar-tools">
+      <span>{{ctrl.person.name}} / Team {{ctrl.person.team}}</span>
+    </h4>
+  </md-toolbar>
+  
+  <md-content class="team-member-list-container" ng-if="!ctrl.hidechrome">
+    <md-list class="md-dense">
+      <md-list-item ng-repeat="member in team.members">
+        <span><b>{{member.name}}</b> is looking at Question
+        {{member.location}}</span>.
+      </md-list-item>
+    </md-list>
+  </md-content>
+  
+  <md-content class="team-chat-list-container" scroll-glue>
+    <md-list class="md-dense">
+      <md-list-item class="md-2-line" ng-repeat="message in team.messages">
+        <div class="md-list-item-text">
+          <h4>{{message.date}} <b>{{message.name}}</b></h3>
+          <p class="text-with-offset">
+            {{message.text}}
+          </p>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-content>
+  
+  <form layout="row" class="team-chat-submit-container" autocomplete="off">
+   <md-input-container flex layout-align="center" layout-fill> 
+     <label>Talk to your team members</label>
+     <textarea rows="2" type="text" ng-model="chatMessage"></textarea>
+   </md-input-container>
+   <md-button class="md-fab md-mini md-primary" aria-label="Eat cake" ng-click="sendMessage()">
+     &#x1F4AC;
+   </md-button>
+ </form>
+</div>

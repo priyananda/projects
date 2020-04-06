@@ -1,0 +1,24 @@
+<section layout="row" flex>
+ <md-sidenav
+    class="md-sidenav-left"
+    md-component-id="left"
+    md-is-locked-open="$mdMedia('gt-md')"
+    md-whiteframe="4">
+   <teampanel person="person" showChrome="1"></teampanel>
+ </md-sidenav>
+ 
+ <md-content flex layout-padding layout="column">
+  <img ng-src="{{currentImage}}" style="border: 1px solid black;" width="1024" height="768">
+  </img>
+  <md-button ng-click="showAnswerPane()"
+     class="md-primary md-raised">
+     Submit Answer
+   </md-button>
+ </md-content>
+ 
+ <md-sidenav
+   class="md-sidenav-right md-whiteframe-4dp"
+   md-component-id="right">
+  <attemptpanel person="person" question="1"></attemptpanel>
+ </md-sidenav>
+</section>
