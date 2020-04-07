@@ -1,4 +1,4 @@
-<section layout="row" flex>
+<section layout="row" flex class="question-container">
  <md-sidenav
     class="md-sidenav-left"
     md-component-id="left"
@@ -8,17 +8,50 @@
  </md-sidenav>
  
  <md-content flex layout-padding layout="column">
-  <img ng-src="{{currentImage}}" style="border: 1px solid black;" width="1024" height="768">
+  <md-toolbar class="md-hue-3">
+    <div class="md-toolbar-tools">
+      <md-button ng-click="goToPrevious()"
+        class="md-primary md-raised">
+        &#x21e6; Previous Question
+      </md-button>
+      <md-menu>
+        <md-button class="md-primary md-raised" ng-click="$mdOpenMenu()">Jump to Question</md-button>
+        <md-menu-content>
+          <md-menu-item ng-repeat="group in groups">
+            <md-menu>
+              <md-button ng-click="$mdMenu.open()">{{group.name}}</md-button>
+              <md-menu-content>
+                <md-menu-item ng-repeat="item in group.items">
+                  <md-button ng-click="goToQuestion(item.qid)">{{item.qid}}</md-button>
+                </md-menu-item>
+              </md-menu-content>
+            </md-menu>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+      <md-button ng-click="goToNext()"
+        class="md-primary md-raised">
+        Next Question &#x21e8;
+      </md-button>
+    </div>
+  </md-toolbar>
+  
+  <img ng-src="{{currentImage}}" style="border: 1px solid black;" width="800" height="600">
   </img>
-  <md-button ng-click="showAnswerPane()"
-     class="md-primary md-raised">
-     Submit Answer
-   </md-button>
+  
+  <md-toolbar class="md-hue-3">
+    <div class="md-toolbar-tools">
+		  <md-button ng-click="showAnswerPane()"
+		     class="md-primary md-raised">
+		     Submit Answer
+		  </md-button>
+		</div>
+	</md-toolbar>
  </md-content>
  
  <md-sidenav
    class="md-sidenav-right md-whiteframe-4dp"
    md-component-id="right">
-  <attemptpanel person="person" question="1"></attemptpanel>
+  <attemptpanel person="person" question="question"></attemptpanel>
  </md-sidenav>
 </section>

@@ -8,8 +8,9 @@
   <md-content class="team-member-list-container" ng-if="!ctrl.hidechrome">
     <md-list class="md-dense">
       <md-list-item ng-repeat="member in team.members">
-        <span><b>{{member.name}}</b> is looking at Question
-        {{member.location}}</span>.
+        <span ng-if="member.location > 0"><b>{{member.name}}</b> is looking at Question
+        {{member.location}}.</span>
+        <span ng-if="member.location == 0"><b>{{member.name}}</b> hasn't started yet.</span>
       </md-list-item>
     </md-list>
   </md-content>

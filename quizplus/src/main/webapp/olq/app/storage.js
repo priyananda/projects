@@ -12,6 +12,10 @@ quizRunnerModule.factory('Storage', function($window) {
   helper.save = function(person) {
     $window.localStorage.setItem('olq-person', JSON.stringify(person));
   };
+  
+  helper.getImage = function(qid) {
+    return "../test/Slide1.jpg";
+  };
 
   return helper;
 });

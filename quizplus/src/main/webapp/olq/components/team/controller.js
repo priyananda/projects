@@ -23,6 +23,8 @@ quizRunnerModule.controller('TeamNavController', function($scope, $routeParams,
   });
  
   $scope.sendMessage = function() {
+    if($scope.chatMessage === undefined || $scope.chatMessage == null || $scope.chatMessage.length < 1)
+      return;
     var args = {
       c: this.ctrl.person.team,
       n: this.ctrl.person.name,

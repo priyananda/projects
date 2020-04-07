@@ -28,6 +28,10 @@ public class ActionBase extends HttpServlet {
 	}
 	
 	protected static String getText(HttpServletRequest request, String paramName) {
-		return URLDecoder.decode(request.getParameter(paramName), StandardCharsets.UTF_8);
+		try {
+		 return URLDecoder.decode(request.getParameter(paramName), StandardCharsets.UTF_8.name());
+		} catch(Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 }

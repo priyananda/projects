@@ -25,7 +25,7 @@ public class Person extends ModelObjectBase {
 		
 		entity.setProperty(FIELD_NAME, name);
 		entity.setProperty(FIELD_TEAM, assignTeam());
-		entity.setProperty(FIELD_LOCATION, Long.valueOf(1));
+		entity.setProperty(FIELD_LOCATION, Long.valueOf(0));
 		
 		Person person = new Person(entity);
 		person.save();
