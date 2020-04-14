@@ -38,6 +38,10 @@
   
   <img ng-src="{{currentImage}}" style="border: 1px solid black;" width="800" height="600">
   </img>
+  <iframe id="ytplayer" type="text/html" width="640" height="385" ng-if="video" class="question_video"
+    ng-src="{{video.url}}"
+    frameborder="0">
+  </iframe>
   
   <md-toolbar class="md-hue-3">
     <div class="md-toolbar-tools">

@@ -4,6 +4,7 @@ quizRunnerModule
     $scope.question = $routeParams.id;
     $scope.currentImage = Storage.getImage($scope.question);
     $scope.groups = [];
+    $scope.video = Storage.getVideoInfo($scope.question);
     var qid = 1;
     for (g = 0; g < 6; ++g) {
       var group = {

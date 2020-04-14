@@ -35,7 +35,7 @@ public class QuizBuilder {
 
 	private static QuizSlide buildSlide(QuizPresentation quiz, Path filePath) {
 		int slideIndex = Integer.parseInt(
-			filePath.getFileName().toString().replace("Slide - ", "").replace(".jpg", ""));
+			filePath.getFileName().toString().replace("Slide", "").replace(".png", ""));
 		QuizSlide slide = QuizSlide.create(quiz, slideIndex, "", filePath.toString());
 		return slide;
 	}

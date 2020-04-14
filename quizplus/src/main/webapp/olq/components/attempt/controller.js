@@ -1,13 +1,12 @@
 quizRunnerModule.controller('AttemptPanelController', function($scope, $routeParams,
     $location, $http) {
-  $scope.qid = $routeParams.id;
 
   $scope.loadData = function() {
     console.log("Loading data for team " + $scope.ctrl.person.team);
     $http({
       method : 'GET',
       url : '/api/olq/getanswers',
-      params: {'t': $scope.ctrl.person.team, q: $scope.qid}
+      params: {'t': $scope.ctrl.person.team, q: $scope.ctrl.question}
     }).then(function(response) {
       $scope.team = response.data;
     }, function(response) {
@@ -22,7 +21,7 @@ quizRunnerModule.controller('AttemptPanelController', function($scope, $routePar
       t: this.ctrl.person.team,
       n: this.ctrl.person.name,
       a: $scope.answerText,
-      q: $scope.qid
+      q: $scope.ctrl.question
     };
     $http({
       method : 'GET',

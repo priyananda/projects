@@ -1,0 +1,43 @@
+<section layout="row" flex class="question-container">
+ <md-sidenav
+    class="md-sidenav-left"
+    md-component-id="left"
+    md-is-locked-open="$mdMedia('gt-md')"
+    md-whiteframe="4">
+   <teampanel person="person" showChrome="1"></teampanel>
+ </md-sidenav>
+ 
+ <md-content flex layout-padding layout="column">
+  <md-toolbar class="md-warn">
+    <div class="md-toolbar-tools">
+      <md-button ng-click="returnToQuiz()"
+        class="md-primary md-raised">
+        &#x21e6; Return to Quiz
+      </md-button>
+    </div>
+  </md-toolbar>
+  
+  <p>
+  Professor {{person.name}}, we need your help! We are this close to finding a cure for
+  COVID-19, but we are stuck trying to decipher what proteins are formed by these RNA
+  sequences. Can you decode this?
+  </p>
+  <img ng-src="{{currentImage}}" style="border: 1px solid black;" width="800" height="600">
+  </img>
+  
+  <md-toolbar class="md-warn md-hue-3">
+    <div class="md-toolbar-tools">
+		  <md-button ng-click="showAnswerPane()"
+		     class="md-primary md-raised">
+		     Submit Answer
+		  </md-button>
+		</div>
+	</md-toolbar>
+ </md-content>
+ 
+ <md-sidenav
+   class="md-sidenav-right md-whiteframe-4dp"
+   md-component-id="right">
+  <attemptpanel person="person" question="question"></attemptpanel>
+ </md-sidenav>
+</section>

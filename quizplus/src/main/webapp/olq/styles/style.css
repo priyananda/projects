@@ -53,3 +53,9 @@ body, html {
 .question-container {
 	width: 1155px;
 }
+
+.question_video {
+  position: absolute;
+  top: 30%;
+  left: 15%;
+}

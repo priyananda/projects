@@ -7,6 +7,9 @@ quizRunnerModule.controller('RootController',
   }).when('/q/:id', {
     templateUrl : 'views/question/page.ng.html',
     controller : 'QuestionPageController'
+  }).when('/hidden', {
+    templateUrl : 'views/hidden/page.ng.html',
+    controller : 'HiddenPageController'
   });
 }).config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default').primaryPalette('blue', {
