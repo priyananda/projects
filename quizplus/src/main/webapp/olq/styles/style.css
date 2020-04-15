@@ -59,3 +59,7 @@ body, html {
   top: 30%;
   left: 15%;
 }
+
+.safari_button_hack {
+	max-height: 100px;
+}

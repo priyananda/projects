@@ -15,4 +15,12 @@ quizRunnerModule
     $scope.returnToQuiz = function() {
       $location.path('/q/30');
     };
+    
+    $scope.shouldShowChatButton = function() {
+      return !$mdSidenav('left').isOpen() && !$mdSidenav('left').isLockedOpen();
+    };
+    
+    $scope.openChatWindow = function() {
+      $mdSidenav('left').open();
+    };
   });

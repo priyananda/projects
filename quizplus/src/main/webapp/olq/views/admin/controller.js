@@ -3,7 +3,7 @@ quizRunnerModule
     $scope.persons = [];
     for (i = 0; i < 6; ++i) {
       $scope.persons.push({
-        name: "Priyananda S",
+        name: "Quiz Master",
         team: i + 1,
         location: 7,
       });

@@ -50,4 +50,12 @@ quizRunnerModule
         $scope.goToQuestion(++$scope.question);
       }
     };
+    
+    $scope.shouldShowChatButton = function() {
+      return !$mdSidenav('left').isOpen() && !$mdSidenav('left').isLockedOpen();
+    };
+    
+    $scope.openChatWindow = function() {
+      $mdSidenav('left').open();
+    };
   });

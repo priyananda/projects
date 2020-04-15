@@ -19,14 +19,27 @@
   
   <p>
   Professor {{person.name}}, we need your help! We are this close to finding a cure for
-  COVID-19, but we are stuck trying to decipher what proteins are formed by these RNA
-  sequences. Can you decode this?
+  COVID-19, but we are stuck! This is how our cure works:
   </p>
-  <img ng-src="{{currentImage}}" style="border: 1px solid black;" width="800" height="600">
-  </img>
+  <img ng-src="img/hidden-1.png" style="border: 1px solid black;" width="600" height="243"></img>
+  <p>
+  The virus has 6 'crowns' with proteins C,O,R,O,N,A. We need to find other proteins which
+  can neutralize these proteins. At the same time, we need these proteins to be compatible
+  with our 'shell'. The following matrix shows what proteins neutralize each other and what
+  proteins are compatible.
+  </p>
+  <img ng-src="img/hidden-2.png" style="border: 1px solid black;" width="500" height="289"></img>
+  <p>
+  Can you decipher the proteins needed and save millions of lives? 
+  </p>
   
   <md-toolbar class="md-warn md-hue-3">
     <div class="md-toolbar-tools">
+      <md-button ng-click="openChatWindow()"
+         ng-if="shouldShowChatButton()"
+         class="md-primary md-raised">
+         Show Chat
+      </md-button>
 		  <md-button ng-click="showAnswerPane()"
 		     class="md-primary md-raised">
 		     Submit Answer
