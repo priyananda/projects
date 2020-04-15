@@ -41,6 +41,6 @@
    </md-card-content>
   </md-card>
   
-  <md-button class="md-primary md-raised" ng-click="startQuiz()">Start the Quiz</md-button>
+  <md-button class="md-primary md-raised" ng-click="startQuiz()" ng-if="person">Start the Quiz</md-button>
   <teampanel person="person" ng-if="person" hidechrome="true"></teampanel>
 </md-content>
