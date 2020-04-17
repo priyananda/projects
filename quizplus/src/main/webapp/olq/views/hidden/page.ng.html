@@ -3,7 +3,8 @@
     class="md-sidenav-left"
     md-component-id="left"
     md-is-locked-open="$mdMedia('gt-md')"
-    md-whiteframe="4">
+    md-whiteframe="4"
+    ng-if="person">
    <teampanel person="person" showChrome="1"></teampanel>
  </md-sidenav>
  
@@ -36,12 +37,12 @@
   <md-toolbar class="md-warn md-hue-3">
     <div class="md-toolbar-tools">
       <md-button ng-click="openChatWindow()"
-         ng-if="shouldShowChatButton()"
+         ng-if="person"
          class="md-primary md-raised">
          Show Chat
       </md-button>
 		  <md-button ng-click="showAnswerPane()"
-		     class="md-primary md-raised">
+		     class="md-primary md-raised" ng-if="person">
 		     Submit Answer
 		  </md-button>
 		</div>
@@ -50,7 +51,7 @@
  
  <md-sidenav
    class="md-sidenav-right md-whiteframe-4dp"
-   md-component-id="right">
+   md-component-id="right" ng-if="person">
   <attemptpanel person="person" question="question"></attemptpanel>
  </md-sidenav>
 </section>

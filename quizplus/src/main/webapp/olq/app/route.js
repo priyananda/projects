@@ -10,6 +10,9 @@ quizRunnerModule.controller('RootController',
   }).when('/hidden', {
     templateUrl : 'views/hidden/page.ng.html',
     controller : 'HiddenPageController'
+  }).when('/scoring', {
+    templateUrl : 'views/scoring/page.ng.html',
+    controller : 'ScoringPageController'
   });
 }).config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default').primaryPalette('blue', {

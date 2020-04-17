@@ -63,3 +63,12 @@ body, html {
 .safari_button_hack {
 	max-height: 100px;
 }
+
+.scoring_table {
+	border: 1px solid black;
+	width: 100%;
+}
+
+.scoring_table td {
+  border: 1px solid darkgrey;
+}

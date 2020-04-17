@@ -15,21 +15,8 @@ quizRunnerModule
         console.log(response);
       });
     };
-    
+   
     $scope.startQuiz = function(evt){
-      var currentTimePdt = new Date(new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"}));
-      if (currentTimePdt.getHours() < 18) {
-        $mdDialog.show(
-            $mdDialog.alert()
-              .parent(angular.element(document.querySelector('#popupContainer')))
-              .clickOutsideToClose(true)
-              .title('Quiz hasn\'t started yet')
-              .textContent('Quiz will unlock at 18:00, currently it is ' + currentTimePdt.toLocaleString('en-US'))
-              .ok('OK!')
-              .targetEvent(evt)
-          );
-      } else {
-        $location.path('/q/1');
-      }
+      $location.path('/q/1');
     };
   });

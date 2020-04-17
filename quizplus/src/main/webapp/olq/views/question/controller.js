@@ -29,7 +29,6 @@ quizRunnerModule
         console.log(response);
       });
     };
-    sendLocation();
     
     $scope.goToQuestion = function(newqid) {
       $location.path('/q/' + newqid);
