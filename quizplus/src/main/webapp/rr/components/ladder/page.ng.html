@@ -1,0 +1,15 @@
+<div class="team-full-page-container">
+  <md-toolbar class="md-theme-light">
+    <h4 class="md-toolbar-tools">
+      <span>{{ctrl.company}}</span>
+    </h4>
+  </md-toolbar>
+  
+  <md-content class="team-member-list-container">
+    <md-list>
+      <md-list-item ng-repeat="levelItem in levelItems" ng-class="levelItem.css_class">
+        <span style="width:100%; text-align: center;">{{levelItem.title}}</span>
+      </md-list-item>
+    </md-list>
+  </md-content>
+</div>

@@ -1,0 +1,8 @@
+<div id="canvas_container">
+  Click on a planet and use the buttons below to change their orbit.
+  <canvas id="canvas" width="650" height="650">Unsupported Browser</canvas>
+  <md-content>
+    <md-button ng-disabled="!selectedPlanet || selectedPlanet.orbitalIndex == 0" ng-click="moveInner()" class="md-primary md-raised">Move towards Sun</md-button>
+    <md-button ng-disabled="!selectedPlanet || selectedPlanet.orbitalIndex == 7" ng-click="moveOuter()" class="md-primary md-raised">Move away from Sun</md-button>
+  </md-content>
+</div>

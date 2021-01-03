@@ -1,0 +1,9 @@
+<md-content>
+  <img ng-src="{{selectedImage}}" width="600px" height="400px;">
+  <div>
+    <md-button class="md-raised md-primary" ng-click="playTurn()" ng-disabled="donePlay()">Play</md-button>
+    Your Scores:
+    <span ng-repeat="run in runs" class="cricket_run_display">{{run.runs}}</span>
+    <span ng-if="donePlay()" class="cricket_run_display">Total: <b>{{totalScore}}</b></span>
+  </div>
+</md-content>

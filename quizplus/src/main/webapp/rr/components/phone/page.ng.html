@@ -1,0 +1,46 @@
+<div layout="row">
+  <div flex-gt-sm="35" flex class="phone_address_book">
+    <md-toolbar layout="row" class="md-hue-2">
+      <div class="md-toolbar-tools">
+        <span>Address Book</span>
+      </div>
+    </md-toolbar>
+    <md-list ng-disabled="true">
+        <md-list-item class="md-dense" ng-repeat="person in contacts" ng-click="clickContact(person)">
+          <img ng-src="{{person.image}}" class="md-avatar"/>
+          <div class="md-list-item-text" layout="row">
+            <h4 style="padding-right: 10px;">{{ person.name }}</h4>
+            <h4>{{ person.phone }}</h4>
+          </div>
+        </md-list-item>
+    </md-list>
+  </div>
+	<div class="phone-card">
+		<div class="phone-background">
+	
+			<div class="phone-numbers">
+				Call: <input type="text" data-ng-model="vm.numbers" ng-disabled="true">
+			</div>
+			
+			<div class="winamp-audio-player">
+        <audio autoplay type="audio/mpeg" ng-src="{{currentContact.audio}}" onended="ctrl.finishCall()">
+        </audio>
+      </div>
+      
+      <div class="phone_calling_card" ng-if="currentContact">
+        <h3>Calling {{currentContact.name}} ...</h3>
+        <img ng-src="{{currentContact.image}}" width="100" height="100">
+      </div>
+	
+			<div class="phone-keypad">
+				<bc-keypad bc-number-model="vm.numbers"
+				  bc-left-button="backspace"
+					bc-left-button-method="vm.back($event, numbers)"
+					bc-right-button="submit"
+					bc-right-button-method="callPhone($event, numbers)"
+					bc-max-length="10"></bc-keypad>
+			</div>
+		</div>
+	</div>
+	<img src="img/postit.png" width="200" height="200"></img>
+</div>

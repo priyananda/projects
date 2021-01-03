@@ -1,0 +1,46 @@
+<div class="codepad_container">
+<div class="codepad_comment">
+// File: meaning_of_life_universe_and_everything.cpp<br>
+// Author: Douglas Adams<br>
+// Decodes the encrypted message.<br>
+</div>
+#include &lt;iostream&gt;<br>
+<br>
+<b>int</b> main(<b>int</b>  argc, <b>char</b>* argv[]) {<br>
+&nbsp;&nbsp;++argv;argc--;<br>
+&nbsp;&nbsp;<b>const</b> std::string encoded_message = "WKBFSX";<br>
+<div class="codepad_comment">&nbsp;&nbsp;// The key has to be less than 50.</div>
+&nbsp;&nbsp;<b>const int</b> key_to_decode = {{inputValue}};<br>
+&nbsp;&nbsp;std::for_each(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;encoded_message.begin(),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;encoded_message.end(),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[] (<b>const char</b> c) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;std::cout << <b>static_cast&lt;char&gt;</b>((c-' '+key_to_decode-'!')%('4'/2)+'/'+'2');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;);<br>
+}<br>
+</div>
+
+<md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+ <form name="projectForm" ng-submit="runProgram()">
+    <md-input-container class="md-block" flex>
+       <label>Enter a value for key_to_decode</label>
+       <input required type="number" step="any" name="inputValueCtrl" ng-model="inputValue" min="1"
+              max="50"/>
+
+       <div ng-messages="projectForm.inputValueCtrl.$error" role="alert" multiple>
+         <div ng-message="required" class="my-message">You must supply a value.</div>
+         <div ng-message="min" class="my-message">Enter a number greater than 1.</div>
+         <div ng-message="max" class="my-message">Enter a number less than 50.</div>
+       </div>
+    </md-input-container>
+  <md-button type="submit" class="md-raised md-primary">Run the program</md-button>
+ </form>
+</md-content>
+
+<div class="codepad_container">
+  <div class="codepad_comment" style="min-height: 50px;">
+  // Output:<br>
+  </div>
+  {{programOutput}}
+</div>

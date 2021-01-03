@@ -1,0 +1,76 @@
+<md-content class="landing-container" layout-align="center center" id="popupContainer">
+	<md-card class="landing-regn-card" ng-if="!person">
+	 <md-card-title>
+     <md-card-title-text>
+       <span class="md-headline"><b>Welcome Trick-or-Treaters</b></span>
+     </md-card-title-text>
+   </md-card-title>
+   <md-card-content class="landing-content">
+    <p>
+    The sleepy little town of Spookyville comes alive on
+    Halloween night. There's candy and treats at every house - but there's a catch. The ghoulish
+    inhabitants of this grisly town want you to solve puzzles before they hand out their
+    confounded confections.
+    </p>
+    <p> Go around the town, solve puzzles and collect candy. Check out how your friends are
+    doing. Help your favorite class win a prize. And most importantly - have fun.
+    <p class="landing-message"> This contest will open on <b>Sun Oct 25, 2020 00:00 PDT</b> and
+     close on <b>Sat Oct 31, 2020 18:00 PDT</b>.</p>
+   </md-card-content>
+	</md-card>
+	
+	<md-card class="landing-regn-card" ng-if="person">
+   <md-card-title>
+     <md-card-title-text>
+       <span class="md-headline">Welcome back, <b>{{person.name}}</b></span>
+       <span class="md-subtitle">Choose where to go next.</span>
+     </md-card-title-text>
+   </md-card-title>
+   <md-card-content>
+    <img src="img/crossroads.png">
+    <a class="landing-set-link landing-set-link-easy" ng-click="goto('/s/e')">Easy St.</a>
+    <a class="landing-set-link landing-set-link-medium" ng-click="goto('/s/m')">Medium Ave.</a>
+    <a class="landing-set-link landing-set-link-hard" ng-click="goto('/s/h')">Hard Ln.</a>
+   </md-card-content>
+  </md-card>
+  
+  <md-card class="landing-regn-card" ng-if="!person">
+   <md-card-title>
+     <md-card-title-text>
+       <span class="md-headline" ng-if="!person">Let's Get Started!</span> 
+       <span>
+       </span>
+     </md-card-title-text>
+   </md-card-title>
+   <md-card-content>
+    <form layout="column" autocomplete="off" name="regnForm">
+      <md-input-container flex layout-align="center" layout-fill> 
+       <label>Enter your name</label>
+       <input ng-model="nameInput" name="nameInput" required></input>
+       <div ng-messages="regnForm.nameInput.$error">
+          <div ng-message="required">This is required.</div> 
+        </div>
+      </md-input-container>
+      <label id="toLabel">Choose classes to support<span class="landing-message">*</span></label>
+      <md-chips ng-model="classInput" readonly="true" md-removable="true">
+      </md-chips>
+      <div layout="row" class="landing-message">
+        <md-menu ng-repeat="classSet in classSets">
+          <md-button class="md-raised" ng-click="showMenu($mdOpenMenu, $event)">{{classSet.name}}</md-button>
+          <md-menu-content width="4">
+            <md-menu-item ng-repeat="classroom in classSet.rooms">
+              <md-button md-menu-align-target ng-click="addTeam(classroom)" class="landing-message">
+                {{classroom.name}}
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+      </div>
+      <div layout="row">
+        <md-button class="md-primary md-raised safari_button_hack" type="submit" ng-click="join()">Start</md-button>
+      </div>
+      <span class="landing-message">* When you solve a puzzle, all the classes you choose get points.</span>
+    </form>
+   </md-card-content>
+  </md-card>
+</md-content>
