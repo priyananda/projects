@@ -1,0 +1,42 @@
+<md-content class="landing-container" layout-align="center center" id="popupContainer">
+  <md-card class="landing-regn-card landing-regn-container" ng-if="!person">
+   <md-card-title>
+     <md-card-title-text>
+       <span class="md-headline">&#x2660; &#x2665; House of Cards &#x2666; &#x2663;</span> 
+       <span class="md-subhead">Welcome to the House of Cards, where fame and fortune
+       are fleeting.</span>
+     </md-card-title-text>
+   </md-card-title>
+   <md-card-content>
+    <form layout="column" autocomplete="off" name="regnForm">
+      <md-input-container flex layout-align="center" layout-fill> 
+       <label>Enter your name</label>
+       <input ng-model="nameInput" name="nameInput" required></input>
+       <div ng-messages="regnForm.nameInput.$error">
+          <div ng-message="required">This is required.</div> 
+        </div>
+      </md-input-container>
+      <div layout="row">
+        <md-button class="md-primary md-raised safari_button_hack" type="submit" ng-click="join()">Start</md-button>
+      </div>
+    </form>
+   </md-card-content>
+  </md-card>
+  
+  <md-card class="landing-regn-card landing-sel-container" ng-if="person">
+   <md-card-title>
+     <md-card-title-text>
+       <span class="md-headline landing-title">Welcome, <b>{{person.name}}</b>. You are in Team <b>{{person.team}}.</b></span>
+     </md-card-title-text>
+   </md-card-title>
+   <md-card-content flex>
+    <div layout="column" class="landing-sel-button-div">
+      <span style="color:white;">Choose one of these sets to start playing...</span>
+      <md-button class="md-raised sel-button" ng-click="goto('s/1')">&#x2660; Spade</md-button> 
+      <md-button class="md-raised sel-button" ng-click="goto('c/1')">&#x2663; Clover</md-button>
+      <md-button class="md-raised sel-button" ng-click="goto('h/1')">&#x2665; Heart</md-button>
+      <md-button class="md-raised sel-button" ng-click="goto('d/1')">&#x2666; Diamond</md-button>
+    </div>
+   </md-card-content>
+  </md-card>
+</md-content>
