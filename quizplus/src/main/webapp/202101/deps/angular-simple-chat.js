@@ -535,7 +535,7 @@ function messageComposerController($scope) {
                     label: 'endSentence'
                 });
             } else {
-                that.messages.push(_message);
+                // that.messages.push(_message);
             }
             $scope.$emit('simple-chat-message-posted');
             if (!that.options.liveMode) {

@@ -157,3 +157,12 @@ body, html {
 .selected-q-icon {
   border: 2px solid white;
 }
+
+.cricket-table {
+	text-align: center;
+	border: 1px solid darkgrey;
+}
+
+.cricket-table td {
+  border: 1px solid darkgrey;
+}

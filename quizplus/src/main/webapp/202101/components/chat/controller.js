@@ -14,7 +14,9 @@ quizRunnerModule.controller('ChatController', function($scope,
     authDomain: "quizplus-1145.firebaseapp.com",
     databaseURL: "https://quizplus-1145-default-rtdb.firebaseio.com"
   };
-  firebase.initializeApp(config);
+  if ($scope.ctrl.initfb) {
+    firebase.initializeApp(config);
+  }
   
   $scope.chatUser = {
     userId: $scope.ctrl.person.personid,
@@ -45,14 +47,15 @@ quizRunnerModule.controller('ChatController', function($scope,
   });
   
   $scope.chat.on('message-add', function(room, m) {
-    $scope.messages.push({
-      id: m.id,
-      text: m.message,
-      userName: m.name,
-      userId: m.userId,
-      avatar: "img/avatar.png",
-      date: m.timestamp
-    });
+    var newMessage = {
+        id: m.id,
+        text: m.message,
+        userName: m.name,
+        userId: m.userId,
+        avatar: "img/avatar.png",
+        date: m.timestamp
+      };
+    $scope.messages.push(newMessage);
     $scope.$applyAsync();
   });
 
@@ -67,14 +70,6 @@ quizRunnerModule.component('chat', {
   controllerAs : 'ctrl',
   bindings : {
     person : '=',
+    initfb : '=',
   },
 });
-
-/*
-      $scope.chat.createRoom("Team 1 Room", "public", function(roomId){console.log(roomId);});
-      $scope.chat.createRoom("Team 2 Room", "public", function(roomId){console.log(roomId);});
-      $scope.chat.createRoom("Team 3 Room", "public", function(roomId){console.log(roomId);});
-      $scope.chat.createRoom("Team 4 Room", "public", function(roomId){console.log(roomId);});
-      $scope.chat.createRoom("Team 5 Room", "public", function(roomId){console.log(roomId);});
-      $scope.chat.createRoom("Team 6 Room", "public", function(roomId){console.log(roomId);});
-*/

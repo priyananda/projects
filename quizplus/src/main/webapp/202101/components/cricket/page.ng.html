@@ -1,0 +1,18 @@
+<md-content>
+  <div>
+    Click on the balls to cycle through the options:
+    <table class="cricket-table">
+    <tr>
+      <td colspan="6">Over 1 (Wasim)</td>
+      <td colspan="6">Over 2 (Shoib)</td>
+    <tr>
+      <td ng-repeat="cell in cells">
+        <md-button class="md-fab md-primary md-mini" ng-click="changeValue(cell)">
+          {{cell.value}}
+        </md-button>
+      </td>
+    </table>
+    <span ng-if="allCorrect">Congrats. Submit the answer <b>FAB4</b> to get your just rewards.</span>
+    <span ng-if="!allCorrect">That's not it, Keep Trying!</span>
+  </div>
+</md-content>

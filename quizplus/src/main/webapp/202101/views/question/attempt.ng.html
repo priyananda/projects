@@ -1,7 +1,7 @@
 <md-dialog aria-label="Attempt Answer">
   <form ng-cloak autocomplete="off">
     <md-toolbar class="md-theme-lite">
-      <span>All attempts for Question {{ctrl.question}}</span>
+      <span>Previous Attempts for Question</span>
     </md-toolbar>
     <md-dialog-content>
 	    <md-list class="md-dense" style="max-height: 250px; overflow-y: scroll;">
@@ -16,15 +16,15 @@
 
     WARNING: Only the last answer from the team is considered.
     <md-dialog-actions layout="row">
-      Enter your answer: 
+      Answer:
 	    <md-input-container flex layout-align="center" layout-fill> 
 	     <input type="text" ng-model="ctrl.answerText"></input>
 	    </md-input-container>
 	    <md-button class="md-raised md-primary" ng-click="ctrl.postAnswer()">
-	      SUBMIT
+	      Submit
 	    </md-button>
 	    <md-button class="md-raised md-primary" ng-click="ctrl.hide()">
-        Cancel
+        Close
       </md-button>
 	  </md-dialog-actions>
   </form>

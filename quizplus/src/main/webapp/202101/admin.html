@@ -14,16 +14,8 @@
 </head>
 
 <body ng-app="QuizRunnerModule">
-  <div ng-controller="RootController as rootCtrl" layout="row">
-    <md-sidenav
-	    class="md-sidenav-left"
-	    md-component-id="left"
-	    md-is-locked-open="true"
-	    md-whiteframe="4"
-	    ng-if="person">
-      <chat person="person" initfb="true"></chat>
-    </md-sidenav>
-      <div ng-view class="content-container"></div>
+  <div ng-controller="AdminPageController as rootCtrl" layout="row">
+    <chat person="person" initfb="$index === 0" ng-repeat="person in persons"></chat>
   </div>
 </body>
 
@@ -54,15 +46,8 @@
 <script src="deps/angular-simple-chat.js"></script>
 
 <script src="app/app.js"></script>
-<script src="app/storage.js"></script>
-<script src="app/questiondata.js"></script>
-
 <script src="components/chat/controller.js"></script>
-<script src="components/cricket/controller.js"></script>
-
-<script src="views/landing/controller.js"></script>
-<script src="views/question/controller.js"></script>
-
+<script src="views/admin/controller.js"></script>
 <script src="app/route.js"></script>
 
 </html>
