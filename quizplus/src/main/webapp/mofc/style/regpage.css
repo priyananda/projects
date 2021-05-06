@@ -1,0 +1,262 @@
+@charset "UTF-8";
+/*-----------------------------------------------------------------------------
+  CSS Zen Garden
+
+  version:   1.0
+  license:   Creative Commons Attribution 3.0 License
+  dev date:  October 2008
+  author:    Daniel Korte
+  email:     daniel (at) danielkorte.com
+-----------------------------------------------------------------------------*/
+
+
+/*-----------------------------------------------------------------------------
+########## SCREEN #############################################################
+-----------------------------------------------------------------------------*/
+
+
+/* =Eric Meyer's Reset
+-----------------------------------------------------------------------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+:focus {
+	outline: 0;
+}
+body {
+	line-height: 1;
+	color: black;
+	background: white;
+}
+ol, ul {
+	list-style: none;
+}
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+
+
+/* =General
+-----------------------------------------------------------------------------*/
+
+body {
+	background-color: #FFF;
+	text-align: center;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	color: #47433F;
+}
+#container {
+	position: relative;
+	min-height: 1040px;
+	width: 1037px;
+	margin: 0 auto;
+	/*background: url(/mofc/img/page_repeat.jpg) repeat-y top left;*/
+}
+#intro {
+	width: 1037px;
+	height: 471px;
+	max-height: 471px;
+	padding-top: 103px;
+	background: url(/mofc/img/page_top.jpg) no-repeat top left;
+}
+#supportingText {
+	position: absolute;
+	left: 0;
+	top: 471px;
+	bottom: 0;
+	width: 1037px;
+	background: url(/mofc/img/page_repeat.jpg) no-repeat top left;
+	/*background: url(/mofc/img/page_bottom.jpg) no-repeat bottom center;*/
+}
+#extraDiv1 {
+	width: 100%;
+	height: 0px;
+	margin-top: -553px;
+	padding-top: 553px;
+	background: url(/mofc/img/page_bottom.jpg) no-repeat center;
+}
+#extraDiv2 {
+	position: absolute;
+	top: 0;
+	right: 5%;
+	width: 243px;
+	height: 433px;
+	background: url(/mofc/img/guy.png) no-repeat top left;
+}
+
+
+/* =Content Divs
+-----------------------------------------------------------------------------*/
+#quickSummary {
+	padding: 23px 110px 9px 60px;
+	text-align: center;
+	background: url(/mofc/img/summary_bar.jpg) no-repeat bottom right;
+	}
+	#quickSummary p {
+		display: inline;
+		font-size: 10px;
+		letter-spacing: -0.01em;
+	}
+
+#preamble {
+	margin: 5px 15px 0px 57px;
+	width: 230px;
+}
+#explanation {
+	position: absolute;
+	bottom: 0px;
+	left: 45px;
+	margin-bottom: 130px;
+	width: 230px;
+}
+#participation {
+	position: absolute;
+	top: -190px;
+	left: 290px;
+	padding-top: 160px;
+	width: 240px;
+	background: url(/mofc/img/participation.jpg) no-repeat top left;
+}
+#benefits {
+	position: absolute;
+	bottom: 0px;
+	left: 290px;
+	margin-bottom: 120px;
+	width: 240px;
+}
+#requirements {
+	position: absolute;
+	top: -190px;
+	right: 240px;
+	width: 250px;
+}
+#footer {
+display: none;
+	margin-right: 96px;
+	width: 125px;
+	float: right;
+}
+
+#linkList {
+	position: absolute;
+	top: 320px;
+	right: 107px;
+	width: 108px;
+}
+
+
+/* =Text
+-----------------------------------------------------------------------------*/
+h1 {
+	width: 1037px;
+	height: 100px;
+	text-indent: -9999px;
+	background: url(/mofc/img/css_zen_garden.jpg) no-repeat top left;
+}
+h2 {
+	width: 1037px;
+	height: 25px;
+	text-indent: -9999px;
+	background: url(/mofc/img/the_beauty_of_css_design.jpg) no-repeat top left;
+}
+h3 {
+	font-size: 24px;
+	line-height: 26px;
+	color: #47433F;
+	margin-bottom: 5px;
+	padding-bottom: 10px;
+	background: url(/mofc/img/divider.jpg) no-repeat bottom left;
+}
+#linkList h3 {
+	font-size: 18px;
+	line-height: 20px;
+	background: none;
+	padding-bottom: 3px;
+	margin-bottom: 7px;
+	border-bottom: 1px dotted #47433F;
+}
+#benefits h3 {
+	background: url(/mofc/img/divider_bottom.jpg) no-repeat bottom left;
+}
+p {
+	text-indent: 1.2em;
+	text-align: left;
+	line-height: 14.5px;
+}
+ul {
+	font-size: 10px;
+	text-align: left;
+	line-height: 11px;
+}
+li {
+	margin-bottom: 5px;
+}
+
+
+/* =Links
+-----------------------------------------------------------------------------*/
+
+p a:link {
+	font-style: italic;
+	font-weight: bold;
+	color: #7E7771;
+	text-decoration: none;
+}
+p a:visited {
+	font-style: italic;
+	font-weight: bold;
+	color: #7E7771;
+	text-decoration: none;
+}
+p a:hover {
+	font-style: italic;
+	font-weight: bold;
+	color: #47433F;
+}
+#linkList a {
+	font-size: 10px;
+	font-weight: bold;
+	color: #7E7771;
+	text-decoration: none;
+}
+#linkList a:visited {
+	color: #47433F;
+}
+#linkList a:hover {
+	color: #47433F;
+}
+#linkList .c {
+	display: inline;
+}
+#linkList a.c {
+	font-weight: normal;
+	font-style: italic;
+}

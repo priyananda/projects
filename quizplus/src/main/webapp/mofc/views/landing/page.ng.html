@@ -1,0 +1,22 @@
+<md-content class="landing-container" layout-align="center center" id="popupContainer">
+  <div ng-repeat="person in persons" ng-class="person.cls" layout="column">
+    <img ng-src="{{person.image}}" width="150px"/>
+    <md-button class="md-raised" ng-href="{{person.link}}">{{person.name}}</md-button>
+  </div>
+  <div class="icon-grid-container">
+    <table class="icon-grid-table">
+      <tr ng-repeat="row in statusIcons">
+          <td ng-repeat="cell in row" rowspan="{{cell.is_image ? 4 : 1}}" colspan="{{cell.is_image ? 4 : 1}}"
+            class="icon-grid-cell">
+            <img ng-if="cell.q" src="img/locked_icon.png" />
+            <div class="icon-grid-center" ng-if="cell.is_image">
+              Collect at least one clue from each room to
+              <md-button class="md-raised">Solve the Mystery!</md-button>
+            </div>
+          </td>
+      </tr> 
+    </table>
+  </div>
+</md-content>
+<md-content class="landing-panel-container" layout-align="center center">
+</md-content>
