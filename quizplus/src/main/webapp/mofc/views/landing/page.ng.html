@@ -1,21 +1,18 @@
 <md-content class="landing-container" layout-align="center center" id="popupContainer">
-  <div ng-repeat="person in persons" ng-class="person.cls" layout="column">
-    <img ng-src="{{person.image}}" width="150px"/>
-    <md-button class="md-raised" ng-href="{{person.link}}">{{person.name}}</md-button>
+  <div ng-repeat="suspect in suspects" ng-class="suspect.cls" layout="column">
+    <img ng-src="{{suspect.image}}" width="150px"/>
+    <md-button class="md-raised" ng-href="{{suspect.link}}">{{suspect.name}}</md-button>
   </div>
   <div class="icon-grid-container">
-    <table class="icon-grid-table">
-      <tr ng-repeat="row in statusIcons">
-          <td ng-repeat="cell in row" rowspan="{{cell.is_image ? 4 : 1}}" colspan="{{cell.is_image ? 4 : 1}}"
-            class="icon-grid-cell">
-            <img ng-if="cell.q" src="img/locked_icon.png" />
-            <div class="icon-grid-center" ng-if="cell.is_image">
-              Collect at least one clue from each room to
-              <md-button class="md-raised">Solve the Mystery!</md-button>
-            </div>
-          </td>
-      </tr> 
-    </table>
+    <div class="icon-grid-center">
+      <span style="font-weight:bold;">Detective {{person.name}}, we need your help!</span>
+      <br />
+      Collect at least one clue from each room to
+      <md-button class="md-raised" ng-click="goTo('/f')">Solve the Mystery!</md-button>
+      <img ng-src="img/lock_pin_icon.png" width="120px">
+      <br>
+      &#x2705;&#x2705;&#x2705;&#x2705;
+    </div>
   </div>
 </md-content>
 <md-content class="landing-panel-container" layout-align="center center">

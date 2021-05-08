@@ -27,6 +27,18 @@ quizRunnerModule.factory('Storage', function($window) {
     $window.localStorage.setItem('mofc-score', JSON.stringify(Array.from(score.keys())));
   };
   
+  helper.getChat = function() {
+    var chatAsString = $window.localStorage.getItem('mofc-chat');
+    if (chatAsString == null) {
+      return undefined;
+    }
+    return JSON.parse(chatAsString); 
+  };
+  
+  helper.saveChat = function(chat) {
+    $window.localStorage.setItem('mofc-chat', JSON.stringify(chat));
+  };
+  
   helper.clear = function() {
     $window.localStorage.clear();
   };

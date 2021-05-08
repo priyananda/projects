@@ -6,7 +6,7 @@
 }
 
 body {
-	font-family: 'detective'
+	font-family: 'detective';
 }
 
 .landing_bg {
@@ -66,6 +66,7 @@ body {
 .icon-grid-container {
 	margin: auto;
 	width: 400px;
+	height: 350px;
 }
 
 .icon-grid-table {
@@ -79,7 +80,7 @@ body {
 }
 
 .icon-grid-center {
-  width: 80%;
+  width: 60%;
   height: 100%;
   padding: 20px;
   color: black;
@@ -107,4 +108,58 @@ body {
 
 .arena-icon-link {
 	text-shadow: 2px 2px black;
+}
+
+.md-chips {
+	font-family: 'detective';
+}
+
+.landing-regn-card {
+	width: 500px;
+	max-width: 500px;
+}
+
+.firechat-wrapper { 
+  height: 250px;
+  max-width: 300px;
+  margin-left: 50px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: rgba(0,0,0,0.4);
+  text-align: center;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 5px 25px #666;
+  -moz-box-shadow: 0 5px 25px #666;
+  box-shadow: 0 5px 25px #666;
+}
+
+md-list-item, md-list-item .md-list-item-inner {
+    min-height: 20px;
+    height: 25px;
+}
+
+.final-banner-container {
+	width: 100%;
+	height: 120px;
+	background: url(/mofc/img/parch_bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.final-clues-container {
+  width: 30%;
+  height: 100%;
+  background: url(/mofc/img/parch_bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.final-character-panel {
+  width: 100%;
+  height: 100%;
+  background: url(/mofc/img/parch_bg.png);
+  background-repeat: no-repeat;
+  align-items: center;
 }

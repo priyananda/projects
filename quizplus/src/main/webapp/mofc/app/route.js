@@ -27,6 +27,9 @@ quizRunnerModule.controller('RootController',
   }).when('/s/:setid', {
     templateUrl : 'views/arena/page.ng.html',
     controller : 'ArenaPageController'
+  }).when('/f', {
+    templateUrl : 'views/final/page.ng.html',
+    controller : 'FinalPageController'
   }).when('/lb', {
     templateUrl : 'views/leaderboard/page.ng.html',
     controller : 'LeaderBoardPageController'

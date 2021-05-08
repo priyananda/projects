@@ -1,0 +1,32 @@
+<div layout="column">
+  <div layout="row">
+    <img ng-src="{{ctrl.suspect.image}}" width="150px"/>
+    <md-list flex style="color:black;margin-top: 20px;">
+      <md-list-item>
+        <span>Name <b>{{ctrl.suspect.name}}</b></span>
+      </md-list-item>
+      <md-list-item>
+        <span>Height <b>{{ctrl.suspect.h}}</b></span>
+      </md-list-item>
+      <md-list-item>
+        <span>Weight <b>{{ctrl.suspect.w}}</b></span>
+      </md-list-item>
+      <md-list-item>
+        <span>Hair <b>{{ctrl.suspect.hc}}</b></span>
+      </md-list-item>
+      <md-list-item>
+        <span>Eyes <b>{{ctrl.suspect.ec}}</b></span>
+      </md-list-item>
+    </md-list>
+  </div>
+	<div id="firechat-wrapper" class="firechat-wrapper">
+	  <simple-chat
+	    messages="messages"
+	    local-user="chatUser"
+	    send-function="sendMessage"
+	    show-composer="ctrl.isanswer"
+	    live-mode="false"
+	    composer-placeholder-text="Enter your answer here">
+	  </simple-chat>
+	</div>
+</div>

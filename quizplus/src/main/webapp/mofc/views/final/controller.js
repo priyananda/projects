@@ -1,7 +1,7 @@
 quizRunnerModule
-  .controller('ArenaPageController', function ($scope, $routeParams, $location, Storage, $http, $mdDialog, QuestionData) {
+  .controller('FinalPageController', function ($scope, $routeParams, $location, Storage, $http, $mdDialog, QuestionData) {
     $scope.suspects = QuestionData.getSuspects();
-
+    
     $scope.goTo = function(path) {
       $location.path(path);
     };

@@ -129,6 +129,22 @@ quizRunnerModule.factory('QuestionData', function() {
       img_width: "576",
       img_height: "700",
   };
+  const SUSPECT_1 = {
+      cls: "person-1", image: "img/person_1.png", link: "#/s/1", name: "Mr. Hewitt",
+      id: 1, h: "5' 10''", w: "102 lbs", hc: "Blonde", "ec": "Blue"
+  };
+  const SUSPECT_2 = {
+      cls: "person-2", image: "img/person_2.png", link: "#/s/2", name: "Lady Agatha",
+      id: 2, h: "5' 10''", w: "102 lbs", hc: "Blonde", "ec": "Blue"
+  };
+  const SUSPECT_3 = {
+      cls: "person-3", image: "img/person_3.png", link: "#/s/3", name: "Mr. Dyll",
+      id: 3, h: "5' 10''", w: "102 lbs", hc: "Blonde", "ec": "Blue"
+  };
+  const SUSPECT_4 = {
+      cls: "person-4", image: "img/person_4.png", link: "#/s/4", name: "Ms. Wanda",
+      id: 4, h: "5' 10''", w: "102 lbs", hc: "Blonde", "ec": "Blue"
+  };
  
   const QUESTION_BY_KEY = new Map([
     ["1", Q1], ["2", Q2], ["3", Q3], ["4", Q4],
@@ -140,7 +156,7 @@ quizRunnerModule.factory('QuestionData', function() {
   const ARENA_BY_KEY = new Map([
     ["1", {
       bgImg: "img/vic_bedroom.jpg",
-      personImg: "img/person_1.png",
+      suspect: SUSPECT_1,
       puzzles: [
         {q: Q1, loc: {l: 520, t: 80}},
         {q: Q2, loc: {l: 410, t: 190}},
@@ -150,7 +166,7 @@ quizRunnerModule.factory('QuestionData', function() {
     }],
     ["2", {
       bgImg: "img/vic_study.jpg",
-      personImg: "img/person_2.png",
+      suspect: SUSPECT_2,
       puzzles: [
         {q: Q5, loc: {l: 660, t: 70}},
         {q: Q6, loc: {l: 850, t: 390}},
@@ -160,7 +176,7 @@ quizRunnerModule.factory('QuestionData', function() {
     }],
     ["3", {
       bgImg: "img/vic_office.jpg",
-      personImg: "img/person_3.png",
+      suspect: SUSPECT_3,
       puzzles: [
         {q: Q9, loc: {l: 204, t: 302}}, 
         {q: Q10, loc: {l: 415, t: 210}},
@@ -170,7 +186,7 @@ quizRunnerModule.factory('QuestionData', function() {
     }],
     ["4", {
       bgImg: "img/vic_dining.jpg",
-      personImg: "img/person_4.png",
+      suspect: SUSPECT_4,
       puzzles: [
         {q: Q13, loc: {l: 204, t: 302}},
         {q: Q14, loc: {l: 415, t: 210}},
@@ -185,6 +201,9 @@ quizRunnerModule.factory('QuestionData', function() {
   };
   helper.getArena = function(setId) {
     return ARENA_BY_KEY.get(setId);
+  };
+  helper.getSuspects = function() {
+    return [SUSPECT_1, SUSPECT_2, SUSPECT_3, SUSPECT_4];
   };
   
   return helper;
