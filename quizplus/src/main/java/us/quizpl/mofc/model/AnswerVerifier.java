@@ -18,7 +18,7 @@ public class AnswerVerifier {
 	}
 
 	private static boolean isCorrectAnswer(String key, String answer) {
-		answer = answer.replaceAll("[^A-Za-z]", "").toLowerCase();
+		answer = answer.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
 		Pattern pattern = Pattern.compile(QuestionFactory.get(key).getAnswerPattern());
 		return pattern.matcher(answer).matches();
 	}

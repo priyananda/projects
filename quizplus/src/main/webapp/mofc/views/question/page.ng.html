@@ -16,8 +16,7 @@
 	    ng-src="{{content.video_url}}"
 	    frameborder="0">
 	  </iframe>
-	  <solar ng-if="content.is_solar"></solar>
-	  <phone ng-if="content.is_phone"></phone> 
-	  <tricktactoe ng-if="content.is_trick_tac_toe"></tricktactoe>
+	  <match ng-if="content.is_match" matchdata="content.match_data"></match>
+	  <memory ng-if="content.is_memory" memorydata="content.memory_data"></memory>
 	 </md-content>
 </section>

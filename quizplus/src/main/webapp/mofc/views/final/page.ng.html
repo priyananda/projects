@@ -1,45 +1,18 @@
 <table width="100%" height="100%">
   <tr>
-    <td colspan="3" height="70px" class="final-banner-container">
-      
-    </td>
-  <tr>
-    <td rowspan="2" class="final-clues-container">
-      Foo
-    </td>
-    <td width="33%">
+    <td width="25%" ng-repeat="suspect in suspects">
       <div class="final-character-panel">
 	      <chat
 	        person="person"
-	        suspect="suspects[0]"
+	        suspect="suspect"
+	        isfinal="true"
 	        isanswer="false">
 	      </chat>
       </div>
     </td>
-    <td width="33%">
-      <div class="final-character-panel">
-        <chat
-          person="person"
-          suspect="suspects[1]"
-          isanswer="false">
-        </chat>
-      </div>
-    </td>
+  </tr>
   <tr>
-    <td width="33%">
-      <div class="final-character-panel">
-        <chat
-          person="person"
-          suspect="suspects[2]"
-          isanswer="false">
-        </chat>
-      </div>    </td>
-    <td width="33%">
-      <div class="final-character-panel">
-        <chat
-          person="person"
-          suspect="suspects[3]"
-          isanswer="false">
-        </chat>
-      </div>    </td>
+    <td colspan="4" class="final-banner-container">
+    </td>
+  </tr>
 </table>

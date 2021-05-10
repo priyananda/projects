@@ -2,6 +2,7 @@ quizRunnerModule
   .controller('QuestionPageController', function ($scope, $routeParams, $location, Storage, $http, $mdDialog, QuestionData) {
     $scope.person = Storage.getPerson();
     $scope.key = $routeParams.key;
+    $scope.arena = $routeParams.arena;
     $scope.arenaData = QuestionData.getArena($routeParams.arena);
     $scope.content = QuestionData.getContent($scope.key);
     $scope.score = Storage.getScore();

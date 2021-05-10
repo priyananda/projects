@@ -1,10 +1,10 @@
 quizRunnerModule
-  .controller('LandingPageController', function ($scope, $http, $location, Storage, QuestionData, $mdDialog) {
+  .controller('LandingPageController', function ($scope, $http, $location, Storage, QuestionData, $mdDialog, ScoreManager) {
     $scope.person = Storage.getPerson();
-    $scope.score = Storage.getScore();
+    $scope.score = ScoreManager.getSolvedCount();
     $scope.suspects = QuestionData.getSuspects();
     
-    if (!$scope.person) { 
+    if (!$scope.person) {
       $mdDialog.show({
         controller: DialogController,
         controllerAs: 'ctrl',
@@ -19,6 +19,11 @@ quizRunnerModule
       $location.path(path);
     };
     
+    $scope.isFinalDisabled = function() {
+      return true;
+      // return $scope.score < 4;
+    }
+    
     function DialogController($mdDialog) {
       ctrl = this;
       
@@ -29,6 +34,7 @@ quizRunnerModule
             {name: 'K(Ms Carpenter)'},
             {name: 'K(Ms Muro)'},
             {name: 'K(Mrs Williams)'},
+            {name: 'K(Ms Ortiz)'},
             {name: '1st(Ms Chow)'},
             {name: '1st(Ms Friedman)'},
             {name: '1st(Mrs Girard)'},
@@ -40,6 +46,7 @@ quizRunnerModule
             {name: '2nd(Mrs Hasty)'},
             {name: '2nd(Mrs Lucio)'},
             {name: '2nd(Mrs White)'},
+            {name: '2nd(Ms Hughes)'},
             {name: '3rd(Mrs Amundsen)'},
             {name: '3rd(Mrs Daviscourt)'},
             {name: '3rd(Mrs Andrews)'},
@@ -47,11 +54,12 @@ quizRunnerModule
         }, {
           name: '4th & 5th >',
           rooms: [
-            {name: '4th(Ms Acevedo)'},
+            {name: '4th(Ms Greenberg)'},
             {name: '4th(Ms Hein)'},
             {name: '4th(Mr Valley)'},
             {name: '5th(Mrs Fraley)'},
             {name: '5th(Ms Van Den Bos)'},
+            {name: '5th(Ms Acevedo)'},
           ]
         }, {
           name: 'PoQ & Q >',
@@ -60,6 +68,7 @@ quizRunnerModule
             {name: '2/3Q(Ms Pozo)'},
             {name: '4/5Q(Dr Bowns)'},
             {name: '4/5Q(Ms Stanley)'},
+            {name: '4/5Q(Mrs Blomquist)'},
             {name: 'PoQ(Mrs Walker)'},
           ]
         }
@@ -77,6 +86,7 @@ quizRunnerModule
         }).then(function(response) {
           Storage.savePerson(response.data);
           $mdDialog.hide();
+          location.reload();
         }, function(response) {
           console.log(response);
         });

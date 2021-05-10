@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
-import us.quizpl.halloween.model.Person;
+import us.quizpl.mofc.model.Person;
 
 @WebServlet(name = "MofcRegister", urlPatterns = { "/api/mofc/register" })
 public class Register extends ActionBase {

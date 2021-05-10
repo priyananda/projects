@@ -11,9 +11,12 @@
       <div class="arena-icon" ng-repeat="puzzle in arenaData.puzzles" layout="column"
       ng-style="{top: puzzle.loc.t, left: puzzle.loc.l}">
         <img
+          ng-if="!puzzle.q.is_locked"
           ng-src="{{isAnswered(puzzle.q.key) ? 'img/clue_done_icon.png' : 'img/clue_icon.png'}}"
           width="50" height="40" style="margin: auto;"/>
-        <a class="arena-icon-link" ng-click="goTo('/q/' + puzzle.q.key + '/' + setId)">{{puzzle.q.title}}</a>
+        <a
+          ng-if="!puzzle.q.is_locked"
+          class="arena-icon-link" ng-click="goTo('/q/' + puzzle.q.key + '/' + setId)">{{puzzle.q.title}}</a>
     </div>
     </div>
   </div>

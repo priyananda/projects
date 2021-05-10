@@ -1,6 +1,6 @@
 <div layout="column">
   <div layout="row">
-    <img ng-src="{{ctrl.suspect.image}}" width="150px"/>
+    <img ng-src="{{ctrl.suspect.image}}" ng-style="imgStyle"/>
     <md-list flex style="color:black;margin-top: 20px;">
       <md-list-item>
         <span>Name <b>{{ctrl.suspect.name}}</b></span>
@@ -19,7 +19,10 @@
       </md-list-item>
     </md-list>
   </div>
-	<div id="firechat-wrapper" class="firechat-wrapper">
+  <div ng-if="ctrl.isfinal" style="text-align:center;">
+    <md-button class="md-raised" ng-click="accuseSuspect()">Accuse Suspect</md-button>
+  </div>
+	<div id="firechat-wrapper" class="firechat-wrapper" ng-style="chatStyle">
 	  <simple-chat
 	    messages="messages"
 	    local-user="chatUser"

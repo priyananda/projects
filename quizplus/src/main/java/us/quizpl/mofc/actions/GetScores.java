@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
 
-import us.quizpl.halloween.model.LeaderBoardGenerator;
+import us.quizpl.mofc.model.LeaderBoardGenerator;
 
 @WebServlet(name = "MofcGetScores", urlPatterns = { "/api/mofc/getscores" })
 public class GetScores extends ActionBase {
