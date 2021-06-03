@@ -1,5 +1,6 @@
 quizRunnerModule
-  .controller('LandingPageController', function ($scope, $http, $location, Storage, QuestionData, $mdDialog, ScoreManager) {
+  .controller('LandingPageController', function ($scope, $http, $location, Storage,
+      QuestionData, $mdDialog, ScoreManager) {
     $scope.person = Storage.getPerson();
     $scope.score = ScoreManager.getSolvedCount();
     $scope.suspects = QuestionData.getSuspects();
@@ -20,8 +21,7 @@ quizRunnerModule
     };
     
     $scope.isFinalDisabled = function() {
-      return true;
-      // return $scope.score < 4;
+      return !ScoreManager.oneFromEachRoom();
     }
     
     function DialogController($mdDialog) {

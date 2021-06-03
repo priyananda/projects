@@ -21,6 +21,14 @@ quizRunnerModule
       $location.path(path);
     };
     
+    $scope.showHint = function(){
+      var alert = $mdDialog.alert()
+        .title('Hint')
+        .textContent($scope.content.hint)
+        .ok('Close');
+      $mdDialog.show(alert);
+    };
+    
     function AttemptDialogController($mdDialog) {
       ctrl = this;
       ctrl.person = $scope.person;

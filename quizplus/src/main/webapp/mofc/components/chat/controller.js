@@ -13,7 +13,7 @@ quizRunnerModule.controller('ChatController', function($scope,
   };
   $scope.chatStyle = {
       'margin-left': $scope.ctrl.isfinal ? '15px' : '50px',
-      'height': $scope.ctrl.isfinal ? '250px' : '350px'
+      'height': $scope.ctrl.isfinal ? '300px' : '350px'
   };
   
   $scope.sendMessage = function(m) {

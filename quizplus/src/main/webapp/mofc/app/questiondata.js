@@ -21,7 +21,6 @@ quizRunnerModule.factory('QuestionData', function() {
       ],
       answer: "BABY"
   };
-  const MATCH_DATA_SPOT = {};
   const MATCH_DATA_FORTNITE = {
       rows: [
         [
@@ -85,11 +84,34 @@ quizRunnerModule.factory('QuestionData', function() {
       ],
       answer: "STARWARS"
   };
-  const MEMORY_DATA_HARD = {};
+  const MEMORY_DATA_HARD = {
+      rows: [
+        [
+          {image: "img/washington.jpg", k: "r"},
+          {image: "img/harrisburg.jpg", k: "v"},
+          {image: "img/newyork.jpg", k: "b"},
+          {image: "img/helena.jpg", k: "k"},
+        ],
+        [
+          {image: "img/lansing.jpg", k: "r2"},
+          {image: "img/california.jpg", k: "y"},
+          {image: "img/pennsylvania.jpg", k: "v"},
+          {image: "img/sacramento.jpg", k: "y"},
+        ],
+        [
+          {image: "img/albany.jpg", k: "b"},
+          {image: "img/montana.jpg", k: "k"},
+          {image: "img/olympia.jpg", k: "r"},
+          {image: "img/michigan.jpg", k: "r2"},
+        ],
+      ],
+      answer: "CAPITALS"
+  };
   
   const Q1 = {
       key: "1",
       title: "Magic Maze",
+      hint: "Follow each character to see who escapes.",
       img_url: "img/maze_1.jpg",
       img_width: "485",
       img_height: "478"
@@ -97,18 +119,21 @@ quizRunnerModule.factory('QuestionData', function() {
   const Q2 = {
       key: "2",
       title: "Remember Me?",
+      hint: "Click on an image, and then click on where you think the other image is located",
       is_memory: true,
       memory_data: MEMORY_DATA_EASY
   };
   const Q3 = {
       key: "3",
       title: "Little Animals",
+      hint: "What do we call these animal babies?",
       is_match: true,
       match_data: MATCH_DATA_ANIMALS,
   };
   const Q4 = {
       key: "4",
       title: "Reflections",
+      hint: "Maybe a mirror might help?",
       img_url: "img/mirror.jpg",
       img_width: "600",
       img_height: "600",
@@ -116,6 +141,7 @@ quizRunnerModule.factory('QuestionData', function() {
   const Q5 = {
       key: "5",
       title: "aMAZEing",
+      hint: "For each maze, check which entrance leads to the center.",
       img_url: "img/maze_2.png",
       img_width: "609",
       img_height: "440"
@@ -124,12 +150,14 @@ quizRunnerModule.factory('QuestionData', function() {
       key: "6",
       title: "Among Us",
       img_url: "img/amongus.png",
+      hint: "Imposters tend to lie.",
       img_width: "800",
       img_height: "592"
   };
   const Q7 = {
       key: "7",
       title: "Crack the Code",
+      hint: "Try different numbers",
       img_url: "img/numcode.png",
       img_width: "640",
       img_height: "356"
@@ -137,32 +165,34 @@ quizRunnerModule.factory('QuestionData', function() {
   const Q8 = {
       key: "8",
       title: "Spot It",
-      is_locked: true,
-      is_match: true,
-      match_data: MATCH_DATA_SPOT,
+      hint: "Find the block a character can be found in.",
+      is_spotit: true,
   };
   const Q9 = {
       key: "9",
-      is_locked: true,
       title: "Minecraft",
+      hint: "How many Fire, Water, Lava blocks can there be?",
       is_minecraft: true
   };
   const Q10 = {
       key: "10",
       title: "The Grams of Ana",
       img_url: "img/anagrams.png",
+      hint: "Try jumbling the words up.",
       img_width: "521",
       img_height: "636"
   };
   const Q11 = {
       key: "11",
       title: "Fortnite",
+      hint: "Google is your friend.",
       is_match: true,
       match_data: MATCH_DATA_FORTNITE,
   };
   const Q12 = {
       key: "12",
       title: "Solar Sort",
+      hint: "Hmm, what planets are these from?",
       img_url: "img/solarsort.png",
       img_width: "800",
       img_height: "330"
@@ -170,6 +200,7 @@ quizRunnerModule.factory('QuestionData', function() {
   const Q13 = {
       key: "13",
       title: "Fake Stones?",
+      hint: "One of them is a fake stone.",
       img_url: "img/wordsearch.png", 
       img_width: "500",
       img_height: "647"
@@ -177,12 +208,14 @@ quizRunnerModule.factory('QuestionData', function() {
   const Q14 = {
       key: "14",
       title: "Code Breakers",
+      hint: "You don't have to guess all the letters, just the ones in yellow",
       img_url: "img/codebreaker.png",
       img_width: "600",
       img_height: "692"
   };
   const Q15 = {
       key: "15",
+      hint: "Google is your friend",
       title: "Match the Mascots!",
       is_match: true,
       match_data: MATCH_DATA_MASCOTS
@@ -190,7 +223,7 @@ quizRunnerModule.factory('QuestionData', function() {
   const Q16 = {
       key: "16",
       title: "The Memory Remains",
-      is_locked: true,
+      hint: "Google is your friend",
       is_memory: true,
       memory_data: MEMORY_DATA_HARD
   };
