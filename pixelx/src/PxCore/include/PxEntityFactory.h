@@ -10,7 +10,7 @@ class PxSolidObject;
 class PxEntityFactory
 {
 public:
-	static int AddObjects( PxQuake3EntityCollection & entities , list<PxSolidObject *> & mRuntimeObjects , cstrref botname);
+	static int AddObjects( PxQuake3EntityCollection & entities , list<UP<PxSolidObject>> & mRuntimeObjects , cstrref botname);
 };
 #endif
 

@@ -15,7 +15,7 @@ static void Init()
 
 void PxLog::LogMessage( const char * format, ... )
 {
-	static char buffer[8192];
+	static char buffer[12000];
 	if( ! g_inited )
 	{
 		Init();

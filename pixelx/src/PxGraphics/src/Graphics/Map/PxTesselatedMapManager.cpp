@@ -6,15 +6,15 @@ using std::ifstream;
 using std::endl;
 
 static char buff[512];
-void PxTesselatedMapManager::Persist( PxTesselatedMap * pMap, cstrref filename )
+void PxTesselatedMapManager::Persist(PxTesselatedMap& tmap, cstrref filename)
 {
-	PxTriangleSet * pTS = pMap->GetTriangleSet();
-	ofstream out( filename.c_str());
+	PxTriangleSet* pTS = tmap.GetTriangleSet();
+	ofstream out(filename.c_str());
 	out << pTS->NumMeshes() << endl;
-	for( PxMeshes::Iterator iter = pTS->begin(); iter != pTS->end(); ++iter)
+	for (const auto& item: *pTS)
 	{
-		PxMesh * pmesh = iter->second;
-		sprintf_s( buff , _countof(buff), "mesh %d %s %d",pmesh->NumTriangles(),pmesh->TextureName.c_str(),pmesh->TexMode );
+		PxMesh* pmesh = item.second;
+		sprintf_s(buff , _countof(buff), "mesh %d %s %d",pmesh->NumTriangles(),pmesh->TextureName.c_str(),pmesh->TexMode );
 		out << buff << endl;
 		int numTriangles = pmesh->NumTriangles();
 		for( int i = 0 ; i < numTriangles ; ++i )
@@ -30,19 +30,19 @@ void PxTesselatedMapManager::Persist( PxTesselatedMap * pMap, cstrref filename )
 	}
 
 	// object data
-	out << pMap->Objects.size() << endl;
-	for( vector<PxRuntimeObject>::iterator iter = pMap->Objects.begin(); iter != pMap->Objects.end(); ++iter )
+	out << tmap.Objects.size() << endl;
+	for (const auto& item: tmap.Objects)
 	{
-		sprintf_s(buff, _countof(buff), "%s %d %s" , (*iter).Name.c_str() , iter->Type , iter->Params.c_str() );
+		sprintf_s(buff, _countof(buff), "%s %d %s" , item.Name.c_str() , item.Type , item.Params.c_str());
 		out << buff << endl;
-		sprintf_s(buff, _countof(buff), "%f %f %f" , iter->x , iter->y , iter->z );
+		sprintf_s(buff, _countof(buff), "%f %f %f" , item.x , item.y , item.z);
 		out << buff << endl;
-		sprintf_s(buff, _countof(buff), "%f %f %f" , iter->dx , iter->dy , iter->dz );
+		sprintf_s(buff, _countof(buff), "%f %f %f" , item.dx , item.dy , item.dz);
 		out << buff << endl;
 	}
 }
 
-PxTesselatedMap * PxTesselatedMapManager::Restore( cstrref filename )
+UP<PxTesselatedMap> PxTesselatedMapManager::Restore( cstrref filename )
 {
 	int  numMeshes = 0, numTriangles = 0 , numObjects = 0;
 	char texname[200];
@@ -50,9 +50,8 @@ PxTesselatedMap * PxTesselatedMapManager::Restore( cstrref filename )
 	char name[100];
 	char params[100];
 	
-	PxTesselatedMap * pmap = new PxTesselatedMap();
-	PxTriangleSet * pts = new PxTriangleSet();
-	pmap->SetTriangleSet( pts );
+	UP<PxTesselatedMap> pmap{ new PxTesselatedMap() };
+	UP<PxTriangleSet> pts{ new PxTriangleSet() };
 	
 	ifstream in(filename.c_str());
 	if(!in)
@@ -77,6 +76,8 @@ PxTesselatedMap * PxTesselatedMapManager::Restore( cstrref filename )
 		}
 	}
 	pts->Finalize();
+	pmap->SetTriangleSet(std::move(pts));
+
 	// objects section
 	in.getline(buff,511);
 	sscanf_s(buff,"%d", & numObjects );

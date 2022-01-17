@@ -56,7 +56,7 @@ void LoadingScreen(float sw, float sh)
 	PxGraphicsRoot::Switch();
 	glColor4f(1,1,1,1);
 	glDisable(GL_BLEND);
-	PxTextureManager::Bind(	"LOADING", eTexModeNoStretch  );
+	PxTextureManager::Bind(	"LOADING", TextureMode::NoStretch  );
 	glBegin( GL_POLYGON );
 		glTexCoord2f( 0,1);glVertex2i(0,0);
 		glTexCoord2f( 1,1);glVertex2i((GLint)sw,0);
@@ -77,7 +77,7 @@ void PxGameSceneRenderer::WriteStuff(float fpsval,float sw, float sh)
 
 	PxGraphicsRoot::Switch();
 	
-	PxTextureManager::Bind( "HUD" , eTexModeNoStretch );
+	PxTextureManager::Bind( "HUD" , TextureMode::NoStretch );
 	glEnable( GL_BLEND );
 	glBlendFunc( GL_SRC_ALPHA , GL_ONE_MINUS_SRC_ALPHA );
 	glBegin( GL_POLYGON );

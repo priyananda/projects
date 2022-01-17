@@ -7,3 +7,4 @@
 /**/*.class
 /**/appengine-generated/indexes/*
 /**/appengine-generated/*.bin
+/**/pixelx/*

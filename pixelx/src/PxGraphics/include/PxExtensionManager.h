@@ -19,7 +19,7 @@ public:
 	static bool IsEnabled( PxExtensions ext );
 };
 
-#ifdef PLATFORM_WINDOWS
+#ifndef PLATFORM_WINDOWS
 
 //ARBMultitexture
 extern PFNGLACTIVETEXTUREARBPROC				glActiveTextureARB;

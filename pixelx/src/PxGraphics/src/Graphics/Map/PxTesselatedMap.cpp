@@ -18,20 +18,18 @@ void PxTesselatedMap::AddPolygon( PxPolygon & p )
 {
 	mPolySet.AddPolygon(std::make_unique<PxPolygon>(p));
 }
-PxTriangleSet * PxTesselatedMap::GetTriangleSet()
+
+PxTriangleSet* PxTesselatedMap::GetTriangleSet()
 {
 	if( mPolySet.Count() == 0 )
-		return mTriangleSet;
+		return mTriangleSet.get();
 	
-	delete mTriangleSet;
-	mTriangleSet = PxTesselator::Tesselate(&mPolySet);
-	return mTriangleSet;
+	mTriangleSet.reset(PxTesselator::Tesselate(&mPolySet));
+	return mTriangleSet.get();
 }
 
-void PxTesselatedMap::SetTriangleSet( PxTriangleSet * _pSet )
+void PxTesselatedMap::SetTriangleSet(UP<PxTriangleSet>&& _pSet)
 {
-	if( mTriangleSet )
-		delete mTriangleSet;
-	mTriangleSet = _pSet;
+	mTriangleSet = std::move(_pSet);
 }
 

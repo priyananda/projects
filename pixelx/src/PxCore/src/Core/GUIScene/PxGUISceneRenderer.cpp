@@ -66,7 +66,7 @@ void PxGUISceneRenderer::HandlePaint(PxWindow *pWnd)
 	static long sw = PxConfiguration::GetLong("g_screenwidth");
 	static long sh = PxConfiguration::GetLong("g_screenheight");
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	PxTextureManager::Bind("GUIBG", eTexModeNoStretch  );
+	PxTextureManager::Bind("GUIBG", TextureMode::NoStretch  );
 	glBegin( GL_POLYGON );
 		glTexCoord2f( 0,0);glVertex2i(0,0);
 		glTexCoord2f( 1,0);glVertex2i(sw,0);

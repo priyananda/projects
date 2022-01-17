@@ -15,6 +15,8 @@ using UP = std::unique_ptr<T>;
 
 #include <GL/gl.h>
 #include <GL/glu.h>
+#include "wglext.h"
+#include "glext.h"
 
 enum PxKeyBindingEnum
 {

@@ -5,8 +5,8 @@
 class PxObjectFactory
 {
 public:
-	static PxSolidObject * GetObject( const PxRuntimeObject & ro );
-	static vector<PxSolidObject *> GetObjects( const PxTesselatedMap * p );
+	static UP<PxSolidObject> GetObject( const PxRuntimeObject & ro );
+	static vector<UP<PxSolidObject>> GetObjects(const PxTesselatedMap&);
 };
 #endif
 

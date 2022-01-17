@@ -1,7 +1,7 @@
 #pragma once
 
 // Windows specific code
-#ifdef PLATFORM_WINDOWS
+#ifndef PLATFORM_LINUX
 
 #ifdef PROJECT_PXCORE
 	#define PXCORE_DLLDECL __declspec( dllexport )
@@ -14,7 +14,6 @@
 #define WIN32_LEAN_AND_MEAN
 
 #include <windows.h>
-#include "wglext.h"
 
 #endif
 
