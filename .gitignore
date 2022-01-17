@@ -5,6 +5,7 @@
 /**/*.sdf
 /**/*.pdb
 /**/*.class
+/**/*.ipch
+/**/*.db
 /**/appengine-generated/indexes/*
 /**/appengine-generated/*.bin
-/**/pixelx/*
