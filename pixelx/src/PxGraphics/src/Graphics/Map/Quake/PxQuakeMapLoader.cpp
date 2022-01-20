@@ -80,7 +80,7 @@ PxQuakeMap * PxQuakeMapLoader::Load(char * filename, int curveTesselation)
 	if(!LoadVisData(file))
 		CLEAR_AND_RETURNnullptr
 
-	LoadConfig( filename );
+	LoadConfig(filename);
 	fclose(file);
 	PxLog::LogMessage("%s Loaded successfully", filename);
 	return map;

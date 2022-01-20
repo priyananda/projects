@@ -625,7 +625,7 @@ void PxQuake3ModelCore::RenderModel(t3DModel *pModel)
 			int textureID = m_Textures[ tid ];
 
 			// Bind the texture index that we got from the material textureID
-			PxTextureManager::Bind( textureID , eTexModeNoStretch );
+			PxTextureManager::Bind( textureID , TextureMode::NoStretch );
 		}
 		else
 		{

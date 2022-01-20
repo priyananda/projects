@@ -60,13 +60,13 @@ void PxQuakeMapRenderer::DrawPolygonFace(int polygonFaceNumber)
 		PxMultiTextureManager::Bind(
 			2,
 			mMap->lightmapTextures[mMap->polygonFaces[polygonFaceNumber].lightmapIndex],
-			eTexModeNoStretch
+			TextureMode::NoStretch
 		);
 	else
 		PxMultiTextureManager::Bind(
 			2,
 			whiteTexture,
-			eTexModeNoStretch
+			TextureMode::NoStretch
 		);
 	glActiveTextureARB(GL_TEXTURE0_ARB);
 	glDrawArrays(	GL_TRIANGLE_FAN, mMap->polygonFaces[polygonFaceNumber].firstVertexIndex,
@@ -94,7 +94,7 @@ void PxQuakeMapRenderer::DrawMeshFace(int meshFaceNumber)
 
 	//bind textures
 	//unit 0 - decal texture
-	PxTextureManager::Bind( mMap->decalTextures[mMap->meshFaces[meshFaceNumber].textureIndex] , eTexModeNoStretch);
+	PxTextureManager::Bind( mMap->decalTextures[mMap->meshFaces[meshFaceNumber].textureIndex] , TextureMode::NoStretch);
 
 	//unit 1 - lightmap
 	glActiveTextureARB(GL_TEXTURE1_ARB);
@@ -131,7 +131,7 @@ void PxQuakeMapRenderer::DrawPatch(int patchNumber)
 
 	//bind textures
 	//unit 0 - decal texture
-	PxTextureManager::Bind( mMap->decalTextures[mMap->patches[patchNumber].textureIndex] , eTexModeNoStretch);
+	PxTextureManager::Bind( mMap->decalTextures[mMap->patches[patchNumber].textureIndex] , TextureMode::NoStretch);
 
 	//unit 1 - lightmap
 	glActiveTextureARB(GL_TEXTURE1_ARB);

@@ -19,9 +19,9 @@ DECLARE_VARB(g_debug_wireframe);
 
 extern bool g_debug_drawbsp;
 
-void PxWorld::Deserialize( cstrref filename )
+void PxWorld::Deserialize(cstrref filename)
 {
-	UP<PxCommandList> commands (PxDataFileParser::Parse( filename ));
+	UP<PxCommandList> commands (PxDataFileParser::Parse(filename));
 	if( commands == nullptr )
 		return;
 	for( const auto &spCmd : *commands)
@@ -65,16 +65,16 @@ void PxWorld::Initialize()
 		PxBoundingBox bbox;
 		bbox.x = obj.x ;bbox.y = obj.y ;bbox.z = obj.z ;
 		bbox.length = obj.dx; bbox.width = obj.dy; bbox.height = obj.dz;
-		PxSolidObject * sol = PxObjectFactory::GetObject(obj);
-		PxCollisionManager::Register(sol);
+		UP<PxSolidObject> sol{ PxObjectFactory::GetObject(obj) };
+		PxCollisionManager::Register(sol.get());
 		if( sol )
-			mRuntimeObjects.push_back(sol);
+			mRuntimeObjects.push_back(std::move(sol));
 	}
 	mHuman.Register();
 	PxQuakeMapLoader loader;
-	mQuakeMap = loader.Load( (char *)mBspFileName.c_str() , int(g_debug_bsptess));
-	mQuakeRenderer = new PxQuakeMapRenderer( mQuakeMap );
-	PxCollisionManager::Register( mQuakeMap );
+	mQuakeMap.reset(loader.Load( (char *)mBspFileName.c_str() , int(g_debug_bsptess)));
+	mQuakeRenderer.reset(new PxQuakeMapRenderer(mQuakeMap.get()));
+	PxCollisionManager::Register(mQuakeMap.get());
 
 	PxSkyBox sbox = PxSkyBox( 
 		mQuakeMap->boundingBox.x - 5 ,mQuakeMap->boundingBox.y - 5 ,mQuakeMap->boundingBox.z - 5,
@@ -121,14 +121,14 @@ void PxWorld::Render(PxWindow * pWindow)
 		DrawBSP();
 	mWorldMap->Render();
 	mPolygonSet.Render();
-	for( list<PxSolidObject *>::iterator iter = mRuntimeObjects.begin(); iter != mRuntimeObjects.end(); ++iter )
+	for (const auto& item : mRuntimeObjects)
 	{
-		if( *iter == nullptr )
+		if( item.get() == nullptr )
 			continue;
 		if( g_debug_bbox )
-			(*iter)->GetBoundingBox().Render();
-		if( mHuman.Camera.frustrum.IsBoundingBoxInside( (*iter)->GetBoundingBox() ) )
-			(*iter)->Render();
+			item->GetBoundingBox().Render();
+		if( mHuman.Camera.frustrum.IsBoundingBoxInside(item->GetBoundingBox()))
+			item->Render();
 	}
 }
 

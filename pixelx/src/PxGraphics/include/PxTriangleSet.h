@@ -10,6 +10,8 @@ using std::unordered_map;
 #include <vector>
 using std::vector;
 
+#include <stdexcept>
+
 struct PxTriangle
 {
 	PxVertex first,second,third;

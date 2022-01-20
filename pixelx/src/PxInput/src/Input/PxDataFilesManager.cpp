@@ -32,7 +32,6 @@ PxCommandList * PxDataFilesManager::Get( cstrref filename )
 	std::unique_ptr<PxCommandList> clist = PxDataFileParser::Parse( filename );
 	if( clist == nullptr )
 		return nullptr;
-	m_map[ clist->Type ] = std::move(clist);
-	return clist.get();
+	return (m_map[clist->Type] = std::move(clist)).get();
 }
 

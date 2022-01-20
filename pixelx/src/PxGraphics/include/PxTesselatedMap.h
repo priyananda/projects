@@ -12,18 +12,12 @@ using std::vector;
 class PxTesselatedMap
 {
 	PxSimplePolygonSet	mPolySet;
-	PxTriangleSet *		mTriangleSet;
+	UP<PxTriangleSet>	mTriangleSet;
 public:
 	vector<PxRuntimeObject> Objects;
 
-	PxTesselatedMap():mTriangleSet(nullptr){}
+	PxTesselatedMap(){}
 	
-	~PxTesselatedMap()
-	{
-		if( mTriangleSet )
-			delete mTriangleSet;
-	}
-
 	void Render()
 	{
 		if( mTriangleSet )
@@ -32,7 +26,7 @@ public:
 	void AddObject( string name, PxRuntimeObjectType type, string params, PxSolidObject * pObj );
 	void AddPolygon( PxPolygon & );
 	PxTriangleSet * GetTriangleSet();
-	void SetTriangleSet(PxTriangleSet * _pSet );
+	void SetTriangleSet(UP<PxTriangleSet>&& _pSet);
 };
 #endif
 

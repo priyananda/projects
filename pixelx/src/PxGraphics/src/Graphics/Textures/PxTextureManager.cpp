@@ -76,12 +76,12 @@ void PxTextureManager::SetMode(TextureMode mode,bool bTexEnv)
 		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 	static GLint sv[4] = { 1,0,1,0 } , tv[4] = {0,-1,1,0};
 
-	if( mode == eTexModeStretchX || mode == eTexModeStretchBoth ){ 
+	if( mode == TextureMode::StretchX || mode == TextureMode::StretchBoth ){
 		glTexGeni( GL_S , GL_TEXTURE_GEN_MODE , GL_OBJECT_LINEAR );
 		glTexGeniv( GL_S , GL_OBJECT_PLANE , sv );
 		glEnable( GL_TEXTURE_GEN_S );
 	}
-	if( mode == eTexModeStretchY || mode == eTexModeStretchBoth ){
+	if( mode == TextureMode::StretchY || mode == TextureMode::StretchBoth ){
 		glTexGeni( GL_T , GL_TEXTURE_GEN_MODE , GL_OBJECT_LINEAR );
 		glTexGeniv( GL_T , GL_OBJECT_PLANE , tv );
 		glEnable( GL_TEXTURE_GEN_T );

@@ -115,7 +115,7 @@ void PxIntroSceneRenderer::CreateDisplayList()
 {
 	m_DispList = glGenLists(1);
 	glNewList(m_DispList, GL_COMPILE);
-	PxTextureManager::Bind( "INTROLOGO" , eTexModeNoStretch );
+	PxTextureManager::Bind( "INTROLOGO" , TextureMode::NoStretch );
 	glBegin(GL_QUADS);
 	// Front Face
 	glTexCoord2f(1.0, 1.0); glVertex3f(-1.0, -1.0,  1.0);
@@ -212,7 +212,7 @@ void PxIntroSceneRenderer::RenderLogo()
 	glOrtho( 0, screenWidth, 0, screenHeight, 0, 1);
 	glViewport(0, 0, (long)screenWidth, (long)screenHeight);
 	glDisable( GL_BLEND );
-	PxTextureManager::Bind( "INTRO_PXLOGO" , eTexModeNoStretch );
+	PxTextureManager::Bind( "INTRO_PXLOGO" , TextureMode::NoStretch );
 	glBegin( GL_QUADS );
 	glTexCoord2f(0,1);glVertex2f(0,20);
 	glTexCoord2f(1,1);glVertex2f(screenWidth,20);

@@ -19,14 +19,10 @@
 #define QUAKE_ARMOUR_SHARD	"item_armor_shard"
 #define QUAKE_PLAYER		"info_player_deathmatch"
 
-int PxEntityFactory::AddObjects( PxQuake3EntityCollection & entities , list<PxSolidObject *> & mRuntimeObjects , cstrref botname)
+int PxEntityFactory::AddObjects( PxQuake3EntityCollection & entities , list<UP<PxSolidObject>>& mRuntimeObjects , cstrref botname)
 {
 	int ret = 0;
-	for( PxQuake3EntityCollection::iterator iter = entities.begin();
-		iter != entities.end();
-		++iter
-	){
-		PxQuake3Entity & entity = *iter;
+	for (PxQuake3Entity& entity : entities) {
 		PxModel * pModel = nullptr;
 		float yfactor = 0, yangle = 0;
 		if( _strnicmp( entity.ClassName.c_str() , QUAKE_AMMO , 5 ) == 0 )
@@ -68,7 +64,7 @@ int PxEntityFactory::AddObjects( PxQuake3EntityCollection & entities , list<PxSo
 				pModel->Turn( yangle );
 			pModel->SetScale(0.1f);
 			PxCollisionManager::Register( pModel );
-			mRuntimeObjects.push_back( pModel );
+			mRuntimeObjects.push_back(UP<PxSolidObject>{pModel});
 		}
 	}
 	if( ret == 0 )

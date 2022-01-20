@@ -31,7 +31,7 @@ void PxEndGameSceneRenderer::SetScene( IScene * pScene )
 	m_pCurrentScene = static_cast< PxEndGameScene * >( pScene );
 	m_pCurrentScene->Initialize();
 	g_tex_id = PxTextureManager::GetTextureId( g_debug_win ? "ENDGAME_WIN" : "ENDGAME_LOSE" );
-	PxTextureManager::Bind( g_tex_id, eTexModeNoStretch );
+	PxTextureManager::Bind( g_tex_id, TextureMode::NoStretch );
 }
 
 void PxEndGameSceneRenderer::HandlePaint(PxWindow * pWindow)

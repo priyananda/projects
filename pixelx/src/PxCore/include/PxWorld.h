@@ -17,10 +17,10 @@ class PxWorld
 	bool   mEnableLight;
 	string mBotName;
 
-	PxQuakeMap * mQuakeMap;
-	PxQuakeMapRenderer * mQuakeRenderer;
-	PxTesselatedMap * mWorldMap;
-	list<PxSolidObject *> mRuntimeObjects;
+	std::unique_ptr<PxQuakeMap> mQuakeMap;
+	std::unique_ptr<PxQuakeMapRenderer> mQuakeRenderer;
+	std::unique_ptr<PxTesselatedMap> mWorldMap;
+	list<std::unique_ptr<PxSolidObject>> mRuntimeObjects;
 	bool mEnableCollision;
 	PxSimplePolygonSet mPolygonSet;
 	long mWorldFragCount;
@@ -28,22 +28,22 @@ class PxWorld
 	PxHuman mHuman;
 public:
 	PxWorld();
-	PxWorld(cstrref filename){ Deserialize(filename); }
+	PxWorld(cstrref filename) { Deserialize(filename); }
 	~PxWorld();
 
 	PxWorld(const PxWorld&) = delete;
 
 	void Deserialize(cstrref filename);
 	void Initialize();
-	void Render(PxWindow *);
-	void EnableCollision(bool val){mEnableCollision = val;}
+	void Render(PxWindow*);
+	void EnableCollision(bool val) { mEnableCollision = val; }
 
-	string		GetName(){return mName;}
-	PxCamera &	GetCamera(){return mHuman.Camera;}
-	int			GetRenderedTrianglesCount(){ return mQuakeRenderer->numTris; }
-	string		GetBSPFileName(){ return mBspFileName; }
-	PxHuman &	GetHuman(){ return mHuman; }
-	long		GetWorldFragCount(){ return mWorldFragCount; }
+	string		GetName() { return mName; }
+	PxCamera& GetCamera() { return mHuman.Camera; }
+	int			GetRenderedTrianglesCount() { return mQuakeRenderer->numTris; }
+	string		GetBSPFileName() { return mBspFileName; }
+	PxHuman& GetHuman() { return mHuman; }
+	long		GetWorldFragCount() { return mWorldFragCount; }
 private:
 	void DrawBSP();
 };

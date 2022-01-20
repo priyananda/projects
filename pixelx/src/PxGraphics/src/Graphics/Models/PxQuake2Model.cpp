@@ -242,13 +242,13 @@ PxQuake2ModelCore::PxQuake2ModelCore(cstrref filename )
 
 void PxQuake2ModelCore::Render()
 {
-	PxTextureManager::Bind( m_texid, eTexModeNoStretch );
+	PxTextureManager::Bind( m_texid, TextureMode::NoStretch );
 	m_loader.Render(IDLE1);
 }
 
 void PxQuake2ModelCore::Animate(int sf,int ef,float interp)
 {
-	PxTextureManager::Bind( m_texid, eTexModeNoStretch );
+	PxTextureManager::Bind( m_texid, TextureMode::NoStretch );
 	m_loader.Animate(sf,ef,interp );
 }
 

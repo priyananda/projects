@@ -180,8 +180,8 @@ void PxCamera::Look()
 
 void PxCamera::Jump()
 {
-	if( g_debug_collision && PxCollisionManager::IsOnGround(*this) )
-		g_vVelocity.y = float(JumpHeight);
+	if( g_debug_collision )
+		g_vVelocity.y = float(JumpHeight); 
 	else
 		PxLog::LogMessage( "Centre:%f", boundingSphere.centre.y );
 }

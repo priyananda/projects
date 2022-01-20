@@ -168,7 +168,7 @@ void PxMapListGUIScene::CustomRender()
 	DEFINE_VARL(g_screenwidth);
 	DEFINE_VARL(g_screenheight);
 	int texid = textures[ g_selectedWorld ];
-	PxTextureManager::Bind( texid , eTexModeNoStretch );
+	PxTextureManager::Bind( texid , TextureMode::NoStretch );
 	glBegin( GL_QUADS );
 		glTexCoord2f( 0, 1 );glVertex2i( g_screenwidth / 2 - 100 , g_screenheight - 300 );
 		glTexCoord2f( 0, 0 );glVertex2i( g_screenwidth / 2 - 100 , g_screenheight - 100 );

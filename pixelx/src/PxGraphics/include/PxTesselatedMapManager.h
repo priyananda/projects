@@ -5,8 +5,8 @@
 class PxTesselatedMapManager
 {
 public:
-	static void Persist( PxTesselatedMap * pTS, cstrref filename );
-	static PxTesselatedMap * Restore( cstrref name );
+	static void Persist(PxTesselatedMap&, cstrref filename );
+	static UP<PxTesselatedMap> Restore( cstrref name );
 };
 #endif
 

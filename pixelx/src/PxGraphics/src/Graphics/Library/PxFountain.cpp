@@ -103,9 +103,9 @@ void PxFountain::DrawFountain()
 	static float rotangle = 360.0f / NUMBER_OF_STREAMS;
 
 	if( isBlood )
-		PxTextureManager::Bind( "BLOOD" , eTexModeNoStretch );
+		PxTextureManager::Bind( "BLOOD" , TextureMode::NoStretch );
 	else
-		PxTextureManager::Bind( "PARTICLE" , eTexModeNoStretch );
+		PxTextureManager::Bind( "PARTICLE" , TextureMode::NoStretch );
 	
 	AddParticles();
 	MoveParticles();
@@ -167,11 +167,11 @@ void PxFountain::DrawWater()
 
 	glActiveTextureARB(GL_TEXTURE0_ARB );
 	glEnable( GL_TEXTURE_2D );
-	PxTextureManager::Bind( "WATER" , eTexModeNoStretch );
+	PxTextureManager::Bind( "WATER" , TextureMode::NoStretch );
 	
 	glActiveTextureARB(GL_TEXTURE1_ARB );
 	glEnable( GL_TEXTURE_2D );
-	PxTextureManager::Bind( "WATER" , eTexModeNoStretch );
+	PxTextureManager::Bind( "WATER" , TextureMode::NoStretch );
 	
 	glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE, GL_COMBINE_EXT);
 	glTexEnvi(GL_TEXTURE_ENV, GL_COMBINE_RGB_EXT, GL_ADD_SIGNED_EXT); 
