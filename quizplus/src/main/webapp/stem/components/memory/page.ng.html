@@ -1,0 +1,15 @@
+<md-content>
+  <div>
+    <table class="match-table">
+      <tr ng-repeat="row in data.rows">
+        <td ng-repeat="cell in row" class="match-cell">
+         <div layout="column">
+          <img ng-src="{{(cell.done || cell.visible) ? cell.image : 'img/clue_icon.png'}}"
+            width="150px" height="150px" ng-click="flip(cell)"/>
+        </td>
+        </div>
+      </tr>
+    </table>
+    <span ng-if="allCorrect">Congrats! Submit the answer <b>{{data.answer}}</b> to get your clue.</span>
+  </div>
+</md-content>

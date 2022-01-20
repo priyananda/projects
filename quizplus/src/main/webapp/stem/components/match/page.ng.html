@@ -1,0 +1,26 @@
+<md-content>
+  <div>
+    <table class="match-table">
+      <tr ng-repeat="row in data.rows">
+        <td ng-repeat="cell in row" class="match-cell">
+         <div layout="column">
+          <img ng-src="{{cell.image}}" ng-if="cell.image" width="150px" height="150px"/>
+          <video ng-src="{{cell.video}}" ng-if="cell.video" controls autoplay loop
+            width="150px" height="150px"></video>
+          <md-input-container>
+	          <label>Choose</label>
+	          <md-select ng-model="cell.selected" ng-change="evaluateState()">
+	            <md-option>None</md-option>
+	            <md-option ng-repeat="option in cell.options" ng-value="option">
+	              {{option}}
+	            </md-option>
+	          </md-select>
+          </md-input-container>
+        </td>
+        </div>
+      </tr>
+    </table>
+    <span ng-if="allCorrect">Congrats! Submit the answer <b>{{data.answer}}</b> to get your clue.</span>
+    <span ng-if="!allCorrect">You have got <b>{{score}} / 9</b> correct</span>
+  </div>
+</md-content>

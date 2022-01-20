@@ -1,0 +1,39 @@
+<table width="100%" height="100%">
+  <tr>
+    <td width="25%" ng-repeat="suspect in suspects">
+      <div class="final-character-panel">
+	      <chat
+	        person="person"
+	        suspect="suspect"
+	        isfinal="true"
+	        isanswer="false">
+	      </chat>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="4" class="final-banner-container">
+      <div style="padding: 30px; color: black;">
+	      Here are all the clues you have collected till now:<b>
+	      <span ng-repeat="clue in clues">{{clue.clue}} </span></b>
+	      <br />
+	      If you think you know who the culprit is, go ahead!
+	      <br />
+	      <div layout="row">
+		      <md-input-container style="color: black; border: 1px solid black;">
+		        <label>Select Evidence</label> 
+			      <md-select ng-model="evidence">
+			        <md-option ng-value="clue.key" ng-repeat="clue in clues">
+			        {{clue.clue}}
+			        </md-option>
+			      </md-select>
+			   </md-input-container>
+			   <md-button class="md-raised final-button" ng-click="accuse(1)">Accuse Mr. Hewitt</md-button>
+			   <md-button class="md-raised final-button" ng-click="accuse(2)">Accuse Lady Agatha</md-button>
+			   <md-button class="md-raised final-button" ng-click="accuse(3)">Accuse Mr Dyll</md-button>
+			   <md-button class="md-raised final-button" ng-click="accuse(4)">Accuse Ms Wanda</md-button>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>

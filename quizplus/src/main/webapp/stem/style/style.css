@@ -1,0 +1,186 @@
+@font-face {
+  font-family: 'detective';
+  font-style: normal;
+  font-weight: normal;
+  src: local('detective'), url('../fonts/Detective.woff') format('woff');
+}
+
+body {
+	font-family: 'detective';
+}
+
+.landing_bg {
+	width: 100%;
+	height: 100%;
+	background: url(/mofc/img/landing_bg.jpg) no-repeat center; 
+}
+
+.content-container {
+  margin: auto;
+  width: 1024;
+  max-width: 1024;
+  height: 768;
+  background-color: rgba(1,1,1,0.5);
+}
+
+.landing-container {
+  width: 1024px;
+  height: 576px;
+  text-align: center;
+  background: url(/mofc/img/vic_3.jpg) no-repeat center;
+}
+
+.landing-panel-container {
+	width: 1024px;
+  height: 195px;
+  text-align: center;
+  background: url(/mofc/img/parch_bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.person-1 {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+.person-2 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.person-3 {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.person-4 {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.icon-grid-container {
+	margin: auto;
+	width: 400px;
+	height: 350px;
+}
+
+.icon-grid-table {
+	width: 250px;
+	height: 350px;
+}
+
+.icon-grid-cell {
+  width: 50px;
+  height: 50px;
+}
+
+.icon-grid-center {
+  width: 60%;
+  height: 100%;
+  padding: 20px;
+  color: black;
+  text-align: center;
+  background: url(/mofc/img/parch_bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.arena-container {
+	width: 100%;
+	height: 100%;
+}
+.arena-character-panel {
+	width: 40%;
+  height: 100%;
+  background: url(/mofc/img/parch_bg.png);
+  background-repeat: no-repeat;
+  align-items: center;
+}
+
+.arena-icon {
+  position: absolute;
+  text-align: center;
+}
+
+.arena-icon-link {
+	text-shadow: 2px 2px black;
+}
+
+.md-chips {
+	font-family: 'detective';
+}
+
+.landing-regn-card {
+	width: 500px;
+	max-width: 500px;
+}
+
+.firechat-wrapper {
+  height: 250px;
+  max-width: 300px;
+  margin-left: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: rgba(0,0,0,0.4);
+  text-align: center;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 5px 25px #666;
+  -moz-box-shadow: 0 5px 25px #666;
+  box-shadow: 0 5px 25px #666;
+}
+
+md-list-item, md-list-item .md-list-item-inner {
+    min-height: 20px;
+    height: 25px;
+}
+
+.final-banner-container {
+	width: 100%;
+	height: 220px;
+	background: url(/mofc/img/parch_bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.final-clues-container {
+  width: 40%;
+  height: 100%;
+  background: url(/mofc/img/parch_bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.final-character-panel {
+  width: 100%;
+  height: 500px;
+  background: url(/mofc/img/parch_bg.png);
+  background-repeat: no-repeat;
+  align-items: center;
+}
+
+.match-table {
+	width: 600px;
+	height: 600px;
+}
+
+.match-cell {
+	width: 198px;
+	height: 198px;
+	border: 1px solid white;
+	margin: 1px;
+}
+
+.spotit-table {
+	border: 1px solid white;
+	margin: 10px;
+}
+
+.final-button {
+	max-height:  50px;
+}
