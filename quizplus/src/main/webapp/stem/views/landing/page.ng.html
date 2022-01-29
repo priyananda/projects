@@ -1,31 +1,9 @@
 <md-content class="landing-container" layout-align="center center" id="popupContainer">
-  <div ng-repeat="suspect in suspects" ng-class="suspect.cls" layout="column">
-    <img ng-src="{{suspect.image}}" width="150px"/>
-    <md-button class="md-raised" ng-href="{{suspect.link}}">{{suspect.name}}</md-button>
+  <div class="score_panel">
+  	You have solved {{score}}/16 puzzles.
   </div>
-  <div class="icon-grid-container">
-    <div class="icon-grid-center">
-      <span style="font-weight:bold;">Detective {{person.name}}, we need your help!</span>
-      <br />
-      Collect at least one clue from each room to
-      <md-button class="md-raised" ng-disabled="isFinalDisabled()" ng-click="goTo('/f')">
-        Solve the Mystery!</md-button>
-      <img ng-src="{{isFinalDisabled() ? 'img/lock_pin_icon.png' : 'img/unlock_pin_icon.png' }}" width="120px">
-      <br>
-      You have collected <b>{{score}}</b> clues out of 16.
-    </div>
-    <div style="background-color: darkblue;">
-      May 11 update: New Puzzles Added! Hints fixed! Final puzzle unlocked.
-    </div>
-  </div>
-</md-content>
-<md-content class="landing-panel-container" layout-align="center center">
-  <div style="padding: 40px; color: black;">
-	  As you enter Finn Hill Manor, you experience a deep sense of foreboding. Something isn't quite right here!
-	  You glean that there are four residents in the manor: <b>Lady Agatha</b>, the haughty owner of the mansion;
-	  <b>Mr. Hewitt</b>, the cantankerous caretaker; <b>Ms. Wanda</b>, the frail maid; and <b>Mr. Dyll</b>, the
-	  accountant. Any one of them could be the culprit - it's up to you to find out.
-	  <p> Talk to each of them to gather clues. Once you have enough clues, you can try to solve the mystery
-	  of the stolen jewels!
+  <div ng-repeat="section in sections" ng-class="section.cls" layout="column">
+    <img ng-src="{{section.image}}" width="150px"/>
+    <md-button class="md-raised" ng-href="{{section.link}}">Go</md-button>
   </div>
 </md-content>

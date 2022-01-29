@@ -8,13 +8,16 @@ quizRunnerModule
     $scope.score = Storage.getScore();
     
     $scope.attemptAnswer = function() {
-      $mdDialog.show({
-        controller: AttemptDialogController,
-        controllerAs: 'ctrl',
-        templateUrl: 'views/question/attempt.ng.html',
-        parent: angular.element(document.body),
-        clickOutsideToClose: true,
-      });
+      var confirm = $mdDialog.prompt()
+      .title('Enter the answer to this puzzle')
+      .textContent('The answer is a phrase without spaces or punctuation.')
+      .placeholder('Enter your answer here')
+      .ok('Try')
+      .cancel('Cancel');
+
+      $mdDialog.show(confirm).then(function(result) {
+        $scope.postAnswer(result);
+      }, function(){});
     };
     
     $scope.go = function(path) {
@@ -29,10 +32,25 @@ quizRunnerModule
       $mdDialog.show(alert);
     };
     
-    function AttemptDialogController($mdDialog) {
-      ctrl = this;
-      ctrl.person = $scope.person;
-      ctrl.questionKey = $scope.key;
-      ctrl.suspect = $scope.arenaData.suspect;
-    }
+    $scope.postAnswer = function(answerText) {
+      $http({
+        method : 'GET',
+        url : '/api/stem/postanswer',
+        params: {'k': $scope.key, 'p' : $scope.person.pid, 'a' : answerText}
+      }).then(function(response) {
+        var isSuccess = (response.data.status == "Success");
+        var alert = $mdDialog.alert()
+          .title('Answer')
+          .textContent(isSuccess ? 'Congratulations! Correct Answer.' : 'Oh No! Incorrect Answer')
+          .ok('OK');
+        $mdDialog.show(alert).then(function() {
+          if (isSuccess) {
+            $scope.score.set($scope.key, 1);
+            Storage.saveScore($scope.score);
+          }
+        }, function(){});
+      }, function(response) {
+        console.log(response);
+      });
+    };
   });

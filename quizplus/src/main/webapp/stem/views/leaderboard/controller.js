@@ -2,7 +2,7 @@ quizRunnerModule
   .controller('LeaderBoardPageController', function ($scope, $routeParams, $location, Storage, $http, $mdDialog, QuestionData) {
     $http({
       method : 'GET',
-      url : '/api/mofc/getscores'
+      url : '/api/stem/getscores'
     }).then(function(response) {
       $scope.scores = response.data;
     }, function(response) {

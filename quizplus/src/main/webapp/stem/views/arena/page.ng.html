@@ -1,19 +1,12 @@
  <md-content flex layout-padding layout="column" class="arena-container">
   <div class="arena-container" ng-style="{{bgStyle}}">
-    <div class="arena-character-panel">
-      <chat
-        person="person"
-        suspect="arenaData.suspect"
-        isanswer="false">
-      </chat>
-    </div>
     <div class="arena-icon-map">
       <div class="arena-icon" ng-repeat="puzzle in arenaData.puzzles" layout="column"
       ng-style="{top: puzzle.loc.t, left: puzzle.loc.l}">
         <img
           ng-if="!puzzle.q.is_locked"
-          ng-src="{{isAnswered(puzzle.q.key) ? 'img/clue_done_icon.png' : 'img/clue_icon.png'}}"
-          width="50" height="40" style="margin: auto;"/>
+          ng-src="{{isAnswered(puzzle.q.key) ? puzzle.doneIcon : puzzle.icon}}"
+          style="margin: auto;"/>
         <a
           ng-if="!puzzle.q.is_locked"
           class="arena-icon-link" ng-click="goTo('/q/' + puzzle.q.key + '/' + setId)">{{puzzle.q.title}}</a>

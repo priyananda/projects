@@ -1,5 +1,5 @@
 var quizRunnerModule = angular.module('QuizRunnerModule', [ 'ngMaterial', 
-    'ngMessages', 'material.svgAssetsCache', 'ngRoute', 'angular-simple-chat']); 
+    'ngMessages', 'material.svgAssetsCache', 'ngRoute']); 
 
 quizRunnerModule.config(function($sceProvider) {
   // Completely disable SCE. For demonstration purposes only!

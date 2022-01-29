@@ -2,7 +2,7 @@ quizRunnerModule.factory('Storage', function($window) {
   var helper = {};
 
   helper.getPerson = function() {
-    var personAsString = $window.localStorage.getItem('mofc-person');
+    var personAsString = $window.localStorage.getItem('stem-person');
     if (personAsString == null) {
       return undefined;
     }
@@ -10,11 +10,11 @@ quizRunnerModule.factory('Storage', function($window) {
   };
 
   helper.savePerson = function(person) {
-    $window.localStorage.setItem('mofc-person', JSON.stringify(person));
+    $window.localStorage.setItem('stem-person', JSON.stringify(person));
   };
   
   helper.getScore = function() {
-    var scoreAsString = $window.localStorage.getItem('mofc-score');
+    var scoreAsString = $window.localStorage.getItem('stem-score');
     var ret = new Map();
     if (scoreAsString != null) {
       var keys = JSON.parse(scoreAsString);
@@ -24,19 +24,7 @@ quizRunnerModule.factory('Storage', function($window) {
   };
   
   helper.saveScore = function(score) {
-    $window.localStorage.setItem('mofc-score', JSON.stringify(Array.from(score.keys())));
-  };
-  
-  helper.getChat = function() {
-    var chatAsString = $window.localStorage.getItem('mofc-chat');
-    if (chatAsString == null) {
-      return undefined;
-    }
-    return JSON.parse(chatAsString); 
-  };
-  
-  helper.saveChat = function(chat) {
-    $window.localStorage.setItem('mofc-chat', JSON.stringify(chat));
+    $window.localStorage.setItem('stem-score', JSON.stringify(Array.from(score.keys())));
   };
   
   helper.clear = function() {

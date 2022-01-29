@@ -20,7 +20,7 @@ quizRunnerModule
     $scope.goto = function (key) {
       var utcDate = new Date();
       var pstDate = new Date(utcDate.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
-      if (pstDate.getHours() < 18) {
+      if (false) {
         $mdDialog.show(
           $mdDialog.alert()
             .clickOutsideToClose(true)
