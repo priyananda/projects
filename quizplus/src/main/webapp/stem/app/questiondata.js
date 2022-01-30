@@ -1,71 +1,48 @@
 quizRunnerModule.factory('QuestionData', function() {
   var helper = {};
   
-  const MATCH_DATA_ANIMALS = {
+  const MATCH_DATA_PLANETS = {
       rows: [
         [
-          {answer:"kitten", image:"img/cat.jpg", options: ["cub", "kitten", "catling"]},
-          {answer:"cub", image:"img/bear.jpg", options: ["cub", "bearlet", "pup"]},
-          {answer:"calf", image:"img/cow.jpg", options: ["cowbell", "coward", "calf"]},
+          {answer:"(None)", image:"img/mercury.jpg", options: ["(None)", "Mooncury", "Phobos"]},
+          {answer:"(None)", image:"img/venus.jpg", options: ["Venusino", "(None)", "Venison"]},
+          {answer:"Luna", image:"img/earth.jpg", options: ["Luna", "(None)", "Io"]},
         ],
         [
-          {answer:"pup", image:"img/wolf.jpg", options: ["wolflet", "dog", "pup"]},
-          {answer:"joey", image:"img/kangaroo.jpg", options: ["joey", "roo", "aussie"]},
-          {answer:"cub", image:"img/tiger.jpg", options: ["tigerling", "cub", "sher"]},
+          {answer:"Phobos", image:"img/mars.jpg", options: ["Musk", "Dinos", "Phobos"]},
+          {answer:"Ganymede", image:"img/jupiter.jpg", options: ["Ganymede", "Iowa", "California"]},
+          {answer:"Enceladus", image:"img/saturn.jpg", options: ["Saturnday", "Enceladus", "Lil Saturn"]},
         ],
         [
-          {answer:"gosling", image:"img/goose.jpg", options: ["gooselet", "lil goose", "gosling"]},
-          {answer:"piglet", image:"img/pig.jpg", options: ["cub", "piglet", "pingling"]},
-          {answer:"kid", image:"img/goat.jpg", options: ["kid", "goatlet", "goatbaby"]},
+          {answer:"Ariel", image:"img/uranus.jpg", options: ["Belle", "Ariel", "Jasmine"]},
+          {answer:"Triton", image:"img/neptune.jpg", options: ["Triton", "Titan", "Titania"]},
+          {answer:"Chiron", image:"img/pluto.jpg", options: ["Plutonium", "Chiron", "Goofy"]},
         ],
       ],
-      answer: "BABY"
+      answer: "SATELLITE"
   };
   const MEMORY_DATA_EASY = {
       rows: [
         [
-          {image: "img/rey.png", k: "r"},
-          {image: "img/vader.png", k: "v"},
-          {image: "img/bb8.png", k: "b"},
-          {image: "img/kyloren.png", k: "k"},
+          {image: "img/as1.jpg", k: "r"},
+          {image: "img/as2.jpg", k: "v"},
+          {image: "img/as3.jpg", k: "b"},
+          {image: "img/as4.jpg", k: "k"},
         ],
         [
-          {image: "img/r2d2.png", k: "r2"},
-          {image: "img/yoda.png", k: "y"},
-          {image: "img/vader.png", k: "v"},
-          {image: "img/yoda.png", k: "y"},
+          {image: "img/as5.jpg", k: "r2"},
+          {image: "img/as6.jpg", k: "y"},
+          {image: "img/as2.jpg", k: "v"},
+          {image: "img/as6.jpg", k: "y"},
         ],
         [
-          {image: "img/bb8.png", k: "b"},
-          {image: "img/kyloren.png", k: "k"},
-          {image: "img/rey.png", k: "r"},
-          {image: "img/r2d2.png", k: "r2"},
+          {image: "img/as3.jpg", k: "b"},
+          {image: "img/as4.jpg", k: "k"},
+          {image: "img/as1.jpg", k: "r"},
+          {image: "img/as5.jpg", k: "r2"},
         ],
       ],
-      answer: "STARWARS"
-  };
-  const MEMORY_DATA_HARD = {
-      rows: [
-        [
-          {image: "img/washington.jpg", k: "r"},
-          {image: "img/harrisburg.jpg", k: "v"},
-          {image: "img/newyork.jpg", k: "b"},
-          {image: "img/helena.jpg", k: "k"},
-        ],
-        [
-          {image: "img/lansing.jpg", k: "r2"},
-          {image: "img/california.jpg", k: "y"},
-          {image: "img/pennsylvania.jpg", k: "v"},
-          {image: "img/sacramento.jpg", k: "y"},
-        ],
-        [
-          {image: "img/albany.jpg", k: "b"},
-          {image: "img/montana.jpg", k: "k"},
-          {image: "img/olympia.jpg", k: "r"},
-          {image: "img/michigan.jpg", k: "r2"},
-        ],
-      ],
-      answer: "CAPITALS"
+      answer: "ASTRONAUTS"
   };
   
   const Q1 = {
@@ -79,59 +56,58 @@ quizRunnerModule.factory('QuestionData', function() {
       key: "2",
       title: "Journey to Jupiter",
       hint: "Click on an image, and then click on where you think the other image is located",
-      is_memory: true,
-      memory_data: MEMORY_DATA_EASY
+      is_solar: true,
   };
   const Q3 = {
       key: "3",
       title: "So Long, Saturn",
-      hint: "What do we call these animal babies?",
+      hint: "Identify the moons of each of the planers",
       is_match: true,
-      match_data: MATCH_DATA_ANIMALS,
+      match_data: MATCH_DATA_PLANETS,
   };
   const Q4 = {
       key: "4",
       title: "Navigating Neptune",
-      hint: "Maybe a mirror might help?",
-      img_url: "img/mirror.jpg",
-      img_width: "600",
-      img_height: "600",
+      hint: "For each alien, select where in the grid you can find them.",
+      is_spotit: true,
   };
   const Q5 = {
       key: "5",
       title: "Elementary",
-      hint: "For each maze, check which entrance leads to the center.",
-      img_url: "img/maze_2.png",
-      img_width: "609",
-      img_height: "440"
+      hint: "Form words using Element symbols, e.g. TiTaNIC",
+      img_url: "img/elementary.jpg",
+      img_width: "734",
+      img_height: "750"
   };
   const Q6 = {
       key: "6",
       title: "Altered Carbon",
-      img_url: "img/amongus.png",
-      hint: "Imposters tend to lie.",
-      img_width: "800",
-      img_height: "592"
+      img_url: "img/bruno.jpg",
+      hint: "Some words seem to be misspelled.",
+      img_width: "700",
+      img_height: "588"
   };
   const Q7 = {
       key: "7",
-      title: "Quick Reactions",
-      hint: "Try different numbers",
-      img_url: "img/numcode.png",
-      img_width: "640",
-      img_height: "356"
+      title: "Fanning the Flames",
+      hint: "Think about what category we are in",
+      img_url: "img/chemword.png",
+      img_width: "600",
+      img_height: "600"
   };
   const Q8 = {
       key: "8",
       title: "Solve the Solvent",
-      hint: "Find the block a character can be found in.",
-      is_spotit: true,
+      hint: "Try different rations of Acids and Bases",
+      is_solvent: true,
   };
   const Q9 = {
       key: "9",
       title: "Resistance is Futile",
-      hint: "How many Fire, Water, Lava blocks can there be?",
-      is_minecraft: true
+      hint: "Find the resistance of each resistor, and see how you can map it to letters",
+	  img_url: "img/resist.png",
+      img_width: "700",
+      img_height: "700"
   };
   const Q10 = {
       key: "10",
@@ -144,9 +120,7 @@ quizRunnerModule.factory('QuestionData', function() {
   const Q11 = {
       key: "11",
       title: "Current Affairs",
-      hint: "Google is your friend.",
-      is_match: true,
-      match_data: MATCH_DATA_ANIMALS,
+      hint: "Google is your friend."
   };
   const Q12 = {
       key: "12",
@@ -175,9 +149,8 @@ quizRunnerModule.factory('QuestionData', function() {
   const Q15 = {
       key: "15",
       hint: "Alien Algebra",
-      title: "Alien Algebra", 
-      is_match: true,
-      match_data: MATCH_DATA_ANIMALS
+      title: "Alien Algebra",
+      is_algebra: true
   };
   const Q16 = {
       key: "16",
@@ -194,10 +167,10 @@ quizRunnerModule.factory('QuestionData', function() {
       cls: "section-2", image: "img/section_2.jpg", link: "#/s/2"
   };
   const SECTION_3 = {
-      cls: "section-3", image: "img/section_3.jpg", link: "#/s/3"
+      cls: "section-3", image: "img/section_3.jpg", linkx: "#/s/3"
   };
   const SECTION_4 = {
-      cls: "section-4", image: "img/section_4.jpg", link: "#/s/4"
+      cls: "section-4", image: "img/section_4.jpg", linkx: "#/s/4"
   };
  
   const QUESTION_BY_KEY = new Map([

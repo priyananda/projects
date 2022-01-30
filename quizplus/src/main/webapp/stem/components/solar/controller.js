@@ -7,18 +7,13 @@ quizRunnerModule.controller('SolarPanelController', function($scope,
     perPixelTargetFind : true,
     targetFindTolerance : 5
   });
-  var orbits = [];
-  var planets_by_orbital = [];
+  var planet;
+  var bodies = [];
   const ORBIT_RADIUS = 35;
   const ORBIT_OFFSET = 60;
-  const PLANET_NAMES = [
-    '\u263F', '\u2640', '\u2641', '\u2642', '\u2643', '\u2644', '\u2645', '\u2646',
-  ];
-  const CLUE_NAMES = [
-    'B', 'Y', 'E', 'P', 'L', 'U', 'T', 'O',
-  ];
-  const JUMBLER = [
-    7, 4, 5, 0, 1, 6, 3, 2
+  const PLANET_NAME = 'J';
+  const MOON_NAMES = [
+    'I', 'C', 'G', 'E'
   ];
 
   fabric.Image.fromURL('img/sun.png', function(sunImg) {
@@ -26,9 +21,9 @@ quizRunnerModule.controller('SolarPanelController', function($scope,
     sunImg.center();
   });
 
-  function createOrbit(i) {
+  function createOrbit() {
     var orbit = new fabric.Circle({
-      radius : ORBIT_RADIUS * i + ORBIT_OFFSET,
+      radius : ORBIT_RADIUS * 4 + ORBIT_OFFSET,
       left : canvas.getWidth() / 2,
       top : canvas.getHeight() / 2,
       fill : '',
@@ -40,7 +35,6 @@ quizRunnerModule.controller('SolarPanelController', function($scope,
       index : i
     });
     canvas.add(orbit);
-    orbits.push(orbit);
   }
   
   function animatePlanet(planet) {
@@ -52,7 +46,7 @@ quizRunnerModule.controller('SolarPanelController', function($scope,
         endAngle = startAngle + 359;
 
     (function animate() {
-      var duration = (planet.orbitalIndex + 1) * 20000;
+      var duration = 8 * 20000;
       fabric.util.animate({
         startValue: startAngle,
         endValue: endAngle,
@@ -64,110 +58,112 @@ quizRunnerModule.controller('SolarPanelController', function($scope,
         onChange: function(angle) {
           angle = fabric.util.degreesToRadians(angle);
 
-          var radius = planet.orbitalIndex * ORBIT_RADIUS + ORBIT_OFFSET;
+          var radius = 4 * ORBIT_RADIUS + ORBIT_OFFSET;
           var x = cx + radius * Math.cos(angle);
           var y = cy + radius * Math.sin(angle);
 
           planet.set({ left: x, top: y }).setCoords();
 
-          // only render once
-          if (planet.orbitalIndex === 7) {
-            canvas.renderAll();
-          }
+		  canvas.renderAll();
         },
         onComplete: animate
       });
     })();
   }
 
-  function createPlanet(orbitalIndex, planetIndex) {
+  function animateMoon(planet, moon, moonIndex) {
+    // rotate around the planet
+    var startAngle = fabric.util.getRandomInt(-180, 0),
+        endAngle = startAngle + 359;
+
+    (function animate() {
+      var duration = (moonIndex + 1 ) * 7000;
+      fabric.util.animate({
+        startValue: startAngle,
+        endValue: endAngle,
+        duration: duration,
+
+        // linear movement
+        easing: function(t, b, c, d) { return c*t/d + b; },
+
+        onChange: function(angle) {
+          angle = fabric.util.degreesToRadians(angle);
+
+          var radius = (moonIndex + 1) * 30 + 15;
+          var x = planet.left + radius * Math.cos(angle);
+          var y = planet.top + radius * Math.sin(angle);
+
+          moon.set({ left: x, top: y }).setCoords();
+
+		  canvas.renderAll();
+        },
+        onComplete: animate
+      });
+    })();
+  }
+
+  function createBody(size, label) {
     var circle = new fabric.Circle({
-      radius : 20,
+      radius : size,
       fill : '#eef',
       originX : 'center',
       originY : 'center'
     });
 
-    var text = new fabric.Text(PLANET_NAMES[planetIndex], {
-      fontSize : 20,
+    var text = new fabric.Text(label, {
+      fontSize : size,
       originX : 'center',
       originY : 'center'
     });
 
-    var planet = new fabric.Group([ circle, text ], {
-      left : canvas.getWidth() / 2 + orbitalIndex * ORBIT_RADIUS + ORBIT_OFFSET,
+    var body = new fabric.Group([ circle, text ], {
+      left : canvas.getWidth() / 2 + 1 * ORBIT_RADIUS + ORBIT_OFFSET,
       top : canvas.getHeight() / 2,
       hasBorders : false,
-      hasControls : false,
-      planetIndex : planetIndex,
-      orbitalIndex : orbitalIndex
+      hasControls : false
     });
-    canvas.add(planet);
-    planets_by_orbital.push(planet);
-    animatePlanet(planet);
+    canvas.add(body);
+    bodies.push(body);
+	return body;
   }
 
-  for (var i = 0; i < 8; i++) {
-    createOrbit(i); 
-    createPlanet(i, JUMBLER[i]);
+  createOrbit(); 
+  planet = createBody(30, PLANET_NAME);
+  animatePlanet(planet);
+  planet.moons = [];
+  for (var i = 0; i < 4; i++) {
+    var moon = createBody(15, MOON_NAMES[i]);
+    planet.moons.push(moon);
+	animateMoon(planet, moon, i);
   }
   
-  function selectPlanet(selectedPlanet) {
-    $scope.selectedPlanet = selectedPlanet;
-    planets_by_orbital.forEach(function (planet){
-      var circle = planet.getObjects("circle")[0];
-      if (planet == selectedPlanet) {
+  function selectBody(selectedBody) {
+	if (selectedBody === null) {
+	  $scope.selectedImg = null; 
+	} else {
+      $scope.selectedImg = "img/" + selectedBody.getObjects("text")[0].text + ".jpg";
+    }
+    bodies.forEach(function (body){
+      var circle = body.getObjects("circle")[0];
+      if (body == selectedBody) {
         circle.fill = '#778899';
       } else {
         circle.fill = '#eef';
       }
       circle.dirty = true;
-      planet.dirty = true; 
+      body.dirty = true; 
     });
   }
   
   canvas.on('mouse:down', function(options) {
     if (options.target == null || options.target.type === "group") {
-      selectPlanet(options.target);
+      selectBody(options.target);
     } else {
-      selectPlanet(null);
+      selectBody(null);
     }
     $scope.$apply();
   });
   
-  function fixText(planet) {
-    var text = planet.getObjects("text")[0];
-    if (planet.planetIndex === planet.orbitalIndex) {
-      text.text = CLUE_NAMES[planet.orbitalIndex];
-    } else {
-      text.text = PLANET_NAMES[planet.planetIndex];
-    }
-    text.dirty = true;
-    planet.dirty = true;
-  }
-  
-  $scope.moveInner = function() {
-    if ($scope.selectedPlanet == null || $scope.selectedPlanet.orbitalIndex === 0) {
-      return;
-    }
-    swapPlanets($scope.selectedPlanet, planets_by_orbital[$scope.selectedPlanet.orbitalIndex - 1]);
-  };
-  
-  $scope.moveOuter = function() {
-    if ($scope.selectedPlanet == null || $scope.selectedPlanet.orbitalIndex === 7) {
-      return;
-    }
-    swapPlanets($scope.selectedPlanet, planets_by_orbital[$scope.selectedPlanet.orbitalIndex + 1]);
-  };
-    
- function swapPlanets(thisPlanet, otherPlanet) {
-    var temp = thisPlanet.planetIndex;
-    thisPlanet.planetIndex = otherPlanet.planetIndex;
-    otherPlanet.planetIndex = temp;
-    fixText(thisPlanet);
-    fixText(otherPlanet);
-    selectPlanet(otherPlanet);
-  };
 });
 
 quizRunnerModule.component('solar', {

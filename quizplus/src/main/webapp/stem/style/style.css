@@ -195,3 +195,17 @@ md-list-item, md-list-item .md-list-item-inner {
 	font-size: 30px;
 	font-weight: bold;
 }
+
+.trick-table-cell {
+	font-family: monospace;
+	font-size: 40px;
+	border: 2px lightgrey solid;
+}
+
+.trick-table-answer {
+	color: green;
+}
+
+.chem-answer {
+	font-size: 60px;	
+}

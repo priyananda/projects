@@ -1,6 +1,7 @@
 <md-content>
+  <span>Help us find where our friendly alien friends are.</span>
   <div layout="row">
-    <img src="img/disney.jpg" width="550px" height="720px" />
+    <img src="img/spot_bg.jpg" width="588px" height="448px" />
     <table class="spotit-table">
       <tr ng-repeat="character in characters">
         <td>
@@ -13,6 +14,7 @@
             <md-option ng-value="'B'">B</md-option>
             <md-option ng-value="'C'">C</md-option>
             <md-option ng-value="'D'">D</md-option>
+            <md-option ng-value="'E'">E</md-option>
           </md-select>
          </md-input-container>
         </td>
@@ -22,15 +24,12 @@
             <md-option ng-value="'1'">1</md-option>
             <md-option ng-value="'2'">2</md-option>
             <md-option ng-value="'3'">3</md-option>
-            <md-option ng-value="'4'">4</md-option>
-            <md-option ng-value="'5'">5</md-option>
-            <md-option ng-value="'6'">6</md-option>
           </md-select>
          </md-input-container>
         </td>
       </tr>
     </table>
-    <span ng-if="allCorrect">Congrats! Submit the answer <b>MICKEY</b> to get your clue.</span>
+    <span ng-if="allCorrect">Congrats! Submit the answer <b>ALIENS</b> to get your clue.</span>
     <span ng-if="!allCorrect">You have got <b>{{score}} / 5</b> correct</span>
   </div>
 </md-content>

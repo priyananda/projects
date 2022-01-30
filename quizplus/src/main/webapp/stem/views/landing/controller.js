@@ -19,10 +19,17 @@ quizRunnerModule
     $scope.goTo = function(path) {
       $location.path(path);
     };
-    
-    $scope.isFinalDisabled = function() {
-      return !ScoreManager.oneFromEachRoom();
-    }
+
+    $scope.showLockedPrompt = function() {
+	 $mdDialog.show(
+      $mdDialog.alert()
+        .parent(angular.element(document.body))
+        .clickOutsideToClose(true)
+        .title('Puzzle Locked')
+        .textContent('These Puzzles will open on Jan 30 @ 6:00 PM')
+        .ok('Got it!')
+      );
+	};    
     
     function DialogController($mdDialog) {
       ctrl = this;
