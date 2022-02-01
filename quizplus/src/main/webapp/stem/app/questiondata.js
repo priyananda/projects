@@ -19,7 +19,7 @@ quizRunnerModule.factory('QuestionData', function() {
           {answer:"Chiron", image:"img/pluto.jpg", options: ["Plutonium", "Chiron", "Goofy"]},
         ],
       ],
-      answer: "SATELLITE"
+      answer: "SATELLITES"
   };
   const MEMORY_DATA_EASY = {
       rows: [
@@ -112,52 +112,54 @@ quizRunnerModule.factory('QuestionData', function() {
   const Q10 = {
       key: "10",
       title: "Ohm My!",
-      img_url: "img/anagrams.png",
-      hint: "Try jumbling the words up.",
-      img_width: "521",
-      img_height: "636"
+      img_url: "img/ohmmy.png",
+      hint: "Identify these electric pioneers and use their last names to find another pioneer.",
+      img_width: "600",
+      img_height: "600"
   };
   const Q11 = {
       key: "11",
       title: "Current Affairs",
-      hint: "Google is your friend."
+      img_url: "img/current.png",
+      hint: "Assemble all the true statements and form the answer.",
+      img_width: "607",
+      img_height: "363"
   };
   const Q12 = {
       key: "12",
       title: "Re-volt-ing!",
-      hint: "Hmm, what planets are these from?",
-      img_url: "img/solarsort.png",
-      img_width: "800",
-      img_height: "330"
+      hint: "Keep track of happens to the voltage at each gate.",
+      img_url: "img/revolt.png",
+      img_width: "600",
+      img_height: "600"
   };
   const Q13 = {
       key: "13",
       title: "Fermat's Last Theorem",
-      hint: "One of them is a fake stone.",
-      img_url: "img/wordsearch.png", 
-      img_width: "500",
-      img_height: "647"
+      hint: "What's left after you add and subtract those letters?",
+      img_url: "img/fermat.png", 
+      img_width: "700",
+      img_height: "600"
   };
   const Q14 = {
       key: "14",
-      title: "Long Division",
-      hint: "You don't have to guess all the letters, just the ones in yellow",
-      img_url: "img/codebreaker.png",
-      img_width: "600",
-      img_height: "692"
+      title: "Wordle, but with numbers",
+      hint: "Once you get a green box, you know the digit in that place",
+      is_wordle: true,
   };
   const Q15 = {
       key: "15",
-      hint: "Alien Algebra",
+      hint: "A number subtracted from itself is always 0.",
       title: "Alien Algebra",
-      is_algebra: true
+      is_algebra: true,
   };
   const Q16 = {
       key: "16",
       title: "Pie-thagoras",
-      hint: "Google is your friend",
-      is_memory: true,
-      memory_data: MEMORY_DATA_EASY
+      hint: "33% of MITTEN?",
+	  img_url: "img/pie.png",
+      img_width: "459",
+      img_height: "700"      
   };
  
   const SECTION_1 = {
@@ -167,10 +169,10 @@ quizRunnerModule.factory('QuestionData', function() {
       cls: "section-2", image: "img/section_2.jpg", link: "#/s/2"
   };
   const SECTION_3 = {
-      cls: "section-3", image: "img/section_3.jpg", linkx: "#/s/3"
+      cls: "section-3", image: "img/section_3.jpg", link: "#/s/3"
   };
   const SECTION_4 = {
-      cls: "section-4", image: "img/section_4.jpg", linkx: "#/s/4"
+      cls: "section-4", image: "img/section_4.jpg", link: "#/s/4"
   };
  
   const QUESTION_BY_KEY = new Map([

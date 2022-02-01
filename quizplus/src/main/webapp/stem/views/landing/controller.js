@@ -26,7 +26,7 @@ quizRunnerModule
         .parent(angular.element(document.body))
         .clickOutsideToClose(true)
         .title('Puzzle Locked')
-        .textContent('These Puzzles will open on Jan 30 @ 6:00 PM')
+        .textContent('These Puzzles will open on Jan 30 @ 11:00 PM')
         .ok('Got it!')
       );
 	};    

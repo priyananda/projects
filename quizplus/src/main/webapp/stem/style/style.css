@@ -190,7 +190,7 @@ md-list-item, md-list-item .md-list-item-inner {
 
 .score_panel {
 	margin: auto;
-	margin-top: 300px;
+	margin-top: 250px;
 	width: 100%;
 	font-size: 30px;
 	font-weight: bold;
@@ -208,4 +208,27 @@ md-list-item, md-list-item .md-list-item-inner {
 
 .chem-answer {
 	font-size: 60px;	
+}
+
+.wordle-box {
+	border: 1px solid grey;
+	min-width: 30px;
+	color: black;
+	text-align: center;
+}
+
+.wordle-green {
+	background-color: lightgreen; 
+}
+
+.wordle-grey {
+	background-color: lightgrey; 
+}
+
+.wordle-yellow {
+	background-color: yellow; 
+}
+
+.wordle-error {
+	color: red;
 }
