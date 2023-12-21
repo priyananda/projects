@@ -1,0 +1,75 @@
+<html>
+
+<head>
+<link rel="stylesheet" href="styles/styles.css" />
+<link rel="stylesheet"
+	href="https://material.angularjs.org/1.1.0/docs.css" />
+<link rel="stylesheet"
+	href="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.0/angular-material.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<title>The 90s Quiz - Priyananda</title>
+</head>
+
+<body ng-app="QuizRunnerModule">
+	<div class="App" ng-controller="RootController as rootCtrl">
+		<section layout="row" flex="">
+			<md-sidenav class="md-sidenav-left App" md-component-id="left"
+				id="leftSideNav" md-is-open="true" md-is-locked-open="true"
+				md-disable-backdrop="true" flex="10"> <md-content
+				class="App" layout-padding="" layout="column"
+				layout-align="start start"> <scoreboard scores="scores"></scoreboard>
+			</md-content> </md-sidenav>
+
+			<md-content class="App" flex="" layout-padding="" layout="column"
+				layout-align="top center">
+			<div id="mainpage" flex="">
+				<div ng-view></div>
+			</div>
+			</md-content>
+		</section>
+	</div>
+	<div class="nav">
+		<div class="start-btn">
+			<img src="assets/taskbar-icons/start.png" />
+			<div class="start-btn-text">Start</div>
+		</div>
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+	<script
+		src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script>
+	<script
+		src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.0/angular-material.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.8.23/go-debug.js"></script>
+
+	<script src="scripts/contextMenu.js"></script>
+	<script src="scripts/config.js"></script>
+	<script src="scripts/module.js"></script>
+	<script src="scripts/static_qdata.js"></script>
+	<script src="scripts/static_media.js"></script>
+	<script src="scripts/quiz_state.js"></script>
+	<script src="scripts/auth.js"></script>
+
+	<!--  Controllers -->
+	<script src="scripts/empty.js"></script>
+	<script src="scripts/winamp.js"></script>
+	<script src="scripts/errorpage.js"></script>
+	<script src="scripts/crystal.js"></script>
+	<script src="scripts/scoreboard.js"></script>
+	<script src="scripts/encarta.js"></script>
+	<script src="scripts/yahoo.js"></script>
+	<script src="scripts/question.js"></script>
+
+	<script src="scripts/root.js"></script>
+
+</body>

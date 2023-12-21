@@ -1,0 +1,13 @@
+<md-bottom-sheet class="md-list" layout="column">
+  <div ng-cloak>
+    <md-list flex layout="row" layout-align="center center">
+      <md-list-item ng-repeat="team in nextTeams">
+        <div>
+          <md-button class="md-primary" ng-click="goToNextQuestion(team)">
+            <div class="md-grid-text"> Next to Team {{team}} </div>
+          </md-button>
+        </div>
+      </md-list-item>
+    </md-list>
+  </div>
+</md-bottom-sheet>

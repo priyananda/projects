@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<datastore-indexes autoGenerate="true">
+
+    <!-- Used 1 time in query history -->
+    <datastore-index kind="AnswerAttempt" ancestor="false" source="auto">
+        <property name="Question" direction="asc"/>
+        <property name="Team" direction="asc"/>
+        <property name="Date" direction="desc"/>
+    </datastore-index>
+    
+    <!-- Used 6 times in query history -->
+    <datastore-index kind="Message" ancestor="false" source="auto">
+        <property name="Channel" direction="asc"/>
+        <property name="Date" direction="asc"/>
+    </datastore-index>
+    
+    <datastore-index kind="Jan21.AnswerAttempt" ancestor="false" source="manual"> <property name="Question" direction="asc"/> <property name="Set" direction="asc"/> <property name="Team" direction="asc"/> <property name="Date" direction="desc"/> </datastore-index>
+
+</datastore-indexes>

@@ -1,0 +1,28 @@
+<section flex class="question-container">
+  <md-toolbar class="md-theme-light">
+   <div class="md-toolbar-tools">
+    <h3 flex md-truncate>{{content.title}}</h3>
+    <md-button class="md-raised" ng-click="attemptAnswer()">Submit Answer</md-button>
+    <md-button class="md-raised" ng-click="go('/')">Back</md-button>
+   </div>
+  </md-toolbar>
+	 <md-content flex layout-padding layout="column">
+	  <img ng-if="content.img_url" ng-src="{{content.img_url}}" width="{{content.img_width}}"
+	    height="{{content.img_height}}"
+	    style="border: 1px solid black;">
+	  </img>
+	  <iframe id="ytplayer" type="text/html" width="640" height="385" ng-if="content.video_url" class="question_video"
+	    ng-src="{{content.video_url}}"
+	    frameborder="0">
+	  </iframe>
+	  <solar ng-if="content.is_solar"></solar>
+	  <phone ng-if="content.is_phone"></phone> 
+	  <codepad ng-if="content.is_code"></codepad>
+	  <antakshari ng-if="content.is_antakshari"></antakshari>
+	  <cricket ng-if="content.is_cricket"></cricket>
+	  <guitar ng-if="content.is_guitar"></guitar>
+	 
+	  <md-button class="md-raised" ng-click="doShowHint()" ng-if="!showHint">Show Hint</md-button>
+	  <div ng-if="showHint"><b>Hint:</b> {{content.hint}}</div>
+	 </md-content>
+</section>

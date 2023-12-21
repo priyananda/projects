@@ -1,0 +1,44 @@
+<md-dialog>
+  <form ng-cloak autocomplete="off">
+    <md-dialog-content>
+      <md-card class="landing-regn-card">
+        <md-card-title>
+         <md-card-title-text>
+           <span class="md-headline">Welcome, Detective!</span> 
+         </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+			    <form layout="column" autocomplete="off" name="regnForm">
+			      <md-input-container flex layout-align="center" layout-fill>
+			       <label>Enter your name</label>
+			       <input ng-model="ctrl.nameInput" name="nameInput" required></input>
+			       <div ng-messages="regnForm.nameInput.$error">
+			          <div ng-message="required">This is required.</div> 
+			        </div>
+			      </md-input-container>
+			      <label id="toLabel">Choose classes to support<span class="landing-message">*</span></label>
+			      <md-chips ng-model="ctrl.classInput" readonly="true" md-removable="true">
+			      </md-chips>
+			      <div layout="row" class="landing-message">
+			        <md-menu ng-repeat="classSet in ctrl.classSets">
+			          <md-button class="md-raised" ng-click="ctrl.showMenu($mdOpenMenu, $event)">{{classSet.name}}</md-button>
+			          <md-menu-content width="4">
+			            <md-menu-item ng-repeat="classroom in classSet.rooms">
+			              <md-button md-menu-align-target ng-click="ctrl.addTeam(classroom)" class="landing-message">
+			                {{classroom.name}}
+			              </md-button>
+			            </md-menu-item>
+			          </md-menu-content>
+			        </md-menu>
+			      </div>
+			   </form>
+			 </md-card-content>
+      </md-card>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button class="md-raised md-primary" ng-click="ctrl.register()">
+        Submit
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

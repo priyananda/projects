@@ -1,0 +1,34 @@
+<md-content flex layout-padding layout="row">
+  <div flex-gt-sm="50" flex class="leaderboard-score-list">
+    <md-toolbar layout="row">
+      <div class="md-toolbar-tools">
+        <span>Persons</span>
+      </div>
+    </md-toolbar>
+    <md-content>
+      <md-list flex>
+        <md-list-item ng-repeat="person in scores.persons">
+          <span>{{person.name}}</span>
+          <span flex md-truncate></span>
+          <span>{{person.points}}</span>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </div>
+  <div flex-gt-sm="50" flex class="leaderboard-score-list">
+    <md-toolbar layout="row">
+      <div class="md-toolbar-tools">
+        <span>Classrooms</span>
+      </div>
+    </md-toolbar>
+    <md-content>
+      <md-list flex class="md-dense">
+        <md-list-item ng-repeat="class in scores.classes">
+          <span>{{class.name}}</span>
+          <span flex md-truncate></span>
+          <span>{{class.points}}</span>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </div>
+</md-content>

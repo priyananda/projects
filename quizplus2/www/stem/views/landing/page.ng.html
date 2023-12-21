@@ -1,0 +1,12 @@
+<md-content class="landing-container" layout-align="center center" id="popupContainer">
+  <div class="score_panel">
+    All Puzzles are now unlocked!
+    <br />
+  	You have solved {{score}}/16 puzzles.
+  </div>
+  <div ng-repeat="section in sections" ng-class="section.cls" layout="column">
+    <img ng-src="{{section.image}}" width="150px"/>
+    <md-button class="md-raised" ng-if="section.link" ng-href="{{section.link}}">Go</md-button>
+    <md-button class="md-raised" ng-if="!section.link" ng-click="showLockedPrompt()">Go</md-button>
+  </div>
+</md-content>

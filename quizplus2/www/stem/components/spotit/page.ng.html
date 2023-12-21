@@ -1,0 +1,35 @@
+<md-content>
+  <span>Help us find where our friendly alien friends are.</span>
+  <div layout="row">
+    <img src="img/spot_bg.jpg" width="588px" height="448px" />
+    <table class="spotit-table">
+      <tr ng-repeat="character in characters">
+        <td>
+        {{character.name}}
+        </td>
+        <td>
+         <md-input-container>
+          <md-select ng-model="character.selCol" ng-change="evaluateState()">
+            <md-option ng-value="'A'">A</md-option>
+            <md-option ng-value="'B'">B</md-option>
+            <md-option ng-value="'C'">C</md-option>
+            <md-option ng-value="'D'">D</md-option>
+            <md-option ng-value="'E'">E</md-option>
+          </md-select>
+         </md-input-container>
+        </td>
+        <td>
+         <md-input-container>
+          <md-select ng-model="character.selRow" ng-change="evaluateState()">
+            <md-option ng-value="'1'">1</md-option>
+            <md-option ng-value="'2'">2</md-option>
+            <md-option ng-value="'3'">3</md-option>
+          </md-select>
+         </md-input-container>
+        </td>
+      </tr>
+    </table>
+    <span ng-if="allCorrect">Congrats! Submit the answer <b>ALIENS</b> to get your clue.</span>
+    <span ng-if="!allCorrect">You have got <b>{{score}} / 5</b> correct</span>
+  </div>
+</md-content>

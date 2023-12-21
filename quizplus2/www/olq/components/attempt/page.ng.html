@@ -1,0 +1,34 @@
+<div>
+  <md-toolbar class="md-theme-light">
+    <span>All attempts for Question {{ctrl.question}}</span>
+  </md-toolbar>
+  
+  <md-content ng-if="team">
+    <md-list class="md-dense">
+      <md-list-item class="md-2-line" ng-repeat="answer in team.answers">
+        <div class="md-list-item-text">
+          <h4>
+          <span ng-if="$index == 0">&#x1F31F;</span>
+          {{answer.date}} <b>{{answer.name}}</b></h4>
+          <p class="text-with-offset">
+            {{answer.text}}
+          </p>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-content>
+  
+  <md-content>
+   <p> WARNING: Only the last answer from the team is considered. 
+  </md-content>
+
+  <form layout="row" class="team-chat-submit-container" autocomplete="off">
+   <md-input-container flex layout-align="center" layout-fill> 
+     <label>Submit your answer</label>
+     <input type="text" ng-model="answerText"></input>
+   </md-input-container>
+   <md-button class="md-fab md-mini md-primary" aria-label="Eat cake" ng-click="submitAttempt()">
+     &#x1F64B;
+   </md-button>
+ </form>
+</div>

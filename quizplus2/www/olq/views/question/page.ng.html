@@ -1,0 +1,69 @@
+<section layout="row" flex class="question-container">
+ <md-sidenav
+    class="md-sidenav-left"
+    md-component-id="left"
+    md-is-locked-open="$mdMedia('gt-md')"
+    md-whiteframe="4"
+    ng-if="person">
+   <teampanel person="person" showChrome="1"></teampanel>
+ </md-sidenav>
+ 
+ <md-content flex layout-padding layout="column">
+  <md-toolbar class="md-hue-3">
+    <div class="md-toolbar-tools">
+      <md-button ng-click="goToPrevious()"
+        class="md-primary md-raised">
+        &#x21e6; Previous Question
+      </md-button>
+      <md-menu>
+        <md-button class="md-primary md-raised" ng-click="$mdOpenMenu()">Jump to Question</md-button>
+        <md-menu-content>
+          <md-menu-item ng-repeat="group in groups">
+            <md-menu>
+              <md-button ng-click="$mdMenu.open()">{{group.name}}</md-button>
+              <md-menu-content>
+                <md-menu-item ng-repeat="item in group.items">
+                  <md-button ng-click="goToQuestion(item.qid)">{{item.qid}}</md-button>
+                </md-menu-item>
+              </md-menu-content>
+            </md-menu>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+      <md-button ng-click="goToNext()"
+        class="md-primary md-raised">
+        Next Question &#x21e8;
+      </md-button>
+    </div>
+  </md-toolbar>
+  
+  <img ng-src="{{currentImage}}" style="border: 1px solid black;" width="800" height="600">
+  </img>
+  <iframe id="ytplayer" type="text/html" width="640" height="385" ng-if="video" class="question_video"
+    ng-src="{{video.url}}"
+    frameborder="0">
+  </iframe>
+  
+  <md-toolbar class="md-hue-3">
+    <div class="md-toolbar-tools">
+      <md-button ng-click="openChatWindow()"
+         ng-if="person"
+         class="md-primary md-raised">
+         Show Chat
+      </md-button>
+		  <md-button ng-click="showAnswerPane()"
+		     class="md-primary md-raised"
+		     ng-if="person">
+		     Submit Answer
+		  </md-button>
+		</div>
+	</md-toolbar>
+ </md-content>
+ 
+ <md-sidenav
+   class="md-sidenav-right md-whiteframe-4dp"
+   md-component-id="right"
+   ng-if="person">
+  <attemptpanel person="person" question="question"></attemptpanel>
+ </md-sidenav>
+</section>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" media="screen" href="style/style.css">
+<link rel="stylesheet" type="text/css" href="style/w2ui-1.4.3.min.css" />
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+
+<script  src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script  src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="scripts/w2ui-1.4.3.min.js"></script>
+
+<title>Quiz Plus</title>
+</head>
+
+<body>
+  <center>
+    <h1>Quiz<sup>+</sup></h1>
+    <h2>Searchable archive of the Seattle Area Quizzers.</h2>
+    <div id="form" class="searchFormStyle">
+      <form id="searchForm" action="/search">
+        <div class="w2ui-page page-0">
+          <input name="field_search_text" type="text" maxlength="100" class="fieldSearchTextStyle" style="width: 450px;" placeholder="Enter Search Text...">
+          <div id="accordion" style="text-align: left; margin-top: 40px;">
+            <h3>Advanced</h3>
+            <table width="100%" style="cell-padding: 10px;">
+              <tr>
+                <td>Author:
+                <td><input name="field_author" type="text" maxlength="100" style="width: 300px !important;">
+              <tr>
+                <td>Date:
+                <td><select>
+                      <option value="Before">Before</option>
+                      <option value="After">After</option>
+                      <option value="Around">Around</option>
+                    </select>
+                    <input name="field_date" type="text" maxlength="100" style="width: 120px">
+            </table>
+          </div>
+          <br />
+        </div>
+        <div class="w2ui-buttons">
+          <button class="btn" name="save" id="searchButton">Search</button>
+        </div>
+      </form>
+    </div>
+    <p>Searching 8413 slides from <a href="/quizzes">86 quizzes</a> by <a href="/authors">36 authors.</a></p>
+    <p>Code: <a href="https://github.com/priyananda/projects/tree/master/quizplus">github</a>. Powered by:
+       <a href="http://cloud.google.com/">Google App Engine</a>
+       <a href="http://w2ui.com/">W2UI</a>
+       <a href="http://jquery.com/">JQuery</a>
+       <a href="http://jqueryui.com/">JQueryUI</a></p>
+    <div style="margin-top: 30px;">&copy; Priyananda Shenoy 2015-2022. All content is owned by their
+    respective authors.</div>
+  </center>
+</body>
+
+<script>
+  var authors = [
+  	'Nandini', 'Shashank', 'Ashit', 'Mythreyi', 'Suhas', 'Michael', 'Harish', 'Prabirendra', 'Aswath', 'Surinderjeet',
+  	'Priyananda', 'Yogesh', 'Rajesh', 'AmitB', 'Vashutosh', 'Parth', 'Adarsh', 'Pranav', 'Antariksh', 'Rohit', 'Mihir',
+  	'Gayathri', 'Maitrey', 'Hitesh', 'Suchir', 'Nikhil',
+  	'Suhel', 'Suchitra&Sriram', 'Priyananda&Aswath', 'Ruchir', 'Sudhir', 'Group', 'Anirudh', 'Samarth', 'Mai', 'Siddharth' ];
+
+  $('#form').w2form({ 
+  name     : 'form',
+  fields: [
+   { name: 'field_search_text', type: 'text', required: true },
+   { name: 'field_date', type: 'date' },
+   { name: 'field_author', type: 'enum', required: true, 
+      options: {openOnFocus: true,  items: authors } },
+    ],
+    actions: {
+      save: function () {
+      }
+    }
+  });
+  $('#searchButton').button({icons: {primary: "ui-icon-search"}});
+  $('#searchForm').submit( function(evt) {
+    var authorData = $('#field_author').data('selected');
+    if(authorData.length > 0) {
+      var authorSearchString = "Author:(";
+      authorSearchString += authorData[0].text;
+      
+      var index;
+      for (index = 1; index < authorData.length; ++index) {
+       authorSearchString += " OR " + authorData[index].text;
+    }
+    
+    authorSearchString += ")";
+    $('#field_search_text').val( $('#field_search_text').val() + " " + authorSearchString);
+    }
+  });
+  
+  $(function() {
+    $( "#accordion" ).accordion({
+      collapsible: true,
+      heightStyle: 'content'
+    });
+  });
+  </script>
+</html>

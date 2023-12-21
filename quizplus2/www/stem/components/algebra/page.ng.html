@@ -1,0 +1,32 @@
+<md-content>
+  <p>
+  	Its the year 2122 and we just made contact with some advanced Aliens! But they
+  	use very strange symbols for math, which makes it hard to understand them.
+  	
+  	Can you use their calculator to figure out what &#x26B4; &#x26DC; &#x26DB; &#x26B7; means? 
+  </p>
+  <table class="trick-table">
+    <tr>
+      <td ng-repeat="cell in cells" class="trick-table-cell">
+        <md-input-container>
+          <md-select ng-model="cell.value" ng-change="evaluateState()">
+            <md-option></md-option>
+            <md-option ng-repeat="option in cell.options" ng-value="option">
+              {{option}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+      </td>
+      <td>
+        <div class="trick-table-cell">
+        =
+        </div>
+      </td>
+      <td>
+        <div class="trick-table-cell trick-table-answer">
+        {{calculatedValue}}
+        </div>
+      </td>
+    </tr>
+  </table>
+</md-content>

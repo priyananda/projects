@@ -1,0 +1,20 @@
+<md-content>
+  <p>
+  To get the candy, you need to fill your board with the right coins, so that the
+  sum of each row and column matches the expected sum (shown on the top-left in 
+  <span class="trick-exp-cell">this color</span>).
+  
+  Click on the coins to swap it with another.
+  </p>
+  <table class="trick-table">
+    <tr ng-repeat="row in board">
+      <td ng-repeat="cell in row">
+        <span ng-class="cell.style" ng-if="!cell.is_coin_cell">{{cell.value}}</span>
+        <md-button ng-if="cell.is_coin_cell" ng-click="changeCoin(cell)">
+          <img ng-src="img/{{cell.value}}.png" width="70" height="70">
+        </md-button>
+      </td>
+    </tr>
+  </table>
+  <span ng-if="allCorrect">Congrats. Submit the answer <b>MONEY</b> to get your just rewards.</span>
+</md-content>

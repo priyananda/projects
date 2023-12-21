@@ -1,0 +1,74 @@
+<md-content class="landing-container" layout-align="center center" id="popupContainer">
+	<md-toolbar class="md-theme-light">
+	  <span flex></span>
+	  <h3>Seattle Area Quizzers</h3>
+	  <span flex></span>
+	</md-toolbar>
+	
+	<md-card class="landing-regn-card">
+	 <md-card-title>
+     <md-card-title-text>
+       <span class="md-headline"><b>Go Ogle / Bing It On</b></span>
+     </md-card-title-text>
+   </md-card-title>
+   <md-card-content>
+    <p>
+    Welcome! In this quiz, you'll be solving puzzles, so think out of the box! You're welcome, nay, you're
+    required to use any resource you can to solve these questions. When you are ready to attempt an answer, click on
+    the 'Submit Answer' button on the top. There are no penalties for wrong answers, so keep guessing. The answer
+    will be in the form of a short phrase without spaces or punctuation.
+    </p>
+    <p> This quiz will open on <b>Wed June 17, 2020 00:00 PDT</b> and
+     close on <b>Wed June 24, 2020 18:00 PDT</b>. We'll periodically release more puzzles over the week.</p>
+   </md-card-content> 
+	</md-card>
+	
+	<md-card class="landing-regn-card" ng-if="person">
+   <md-card-title>
+     <md-card-title-text>
+       <span class="md-headline">Welcome back, <b>{{person.name}}</b></span>
+     </md-card-title-text>
+   </md-card-title>
+   <md-card-content>
+    <div layout="row" ng-repeat="puzzles in sets"> 
+     <md-card ng-repeat="puzzle in puzzles" style="width: 200px;">
+        <img ng-src="{{puzzle.thumbnail_image}}" width="100px" height="100px">
+        <md-card-title>
+          <md-card-title-text>
+            <b>{{puzzle.title}}</b>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+          <span class="green_tick" ng-if="isAnswered(puzzle.key)">&#x2713;</span>
+          <span flex></span>
+          <md-button class="md-raised md-primary" ng-click='goto(puzzle.key)'>Go</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+   </md-card-content>
+  </md-card>
+  
+  <md-card class="landing-regn-card" ng-if="!person">
+   <md-card-title>
+     <md-card-title-text>
+       <span class="md-headline" ng-if="!person">Let's Get Started!</span> 
+       <span>
+       </span>
+     </md-card-title-text>
+   </md-card-title>
+   <md-card-content>
+    <form layout="column" autocomplete="off" name="regnForm">
+      <md-input-container flex layout-align="center" layout-fill> 
+       <label>Enter your name</label>
+       <input ng-model="nameInput" name="nameInput" required></input>
+       <div ng-messages="regnForm.nameInput.$error">
+          <div ng-message="required">This is required.</div> 
+        </div>
+      </md-input-container>
+      <div layout="row">
+        <md-button class="md-primary md-raised safari_button_hack" type="submit" ng-click="join()">Start</md-button>
+      </div>
+    </form>
+   </md-card-content>
+  </md-card>
+</md-content>

@@ -1,0 +1,16 @@
+ <md-content flex layout-padding layout="column">
+    <img ng-src="{{arenaData.bgImg}}" ng-if="arenaData"></img>
+    <div class="arena-icon" ng-repeat="puzzle in arenaData.puzzles" layout="column"
+      ng-style="{top: puzzle.loc.t, left: puzzle.loc.l}">
+        <img
+          ng-src="{{isAnswered(puzzle.q.key) ? 'img/cauldron-full.png' : 'img/cauldron-empty.png'}}"
+          width="50" height="40" style="margin: auto;"/>
+        <a ng-click="goTo('/q/' + puzzle.q.key + '/' + setId)">{{puzzle.q.title}}</a>
+    </div>
+    
+    <div class="arena-icon" layout="column"
+      ng-style="{top: arenaData.backLoc.t, left: arenaData.backLoc.l}">
+        <md-icon md-font-icon>home</md-icon>
+        <a ng-click="goTo('/')">Go Back</a>
+    </div>
+ </md-content>

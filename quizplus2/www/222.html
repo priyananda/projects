@@ -1,0 +1,61 @@
+<html>
+
+<head>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+	<link rel="stylesheet" href="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.0/angular-material.css" />
+	<link rel="stylesheet" href="https://material.angularjs.org/1.1.0/docs.css" />
+	<link rel="stylesheet" href="style/runner.css" />
+	<title>Quiz 222 - The Data Structures Quiz - Priyananda</title>
+</head>
+
+<body ng-app="QuizRunnerModule">
+
+<div ng-controller="RootController as rootCtrl" layout="column" ng-cloak="" class="sidenavdemoBasicUsage">
+  <section layout="row" flex="">
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4"
+    	id="leftSideNav" md-is-open="true" md-is-locked-open="true" md-disable-backdrop="true" flex="15">
+      <md-toolbar layout="row">
+        <h1 class="md-toolbar-tools">Scores</h1>
+        <span flex></span>
+      </md-toolbar>
+      <md-content layout-padding="" layout="column" layout-align="start start">
+        <scoreboard scores="scores"></scoreboard>
+      </md-content>
+    </md-sidenav>
+
+    <md-content flex="" layout-padding="" layout="column" layout-align="top center">
+    	<div id="mainpage" flex="">
+			<div ng-view></div>
+    	</div>
+    </md-content>
+  </section>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script>
+<script src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.0/angular-material.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.8.23/go-debug.js"></script>
+
+<script src="quiz222/config.js"></script>
+<script src="runner/module.js"></script>
+<script src="quiz222/static_qdata.js"></script>
+<script src="quiz222/static_media.js"></script>
+<script src="runner/quiz_state.js"></script>
+<script src="runner/auth.js"></script>
+<script src="runner/errorpage.js"></script>
+<script src="quiz222/root.js"></script>
+<script src="runner/scoreboard.js"></script>
+<script src="quiz222/roundchooser.js"></script>
+<script src="quiz222/round1.js"></script>
+<script src="quiz222/round2.js"></script>
+<script src="quiz222/round3.js"></script>
+<script src="runner/question.js"></script>
+
+</body>
+
+</html>

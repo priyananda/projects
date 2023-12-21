@@ -1,0 +1,27 @@
+<div class="yahoo-frame">
+  <div>
+    <img src="assets/windows/cr-maze-bg.jpg" width="600"></img>
+  </div>
+  <div flex layout-align="center center" style="text-align: center;" layout="column">
+    <table class="crystal-table" ng-if="result">
+      <tr>
+        <th></th>
+        <th>Physical</th>
+        <th>Mental</th>
+        <th>Mystery</th>
+        <th>Skill</th>
+      </tr>
+      <tr ng-repeat="row in result">
+        <td>Team {{row.id}}</td>
+        <td ng-repeat="q in row.questions">
+          <img src="assets/icons/crystal.png" ng-if="q.answered" />
+        </td>
+      </tr>
+    </table>
+  </div> 
+  <div>
+    <md-button class="md-icon-button md-fab md-mini" ng-click="loadData()">
+      <md-icon md-font-set="material-icons">autorenew</md-icon>
+    </md-button>
+  </div>
+</div>

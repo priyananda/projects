@@ -1,0 +1,18 @@
+<div width="1024">
+	<md-toolbar flex="100">
+	<div class="md-toolbar-tools">
+		<h4 flex md-truncate>Microsoft Encarta</h4>
+		<md-button class="md-icon-button md-fab md-mini" ng-click="prev()" ng-disabled="isPrevDisabled()">
+		<md-icon md-font-set="material-icons">skip_previous</md-icon> </md-button>
+		<md-button class="md-icon-button md-fab md-mini" ng-click="next()" ng-disabled="isNextDisabled()">
+		<md-icon md-font-set="material-icons">skip_next</md-icon> </md-button>
+	</div>
+	</md-toolbar>
+
+	<img ng-src="{{currentImage}}" style="border: 1px solid black;"
+		width="1024" height="768" src="" alt=""> <img src="" alt=""></img>
+
+	<iframe id="ytplayer" type="text/html" width="640" height="385"
+		ng-if="videoUrl" class="question_video" ng-src="{{videoUrl}}"
+		frameborder="0"></iframe>
+</div>

@@ -1,0 +1,46 @@
+<md-content class="landing-container" layout-align="center center" id="popupContainer">
+ <div class="landing-container" layout="row">
+  <div flex="20" class="player-list-container">
+  	<md-toolbar layout="row">
+      <div class="md-toolbar-tools">
+        <span>Players</span>
+        <md-button class="md-icon-button" ng-click="addPlayer($event)">
+          <md-icon md-font-icon>person_add</md-icon>
+        </md-button>
+        <md-button class="md-icon-button" ng-click="shuffle()">
+          <md-icon md-font-icon>shuffle</md-icon>
+        </md-button>
+        <md-button class="md-icon-button" ng-click="prevPlayer()">
+          <md-icon md-font-icon>skip_previous</md-icon>
+        </md-button>
+        <md-button class="md-icon-button" ng-click="nextPlayer()">
+          <md-icon md-font-icon>skip_next</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-list class="md-dense" flex>
+      <md-list-item ng-class="getClass(player)" ng-repeat="player in players">
+          <img ng-src="{{getIcon(player)}}" class="md-avatar" />
+          <span md-truncate><b>{{player.name}}</b> ({{player.score}})</span>
+          <md-button class="md-icon-button" ng-click="updateScore(player, 5)">
+          	<md-icon md-font-icon>add_box</md-icon>
+          </md-button>
+          <md-button class="md-icon-button" ng-click="updateScore(player, -5)">
+            <md-icon md-font-icon>remove_circle</md-icon>
+          </md-button>
+        </md-list-item>
+    </md-list>
+  </div>
+  <div flex="75" style="height:100%">
+  	<iframe
+  		src="https://docs.google.com/presentation/d/e/2PACX-1vRfeC_KSKfyRjdFu2q4-bU9G_V_YNipplakKUhNu1_vjioQxI6SWTrp4G3Mty_6wnnnfw6i1bN9zOry/embed?start=false&loop=false&delayms=3000"
+  		frameborder="0"
+  		width="1440"
+  		height="839"
+  		allowfullscreen="true"
+  		mozallowfullscreen="true"
+  		webkitallowfullscreen="true">
+  	</iframe>
+  </div>
+ </div>
+</md-content>

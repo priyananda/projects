@@ -1,0 +1,38 @@
+<html lang="en">
+
+ <head>
+  <link rel="stylesheet"
+    href="https://material.angularjs.org/1.1.0/docs.css" />
+  <link rel="stylesheet"
+    href="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.0/angular-material.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="style/style.css" />
+
+  <title>SAQ - SQuiz Game - Feb 2022</title> 
+ </head>
+ 
+ <body ng-app="QuizRunnerModule">
+  <div ng-controller="RootController as rootCtrl">
+    <div ng-view class="content-container"></div>
+  </div>
+ </body>
+ 
+ <script
+  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+ <script
+  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+ <script
+  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+ <script
+  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+ <script
+  src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.0/angular-material.js"></script>
+ 
+ <script src="app/app.js"></script>
+ <script src="app/storage.js"></script>
+
+ <script src="views/landing/controller.js"></script>
+
+ <script src="app/route.js"></script>
+</html>

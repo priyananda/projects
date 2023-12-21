@@ -1,0 +1,13 @@
+runtime: go121
+
+handlers:
+- url: /
+  static_files: www/index.html
+  upload: www/index.html
+
+- url: /api/.*
+  script: auto
+
+- url: /(.*)
+  static_files: www/\1
+  upload: www/(.*)

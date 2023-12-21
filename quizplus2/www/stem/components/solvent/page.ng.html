@@ -1,0 +1,34 @@
+<md-content>
+  <p>
+  	You are doing a tricky (and dangerous!) experiment using Acids (&#x1F9EA;)
+  	and Bases (&#x2697;) to make neutral compounds (&#x1F9EB;). If you get the
+  	quantities wrong, &#x1F4A5;!
+  	
+  	Find the right ratio of Acids and Bases to solve the puzzle.
+  </p>
+  <table class="trick-table">
+    <tr>
+    	<th> Acids
+    	<th> Bases
+    	<th> Result
+    </tr>
+    <tr>
+     <td ng-repeat="cell in cells">
+        <md-input-container>
+          <md-select ng-model="cell.value" ng-change="evaluateState()">
+            <md-option></md-option>
+            <md-option ng-repeat="option in cell.options" ng-value="option">
+              {{option}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+      </td>
+    </tr>
+    <tr>
+    	<td class="trick-table-cell">{{acidIcons}}</td>
+    	<td class="trick-table-cell">{{baseIcons}}</td>
+    	<td class="chem-answer">{{resultIcon}}</td>
+    </tr>
+  </table>
+  <span ng-if="correct">Congratulations! Use <b>SOYLENT</b> as the ANSWER to this puzzle</span>
+</md-content>

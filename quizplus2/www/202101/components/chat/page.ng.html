@@ -1,0 +1,26 @@
+<md-card>
+  <md-card-title>
+     <md-card-title-text>
+       <span class="md-headline">Welcome to Team {{ctrl.person.team}}</span> 
+     </md-card-title-text>
+   </md-card-title>
+	<md-card-content>
+		You can use the chat
+		window to work together with your team mates, and also to
+		ask the Quiz Master any questions.
+		<p> Don't go anywhere after the quiz! Join the
+<a href="https://us04web.zoom.us/j/74999916638?pwd=cTJvT2NhVGM2NmpYUlBjS1U5alJzUT09" target="_new">Zoom call</a>
+at 8 PM for the answers!
+	</md-card-content>
+</md-card>
+<div id="firechat-wrapper" class="firechat-wrapper">
+  <simple-chat
+    messages="messages"
+    local-user="chatUser"
+    send-function="sendMessage"
+    live-mode="false">
+  </simple-chat>
+</div>
+<md-content>
+ 
+</md-content>

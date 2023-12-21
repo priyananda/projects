@@ -1,0 +1,27 @@
+<div flex-xs flex-gt-xs="50" layout="column">
+	<md-card>
+	 <img src="assets/windows/cr-maze-bg.jpg" class="md-card-image"	alt="Washed Out">
+	 <md-card-title>
+	   <md-card-title-text>
+	     <span class="md-headline">Welcome, Team {{team}}</span>
+	   </md-card-title-text>
+	 </md-card-title>
+	 
+	 <md-card-content>
+	  <p> Solve the puzzle and enter the answer to win a crystal. <br />
+		<md-input-container> <label>Enter your
+			guess</label> <input ng-model="answer"> </md-input-container>
+		<br />
+	 </md-card-content>
+	 
+	 <md-card-actions layout="row" layout-align="end center">
+		<md-button class="md-raised" ng-click="checkAnswer()">Submit</md-button>
+	  <div ng-if="response">
+		  <h3 ng-if="response.result">
+			  Correct! You got a <img src="assets/icons/crystal.png" /> 
+		  </h3>
+		  <h3 ng-if="!response.result">Incorrect! Try Again!</h3>
+	  </div>
+  	<a ng-href="#/status/{{team}}">Back</a>
+  </md-card-actions>
+</div>

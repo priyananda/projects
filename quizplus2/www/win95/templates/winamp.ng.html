@@ -1,0 +1,17 @@
+<div class="winamp-frame">
+  <div class="winamp-audio-player">
+    <audio controls type="audio/mpeg" src="{{selectedSong}}">
+    </audio>
+  </div>
+	<div class="winamp-playlist-frame">
+		<div class="winamp-playlist">
+			<div ng-repeat="playlist in playlists">
+				<div class="winamp-playlist-label">{{playlist.name}}</div>
+				<ol>
+					<li ng-repeat="song in playlist.songs">
+					 <a href ng-click="setActive(song)">{{song.name}}</a></li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>

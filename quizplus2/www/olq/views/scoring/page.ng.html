@@ -1,0 +1,23 @@
+<md-select ng-model="startIndex" ng-change="onGroupChanged()">
+  <md-option ng-repeat="group in groups" ng-value="group.start">
+    {{group.start}}-{{group.end}}
+  </md-option>
+</md-select>
+
+<table class="scoring_table">
+  <tr>
+    <th>Team 1</th>
+    <th>Team 2</th>
+    <th>Team 3</th>
+    <th>Team 4</th>
+    <th>Team 5</th>
+    <th>Team 6</th>
+  </tr>
+  <tr ng-repeat="row in grid">
+    <td ng-repeat="cell in row">
+      <span ng-if="cell.a" ng-repeat="answer in cell.a.answers" ng-class="$index == 0 ? 'bolded-text' : ''">
+        {{answer.text}} |
+      </span> &nbsp;
+    </td>
+  </tr>
+</table>

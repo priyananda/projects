@@ -1,0 +1,40 @@
+@font-face {
+  font-family: 'detective';
+  font-style: normal;
+  font-weight: normal;
+  src: local('detective'), url('../fonts/Detective.woff') format('woff');
+}
+
+body {
+	font-family: 'detective';
+	background-size: cover;
+}
+
+.content-container {
+  margin: auto;
+  width: 1800;
+  max-width: 1800;
+  height: 859;
+  background-color: rgba(1,1,1,0.5);
+}
+
+.landing-container {
+  width: 100%;
+  height: 100%;
+}
+
+.player-item {
+  border: 1px solid lightgrey;
+  font-family: monospace;
+}
+
+.player-item-selected {
+  background-color: darkgrey;
+  color: black;
+  font-family: monospace;
+}
+
+.player-list-container {
+  height:100%;
+  overflow-y: scroll;
+}

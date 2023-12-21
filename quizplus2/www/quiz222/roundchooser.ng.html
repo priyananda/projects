@@ -1,0 +1,48 @@
+<h1>The Data Structures Quiz</h1>
+Choose your language: 
+<md-radio-group ng-model="selectedLang" layout="row" ng-change="updateLabels()">
+     <md-radio-button value="CPP" class="md-primary">C++</md-radio-button>
+     <md-radio-button value="JAVA">Java</md-radio-button>
+     <md-radio-button value="C#">C#</md-radio-button>
+     <md-radio-button value="ENG">English (US)</md-radio-button>
+     <md-radio-button value="LISP">Lisp</md-radio-button>
+</md-radio-group>
+
+<md-content md-width="800" layout="column">
+	 <md-card>
+	    <img src="quiz222/r1ban.png" width="600" height="150" />
+	    <md-card-title>
+	     <md-card-title-text>
+	       <span class="md-headline code_font">{{round1Label}}</span>
+	       <span class="md-subhead">Round 1</span>
+	     </md-card-title-text>
+	   </md-card-title>
+	   <md-card-actions layout="row" layout-align="end center">
+	     <md-button href="#/r1">Go</md-button>
+	   </md-card-actions>
+	 </md-card>
+	 <md-card>
+	    <img src="quiz222/r2ban.png" width="600" height="150" />
+	    <md-card-title>
+	     <md-card-title-text>
+	       <span class="md-headline  code_font">{{round2Label}}</span>
+	       <span class="md-subhead">Round 2</span>
+	     </md-card-title-text>
+	   </md-card-title>
+	   <md-card-actions layout="row" layout-align="end center">
+	     <md-button href="#/r2">Go</md-button>
+	   </md-card-actions>
+	 </md-card>
+	 <md-card>
+	    <img src="quiz222/r3ban.png" width="600" height="150" />
+	    <md-card-title>
+	     <md-card-title-text>
+	       <span class="md-headline  code_font">{{round3Label}}</span>
+	       <span class="md-subhead">Round 3</span>
+	     </md-card-title-text>
+	   </md-card-title>
+	   <md-card-actions layout="row" layout-align="end center">
+	     <md-button href="#/r3">Go</md-button>
+	   </md-card-actions>
+	 </md-card>
+</md-content>

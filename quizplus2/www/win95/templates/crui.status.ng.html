@@ -1,0 +1,28 @@
+<div flex-xs flex-gt-xs="50" layout="column">
+  <md-card>
+   <img src="assets/windows/cr-maze-bg.jpg" class="md-card-image" alt="Washed Out">
+   <md-card-title>
+     <md-card-title-text>
+       <span class="md-headline">Welcome, Team {{team}}</span>
+     </md-card-title-text>
+   </md-card-title>
+  
+  <md-card-content>
+		<p> Solve the puzzle and enter the answer to win a crystal.
+		
+		<table class="crystal-table" ng-if="teamStatus">
+		  <tr>
+		    <th>Physical</th>
+		    <th>Mental</th>
+		    <th>Mystery</th>
+		    <th>Skill</th>
+		  </tr>
+		  <tr>
+		    <td ng-repeat="q in teamStatus.questions">
+		      <img src="assets/icons/crystal.png" ng-if="q.answered" />
+		      <a ng-href="#/attempt/{{team}}/{{$index}}" ng-if="!q.answered">Try</a>
+		    </td>
+		  </tr>
+		</table>
+	</md-card-content>
+</div>

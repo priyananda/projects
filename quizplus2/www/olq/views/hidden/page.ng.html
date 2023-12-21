@@ -1,0 +1,57 @@
+<section layout="row" flex class="question-container">
+ <md-sidenav
+    class="md-sidenav-left"
+    md-component-id="left"
+    md-is-locked-open="$mdMedia('gt-md')"
+    md-whiteframe="4"
+    ng-if="person">
+   <teampanel person="person" showChrome="1"></teampanel>
+ </md-sidenav>
+ 
+ <md-content flex layout-padding layout="column">
+  <md-toolbar class="md-warn">
+    <div class="md-toolbar-tools">
+      <md-button ng-click="returnToQuiz()"
+        class="md-primary md-raised">
+        &#x21e6; Return to Quiz
+      </md-button>
+    </div>
+  </md-toolbar>
+  
+  <p>
+  Professor {{person.name}}, we need your help! We are this close to finding a cure for
+  COVID-19, but we are stuck! This is how our cure works:
+  </p>
+  <img ng-src="img/hidden-1.png" style="border: 1px solid black;" width="600" height="243"></img>
+  <p>
+  The virus has 6 'crowns' with proteins C,O,R,O,N,A. We need to find other proteins which
+  can neutralize these proteins. At the same time, we need these proteins to be compatible
+  with our 'shell'. The following matrix shows what proteins neutralize each other and what
+  proteins are compatible.
+  </p>
+  <img ng-src="img/hidden-2.png" style="border: 1px solid black;" width="500" height="289"></img>
+  <p>
+  Can you decipher the proteins needed and save millions of lives? 
+  </p>
+  
+  <md-toolbar class="md-warn md-hue-3">
+    <div class="md-toolbar-tools">
+      <md-button ng-click="openChatWindow()"
+         ng-if="person"
+         class="md-primary md-raised">
+         Show Chat
+      </md-button>
+		  <md-button ng-click="showAnswerPane()"
+		     class="md-primary md-raised" ng-if="person">
+		     Submit Answer
+		  </md-button>
+		</div>
+	</md-toolbar>
+ </md-content>
+ 
+ <md-sidenav
+   class="md-sidenav-right md-whiteframe-4dp"
+   md-component-id="right" ng-if="person">
+  <attemptpanel person="person" question="question"></attemptpanel>
+ </md-sidenav>
+</section>

@@ -1,0 +1,47 @@
+<md-content class="landing-container" layout-align="center center" id="popupContainer">
+	<md-toolbar class="md-theme-light">
+	  <span flex></span>
+	  <h3>Seattle Area Quizzers</h3>
+	  <span flex></span>
+	</md-toolbar>
+	
+	<md-card class="landing-regn-card">
+	 <md-card-title>
+     <md-card-title-text>
+       <span class="md-headline"><b>Quiz From Home</b></span>
+     </md-card-title-text>
+   </md-card-title>
+   <md-card-content>
+    <p> Please watch
+      <a href="https://www.youtube.com/watch?v=OFZNmoGj8Is" target="_blank">this video</a> to see how to play.</p>
+    <p> This quiz will open on <b>Wed April 15, 2020 18:00 PDT</b> and
+     close on <b>Wed April 15, 2020 19:30 PDT</b>.</p>
+   </md-card-content> 
+	</md-card>
+	
+	<md-card class="landing-regn-card">
+   <md-card-title>
+     <md-card-title-text>
+       <span class="md-headline" ng-if="person">Welcome, <b>{{person.name}}</b></span>
+       <span class="md-headline" ng-if="!person">The Quiz is closed, but you can still look at the questions.</span>
+     </md-card-title-text>
+   </md-card-title>
+   <md-card-content>
+    <form layout="row" autocomplete="off" ng-if="false" name="regnForm">
+      <md-input-container flex layout-align="center" layout-fill> 
+       <label>Enter your name</label>
+       <input ng-model="nameInput" name="nameInput" required></input>
+       <div ng-messages="regnForm.nameInput.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+     <md-button class="md-primary md-raised safari_button_hack" type="submit" ng-click="registerUser()">Register</md-button>
+    </form>
+    <p ng-if="person">You have been assigned to <b>Team {{person.team}}</b>.
+    You can chat with your team mates during the quiz.</p>
+   </md-card-content>
+  </md-card>
+  
+  <md-button class="md-primary md-raised" ng-click="startQuiz()" >Start the Quiz</md-button>
+  <teampanel person="person" ng-if="person" hidechrome="true"></teampanel>
+</md-content>
