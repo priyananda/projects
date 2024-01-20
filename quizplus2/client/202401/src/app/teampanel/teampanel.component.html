@@ -1,0 +1,15 @@
+<mat-card class="outer">
+    <div class="team-label">Team {{this.team.getId()}}</div>
+  <mat-card-content>
+    <div class="score-label">Score</div>
+    <div class="score">{{this.team.getScore()}}</div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-mini-fab color="black" (click)="this.team.addToScore(5)">
+      <mat-icon>my_library_add</mat-icon>
+    </button>
+    <button mat-mini-fab color="black" (click)="this.team.addToScore(-5)">
+      <mat-icon>remove_circle_outline</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
