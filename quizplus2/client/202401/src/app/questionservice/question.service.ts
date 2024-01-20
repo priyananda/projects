@@ -18,10 +18,9 @@ export class QuestionService {
       var q = new Question(
         i + 1,
         "This is the title for Question #" + i,
-        "",
         Question.TYPE_BASIC,
         "17.2%",
-        a[i % 3]);
+        a[i % 3], [1, 2, 3], 4);
       q.load();
       this.questions.push(q);
     }
