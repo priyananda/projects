@@ -2,10 +2,11 @@ import { inject } from '@angular/core';
 import {SlidesService} from './slides.service';
 
 export class Question {
-  public static TYPE_BASIC: string = 'Basic';
-  public static TYPE_ALL_PLAY: string = 'All Play';
-  public static TYPE_CONNECT: string = 'Connect';
-  public static TYPE_AUDIO_VIDEO: string = 'Audio/Video';
+  public static TYPE_STRING: string = 'String';
+  public static TYPE_DP: string = 'Dynamic Programming';
+  public static TYPE_MAPS: string = 'Map';
+  public static TYPE_ALGO: string = 'Algorithm';
+  public static TYPE_HEAP: string = 'Heap';
 
   public static DIFFICULTY_EASY: string = 'Easy';
   public static DIFFICULTY_MEDIUM: string = 'Medium';
@@ -18,7 +19,7 @@ export class Question {
   private contentSlideIds: number[] = [];
   private answerSlideId: number = 0;
   private isAnswered: boolean = false;
-  private type: string = Question.TYPE_BASIC;
+  private type: string = Question.TYPE_STRING;
   private acceptance: string = "";
   private difficulty: string = Question.DIFFICULTY_EASY;
 

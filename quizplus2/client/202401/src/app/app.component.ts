@@ -23,7 +23,7 @@ export class AppComponent {
   title = 'First Quiz of 2024';
   questions: Question[];
   displayedColumns: string[] = [
-    'status', 'title', 'type', 'acceptance', 'difficulty'];
+    'status', 'title', 'type', 'difficulty'];
   DIFFICULTY_COLOR = new Map<string, string>([
     ['Easy', 'green-text'],
     ['Medium', 'yellow-text'],
