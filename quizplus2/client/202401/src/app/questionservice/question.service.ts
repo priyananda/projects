@@ -5,13 +5,12 @@ import { Question } from './question';
   providedIn: 'root'
 })
 export class QuestionService {
-  private static NUM_QUESTIONS: number = 50;
   private questions: Question[] = [];
 
   constructor() {
 
-    this.aq(1, "3 SUM", Question.TYPE_STRING, Question.DIFFICULTY_HARD, [1], 2);
-    this.aq(2, "B Tree Traversal", Question.TYPE_HEAP, Question.DIFFICULTY_EASY, [3], 4);
+    this.aq(1, "3 SUM", Question.TYPE_STRING, Question.DIFFICULTY_EASY, [1], 2);
+    this.aq(2, "B Tree Traversal", Question.TYPE_HEAP, Question.DIFFICULTY_HARD, [3], 4);
     this.aq(3, "Measure Quantity II", Question.TYPE_STRING, Question.DIFFICULTY_MEDIUM, [5], 6);
     this.aq(4, "Multiple Substrings", Question.TYPE_MAPS, Question.DIFFICULTY_MEDIUM, [7], 8);
     this.aq(5, "Grey Code", Question.TYPE_HEAP, Question.DIFFICULTY_MEDIUM, [9], 10);
@@ -19,7 +18,7 @@ export class QuestionService {
     this.aq(7, "Hash Collision", Question.TYPE_MAPS, Question.DIFFICULTY_HARD, [13], 14);
     this.aq(8, "Missing Integer in Array", Question.TYPE_ALGO, Question.DIFFICULTY_EASY, [15], 16);
     this.aq(9, "Modify one element in Array", Question.TYPE_HEAP, Question.DIFFICULTY_MEDIUM, [17], 18);
-    this.aq(10, "Lexicographically Complete", Question.TYPE_DP, Question.DIFFICULTY_EASY, [19, 20, 21], 22);
+    this.aq(10, "Lexicographically Complete", Question.TYPE_DP, Question.DIFFICULTY_EASY, [19, 20, 21, 22], 22);
     this.aq(11, "Double Standards", Question.TYPE_HEAP, Question.DIFFICULTY_MEDIUM, [23], 24);
     this.aq(12, "Shell Sort", Question.TYPE_STRING, Question.DIFFICULTY_MEDIUM, [25], 26);
     this.aq(13, "Blank Find II", Question.TYPE_STRING, Question.DIFFICULTY_EASY, [27, 28], 29);
