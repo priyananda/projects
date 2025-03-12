@@ -70,7 +70,7 @@ export class Team {
     return this.id;
   }
   getIcon() {
-    return "../assets/team" + this.id + ".png";
+    return "assets/team" + this.id + ".png";
   }
   getName() {
     return this.name;
