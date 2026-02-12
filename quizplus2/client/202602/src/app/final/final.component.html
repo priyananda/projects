@@ -1,0 +1,17 @@
+<div class="final-bg">
+    <img [src]="leftLogo" style="width: 80px; height: 80px; position: absolute; left: 0px; top: 530px">
+    <img [src]="rightLogo" style="width: 80px; height: 80px; position: absolute; left: 850px; top: 530px">
+
+    @for (item of buttons; track item) {
+        <button style="position: absolute;"
+          [style.top.px]="item.y - 5"
+          [style.left.px]="item.x - 5"
+          [style.width.px]="25"
+          [style.height.px]="25"
+          (click)="changeState(item)">
+          {{item.state}}
+        </button>
+    }
+
+    <span style="position: absolute; left: 410px; top: 540px; color: white; font-size: 60px;">{{leftScore}} - {{rightScore}}</span>
+</div>

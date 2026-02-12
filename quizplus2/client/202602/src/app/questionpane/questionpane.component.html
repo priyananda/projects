@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>{{question.getTitle()}}</h2>
+<mat-dialog-content class="mat-typography">
+  <img [src]="currentImage" style="width: 1000px;">
+  @if (videoUrl !== "") {
+    <iframe id="ytplayer" type="text/html" width="640" height="385" class="question_video"
+      [src]="videoUrl"
+      frameborder="0">
+    </iframe>
+  }
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-icon-button (click)="prevImage()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <button mat-icon-button (click)="nextImage()">
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+  <button mat-button cdkFocusInitial (click)="showAnswer()">
+    Show Answer
+  </button>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

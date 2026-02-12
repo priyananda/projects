@@ -1,0 +1,36 @@
+.outer {
+  max-width: 120px;
+  width: 100px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.team-label {
+  font-size: 16px;
+  text-align: center;
+  color: darkblue;
+  margin: 5px;
+}
+
+.score-label {
+  font-size: 14px;
+  text-align: center;
+  color: darkgray;
+}
+
+.score {
+  font-size: 30px;
+  font-size: bold;
+  text-align: center;
+}
+
+.btn {
+  width: 30px;
+  height: 30px;
+}
+
+.btn .mat-icon {
+    padding: 10px 0;
+    line-height: 22px;
+}

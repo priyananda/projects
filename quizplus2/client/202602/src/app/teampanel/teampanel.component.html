@@ -1,0 +1,18 @@
+<mat-card class="outer">
+    <div class="team-label">Team {{this.team.getId()}}</div>
+  <mat-card-content>
+    <div class="score-label">Score</div>
+    <div class="score">{{this.team.getScore()}}</div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-mini-fab color="black" class="btn">
+      <mat-icon>keyboard_arrow_up</mat-icon>
+    </button>
+    <button mat-mini-fab color="black" class="btn">
+      <mat-icon>keyboard_double_arrow_up</mat-icon>
+    </button>
+    <button mat-mini-fab color="black" class="btn">
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
