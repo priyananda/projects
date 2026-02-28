@@ -9,12 +9,16 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
+import { MathJaxParagraphComponent } from '../math-jax-paragraph/math-jax-paragraph.js';
+import { Team } from '../teamservice/team.js';
+import { TeamService } from '../teamservice/team.service.js';
 
 @Component({
   selector: 'app-questionpane',
   standalone: true,
   imports: [MatDialogTitle, MatDialogContent,
-    MatDialogModule, MatButtonModule, MatIconModule],
+    MatDialogModule, MatButtonModule, MatIconModule,
+    MathJaxParagraphComponent],
   templateUrl: './questionpane.component.html',
   styleUrl: './questionpane.component.css'
 })
@@ -24,8 +28,10 @@ export class QuestionPaneComponent {
   currentIndex: number = 0;
   currentImage: string = "";
   videoUrl: SafeUrl = "";
+  public teams: Team[];
 
-  constructor(@Inject(MAT_DIALOG_DATA) public question: Question, private sanitizer: DomSanitizer) {
+  constructor(@Inject(MAT_DIALOG_DATA) public question: Question, private sanitizer: DomSanitizer, private ts: TeamService) {
+    this.teams = ts.getTeams();
     this.contentImages = question.getContentImageUrls();
     this.answerImage = question.getAnswerImageUrl();
     this.setCurrentImage();

@@ -4,11 +4,22 @@
       The Matrix Multiplications
     </div>
   </header>
+  <router-outlet></router-outlet>
   <div class="page-transition">
-    <mat-form-field>
+    <mat-form-field style="width: 400px;">
       <mat-label>Input Text</mat-label>
-      <input matInput #first>
+      <input matInput #inText (input)="onInputChange()">
     </mat-form-field>
     <span class="material-icons">arrow_downward</span>
+    <app-math-jax-paragraph [mathString]="inpEmbS"></app-math-jax-paragraph>
+    <span class="material-icons">arrow_downward</span>
+    <router-outlet></router-outlet>
+    <span class="material-icons">arrow_downward</span>
+    <app-math-jax-paragraph [mathString]="outEmbS"></app-math-jax-paragraph>
+    <span class="material-icons">arrow_downward</span>
+    <mat-form-field  style="width: 400px;">
+      <mat-label>Output Text</mat-label>
+      <input matInput #outText>
+    </mat-form-field>
   </div>
 </div>

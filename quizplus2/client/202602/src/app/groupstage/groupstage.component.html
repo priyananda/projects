@@ -1,83 +1,69 @@
-<div style="align-items: center; display: flex; flex-direction: column; flex-wrap: wrap;">
-  <div [ngClass]="bgclass">
-    @for (item of questionsGrid; track item.id) {
-        <button class="group-map-button"
-          [style.top.px]="item.y"
-          [style.left.px]="item.x"
-          [style.width.px]="70"
-          [style.height.px]="80"
-          [style.backgroundColor]="item.opened ? 'transparent' : 'white'"
-          (click)="openQuestion(item)">
-        </button>
-    }
-  </div>
-  <div width="600px" style="align-items: center;">
-    <table mat-table [dataSource]="teams" class="mat-elevation-z8 qtable">
+<mat-card class="outer-card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>SAQ Pro 3.1 Max Thinking</mat-card-title>
+    <mat-card-subtitle>Mixture of Experts</mat-card-subtitle>
+  </mat-card-header>
+ <mat-card-content style="min-height: 210px; align-items: center; min-width: 1000;">
+  <table class="matrix-table">
+    <tr>
+      <th></th>
+      <th><app-math-jax-paragraph mathString="$$T$$"></app-math-jax-paragraph></th>
+      <th></th><th></th><th></th><th></th><th></th>
+      <th><app-math-jax-paragraph mathString="$$Q$$"></app-math-jax-paragraph></th>
+      <th></th><th></th><th></th>
+    </tr>
+    <tr>
+      <td rowspan="5"><img src="../assets/brl.png" width="20px" height="220px"/></td>
+      <td><app-math-jax-paragraph [mathString]="teams[0]"></app-math-jax-paragraph></td>
+      <td rowspan="5"><img src="../assets/brr.png" width="20px" height="220px"/></td>
+      <td>
+      <td rowspan="5"><img src="../assets/brl.png" width="20px" height="220px"/></td>
+@for (col of qmatrix[0]; track $index) {
+  @if (col == 0) {
+    <td>
+      <app-math-jax-paragraph [mathString]="'$$' + col + '$$'"></app-math-jax-paragraph>
+    </td>
+  } @else  {
+    <td style="background-color: aliceblue;">
+      <a (click)="openQuestion(col)">
+      <app-math-jax-paragraph [mathString]="'$$' + col + '$$'"></app-math-jax-paragraph>
+      </a>
+    </td>
+  }
+}
+      <td rowspan="5"><img src="../assets/brr.png" width="20px" height="220px"/></td>
+    </tr>
 
-      <ng-container matColumnDef="si">
-        <th mat-header-cell *matHeaderCellDef> Club </th>
-        <td mat-cell *matCellDef="let element; let i = index;">{{i+1}}.</td>
-      </ng-container>
-
-      <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef> </th>
-        <td mat-cell *matCellDef="let element">
-          <img [src]="element.getIcon()" style="width: 20px; height: 20px;">
-          &nbsp;
-          {{element.getName()}}
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="w">
-        <th mat-header-cell *matHeaderCellDef style="text-align: center;"> W </th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-icon-button style="font-size: 20px;" (click)="element.getScore().win()">+</button>
-          {{element.getScore().wins}}
-          <button mat-icon-button style="font-size: 20px;" (click)="element.getScore().undoWin()">-</button>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="d">
-        <th mat-header-cell *matHeaderCellDef style="text-align: center;"> D </th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-icon-button style="font-size: 20px;" (click)="element.getScore().draw()">+</button>
-            {{element.getScore().draws}}
-          <button mat-icon-button style="font-size: 20px;" (click)="element.getScore().undoDraw()">-</button>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="l">
-        <th mat-header-cell *matHeaderCellDef> L </th>
-        <td mat-cell *matCellDef="let element"> 0 </td>
-      </ng-container>
-
-      <ng-container matColumnDef="gf">
-        <th mat-header-cell *matHeaderCellDef  style="text-align: center;"> GF </th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-icon-button style="font-size: 20px;" (click)="element.getScore().goalFor()">+</button>
-          {{element.getScore().gf}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="ga">
-        <th mat-header-cell *matHeaderCellDef  style="text-align: center;"> GA </th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-icon-button style="font-size: 20px;" (click)="element.getScore().goalAgainst()">+</button>
-          {{element.getScore().ga}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="gd">
-        <th mat-header-cell *matHeaderCellDef  style="text-align: center;"> GD </th>
-        <td mat-cell *matCellDef="let element" style="background-color: #eee;"><b> {{element.getScore().getGoalDiff()}} </b></td>
-      </ng-container>
-
-      <ng-container matColumnDef="pts">
-        <th mat-header-cell *matHeaderCellDef > Pts </th>
-        <td mat-cell *matCellDef="let element" style="background-color: #eee;"><b> {{element.getScore().getPts()}}</b> </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="height: 30px;"></tr>
-    </table>
-  </div>
-
-</div>
+@for (row of qmatrix; track $index;let rowNum = $index;) {
+  @if ($index > 0) {
+    <tr>
+      <td><app-math-jax-paragraph [mathString]="teams[$index]"></app-math-jax-paragraph></td>
+      <td>
+@if ($index == 2) {
+  <app-math-jax-paragraph mathString="$$\times$$" style="font-size: 20px;"></app-math-jax-paragraph>
+}
+      </td>
+@for (qid of row; track $index; let colNum = $index;) {
+  @if (qid == 0) {
+    <td>
+      <app-math-jax-paragraph [mathString]="'$$' + (qid / 53).toFixed(2) + '$$'"></app-math-jax-paragraph>
+    </td>
+  } @else  {
+    <td style="background-color: aliceblue;">
+      <a (click)="openQuestion(qid)">
+      <app-math-jax-paragraph [mathString]="'$$' + (qid / 53).toFixed(2) + '$$'"></app-math-jax-paragraph>
+      </a>
+    </td>
+  }
+}
+    </tr>
+  }
+}
+  </table>
+ </mat-card-content>
+ <mat-card-actions>
+    <button matMiniFab aria-label="Example icon button with a home icon" [routerLink]="['/']" [queryParams]="{sq: true}">
+      <mat-icon>home</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

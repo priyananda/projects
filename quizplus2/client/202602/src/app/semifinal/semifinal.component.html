@@ -1,1 +1,45 @@
-<p>semifinal works!</p>
+<mat-card class="outer-card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>SAQ Pro 3.1 Max Thinking</mat-card-title>
+    <mat-card-subtitle>Mixture of Experts</mat-card-subtitle>
+  </mat-card-header>
+ <mat-card-content style="min-height: 210px; align-items: center;">
+@if (showQuestions) {
+   <mat-grid-list cols="7" class="rounds-grid">
+      <mat-grid-tile>
+        <img src="assets/att-bg.png" width="100">
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <img src="assets/mlp-bg.png" width="100">
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <img src="assets/att-bg.png" width="100">
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <img src="assets/mlp-bg.png" width="100">
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <img src="assets/att-bg.png" width="100">
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <img src="assets/mlp-bg.png" width="100">
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <img src="assets/att-bg.png" width="100">
+      </mat-grid-tile>
+      <mat-grid-tile><a matButton="outlined" routerLink="r/1">Self Attention</a></mat-grid-tile>
+      <mat-grid-tile><a matButton="outlined" (click)="openQuestion(1)">Multi Layer Perceptron</a></mat-grid-tile>
+      <mat-grid-tile><a matButton="outlined" routerLink="/r/2">Self Attention</a></mat-grid-tile>
+      <mat-grid-tile><a matButton="outlined" (click)="openQuestion(2)">Multi Layer Perceptron</a></mat-grid-tile>
+      <mat-grid-tile><a matButton="outlined" routerLink="/r/3">Self Attention</a></mat-grid-tile>
+      <mat-grid-tile><a matButton="outlined" (click)="openQuestion(3)">Multi Layer Perceptron</a></mat-grid-tile>
+      <mat-grid-tile><a matButton="outlined" routerLink="/r/4">Self Attention</a></mat-grid-tile>
+    </mat-grid-list>
+} @else if (showFirstButton) {
+    <button matButton="outlined" (click)="this.showFirstButton = false;" >Run!</button>
+} @else {
+    <button mat-raised-button (click)="this.showQuestions = true;">Run the model manually</button>
+    <div class="error-message">ERROR: Datacenter out of water! Kaaveri Nammadu</div>
+}
+  </mat-card-content>
+</mat-card>

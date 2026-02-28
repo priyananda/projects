@@ -9,6 +9,27 @@
   }
 </mat-dialog-content>
 <mat-dialog-actions align="end">
+  <table class="team-tbl">
+    <tr>
+@for (team of teams; track $index) {
+      <td class="team-tbl-ops">
+        <mat-icon (click)="team.addToScore(1.0)">arrow_drop_up</mat-icon>
+      </td>
+}
+    </tr>
+    <tr>
+@for (team of teams; track $index) {
+      <td class="team-tbl-nums">
+        <app-math-jax-paragraph [mathString]="'$$' + team.getScore().toFixed(2) + '$$'"></app-math-jax-paragraph>
+      </td>
+}
+    </tr>
+@for (team of teams; track $index) {
+      <td  class="team-tbl-ops">
+        <mat-icon (click)="team.addToScore(-0.5)">arrow_drop_down</mat-icon>
+      </td>
+}
+  </table>
   <button mat-icon-button (click)="prevImage()">
     <mat-icon>arrow_back</mat-icon>
   </button>

@@ -3,3 +3,18 @@
 	top: 20%;
 	left: 20%;
 }
+
+.team-tbl {
+	width: 150px;
+	border: 1px solid darkgray;
+}
+
+.team-tbl td {
+	min-width: 40px;
+	min-height: 20px;
+	text-align: center;
+}
+
+.team-tbl-nums {
+	border: 1px solid lightblue;
+}
