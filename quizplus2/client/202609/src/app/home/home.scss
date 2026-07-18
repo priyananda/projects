@@ -1,0 +1,368 @@
+.home-page {
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 80px 24px 60px;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(139, 0, 0, 0.3) 0%, transparent 70%);
+  }
+}
+
+.hero-mandala {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  opacity: 0.07;
+  animation: spin-slow 60s linear infinite;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cg fill='none' stroke='%23FFD700' stroke-width='1'%3E%3Ccircle cx='200' cy='200' r='190'/%3E%3Ccircle cx='200' cy='200' r='160'/%3E%3Ccircle cx='200' cy='200' r='130'/%3E%3Ccircle cx='200' cy='200' r='100'/%3E%3Ccircle cx='200' cy='200' r='70'/%3E%3Ccircle cx='200' cy='200' r='40'/%3E%3Cline x1='200' y1='10' x2='200' y2='390'/%3E%3Cline x1='10' y1='200' x2='390' y2='200'/%3E%3Cline x1='54' y1='54' x2='346' y2='346'/%3E%3Cline x1='346' y1='54' x2='54' y2='346'/%3E%3Cline x1='200' y1='10' x2='200' y2='390'/%3E%3Cpath d='M200 40 L220 80 L200 60 L180 80 Z'/%3E%3Cpath d='M200 360 L220 320 L200 340 L180 320 Z'/%3E%3Cpath d='M40 200 L80 220 L60 200 L80 180 Z'/%3E%3Cpath d='M360 200 L320 220 L340 200 L320 180 Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.diya-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  .diya {
+    font-size: 2rem;
+    animation: float 3s ease-in-out infinite;
+    display: inline-block;
+    filter: drop-shadow(0 0 12px rgba(255, 153, 51, 0.8));
+
+    &.delay-1 { animation-delay: 0.5s; }
+    &.delay-2 { animation-delay: 1s; }
+  }
+}
+
+.hero-title {
+  font-family: 'Yatra One', cursive;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1.1;
+  margin-bottom: 8px;
+  text-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
+}
+
+.hero-subtitle {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: clamp(1rem, 3vw, 1.8rem);
+  color: var(--saffron);
+  letter-spacing: 8px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.hero-tagline {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255, 248, 231, 0.7);
+  letter-spacing: 3px;
+  margin-top: 16px;
+}
+
+/* ── Section titles ── */
+.section-title {
+  font-family: 'Yatra One', cursive;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.section-ornament {
+  color: var(--saffron);
+  font-size: 1.2rem;
+}
+
+/* ── Teams Section ── */
+.teams-section {
+  padding: 40px 24px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin: 24px 0;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 500px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.team-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-gold);
+  border-top: 3px solid var(--team-color, #FFD700);
+  border-radius: 12px;
+  padding: 16px 8px;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(var(--team-color), 0.15), transparent);
+    opacity: 0.3;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5), 0 0 0 1px var(--team-color, #FFD700);
+  }
+}
+
+.team-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 0 6px rgba(255,153,51,0.6));
+}
+
+.team-name {
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ivory);
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: background 0.2s;
+
+  &:hover {
+    background: rgba(255, 215, 0, 0.1);
+  }
+}
+
+.team-name-input {
+  width: 100%;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  color: var(--ivory);
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 4px;
+  outline: none;
+}
+
+.team-score {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 0.85rem;
+  color: var(--gold);
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+.reset-btn {
+  display: block;
+  margin: 8px auto 0;
+  background: transparent;
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  color: rgba(255, 248, 231, 0.5);
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 0.8rem;
+  padding: 6px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    border-color: rgba(255, 215, 0, 0.6);
+    color: var(--gold);
+  }
+}
+
+/* ── Rounds Section ── */
+.rounds-section {
+  padding: 20px 24px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.rounds-hint {
+  text-align: center;
+  color: rgba(255, 248, 231, 0.5);
+  font-size: 0.95rem;
+  margin-bottom: 32px;
+  letter-spacing: 1px;
+}
+
+.rounds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.round-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-gold);
+  border-radius: 16px;
+  padding: 28px 20px 20px;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease both;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--round-color, #FFD700);
+    border-radius: 16px 16px 0 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top, rgba(255,255,255,0.04), transparent 70%);
+    pointer-events: none;
+  }
+
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+      0 20px 60px rgba(0,0,0,0.6),
+      0 0 0 2px var(--round-color, #FFD700),
+      0 0 40px rgba(255, 215, 0, 0.15);
+
+    .round-shine {
+      animation: slide-shine 0.5s ease;
+    }
+  }
+}
+
+.round-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+  pointer-events: none;
+}
+
+@keyframes slide-shine {
+  from { left: -100%; }
+  to   { left: 200%; }
+}
+
+.round-number {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 0.7rem;
+  color: var(--round-color, #FFD700);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.round-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 10px rgba(255, 153, 51, 0.5));
+  animation: float 4s ease-in-out infinite;
+}
+
+.round-name {
+  font-family: 'Yatra One', cursive;
+  font-size: 1.6rem;
+  color: var(--ivory);
+  margin-bottom: 2px;
+  line-height: 1.1;
+}
+
+.round-subtitle {
+  font-family: 'Tiro Devanagari Hindi', serif;
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 8px;
+  opacity: 0.85;
+}
+
+.round-theme {
+  display: inline-block;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  color: var(--gold-light);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.round-description {
+  font-size: 0.85rem;
+  color: rgba(255, 248, 231, 0.6);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.round-footer {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.round-meta {
+  font-size: 0.75rem;
+  background: rgba(255, 153, 51, 0.1);
+  border: 1px solid rgba(255, 153, 51, 0.2);
+  color: var(--saffron);
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+/* ── Footer ── */
+.page-footer {
+  text-align: center;
+  padding: 30px;
+}
+
+.lotus-row {
+  font-size: 1.5rem;
+  letter-spacing: 16px;
+  opacity: 0.6;
+  filter: drop-shadow(0 0 8px rgba(255, 153, 51, 0.4));
+}

@@ -1,0 +1,75 @@
+.app-shell {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.corner-mandala {
+  position: fixed;
+  width: 160px;
+  height: 160px;
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23FFD700' stroke-width='1.5'%3E%3Ccircle cx='100' cy='100' r='90'/%3E%3Ccircle cx='100' cy='100' r='70'/%3E%3Ccircle cx='100' cy='100' r='50'/%3E%3Ccircle cx='100' cy='100' r='30'/%3E%3Cline x1='100' y1='10' x2='100' y2='190'/%3E%3Cline x1='10' y1='100' x2='190' y2='100'/%3E%3Cline x1='27' y1='27' x2='173' y2='173'/%3E%3Cline x1='173' y1='27' x2='27' y2='173'/%3E%3Cellipse cx='100' cy='55' rx='15' ry='25'/%3E%3Cellipse cx='100' cy='145' rx='15' ry='25'/%3E%3Cellipse cx='55' cy='100' rx='25' ry='15'/%3E%3Cellipse cx='145' cy='100' rx='25' ry='15'/%3E%3Cellipse cx='127' cy='127' rx='12' ry='20' transform='rotate(45 127 127)'/%3E%3Cellipse cx='73' cy='73' rx='12' ry='20' transform='rotate(45 73 73)'/%3E%3Cellipse cx='127' cy='73' rx='12' ry='20' transform='rotate(-45 127 73)'/%3E%3Cellipse cx='73' cy='127' rx='12' ry='20' transform='rotate(-45 73 127)'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.corner-mandala.top-left     { top: -20px;    left: -20px;  }
+.corner-mandala.top-right    { top: -20px;    right: -20px; transform: scaleX(-1); }
+.corner-mandala.bottom-left  { bottom: -20px; left: -20px;  transform: scaleY(-1); }
+.corner-mandala.bottom-right { bottom: -20px; right: -20px; transform: scale(-1, -1); }
+
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 60px;
+  background: linear-gradient(135deg, rgba(26, 4, 0, 0.95) 0%, rgba(80, 20, 0, 0.95) 100%);
+  border-bottom: 2px solid #FFD700;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.nav-title {
+  font-family: 'Yatra One', cursive;
+  font-size: 1.3rem;
+  color: #FFD700;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  letter-spacing: 2px;
+}
+
+.nav-btn {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  color: #FFD700;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  &:hover {
+    background: rgba(255, 215, 0, 0.25);
+    border-color: #FFD700;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+  }
+}
+
+.main-content {
+  position: relative;
+  z-index: 1;
+}

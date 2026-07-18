@@ -1,0 +1,122 @@
+<div class="scoreboard-page">
+
+  <!-- Podium Header -->
+  <div class="sb-hero">
+    <div class="fireworks">
+      <span class="fw">✨</span><span class="fw delay-1">🎆</span>
+      <span class="fw delay-2">✨</span><span class="fw delay-1">🎇</span>
+      <span class="fw">✨</span>
+    </div>
+    <h1 class="sb-title shimmer-text">ज्ञान प्रतियोगिता</h1>
+    <p class="sb-subtitle">Live Leaderboard</p>
+    <div class="gold-divider"></div>
+
+    @if (leader && leader.score > 0) {
+      <div class="leader-badge">
+        <span class="leader-crown">👑</span>
+        <span class="leader-text">
+          {{ leader.icon }} {{ leader.name }} leads with {{ leader.score }} points!
+        </span>
+      </div>
+    }
+  </div>
+
+  <!-- Podium (top 3) -->
+  @if (teams.length > 0 && teams[0].score > 0) {
+    <div class="podium-section">
+      <div class="podium-stand second">
+        @if (teams[1]) {
+          <div class="podium-team">
+            <div class="podium-icon">{{ teams[1].icon }}</div>
+            <div class="podium-name">{{ teams[1].name }}</div>
+            <div class="podium-score">{{ teams[1].score }}</div>
+          </div>
+          <div class="podium-block p2">
+            <span class="podium-medal">🥈</span>
+          </div>
+        }
+      </div>
+      <div class="podium-stand first">
+        @if (teams[0]) {
+          <div class="podium-team">
+            <div class="podium-icon">{{ teams[0].icon }}</div>
+            <div class="podium-name">{{ teams[0].name }}</div>
+            <div class="podium-score">{{ teams[0].score }}</div>
+          </div>
+          <div class="podium-block p1">
+            <span class="podium-medal">🥇</span>
+          </div>
+        }
+      </div>
+      <div class="podium-stand third">
+        @if (teams[2]) {
+          <div class="podium-team">
+            <div class="podium-icon">{{ teams[2].icon }}</div>
+            <div class="podium-name">{{ teams[2].name }}</div>
+            <div class="podium-score">{{ teams[2].score }}</div>
+          </div>
+          <div class="podium-block p3">
+            <span class="podium-medal">🥉</span>
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  <!-- Full Rankings Table -->
+  <div class="rankings-section">
+    <h2 class="section-title">
+      <span class="section-ornament">❋</span>
+      Full Rankings
+      <span class="section-ornament">❋</span>
+    </h2>
+
+    <div class="rankings-list">
+      @for (team of teams; track team.id; let i = $index) {
+        <div class="rank-row" [style.--team-color]="team.color"
+             [class.top3]="i < 3"
+             [style.animation-delay]="(i * 0.08) + 's'">
+          <div class="rank-position">
+            <span class="rank-medal">{{ getMedal(i) }}</span>
+            <span class="rank-num">{{ i + 1 }}<sup>{{ getRankSuffix(i) }}</sup></span>
+          </div>
+          <div class="rank-team-info">
+            <span class="rank-icon">{{ team.icon }}</span>
+            <span class="rank-name">{{ team.name }}</span>
+          </div>
+          <div class="rank-bar-area">
+            <div class="rank-bar">
+              <div class="rank-bar-fill" [style.width.%]="getBarWidth(team.score)"
+                   [style.background]="team.color"></div>
+            </div>
+          </div>
+          <div class="rank-score">{{ team.score }} <span class="rank-pts">pts</span></div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Round Quick Access -->
+  <div class="rounds-quick">
+    <h2 class="section-title">
+      <span class="section-ornament">✦</span>
+      Jump to Round
+      <span class="section-ornament">✦</span>
+    </h2>
+    <div class="rounds-quick-grid">
+      @for (round of rounds; track round.id) {
+        <button class="quick-round-btn" [style.--round-color]="round.color"
+                (click)="goRound(round.id)">
+          <span>{{ round.icon }}</span>
+          <span>{{ round.name }}</span>
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="sb-footer">
+    <div class="lotus-row">🪷 🌸 🪷 🌸 🪷</div>
+  </div>
+
+</div>

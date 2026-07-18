@@ -1,0 +1,86 @@
+<div class="home-page">
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-mandala"></div>
+    <div class="hero-content">
+      <div class="diya-row">
+        <span class="diya">🪔</span>
+        <span class="diya delay-1">🪔</span>
+        <span class="diya delay-2">🪔</span>
+        <span class="diya delay-1">🪔</span>
+        <span class="diya">🪔</span>
+      </div>
+      <h1 class="hero-title shimmer-text">ज्ञान प्रतियोगिता</h1>
+      <p class="hero-subtitle">Gyan Pratiyogita</p>
+      <div class="gold-divider"></div>
+      <p class="hero-tagline">Six Teams · Five Rounds · One Champion</p>
+    </div>
+  </header>
+
+  <!-- Teams Strip -->
+  <section class="teams-section">
+    <h2 class="section-title">
+      <span class="section-ornament">❋</span>
+      The Six Challengers
+      <span class="section-ornament">❋</span>
+    </h2>
+    <div class="teams-grid">
+      @for (team of teams; track team.id) {
+        <div class="team-card" [style.--team-color]="team.color">
+          <div class="team-icon">{{ team.icon }}</div>
+          @if (editingTeam === team.id) {
+            <input
+              class="team-name-input"
+              [(ngModel)]="editValue"
+              (blur)="saveEdit(team.id)"
+              (keydown.enter)="saveEdit(team.id)"
+              autofocus>
+          } @else {
+            <div class="team-name" (click)="startEdit(team)">{{ team.name }}</div>
+          }
+          <div class="team-score">{{ team.score }} pts</div>
+        </div>
+      }
+    </div>
+    <button class="reset-btn" (click)="resetAll()">↺ Reset All Scores</button>
+  </section>
+
+  <!-- Rounds Section -->
+  <section class="rounds-section">
+    <h2 class="section-title">
+      <span class="section-ornament">✦</span>
+      Choose Your Round
+      <span class="section-ornament">✦</span>
+    </h2>
+    <p class="rounds-hint">Select a round to begin the competition</p>
+
+    <div class="rounds-grid">
+      @for (round of rounds; track round.id; let i = $index) {
+        <div class="round-card" [style.--round-color]="round.color"
+             [style.animation-delay]="(i * 0.1) + 's'"
+             (click)="startRound(round)">
+          <div class="round-number">Round {{ round.id }}</div>
+          <div class="round-icon">{{ round.icon }}</div>
+          <h3 class="round-name">{{ round.name }}</h3>
+          <p class="round-subtitle">{{ round.subTitle }}</p>
+          <div class="round-theme">{{ round.theme }}</div>
+          <p class="round-description">{{ round.description }}</p>
+          <div class="round-footer">
+            <span class="round-meta">{{ round.questionCount }} Questions</span>
+            <span class="round-meta">{{ round.pointsPerQuestion }} pts each</span>
+          </div>
+          <div class="round-shine"></div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Decorative bottom -->
+  <footer class="page-footer">
+    <div class="lotus-row">
+      <span>🪷</span><span>🌸</span><span>🪷</span><span>🌸</span><span>🪷</span>
+    </div>
+  </footer>
+
+</div>

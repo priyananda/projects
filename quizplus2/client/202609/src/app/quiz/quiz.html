@@ -1,0 +1,124 @@
+<div class="quiz-page" [style.--round-color]="round?.color">
+  @if (round) {
+
+    <!-- Round Header -->
+    <div class="round-header">
+      <div class="round-header-badge">
+        <span class="rh-icon">{{ round.icon }}</span>
+        <div>
+          <div class="rh-round-label">Round {{ round.id }}</div>
+          <div class="rh-name">{{ round.name }} · <span class="rh-subtitle">{{ round.subTitle }}</span></div>
+          <div class="rh-theme">{{ round.theme }}</div>
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="progress-area">
+        <div class="progress-label">
+          Question {{ currentQuestion }} of {{ round.questionCount }}
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="progress"></div>
+        </div>
+        <div class="question-dots">
+          @for (q of questionRange; track q) {
+            <button class="q-dot"
+                    [class.active]="q === currentQuestion"
+                    [class.past]="q < currentQuestion"
+                    (click)="selectQuestion(q)">
+              {{ q }}
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Award notification toast -->
+    @if (showLastAward && lastAward) {
+      <div class="award-toast" [class.negative]="lastAward.points < 0">
+        @if (lastAward.points > 0) {
+          🎉 {{ lastAward.teamName }} +{{ lastAward.points }} pts!
+        } @else {
+          ❌ {{ lastAward.teamName }} {{ lastAward.points }} pts
+        }
+      </div>
+    }
+
+    <!-- Main Layout -->
+    <div class="quiz-layout">
+
+      <!-- Question Area -->
+      <div class="question-panel">
+        <div class="question-card">
+          <div class="question-number-badge">Q{{ currentQuestion }}</div>
+          <div class="question-placeholder">
+            <div class="q-ornament">❋</div>
+            <p class="question-text">Question {{ currentQuestion }}</p>
+            <p class="question-hint">Read the question aloud and select the winning team below</p>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="question-nav">
+          <button class="nav-arrow" (click)="prevQuestion()" [disabled]="currentQuestion === 1">
+            ← Prev
+          </button>
+          <div class="points-selector">
+            <span class="points-label">Award</span>
+            <div class="points-chips">
+              @for (pts of [5, 10, 15, 20]; track pts) {
+                <button class="pts-chip"
+                        [class.selected]="pointsToAward === pts"
+                        (click)="pointsToAward = pts">
+                  {{ pts }}
+                </button>
+              }
+            </div>
+            <span class="points-label">pts</span>
+          </div>
+          <button class="nav-arrow next" (click)="nextQuestion()" [disabled]="isLastQuestion">
+            Next →
+          </button>
+        </div>
+
+        @if (isLastQuestion) {
+          <button class="finish-round-btn" (click)="goScoreboard()">
+            ✨ Round Complete — View Final Scores
+          </button>
+        }
+      </div>
+
+      <!-- Teams Scoring Panel -->
+      <div class="scoring-panel">
+        <h3 class="scoring-title">
+          <span>🏆</span> Live Scores
+        </h3>
+        <div class="teams-list">
+          @for (team of sortedTeams; track team.id; let i = $index) {
+            <div class="team-row" [style.--team-color]="team.color">
+              <div class="team-rank">{{ getMedal(i) || (i + 1) }}</div>
+              <div class="team-info">
+                <span class="t-icon">{{ team.icon }}</span>
+                <span class="t-name">{{ team.name }}</span>
+              </div>
+              <div class="team-score-display">{{ team.score }}</div>
+              <div class="team-actions">
+                <button class="action-btn deduct"
+                        (click)="deductPoints(team, pointsToAward)"
+                        title="Deduct {{ pointsToAward }} pts">
+                  -{{ pointsToAward }}
+                </button>
+                <button class="action-btn award"
+                        (click)="awardPoints(team, pointsToAward)"
+                        title="Award {{ pointsToAward }} pts">
+                  +{{ pointsToAward }}
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+    </div>
+  }
+</div>

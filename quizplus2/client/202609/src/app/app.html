@@ -1,0 +1,24 @@
+<div class="app-shell">
+  <!-- Decorative mandala corners -->
+  <div class="corner-mandala top-left"></div>
+  <div class="corner-mandala top-right"></div>
+  <div class="corner-mandala bottom-left"></div>
+  <div class="corner-mandala bottom-right"></div>
+
+  <!-- Navigation bar (shown on inner pages) -->
+  @if (showNav) {
+    <nav class="top-nav">
+      <button class="nav-btn" (click)="goHome()">
+        <span class="nav-icon">🏠</span> Rounds
+      </button>
+      <div class="nav-title">ज्ञान प्रतियोगिता</div>
+      <button class="nav-btn" (click)="goScoreboard()">
+        <span class="nav-icon">🏆</span> Scores
+      </button>
+    </nav>
+  }
+
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

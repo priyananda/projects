@@ -1,0 +1,98 @@
+/* ── Global Variables ── */
+:root {
+  --saffron:      #FF9933;
+  --deep-red:     #8B0000;
+  --gold:         #FFD700;
+  --gold-light:   #FFE66D;
+  --peacock:      #006A4E;
+  --ivory:        #FFF8E7;
+  --dark-bg:      #0d0500;
+  --card-bg:      rgba(30, 10, 0, 0.85);
+  --border-gold:  rgba(255, 215, 0, 0.4);
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  background: var(--dark-bg);
+  color: var(--ivory);
+  font-family: 'Baloo 2', sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(139, 0, 0, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(255, 153, 51, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(0, 106, 78, 0.05) 0%, transparent 70%),
+    #0d0500;
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-family: 'Yatra One', cursive;
+}
+
+/* ── Utility ── */
+.gold-text  { color: var(--gold); }
+.saffron-text { color: var(--saffron); }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
+::-webkit-scrollbar-thumb { background: rgba(255, 215, 0, 0.4); border-radius: 3px; }
+
+/* ── Animations ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
+  50%       { box-shadow: 0 0 0 12px rgba(255, 215, 0, 0); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease both;
+}
+
+/* ── Gold divider ── */
+.gold-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--saffron), var(--gold), transparent);
+  margin: 16px 0;
+  border: none;
+  border-radius: 1px;
+}
+
+/* ── Shimmer text ── */
+.shimmer-text {
+  background: linear-gradient(90deg, var(--gold), var(--ivory), var(--saffron), var(--gold));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
