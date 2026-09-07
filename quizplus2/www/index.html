@@ -1,104 +1,156 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-
-<link rel="stylesheet" media="screen" href="style/style.css">
-<link rel="stylesheet" type="text/css" href="style/w2ui-1.4.3.min.css" />
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-
-<script  src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script  src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<script type="text/javascript" src="scripts/w2ui-1.4.3.min.js"></script>
-
-<title>Quiz Plus</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiz+</title>
+<meta name="description" content="Searchable archive of the Seattle Area Quizzers.">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="style/home.css">
 </head>
-
 <body>
-  <center>
-    <h1>Quiz<sup>+</sup></h1>
-    <h2>Searchable archive of the Seattle Area Quizzers.</h2>
-    <div id="form" class="searchFormStyle">
-      <form id="searchForm" action="/search">
-        <div class="w2ui-page page-0">
-          <input name="field_search_text" type="text" maxlength="100" class="fieldSearchTextStyle" style="width: 450px;" placeholder="Enter Search Text...">
-          <div id="accordion" style="text-align: left; margin-top: 40px;">
-            <h3>Advanced</h3>
-            <table width="100%" style="cell-padding: 10px;">
-              <tr>
-                <td>Author:
-                <td><input name="field_author" type="text" maxlength="100" style="width: 300px !important;">
-              <tr>
-                <td>Date:
-                <td><select>
-                      <option value="Before">Before</option>
-                      <option value="After">After</option>
-                      <option value="Around">Around</option>
-                    </select>
-                    <input name="field_date" type="text" maxlength="100" style="width: 120px">
-            </table>
-          </div>
-          <br />
-        </div>
-        <div class="w2ui-buttons">
-          <button class="btn" name="save" id="searchButton">Search</button>
-        </div>
-      </form>
+  <div class="page">
+    <div class="brand">
+      <h1>Quiz<sup>+</sup></h1>
+      <p class="tagline">Searchable archive of the Seattle Area Quizzers</p>
     </div>
-    <p>Searching 8413 slides from <a href="/quizzes">86 quizzes</a> by <a href="/authors">36 authors.</a></p>
-    <p>Code: <a href="https://github.com/priyananda/projects/tree/master/quizplus">github</a>. Powered by:
-       <a href="http://cloud.google.com/">Google App Engine</a>
-       <a href="http://w2ui.com/">W2UI</a>
-       <a href="http://jquery.com/">JQuery</a>
-       <a href="http://jqueryui.com/">JQueryUI</a></p>
-    <div style="margin-top: 30px;">&copy; Priyananda Shenoy 2015-2022. All content is owned by their
-    respective authors.</div>
-  </center>
-</body>
+
+    <form class="search-card" id="searchForm" action="/search" method="GET">
+      <div class="search-row">
+        <div class="search-field">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input name="field_search_text" id="searchText" type="text" maxlength="100" placeholder="Search 8,413 slides…" autocomplete="off" autofocus>
+        </div>
+        <button class="search-submit" type="submit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          Search
+        </button>
+      </div>
+
+      <details class="advanced">
+        <summary>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          Advanced filters
+        </summary>
+        <div class="advanced-body">
+          <div class="field-group">
+            <label for="authorText">Author</label>
+            <div class="author-input" id="authorInput">
+              <input id="authorText" type="text" list="authorList" placeholder="Type a name and press Enter…" autocomplete="off">
+            </div>
+            <datalist id="authorList"></datalist>
+          </div>
+          <div class="field-group">
+            <label for="dateValue">Date</label>
+            <div class="date-row">
+              <select id="dateQualifier" name="field_date_qualifier">
+                <option value="Before">Before</option>
+                <option value="After">After</option>
+                <option value="Around">Around</option>
+              </select>
+              <input id="dateValue" name="field_date" type="date">
+            </div>
+          </div>
+        </div>
+      </details>
+    </form>
+
+    <p class="stats">
+      Searching <strong>8,413</strong> slides from <a href="/quizzes">86 quizzes</a> by <a href="/authors">36 authors</a>
+    </p>
+
+    <footer>
+      <div class="powered-by">
+        Code: <a href="https://github.com/priyananda/projects/tree/master/quizplus">GitHub</a>
+        &middot; Powered by
+        <a href="https://cloud.google.com/appengine">Google App Engine</a>
+      </div>
+      <div>&copy; Priyananda Shenoy 2015&ndash;2026. All content is owned by their respective authors.</div>
+    </footer>
+  </div>
 
 <script>
+(function () {
   var authors = [
-  	'Nandini', 'Shashank', 'Ashit', 'Mythreyi', 'Suhas', 'Michael', 'Harish', 'Prabirendra', 'Aswath', 'Surinderjeet',
-  	'Priyananda', 'Yogesh', 'Rajesh', 'AmitB', 'Vashutosh', 'Parth', 'Adarsh', 'Pranav', 'Antariksh', 'Rohit', 'Mihir',
-  	'Gayathri', 'Maitrey', 'Hitesh', 'Suchir', 'Nikhil',
-  	'Suhel', 'Suchitra&Sriram', 'Priyananda&Aswath', 'Ruchir', 'Sudhir', 'Group', 'Anirudh', 'Samarth', 'Mai', 'Siddharth' ];
+    'Nandini', 'Shashank', 'Ashit', 'Mythreyi', 'Suhas', 'Michael', 'Harish', 'Prabirendra', 'Aswath', 'Surinderjeet',
+    'Priyananda', 'Yogesh', 'Rajesh', 'AmitB', 'Vashutosh', 'Parth', 'Adarsh', 'Pranav', 'Antariksh', 'Rohit', 'Mihir',
+    'Gayathri', 'Maitrey', 'Hitesh', 'Suchir', 'Nikhil',
+    'Suhel', 'Suchitra&Sriram', 'Priyananda&Aswath', 'Ruchir', 'Sudhir', 'Group', 'Anirudh', 'Samarth', 'Mai', 'Siddharth'
+  ];
 
-  $('#form').w2form({ 
-  name     : 'form',
-  fields: [
-   { name: 'field_search_text', type: 'text', required: true },
-   { name: 'field_date', type: 'date' },
-   { name: 'field_author', type: 'enum', required: true, 
-      options: {openOnFocus: true,  items: authors } },
-    ],
-    actions: {
-      save: function () {
-      }
-    }
+  var datalist = document.getElementById('authorList');
+  authors.forEach(function (name) {
+    var opt = document.createElement('option');
+    opt.value = name;
+    datalist.appendChild(opt);
   });
-  $('#searchButton').button({icons: {primary: "ui-icon-search"}});
-  $('#searchForm').submit( function(evt) {
-    var authorData = $('#field_author').data('selected');
-    if(authorData.length > 0) {
-      var authorSearchString = "Author:(";
-      authorSearchString += authorData[0].text;
-      
-      var index;
-      for (index = 1; index < authorData.length; ++index) {
-       authorSearchString += " OR " + authorData[index].text;
-    }
-    
-    authorSearchString += ")";
-    $('#field_search_text').val( $('#field_search_text').val() + " " + authorSearchString);
-    }
-  });
-  
-  $(function() {
-    $( "#accordion" ).accordion({
-      collapsible: true,
-      heightStyle: 'content'
+
+  var authorInput = document.getElementById('authorInput');
+  var authorText = document.getElementById('authorText');
+  var selected = [];
+
+  function renderChips() {
+    Array.prototype.slice.call(authorInput.querySelectorAll('.author-chip')).forEach(function (chip) {
+      chip.remove();
     });
+    selected.forEach(function (name) {
+      var chip = document.createElement('span');
+      chip.className = 'author-chip';
+
+      var label = document.createElement('span');
+      label.textContent = name;
+      chip.appendChild(label);
+
+      var removeBtn = document.createElement('button');
+      removeBtn.type = 'button';
+      removeBtn.setAttribute('aria-label', 'Remove ' + name);
+      removeBtn.textContent = '×';
+      removeBtn.addEventListener('click', function () {
+        selected = selected.filter(function (n) { return n !== name; });
+        renderChips();
+      });
+      chip.appendChild(removeBtn);
+
+      var hidden = document.createElement('input');
+      hidden.type = 'hidden';
+      hidden.name = 'field_author';
+      hidden.value = name;
+      chip.appendChild(hidden);
+
+      authorInput.insertBefore(chip, authorText);
+    });
+  }
+
+  function addAuthor(name) {
+    name = name.trim();
+    if (!name || selected.indexOf(name) !== -1) return;
+    selected.push(name);
+    authorText.value = '';
+    renderChips();
+  }
+
+  authorText.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Enter' || evt.key === ',') {
+      evt.preventDefault();
+      addAuthor(authorText.value);
+    } else if (evt.key === 'Backspace' && authorText.value === '' && selected.length) {
+      selected.pop();
+      renderChips();
+    }
   });
-  </script>
+
+  authorText.addEventListener('change', function () {
+    if (authors.indexOf(authorText.value) !== -1) {
+      addAuthor(authorText.value);
+    }
+  });
+
+  document.getElementById('searchForm').addEventListener('submit', function () {
+    if (authorText.value.trim()) {
+      addAuthor(authorText.value);
+    }
+  });
+})();
+</script>
+</body>
 </html>
